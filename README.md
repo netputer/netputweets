@@ -5,7 +5,7 @@
 介绍
 ----
 
-「奶瓶腿」是一个安全的、个性的中文 Twitter 手机客户端，基于 Dabr 源码，由 @[NetPuter]{https://twitter.com/NetPuter} 修改、架设。同时也感谢 @[iChada]{https://twitter.com/iChada} @[17th]{https://twitter.com/17th} @[luosheng]{https://twitter.com/luosheng} @[LonelySwan]{https://twitter.com/LonelySwan} 的协助。
+「奶瓶腿」是一个安全的、个性的中文 Twitter 手机客户端，基于 Dabr 源码，由 @[NetPuter](https://twitter.com/NetPuter) 修改、架设。同时也感谢 @[iChada](https://twitter.com/iChada) @[17th](https://twitter.com/17th) @[luosheng](https://twitter.com/luosheng) @[LonelySwan](https://twitter.com/LonelySwan) 的协助。
 
 架设
 ----
@@ -15,7 +15,7 @@
 提示
 ----
 
-1. 请尊重 Dabr 作者 @[davidcarrington]{https://twitter.com/davidcarrington} 和修改者 @[17th]{https://twitter.com/17th} @[iChada]{https://twitter.com/iChada} @[NetPuter]{https://twitter.com/NetPuter} @[luosheng]{https://twitter.com/luosheng} 的劳动成果，保留 about.html 等相应内容。
+1. 请尊重 Dabr 作者 @[davidcarrington](https://twitter.com/davidcarrington) 和修改者 @[17th](https://twitter.com/17th) @[iChada](https://twitter.com/iChada) @[NetPuter](https://twitter.com/NetPuter) @[luosheng](https://twitter.com/luosheng) 的劳动成果，保留 about.html 等相应内容。
 2. 建议使用二级域名架设，以降低被墙后的损失。
 3. 修改文件时请使用 NotePad++ 等文本编辑器，以 UTF-8 无 BOM 格式编码进行编辑。
 4. 可视化邀请页面， invite.php 。
@@ -26,5 +26,5 @@
 联系
 ----
 
-* Twitter: @[NetPuter]{https://twitter.com/NetPuter}
-* Mail: [netputer@gmail.com]{mailto:netputer@gmail.com}
+* Twitter: @[NetPuter](https://twitter.com/NetPuter)
+* Mail: [netputer@gmail.com](mailto:netputer@gmail.com)
