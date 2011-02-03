@@ -56,7 +56,7 @@ switch($step) {
 	break;
 	case 1:
 		display_header($notice);
-?><form method="post" action="setup.php?step=2"><p>请在下面的表单中填入对应的信息。</p><table class="form-table"><tr><th scope="row"><label for="t_title">标题</label></th><td><input name="t_title" id="t_title" type="text" value="奶瓶腿!" size="35" /></td><td>如「<a href="https://t.orzdream.com/settings">设置 - 奶瓶腿!</a>」</td></tr><tr><th scope="row"><label for="t_urf">网址</label></th><td><input name="t_urf" id="t_urf" type="text" value="<?php echo BASE_URL;?>" size="35" /></td><td>一般不需要修改 注意要以 / 结尾</td></tr><tr><th scope="row"><label for="t_ck">Cookie 密匙</label></th><td><input name="t_ck" id="t_ck" type="text" size="35" value="NetPutweets" /></td><td>如果有在同一主机内安装多个奶瓶腿的需要请修改此项</td></tr><tr><th scope="row"><label for="t_tck">Twitter OAuth Consumer Key <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tck" id="t_tck" type="text" size="35" value="awGBKfiSSqf1B2iKGsmJQ" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_tcs">Twitter OAuth Consumer Secret <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tcs" id="t_tcs" type="text" size="35" value="hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_tak">Twitpic API Key <a href="http://dev.twitpic.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tak" id="t_tak" type="text" value="95a105b0faadab9daa1a5739d4f80992" size="35" /></td><td>一般不需要修改</td></tr><tr><th scope="row"><label for="t_ta">Twitter API <a href="http://code.google.com/p/twip/" title="项目地址">#</a></label></th><td><input name="t_ta" id="t_ta" type="text" value="http://api.twitter.com/1/" size="35" /></td><td>如果您的主机在国内 请修改此项</td></tr><tr><th scope="row"><label for="t_tsa">Twitter Search API</label></th><td><input name="t_tsa" id="t_tsa" type="text" value="http://search.twitter.com/" size="35" /></td><td>如果您的主机在国内 请修改此项</td></tr><tr><th scope="row"><label for="t_rsl">还原短链接</label></th><td><select name="t_rsl"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>如果您的主机在国内 请停用此项 开启此功能可能会影响一点点儿速度 并无大碍</td></tr><tr><th scope="row"><label for="t_ivt">仅受邀用户可登录</label></th><td><select name="t_ivt"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>请根据您的需要选择</td></tr><tr><th scope="row"><label for="t_psw">设置邀请码</label></th><td><input name="t_psw" id="t_psw" type="text" value="twitter" size="20" /></td><td>用于「 <a href="invite.php">invite.php</a> 」</td></tr><tr><th scope="row"><label for="t_ssl">强制使用 SSL 加密连接</label></th><td><select name="t_ssl"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>一般不需要修改 请根据您的空间情况选择</td></tr></table><?php
+?><form method="post" action="setup.php?step=2"><p>请在下面的表单中填入对应的信息。</p><table class="form-table"><tr><th scope="row"><label for="t_title">标题</label></th><td><input name="t_title" id="t_title" type="text" value="奶瓶腿!" size="35" /></td><td>如「<a href="https://t.orzdream.com/settings">设置 - 奶瓶腿!</a>」</td></tr><tr><th scope="row"><label for="t_urf">网址</label></th><td><input name="t_urf" id="t_urf" type="text" value="<?php echo BASE_URL;?>" size="35" /></td><td>一般不需要修改 注意要以 / 结尾</td></tr><tr><th scope="row"><label for="t_ck">Cookie 密匙</label></th><td><input name="t_ck" id="t_ck" type="text" size="35" value="NetPutweets" /></td><td>如果有在同一主机内安装多个奶瓶腿的需要请修改此项</td></tr><tr><th scope="row"><label for="t_tck">Twitter OAuth Consumer Key <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tck" id="t_tck" type="text" size="35" value="awGBKfiSSqf1B2iKGsmJQ" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_tcs">Twitter OAuth Consumer Secret <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tcs" id="t_tcs" type="text" size="35" value="hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_tak">Twitpic API Key <a href="http://dev.twitpic.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tak" id="t_tak" type="text" value="95a105b0faadab9daa1a5739d4f80992" size="35" /></td><td>一般不需要修改</td></tr><tr><th scope="row"><label for="t_ta">Twitter API <a href="http://code.google.com/p/twip/" title="项目地址">#</a></label></th><td><input name="t_ta" id="t_ta" type="text" value="http://api.twitter.com/1/" size="35" /></td><td>如果您的主机在国内 请修改此项</td></tr><tr><th scope="row"><label for="t_tsa">Twitter Search API</label></th><td><input name="t_tsa" id="t_tsa" type="text" value="http://search.twitter.com/" size="35" /></td><td>如果您的主机在国内 请修改此项</td></tr><tr><th scope="row"><label for="t_rsl">还原短链接</label></th><td><select name="t_rsl"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>如果您的主机在国内 请停用此项 开启此功能可能会影响一点点儿速度 并无大碍</td></tr><tr><th scope="row"><label for="t_ivt">仅受邀用户可登录</label></th><td><select name="t_ivt"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>请根据您的需要选择</td></tr><tr><th scope="row"><label for="t_psw">设置邀请码</label></th><td><input name="t_psw" id="t_psw" type="text" value="twitter" size="20" /></td><td>用于「 <a href="invite.php">invite.php</a> 」</td></tr><tr><th scope="row"><label for="t_ssl">强制使用 SSL 加密连接</label></th><td><select name="t_ssl"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>一般不需要修改 请根据您的空间情况选择</td></tr><tr><th scope="row"><label for="t_iphone">强制使用 SSL 加密连接</label></th><td><select name="t_iphone"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>一般不需要修改 请根据您的空间情况选择</td></tr>/table><?php
 		if ($notice !== ''){
 			echo '<p class="step"><a href="setup.php" class="button">出错了！</a></p>';
 		}else{
@@ -80,6 +80,7 @@ switch($step) {
 			$t_ivt	=  trim($_POST['t_ivt']);
 			$t_psw	= (empty($t_psw)) ? trim($_POST['t_psw']) : 'twitter';
 			$t_ssl	=  trim($_POST['t_ssl']);
+            $t_iphone = trim($POST['t_iphone']);
 
 			if (rewritable()) {
 				$t_url = $t_urf;
@@ -136,7 +137,16 @@ switch($step) {
 				}
 				fclose($handle);
 				chmod(ABSPATH.'config.php', 0666);
-				chmod(ABSPATH.'invite.php', 0666);
+                chmod(ABSPATH.'invite.php', 0666);
+
+                if ($t_iphone == 1) {
+                    //iPhone only
+                    chmod(ABSPATH.'.htaccess', 0666);
+                    $handle = fopen(ABSPATH . '.htaccess', 'a');
+                    fwrite($handle, '\nOrder deny,allow\nDeny from all\nBrowserMatch iPhone ok\nBrowserMatch MobileSafari ok\nAllow from env=ok\n');
+                    fclose($handle);
+                    chmod(ABSPATH.'.htaccess', 0644);
+                }
 				display_header($notice);
 ?><p>恭喜！奶瓶腿已经安装成功。准备好了？开始 &hellip; &hellip;</p><p class="step"><a href="<?php echo BASE_URL.'" class="button">抱抱奶瓶腿！</a></p>';
 			}
