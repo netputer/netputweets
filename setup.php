@@ -143,7 +143,7 @@ switch($step) {
                     //iPhone only
                     chmod(ABSPATH.'.htaccess', 0666);
                     $handle = fopen(ABSPATH . '.htaccess', 'a');
-                    fwrite($handle, "\nOrder deny,allow\nDeny from all\nBrowserMatch iPhone ok\nBrowserMatch MobileSafari ok\nAllow from env=ok\n");
+                    fwrite($handle, "\n#Allow iPhone to access only\nOrder deny,allow\nDeny from all\nBrowserMatch iPhone ok\nBrowserMatch MobileSafari ok\nAllow from env=ok\n#End iPhone\n");
                     fclose($handle);
                     chmod(ABSPATH.'.htaccess', 0644);
                 }
