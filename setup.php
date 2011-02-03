@@ -80,7 +80,7 @@ switch($step) {
 			$t_ivt	=  trim($_POST['t_ivt']);
 			$t_psw	= (empty($t_psw)) ? trim($_POST['t_psw']) : 'twitter';
 			$t_ssl	=  trim($_POST['t_ssl']);
-            $t_iphone = trim($POST['t_iphone']);
+            $t_iphone = trim($_POST['t_iphone']);
 
 			if (rewritable()) {
 				$t_url = $t_urf;
@@ -143,7 +143,7 @@ switch($step) {
                     //iPhone only
                     chmod(ABSPATH.'.htaccess', 0666);
                     $handle = fopen(ABSPATH . '.htaccess', 'a');
-                    fwrite($handle, '\nOrder deny,allow\nDeny from all\nBrowserMatch iPhone ok\nBrowserMatch MobileSafari ok\nAllow from env=ok\n');
+                    fwrite($handle, "\nOrder deny,allow\nDeny from all\nBrowserMatch iPhone ok\nBrowserMatch MobileSafari ok\nAllow from env=ok\n");
                     fclose($handle);
                     chmod(ABSPATH.'.htaccess', 0644);
                 }
