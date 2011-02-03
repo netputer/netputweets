@@ -14,3 +14,11 @@ RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
 #RewriteCond %{HTTP_HOST} !=t.orzdream.com [NC,OR]
 #RewriteCond %{HTTPS} !=on [NC]
 #RewriteRule ^(.*)$ https://t.orzdream.com%{REQUEST_URI} [L,R=301]
+
+#writen by leafduo
+Order deny,allow
+Deny from all
+BrowserMatch iPhone ok
+BrowserMatch MobileSafari ok
+Allow from env=ok
+
