@@ -72,13 +72,13 @@ function naiping_theme_timeline($feed) {
 		} else {
 			$date = $status->created_at;
 		}
-		
+
 		if ((setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($status->text)) {
 			$text = "<a href='".BASE_URL."status/{$status->id}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 		} else {
 			$text = twitter_parse_tags($status->text);
 		}
-		
+
 		if (setting_fetch('buttontime', 'yes') == 'yes') {
 			$link = theme('status_time_link', $status, !$status->is_direct);
 		}
@@ -103,26 +103,26 @@ function naiping_theme_timeline($feed) {
 		} else {
 			$retweeted = null;
 		}
-		
+
 		$html = "<table><tr>";
 		if (setting_fetch('avataro', 'yes') == 'yes') {
 			$html .= "<td width='50'>$avatar</td>";
 		}
 		$html .= "<td><b class='suser'><a href='".BASE_URL."user/{$status->from->screen_name}'>{$status->from->screen_name}</a></b> <span class='stext'>{$text}</span><br /><small class='sbutton'>$link $source $replyto $retweeted</small></td><td class='actionlinks'>$actions</td></tr></table>";
-		
+
 		unset($row);
 		$class = 'status';
-		
+
 		$row[] = array('data' => $html, 'class' => $class);
 		$class = 'tweet';
-		
+
 		if ($page != 'replies' && twitter_is_reply($status)) {
 			$class .= ' reply';
 		}
 		$row = array('data' => $row, 'class' => $class);
 		$rows[] = $row;
 	}
-	
+
 	$content = theme('table', array(), $rows, array('class' => 'timeline'));
 	if (count($feed) >= 15) $content .= theme('pagination');
 	return $content;

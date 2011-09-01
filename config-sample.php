@@ -15,6 +15,6 @@ define('LANG', 'zh_CN');
 
 define('LONG_URL', 0);
 define('INVITE', 0);
-define('INVITE_CODE', 'putyourinfohere'); 
+define('INVITE_CODE', 'putyourinfohere');
 define('FORCE_SSL', 0);
 ?>

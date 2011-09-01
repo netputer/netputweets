@@ -106,12 +106,12 @@ function user_is_authenticated() {
 			$GLOBALS['user'] = array();
 		}
 	}
-	
+
 	if (user_current_username() && user_type() !== 'oauth') {
 		user_logout();
 		twitter_refresh('logout');
 	}
-	
+
 	if (!user_current_username()) return false;
 	return true;
 }
@@ -121,7 +121,7 @@ function user_current_username() {
 }
 
 function user_is_current_user($username) {
-	return (strcasecmp($username, user_current_username()) == 0);	
+	return (strcasecmp($username, user_current_username()) == 0);
 }
 
 function user_type() {
@@ -155,7 +155,7 @@ function _user_encrypt_cookie() {
 		return base64_encode($crypt_text);
 	}
 }
-	
+
 function _user_decrypt_cookie($crypt_text) {
 	$crypt_text = base64_decode($crypt_text);
 	if(function_exists('mcrypt_module_open')) {

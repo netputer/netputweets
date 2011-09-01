@@ -16,13 +16,13 @@ function menu_execute_active_handler() {
 		header('HTTP/1.0 404 Not Found');
 		die('404 - Page not found.');
 	}
-	
+
 	if ($page['security'])
 		user_ensure_authenticated();
 
 	if (function_exists('config_log_request'))
 		config_log_request();
-	
+
 	if (function_exists($page['callback']))
 		return call_user_func($page['callback'], $query);
 

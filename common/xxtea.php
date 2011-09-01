@@ -26,7 +26,7 @@ function long2str($v, $w) {
         return join('', $s);
     }
 }
- 
+
 function str2long($s, $w) {
     $v = unpack("V*", $s. str_repeat("\0", (4 - strlen($s) % 4) & 3));
     $v = array_values($v);
@@ -38,7 +38,7 @@ function str2long($s, $w) {
 
 function int32($n) {
     while ($n >= 2147483648) $n -= 4294967296;
-    while ($n <= -2147483649) $n += 4294967296; 
+    while ($n <= -2147483649) $n += 4294967296;
     return (int)$n;
 }
 

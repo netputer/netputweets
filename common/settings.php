@@ -63,7 +63,7 @@ function settings_page($args) {
 		$settings['topdirects'] = $_POST['topdirects'];
 		$settings['toptwitpic'] = $_POST['toptwitpic'];
 		$settings['topsearch'] = $_POST['topsearch'];
-		
+
 		$settings['replies'] = $_POST['replies'];
 		$settings['retweets'] = $_POST['retweets'];
 		$settings['directs'] = $_POST['directs'];
@@ -88,7 +88,7 @@ function settings_page($args) {
 		$settings['buttontime'] = $_POST['buttontime'];
 		$settings['buttonfrom'] = $_POST['buttonfrom'];
 		$settings['buttonend'] = $_POST['buttonend'];
-		
+
 		$settings['longurl'] = $_POST['longurl'];
 		$settings['longtext'] = $_POST['longtext'];
 		$settings['showthumbs'] = $_POST['showthumbs'];
@@ -102,7 +102,7 @@ function settings_page($args) {
 		setcookie('settings', base64_encode(serialize($settings)), $duration, '/');
 		settings_refresh('');
 	}
-	
+
 	$modes = array(
 		'mobile' => __("Normal phone"),
 		'touch' => __("Touch phone"),
@@ -110,19 +110,19 @@ function settings_page($args) {
 		'blackberry' => __("BlackBerry (Pagination At Bottom)"),
 		'naiping' => __("Nai Ping (For PC Only)"),
 	);
-	
+
 	$locale = array(
 		'zh_CN' => '简体中文',
 		'en_US' => 'English',
 		'zh_TW' => '繁體中文',
 	);
-	
+
 	$linktrans = array(
 		'o' => __("Full URL"),
 		'd' => __("Domain Only"),
 		'l' => "[link]",
 	);
-	
+
 	$longtext = array(
 		'a' => __("Automatic Cut"),
 		'd' => __("Split into 2+ tweets"),
@@ -161,7 +161,7 @@ function settings_page($args) {
 	$content .= '<label>　<input type="checkbox" name="ssettings" value="yes" '. (setting_fetch('ssettings', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Settings").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="slogout" value="yes" '. (setting_fetch('slogout', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Logout").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="srefresh" value="yes" '. (setting_fetch('srefresh') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Refresh").'</label><hr />';
-	
+
 	$content .= '<p><b>'.__("Status Settings").'</b></p>';
 	$content .= '<label>　<input type="checkbox" name="buttonintext" value="yes" '. (setting_fetch('buttonintext', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Show @/DM/RT/FAV/DEL As Text instead of images").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="buttonend" value="yes" '. (setting_fetch('buttonend') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Put the Buttons after each Status").'</label><br />';
@@ -170,7 +170,7 @@ function settings_page($args) {
 	$content .= '<label>　<input type="checkbox" name="avataro" value="yes" '. (setting_fetch('avataro', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Show Avatar").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="fixedtago" value="yes" '. (setting_fetch('fixedtago', 'no') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Enable Fixed Tag").'</label>: #<input type="text" id="fixedtagc" name="fixedtagc" value="'.setting_fetch('fixedtagc').'" maxlength="70" style="width:40px;" /><br />';
 	if (function_exists('mb_strlen')) $content .= '<label>　'.__("When posting a 140+ chars tweet").': <select name="longtext">'.theme('options', $longtext, setting_fetch('longtext', 'r')).'</select></label><hr />';
-	
+
 	$content .= '<p><b>'.__("Global Settings").'</b></p>';
 	$content .= '<label>　'.__("Colour scheme").': <select name="colours">'.theme('options', $colour_schemes, setting_fetch('colours', 1)).'</select></label><br />';
 	$content .= '<label>　'.__("Mode").': <select name="browser">'.theme('options', $modes, $GLOBALS['current_theme']).'</select></label><br />';
@@ -183,7 +183,7 @@ function settings_page($args) {
 	$content .= '<label>　<input type="checkbox" name="filtero" value="yes" '. (setting_fetch('filtero', 'no') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Enable Keyword Filter").'</label>: <input type="text" id="filterc" name="filterc" value="'.setting_fetch('filterc').'" /><br /><small>　　'.__("Note").': '.__("Separate keywords with space").'</small><p />';
 	$content .= '<p><label>'.__("Custom CSS").':<br /><textarea name="css" cols="50" rows="3" id="css" style="width:95%">'.setting_fetch('css').'</textarea></label></p>';
 	$content .= '<hr /><p><input type="submit" name="Submit" value="'.__("Save").'" /> <small>'.__('Visit ').'<a href="'.BASE_URL.'reset">'.__("Reset").'</a>'.__(' if things go horribly wrong - it will log you out and clear all settings.').'</small></p></form>';
-	
+
 	return theme('page', __("Settings"), $content);
 }
 

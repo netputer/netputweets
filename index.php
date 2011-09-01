@@ -9,10 +9,10 @@ if ((FORCE_SSL == 1) && ($_SERVER['HTTPS'] != "on")) {
 	header("Location:$redirect");
 }
 
-header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); 
-header('Last-Modified: ' . date('r')); 
-header('Cache-Control: no-store, no-cache, must-revalidate'); 
-header('Cache-Control: post-check=0, pre-check=0', false); 
+header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
+header('Last-Modified: ' . date('r'));
+header('Cache-Control: no-store, no-cache, must-revalidate');
+header('Cache-Control: post-check=0, pre-check=0', false);
 header('Pragma: no-cache');
 header('Content-type: text/html; charset=utf-8');
 

@@ -8,23 +8,23 @@
 From http://github.com/mzsanford/twitter-text-php/blob/master/src/Twitter/Autolink.php
 This file is
 Copyright 2010 Mike Cochrane
- 
+
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
 use this file except in compliance with the License. You may obtain a copy of
 the License at
- 
+
 http://www.apache.org/licenses/LICENSE-2.0
- 
+
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
-the License. 
+the License.
 
 Modified by Terence Eden for Dabr
 */
 class Twitter_Autolink {
-        
+
         /* HTML attribute to add when noFollow is true (default) */
         const NO_FOLLOW_HTML_ATTRIBUTE = " rel=\"nofollow\"";
 
@@ -41,13 +41,13 @@ class Twitter_Autolink {
 
         /* Default href for username links (the username without the @ will be appended) */
         //protected $usernameUrlBase = "http://twitter.com/";
-        
+
         /* Default href for list links (the username/list without the @ will be appended) */
         //protected $listUrlBase = "http://twitter.com/";
-        
+
         /* Default href for hashtag links (the hashtag without the # will be appended) */
         //protected $hashtagUrlBase = "http://twitter.com/search?q=%23";
-        
+
         protected $noFollow = true;
 
         function __construct() {
@@ -127,7 +127,7 @@ class Twitter_Autolink {
 
                 return $replacement;
         }
-        
+
         private function get_base()
         {
                 return BASE_URL;

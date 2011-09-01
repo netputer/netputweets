@@ -31,7 +31,7 @@ function rewritable() {
 	curl_setopt($ch, CURLOPT_URL, BASE_URL.'settings');
 	curl_exec($ch);
 	$response_info = curl_getinfo($ch);
-	
+
 	if ($response_info["http_code"] == "404") return false;
 	return true;
 }
@@ -86,7 +86,7 @@ switch($step) {
 			} else {
 				$t_url = $t_urf.'index.php?q=';
 			}
-			
+
 			if ($notice == '') {
 				$handle = fopen(ABSPATH . 'config.php', 'w');
 				foreach ($configFile as $line_num => $line) {

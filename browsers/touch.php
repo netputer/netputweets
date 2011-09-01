@@ -33,7 +33,7 @@ function touch_theme_menu_top() {
 	if (setting_fetch('topdirects', 'yes') == 'yes') $main_menu_titles[] = __("Directs");
 	if (setting_fetch('topsearch') == 'yes') $main_menu_titles[] = __("Search");
 	if (setting_fetch('toptwitpic') == 'yes') $main_menu_titles[] = __("Twitpic");
-	
+
 	foreach (menu_visible_items() as $url => $page) {
 		$title = $url ? $page['title'] : __("Home");
 		$type = in_array($title, $main_menu_titles) ? 'main' : 'extras';

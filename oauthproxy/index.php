@@ -8,33 +8,33 @@
 	 * @author: Aveline Lan (Twitter @LonelySwan) (12@34.la / i@vii.im)
 	 * @website: http://vii.im
 	 * @version: r8 2010-06-25 12:02
-	 * 
+	 *
 	 * The login page is modified from NetPutter
 	 */
-	
+
 	error_reporting(0);
-	
-	
+
+
 	define('OAUTH_URL','https://twitter.com/oauth/');
 	define('API_URL','https://api.twitter.com/');
 	define('ITAP_VERSION','r8 - 20100816 - Valentine\'s Day');
-	
+
 	$allowed_method = array(
 		'authenticate_post','authenticate','authorize','authorize_post'
 	);
-	
+
 	$method = substr($_SERVER['REQUEST_URI'],strripos($_SERVER['REQUEST_URI'],'/')+1);
-	
+
 	if(strpos($method,'?')!=false) {
 		$method = substr($method,0,strpos($method,'?'));
 	}
-	
-	
+
+
 	$query = '?'.(isset($_SERVER['REDIRECT_QUERY_STRING']) ? $_SERVER['REDIRECT_QUERY_STRING'] : $_SERVER['QUERY_STRING']);
-	
+
 
 	require_once './handler.php';
-	
+
 	$a = new OAPHandle;
 		//$a->keepCookie();
 		if($method=='authorize') {
