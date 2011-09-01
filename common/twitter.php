@@ -1092,7 +1092,7 @@ function theme_user_header($user) {
 		} else {
 			$out.= "<a href='".BASE_URL."unfollow/{$user->screen_name}'>".__("Unfollow")."</a>";
 		}
-		$out .= " | <a href='".BASE_URL."confirm/block/{$user->screen_name}/{$user->id}'>".__("Block")." | ".__("Unblock")."</a> | <a href='".BASE_URL."confirm/spam/{$user->screen_name}/{$user->id}'>".__('Report Spam')."</a> | ";
+		$out .= " | <a href='".BASE_URL."confirm/block/{$user->screen_name}/{$user->id_str}'>".__("Block")."? | <a href='".BASE_URL."confirm/spam/{$user->screen_name}/{$user->id_str}'>".__('Report Spam')."</a> | ";
 	} else {
 		$out .= "<a href='".BASE_URL."profile'>".__("Update Profile")."</a> | ";
 	}
@@ -1121,7 +1121,7 @@ function theme_status_time_link($status, $is_link = true) {
 		$out = $status->created_at;
 	}
 	if ($is_link)
-		$out = "<a href='".BASE_URL."status/{$status->id}'>$out</a>";
+		$out = "<a href='".BASE_URL."status/{$status->id_str}'>$out</a>";
 	if ((substr($_GET['q'],0,4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser') == 'desktop') || (setting_fetch('browser') == 'naiping')) {
 		return $out;
 	} else {
@@ -1177,18 +1177,18 @@ function twitter_standard_timeline($feed, $source) {
 			$retweet = $new->retweeted_status;
 			unset($new->retweeted_status);
 			$retweet->retweeted_by = $new;
-			$retweet->original_id = $new->id;
+			$retweet->original_id = $new->id_str;
 			$new = $retweet;
 		}
 		$new->from = $new->user;
 		unset($new->user);
-		$output[(string) $new->id] = $new;
+		$output[(string) $new->id_str] = $new;
 		}
 		return $output;
 	case 'search':
 		foreach ($feed->results as $status) {
-		$output[(string) $status->id] = (object) array(
-			'id' => $status->id,
+		$output[(string) $status->id_str] = (object) array(
+			'id' => $status->id_str,
 			'text' => $status->text,
 			'source' => strpos($status->source, '&lt;') !== false ? html_entity_decode($status->source) : $status->source,
 			'from' => (object) array(
@@ -1310,7 +1310,7 @@ function theme_timeline($feed) {
 		}
 
 		if ((setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($status->text)) {
-			$text = "<a href='".BASE_URL."status/{$status->id}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
+			$text = "<a href='".BASE_URL."status/{$status->id_str}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 		} else {
 			$text = twitter_parse_tags($status->text);
 		}
@@ -1502,39 +1502,39 @@ function theme_pagination() {
 function theme_action_icons($status) {
 	$from = isset($status->from->screen_name) ? $status->from->screen_name : $status->user->screen_name;
 	$retweeted_by = $status->retweeted_by->user->screen_name;
-	$retweeted_id = $status->retweeted_by->id;
+	$retweeted_id = $status->retweeted_by->id_str;
 	$geo = $status->geo;
 	$actions = array();
 
 	if (!$status->is_direct) {
-		$actions[] = theme('action_icon', BASE_URL."user/{$from}/reply/{$status->id}", 'images/reply.png', __('@'));
+		$actions[] = theme('action_icon', BASE_URL."user/{$from}/reply/{$status->id_str}", 'images/reply.png', __('@'));
 	}
 	if (substr_count(($status->text), '@') >= 1) {
 		$found = Twitter_Extractor::extractMentionedScreennames($status->text);
 		$to_users = array_unique($found);
 		$key = array_search(user_current_username(), $to_users);
 		if ($key != NULL || $key !== FALSE) unset($to_users[$key]);
-		if (count($to_users) >= 1) $actions[] = theme('action_icon', "user/{$from}/replyall/{$status->id}", 'images/replyall.png', __('@@'));
+		if (count($to_users) >= 1) $actions[] = theme('action_icon', "user/{$from}/replyall/{$status->id_str}", 'images/replyall.png', __('@@'));
 	}
 	if (!user_is_current_user($from)) {
 		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
 	}
 	if (!$status->is_direct) {
 		if ($status->favorited == '1') {
-			$actions[] = theme('action_icon', BASE_URL."unfavourite/{$status->id}", 'images/star.png', __('UNFAV'));
+			$actions[] = theme('action_icon', BASE_URL."unfavourite/{$status->id_str}", 'images/star.png', __('UNFAV'));
 		} else {
-			$actions[] = theme('action_icon', BASE_URL."favourite/{$status->id}", 'images/star_grey.png', __('FAV'));
+			$actions[] = theme('action_icon', BASE_URL."favourite/{$status->id_str}", 'images/star_grey.png', __('FAV'));
 		}
 		if (user_is_current_user($retweeted_by)) {
 			$actions[] = theme('action_icon', "confirm/delete/{$retweeted_id}", 'images/trash.gif', __('UNDO'));
 		} else {
-			$actions[] = theme('action_icon', "retweet/{$status->id}", 'images/retweet.png', __('RT'));
+			$actions[] = theme('action_icon', "retweet/{$status->id_str}", 'images/retweet.png', __('RT'));
 		}
 		if (user_is_current_user($from)) {
-			$actions[] = theme('action_icon', "confirm/delete/{$status->id}", 'images/trash.gif', __('DEL'));
+			$actions[] = theme('action_icon', "confirm/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 		}
 	} else {
-		$actions[] = theme('action_icon', BASE_URL."directs/delete/{$status->id}", 'images/trash.gif', __('DEL'));
+		$actions[] = theme('action_icon', BASE_URL."directs/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 	}
 	if ($geo !== null) {
 		$latlong = $geo->coordinates;
