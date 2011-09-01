@@ -1029,21 +1029,22 @@ function theme_status_form($text = '', $in_reply_to_id = NULL) {
 }
 
 function theme_status($status) {
-	if ($status->id_str) {
-		$status->id = $status->id_str;
-	}
 	$time_since = theme('status_time_link', $status);
 	$parsed = twitter_parse_tags($status->text);
 	$out = theme('status_form', "@{$status->user->screen_name} ");
 	$out .= "<div class='timeline'>\n";
 	$out .= " <div class='tweet odd'>\n";
 	$out .= "  <span class='avatar'>$avatar</span>\n";
-	$out .= "  <span class='status shift'><b><a href='user/{$status->user->screen_name}'>{$status->user->screen_name}</a></b> $time_since<br />$parsed</span>\n";
+	$out .= "  <span class='status shift'><b><a href='user/{$status->user->screen_name}'>{$status->user->screen_name}</a></b> ";
+	$out .= theme('action_icons', $status);
+	$out .= " $time_since<br />$parsed</span>\n";
 	$out .= " </div>\n";
 	$out .= "</div>\n";
+	
 	if (user_is_current_user($status->user->screen_name)) {
 		$out .= "<form action='".BASE_URL."delete/{$status->id_str}' method='post'><input type='submit' value='".__("Delete without confirmation")."' /></form>";
 	}
+	
 	return $out;
 }
 
@@ -1499,9 +1500,9 @@ function theme_pagination() {
 }
 
 function theme_action_icons($status) {
-	$from = $status->from->screen_name;
-		$retweeted_by = $status->retweeted_by->user->screen_name;
-		$retweeted_id = $status->retweeted_by->id;
+	$from = isset($status->from->screen_name) ? $status->from->screen_name : $status->user->screen_name;
+	$retweeted_by = $status->retweeted_by->user->screen_name;
+	$retweeted_id = $status->retweeted_by->id;
 	$geo = $status->geo;
 	$actions = array();
 
