@@ -1,135 +1,450 @@
 <?php
+/**
+ * @author     Mike Cochrane <mikec@mikenz.geek.nz>
+ * @author     Nick Pope <nick@nickpope.me.uk>
+ * @copyright  Copyright © 2010, Mike Cochrane, Nick Pope
+ * @license    http://www.apache.org/licenses/LICENSE-2.0  Apache License v2.0
+ * @package    Twitter
+ */
+
+require_once 'Regex.php';
 
 /**
- * Twiter Autolink Class
+ * Twitter Autolink Class
  *
- * Based on code by Matt Sanford, http://github.com/mzsanford
+ * Parses tweets and generates HTML anchor tags around URLs, usernames,
+ * username/list pairs and hashtags.
+ *
+ * Originally written by {@link http://github.com/mikenz Mike Cochrane}, this
+ * is based on code by {@link http://github.com/mzsanford Matt Sanford} and
+ * heavily modified by {@link http://github.com/ngnpope Nick Pope}.
+ *
+ * @author     Mike Cochrane <mikec@mikenz.geek.nz>
+ * @author     Nick Pope <nick@nickpope.me.uk>
+ * @copyright  Copyright © 2010, Mike Cochrane, Nick Pope
+ * @license    http://www.apache.org/licenses/LICENSE-2.0  Apache License v2.0
+ * @package    Twitter
+ */
+class Twitter_Autolink extends Twitter_Regex {
 
-From http://github.com/mzsanford/twitter-text-php/blob/master/src/Twitter/Autolink.php
-This file is
-Copyright 2010 Mike Cochrane
+  /**
+   * CSS class for auto-linked URLs.
+   *
+   * @var  string
+   */
+  protected $class_url = 'url';
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not
-use this file except in compliance with the License. You may obtain a copy of
-the License at
+  /**
+   * CSS class for auto-linked username URLs.
+   *
+   * @var  string
+   */
+  protected $class_user = 'username';
 
-http://www.apache.org/licenses/LICENSE-2.0
+  /**
+   * CSS class for auto-linked list URLs.
+   *
+   * @var  string
+   */
+  protected $class_list = 'list';
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-License for the specific language governing permissions and limitations under
-the License.
+  /**
+   * CSS class for auto-linked hashtag URLs.
+   *
+   * @var  string
+   */
+  protected $class_hash = 'hashtag';
 
-Modified by Terence Eden for Dabr
-*/
-class Twitter_Autolink {
+  /**
+   * URL base for username links (the username without the @ will be appended).
+   *
+   * @var  string
+   */
+  protected $url_base_user = BASE_URL;
 
-        /* HTML attribute to add when noFollow is true (default) */
-        const NO_FOLLOW_HTML_ATTRIBUTE = " rel=\"nofollow\"";
+  /**
+   * URL base for list links (the username/list without the @ will be appended).
+   *
+   * @var  string
+   */
+  protected $url_base_list = BASE_URL;
 
-        /* Default CSS class for auto-linked URLs */
-        protected $urlClass = "tweet-url";
+  /**
+   * URL base for hashtag links (the hashtag without the # will be appended).
+   *
+   * @var  string
+   */
+  protected $url_base_hash = BASE_URL;
 
-        /* Default CSS class for auto-linked list URLs */
-        protected $listClass = "list-slug";
+  /**
+   * Whether to include the value 'nofollow' in the 'rel' attribute.
+   *
+   * @var  bool
+   */
+  protected $nofollow = true;
 
-        /* Default CSS class for auto-linked username URLs */
-        protected $usernameClass = "username";
+  /**
+   * Whether to include the value 'external' in the 'rel' attribute.
+   *
+   * Often this is used to be matched on in JavaScript for dynamically adding
+   * the 'target' attribute which is deprecated in HTML 4.01.  In HTML 5 it has
+   * been undeprecated and thus the 'target' attribute can be used.  If this is
+   * set to false then the 'target' attribute will be output.
+   *
+   * @var  bool
+   */
+  protected $external = true;
 
-        /* Default CSS class for auto-linked hashtag URLs */
+  /**
+   * The scope to open the link in.
+   *
+   * Support for the 'target' attribute was deprecated in HTML 4.01 but has
+   * since been reinstated in HTML 5.  To output the 'target' attribute you
+   * must disable the adding of the string 'external' to the 'rel' attribute.
+   *
+   * @var  string
+   */
+  protected $target = '_blank';
 
-        /* Default href for username links (the username without the @ will be appended) */
-        //protected $usernameUrlBase = "http://twitter.com/";
+  /**
+   * Provides fluent method chaining.
+   *
+   * @param  string  $tweet        The tweet to be converted.
+   * @param  bool    $full_encode  Whether to encode all special characters.
+   *
+   * @see  __construct()
+   *
+   * @return  Twitter_Autolink
+   */
+  public static function create($tweet, $full_encode = false) {
+    return new self($tweet, $full_encode);
+  }
 
-        /* Default href for list links (the username/list without the @ will be appended) */
-        //protected $listUrlBase = "http://twitter.com/";
+  /**
+   * Reads in a tweet to be parsed and converted to contain links.
+   *
+   * As the intent is to produce links and output the modified tweet to the
+   * user, we take this opportunity to ensure that we escape user input.
+   *
+   * @see  htmlspecialchars()
+   *
+   * @param  string  $tweet        The tweet to be converted.
+   * @param  bool    $escape       Whether to escape the tweet (default: true).
+   * @param  bool    $full_encode  Whether to encode all special characters.
+   */
+  public function __construct($tweet, $escape = true, $full_encode = false) {
+    if ($escape) {
+      if ($full_encode) {
+        parent::__construct(htmlentities($tweet, ENT_QUOTES, 'UTF-8', false));
+      } else {
+        parent::__construct(htmlspecialchars($tweet, ENT_QUOTES, 'UTF-8', false));
+      }
+    } else {
+      parent::__construct($tweet);
+    }
+  }
 
-        /* Default href for hashtag links (the hashtag without the # will be appended) */
-        //protected $hashtagUrlBase = "http://twitter.com/search?q=%23";
+  /**
+   * CSS class for auto-linked URLs.
+   *
+   * @return  string  CSS class for URL links.
+   */
+  public function getURLClass() {
+    return $this->class_url;
+  }
 
-        protected $noFollow = true;
+  /**
+   * CSS class for auto-linked URLs.
+   *
+   * @param  string  $v  CSS class for URL links.
+   *
+   * @return  Twitter_Autolink  Fluid method chaining.
+   */
+  public function setURLClass($v) {
+    $this->class_url = trim($v);
+    return $this;
+  }
 
-        function __construct() {
-        }
+  /**
+   * CSS class for auto-linked username URLs.
+   *
+   * @return  string  CSS class for username links.
+   */
+  public function getUsernameClass() {
+    return $this->class_user;
+  }
 
-        public function autolink($tweet) {
-                return $this->autoLinkUsernamesAndLists($this->autoLinkURLs($this->autoLinkHashtags($tweet)));
-        }
+  /**
+   * CSS class for auto-linked username URLs.
+   *
+   * @param  string  $v  CSS class for username links.
+   *
+   * @return  Twitter_Autolink  Fluid method chaining.
+   */
+  public function setUsernameClass($v) {
+    $this->class_user = trim($v);
+    return $this;
+  }
 
-        public function autoLinkHashtags($tweet) {
-                // TODO Match latin chars with accents
-                return preg_replace('$(^|[^0-9A-Z&/]+)([#＃]+)([0-9A-Z_]*[A-Z_]+[a-z0-9_üÀ-ÖØ-öø-ÿ]*)$iu',
-                        '${1}<a href="' . $this->get_base() . 'hash/' . '${3}" title="#${3}" class="' . $this->urlClass . ' ' . $this->hashtagClass . '">${2}${3}</a>',
-                                                        $tweet);
-        }
+  /**
+   * CSS class for auto-linked username/list URLs.
+   *
+   * @return  string  CSS class for username/list links.
+   */
+  public function getListClass() {
+    return $this->class_list;
+  }
 
-        public function autoLinkURLs($tweet) {
-                  $URL_VALID_PRECEEDING_CHARS = "(?:[^/\"':!=]|^|\\:)";
-                  $URL_VALID_DOMAIN = "(?:[\\.-]|[^\\p{P}\\s])+\\.[a-z]{2,}(?::[0-9]+)?";
-                  $URL_VALID_URL_PATH_CHARS = "[a-z0-9!\\*'\\(\\);:&=\\+\\$/%#\\[\\]\\-_\\.,~@]";
-                  // Valid end-of-path chracters (so /foo. does not gobble the period).
-                  //    1. Allow ) for Wikipedia URLs.
-                  //    2. Allow =&# for empty URL parameters and other URL-join artifacts
-                  $URL_VALID_URL_PATH_ENDING_CHARS = "[a-z0-9\\)=#/]";
-                  $URL_VALID_URL_QUERY_CHARS = "[a-z0-9!\\*'\\(\\);:&=\\+\\$/%#\\[\\]\\-_\\.,~]";
-                  $URL_VALID_URL_QUERY_ENDING_CHARS = "[a-z0-9_&=#]";
-                  $VALID_URL_PATTERN_STRING = '$(' .                                            //  $1 total match
-                        "(" . $URL_VALID_PRECEEDING_CHARS . ")" .                               //  $2 Preceeding chracter
-                        "(" .                                                                                                                           //  $3 URL
-                          "(https?://|www\\.)" .                                                                        //  $4 Protocol or beginning
-                          "(" . $URL_VALID_DOMAIN . ")" .                                               //  $5 Domain(s) and optional port number
-                          "(/" . $URL_VALID_URL_PATH_CHARS . "*" .                      //  $6 URL Path
-                                         $URL_VALID_URL_PATH_ENDING_CHARS . "?)?" .
-                          "(\\?" . $URL_VALID_URL_QUERY_CHARS . "*" .           //  $7 Query String
-                                          $URL_VALID_URL_QUERY_ENDING_CHARS . ")?" .
-                        ")" .
-                  ')$i';
+  /**
+   * CSS class for auto-linked username/list URLs.
+   *
+   * @param  string  $v  CSS class for username/list links.
+   *
+   * @return  Twitter_Autolink  Fluid method chaining.
+   */
+  public function setListClass($v) {
+    $this->class_list = trim($v);
+    return $this;
+  }
 
-                return preg_replace_callback($VALID_URL_PATTERN_STRING,
-                                                                         array(get_class($this), 'replacementURLs'),
-                                                                         $tweet);
-        }
+  /**
+   * CSS class for auto-linked hashtag URLs.
+   *
+   * @return  string  CSS class for hashtag links.
+   */
+  public function getHashtagClass() {
+    return $this->class_hash;
+  }
 
-        /**
-         * Callback used by autoLinkURLs
-         */
-        public function replacementURLs($matches) {
-                $replacement  = $matches[2];
-                if (substr($matches[3], 0, 7) == 'http://' || substr($matches[3], 0, 8) == 'https://') {
-                        $replacement .= '<a href="' . $matches[3] . '" target="_blank">' . $matches[3] . '</a>';
-                } else {
-                        $replacement .= '<a href="http://' . $matches[3] . '" target="_blank">' . $matches[3] . '</a>';
-                }
-                return $replacement;
-        }
+  /**
+   * CSS class for auto-linked hashtag URLs.
+   *
+   * @param  string  $v  CSS class for hashtag links.
+   *
+   * @return  Twitter_Autolink  Fluid method chaining.
+   */
+  public function setHashtagClass($v) {
+    $this->class_hash = trim($v);
+    return $this;
+  }
 
-        public function autoLinkUsernamesAndLists($tweet) {
-                return preg_replace_callback('$([^a-z0-9_]|^)([@|＠])([a-z0-9_]{1,20})(/[a-z][a-z0-9\x80-\xFF-]{0,79})?$iu',
-                                                                         array($this, 'replacementUsernameAndLists'),
-                                                                         $tweet);
-        }
+  /**
+   * Whether to include the value 'nofollow' in the 'rel' attribute.
+   *
+   * @return  bool  Whether to add 'nofollow' to the 'rel' attribute.
+   */
+  public function getNoFollow() {
+    return $this->nofollow;
+  }
 
-        /**
-         * Callback used by autoLinkUsernamesAndLists
-         */
-        private function replacementUsernameAndLists($matches) {
-                $replacement  = $matches[1];
-                $replacement .= $matches[2];
+  /**
+   * Whether to include the value 'nofollow' in the 'rel' attribute.
+   *
+   * @param  bool  $v  The value to add to the 'target' attribute.
+   *
+   * @return  Twitter_Autolink  Fluid method chaining.
+   */
+  public function setNoFollow($v) {
+    $this->nofollow = $v;
+    return $this;
+  }
 
-                if (isset($matches[4])) {
-                        /* Replace the list and username */
-                        $replacement .= '<a class="' . $this->urlClass . ' ' . $this->listClass . '" href="' . $this->get_base() .'lists/'. $matches[3] . $matches[4] . '">' . $matches[3] . $matches[4] . '</a>';
-                } else {
-                        /* Replace the username */
-                        $replacement .= '<a class="' . $this->urlClass . ' ' . $this->usernameClass . '" href="' . $this->get_base() . 'user/' . $matches[3] . '">' . $matches[3] . '</a>';
-                }
+  /**
+   * Whether to include the value 'external' in the 'rel' attribute.
+   *
+   * Often this is used to be matched on in JavaScript for dynamically adding
+   * the 'target' attribute which is deprecated in HTML 4.01.  In HTML 5 it has
+   * been undeprecated and thus the 'target' attribute can be used.  If this is
+   * set to false then the 'target' attribute will be output.
+   *
+   * @return  bool  Whether to add 'external' to the 'rel' attribute.
+   */
+  public function getExternal() {
+    return $this->external;
+  }
 
-                return $replacement;
-        }
+  /**
+   * Whether to include the value 'external' in the 'rel' attribute.
+   *
+   * Often this is used to be matched on in JavaScript for dynamically adding
+   * the 'target' attribute which is deprecated in HTML 4.01.  In HTML 5 it has
+   * been undeprecated and thus the 'target' attribute can be used.  If this is
+   * set to false then the 'target' attribute will be output.
+   *
+   * @param  bool  $v  The value to add to the 'target' attribute.
+   *
+   * @return  Twitter_Autolink  Fluid method chaining.
+   */
+  public function setExternal($v) {
+    $this->external = $v;
+    return $this;
+  }
 
-        private function get_base()
-        {
-                return BASE_URL;
-        }
+  /**
+   * The scope to open the link in.
+   *
+   * Support for the 'target' attribute was deprecated in HTML 4.01 but has
+   * since been reinstated in HTML 5.  To output the 'target' attribute you
+   * must disable the adding of the string 'external' to the 'rel' attribute.
+   *
+   * @return  string  The value to add to the 'target' attribute.
+   */
+  public function getTarget() {
+    return $this->target;
+  }
+
+  /**
+   * The scope to open the link in.
+   *
+   * Support for the 'target' attribute was deprecated in HTML 4.01 but has
+   * since been reinstated in HTML 5.  To output the 'target' attribute you
+   * must disable the adding of the string 'external' to the 'rel' attribute.
+   *
+   * @param  string  $v  The value to add to the 'target' attribute.
+   *
+   * @return  Twitter_Autolink  Fluid method chaining.
+   */
+  public function setTarget($v) {
+    $this->target = trim($v);
+    return $this;
+  }
+
+  /**
+   * Adds links to all elements in the tweet.
+   *
+   * @return  string  The modified tweet.
+   */
+  public function addLinks() {
+    $original = $this->tweet;
+    $this->tweet = $this->addLinksToURLs();
+    $this->tweet = $this->addLinksToHashtags();
+    $this->tweet = $this->addLinksToUsernamesAndLists();
+    $modified = $this->tweet;
+    $this->tweet = $original;
+    return $modified;
+  }
+
+  /**
+   * Adds links to hashtag elements in the tweet.
+   *
+   * @return  string  The modified tweet.
+   */
+  public function addLinksToHashtags() {
+    return preg_replace_callback(
+      self::REGEX_HASHTAG,
+      array($this, '_addLinksToHashtags'),
+      $this->tweet);
+  }
+
+  /**
+   * Adds links to URL elements in the tweet.
+   *
+   * @return  string  The modified tweet.
+   */
+  public function addLinksToURLs() {
+    return preg_replace_callback(
+      self::$REGEX_VALID_URL,
+      array($this, '_addLinksToURLs'),
+      $this->tweet);
+  }
+
+  /**
+   * Adds links to username/list elements in the tweet.
+   *
+   * @return  string  The modified tweet.
+   */
+  public function addLinksToUsernamesAndLists() {
+    return preg_replace_callback(
+      self::REGEX_USERNAME_LIST,
+      array($this, '_addLinksToUsernamesAndLists'),
+      $this->tweet);
+  }
+
+  /**
+   * Wraps a tweet element in an HTML anchor tag using the provided URL.
+   *
+   * This is a helper function to perform the generation of the link.
+   *
+   * @param  string  $url      The URL to use as the href.
+   * @param  string  $class    The CSS class(es) to apply (space separated).
+   * @param  string  $element  The tweet element to wrap.
+   *
+   * @return  string  The tweet element with a link applied.
+   */
+  protected function wrap($url, $class, $element) {
+    $link  = '<a';
+    if ($class) $link .= ' class="'.$class.'"';
+    $link .= ' href="'.$url.'"';
+    $rel = array();
+    if ($this->external) $rel[] = 'external';
+    if ($this->nofollow) $rel[] = 'nofollow';
+    if (!empty($rel)) $link .= ' rel="'.implode(' ', $rel).'"';
+    if ($this->target) $link .= ' target="'.$this->target.'"';
+    $link .= '>'.$element.'</a>';
+    return $link;
+  }
+
+  /**
+   * Callback used by the method that adds links to hashtags.
+   *
+   * @see  addLinksToHashtags()
+   *
+   * @param  array  $matches  The regular expression matches.
+   *
+   * @return  string  The link-wrapped hashtag.
+   */
+  protected function _addLinksToHashtags($matches) {
+    $replacement = $matches[1];
+    $element = $matches[2] . $matches[3];
+    $url = $this->url_base_hash . 'hash/' . $matches[3];
+    $replacement .= $this->wrap($url, $this->class_hash, $element);
+    return $replacement;
+  }
+
+  /**
+   * Callback used by the method that adds links to URLs.
+   *
+   * @see  addLinksToURLs()
+   *
+   * @param  array  $matches  The regular expression matches.
+   *
+   * @return  string  The link-wrapped URL.
+   */
+  protected function _addLinksToURLs($matches) {
+    list($all, $before, $url, $protocol, $domain, $path, $query) = array_pad($matches, 7, '');
+    $url = htmlspecialchars($url, ENT_QUOTES, 'UTF-8', false);
+    if (!$protocol && !preg_match(self::REGEX_PROBABLE_TLD, $domain)) return $all;
+    $href = ((!$protocol || strtolower($protocol) === 'www.') ? 'http://'.$url : $url);
+    return $before . $this->wrap($href, $this->class_url, $url);
+  }
+
+  /**
+   * Callback used by the method that adds links to username/list pairs.
+   *
+   * @see  addLinksToUsernamesAndLists()
+   *
+   * @param  array  $matches  The regular expression matches.
+   *
+   * @return  string  The link-wrapped username/list pair.
+   */
+  protected function _addLinksToUsernamesAndLists($matches) {
+    list($all, $before, $at, $username, $slash_listname, $after) = array_pad($matches, 6, '');
+    # If $after is not empty, there is an invalid character.
+    if (!empty($after)) return $all;
+    if (!empty($slash_listname)) {
+      # Replace the list and username
+      $element = $username . substr($slash_listname, 0, 26);
+      $class = $this->class_list;
+      $url = $this->url_base_list . 'lists/' . $element;
+      $postfix = substr($slash_listname, 26);
+    } else {
+      # Replace the username
+      $element = $username;
+      $class = $this->class_user;
+      $url = $this->url_base_user . 'user/' . $element;
+      $postfix = '';
+    }
+    return $before . $at . $this->wrap($url, $class, $element) . $postfix . $after;
+  }
+
 }

@@ -1,6 +1,7 @@
 <?php
 require 'Autolink.php';
 require 'Extractor.php';
+require 'lists.php';
 
 menu_register(array(
 	'' => array(
@@ -164,126 +165,7 @@ menu_register(array(
 	),
 ));
 
-function lists_paginated_process($url) {
-	$cursor = $_GET['cursor'];
-	if (!is_numeric($cursor)) {
-		$cursor = -1;
-	}
-	$url .= '?cursor='.$cursor;
-	$xml = twitter_process($url);
-	return simplexml_load_string($xml);
-}
 
-function twitter_lists_tweets($user, $list) {
-	$count = setting_fetch('tpp', 20);
-	$url = API_URL."{$user}/lists/{$list}/statuses.json";
-	$page = intval($_GET['page']);
-	if ($page > 0) $url .= '?page='.$page;
-	$url .= '?per_page='. $count;
-	return twitter_process($url);
-}
-
-function twitter_lists_user_lists($user) {
-	return lists_paginated_process(API_URL."{$user}/lists.xml");
-}
-
-function twitter_lists_user_memberships($user) {
-	return lists_paginated_process(API_URL."{$user}/lists/memberships.xml");
-}
-
-function twitter_lists_list_members($user, $list) {
-	return lists_paginated_process(API_URL."{$user}/{$list}/members.xml");
-}
-
-function twitter_lists_list_subscribers($user, $list) {
-	return lists_paginated_process(API_URL."{$user}/{$list}/subscribers.xml");
-}
-
-function lists_controller($query) {
-	$user = $query[1];
-	if (!$user) $user = user_current_username();
-	if ($query[3]) {
-		$method = $query[3];
-		$list = $query[2];
-	} else {
-		$method = $query[2];
-	}
-	switch ($method) {
-		case '':
-		case 'lists':
-			return lists_lists_page($user);
-		case 'memberships':
-			return lists_membership_page($user);
-		case 'members':
-			return lists_list_members_page($user, $list);
-		case 'subscribers':
-			return lists_list_subscribers_page($user, $list);
-		case 'edit':
-			break;
-		default:
-			$list = $method;
-			return lists_list_tweets_page($user, $list);
-	}
-	return theme("error", __("List page not found"));
-}
-
-function lists_lists_page($user) {
-	$lists = twitter_lists_user_lists($user);
-	$content = "<p><a href='".BASE_URL."lists/{$user}/memberships'>".__("Following")." {$user} ".__("'s Lists")."</a> | <strong>{$user} ".__("'s Lists")."</strong></p>";
-	$content .= theme('lists', $lists);
-	theme('page', "{$user} ".__("'s Lists"), $content);
-}
-
-function lists_membership_page($user) {
-	$lists = twitter_lists_user_memberships($user);
-	$content = "<p><strong>".__("Following")." {$user} ".__("'s Lists")."</strong> | <a href='".BASE_URL."lists/{$user}'>{$user} ".__("'s Lists")."</a></p>";
-	$content .= theme('lists', $lists);
-	theme('page', __("Following")." {$user} ".__("'s Lists"), $content);
-}
-
-function lists_list_tweets_page($user, $list) {
-	$tweets = twitter_lists_tweets($user, $list);
-	$tl = twitter_standard_timeline($tweets, 'user');
-	$content = theme('status_form');
-	$list_url = "lists/{$user}/{$list}";
- 	$content .= "<p><a href='".BASE_URL."user/{$user}'>{$user}</a>/<strong>{$list}</strong> ".__("'s Tweets")." | <a href='".BASE_URL."{$list_url}/members'>".__("View Members")."</a> | <a href='".BASE_URL."{$list_url}/subscribers'>".__("View Subscribers")."</a></p>";
-	$content .= theme('timeline', $tl);
-	theme('page', __("Lists")." {$user}/{$list}", $content);
-}
-
-function lists_list_members_page($user, $list) {
-	$p = twitter_lists_list_members($user, $list);
-	$content = theme('followers', $p, 1);
-	$content .= theme('list_pagination', $p);
-	theme('page', __("Members of")." {$user}/{$list}", $content);
-}
-
-function lists_list_subscribers_page($user, $list) {
-	$p = twitter_lists_list_subscribers($user, $list);
-	$content = theme('followers', $p, 1);
- 	$content .= theme('list_pagination', $p);
-	theme('page', __("Subscribers of")." {$user}/{$list}", $content);
-}
-
-
-function theme_lists($json) {
-	if (count($json->lists) == 0) {
-		return "<p>".__("No lists to display")."</p>";
-	}
-	$rows = array();
-	$headers = array(__('Lists'), __('Members'), __('Subscribers'));
-	foreach ($json->lists->list as $list) {
-		$url = "lists/{$list->user->screen_name}/{$list->slug}";
-		$rows[] = array(
-			"<a href='".BASE_URL."user/{$list->user->screen_name}'>{$list->user->screen_name}</a>/<a href='".BASE_URL."{$url}'><strong>{$list->slug}</strong></a>",
-			"<a href='".BASE_URL."{$url}/members'>{$list->member_count}</a>",
-			"<a href='".BASE_URL."{$url}/subscribers'>{$list->subscriber_count}</a>",
-		);
-	}
-	$content = theme('table', $headers, $rows);
-	$content .= theme('list_pagination', $json);
-	return $content;
-}
 
 function long_url($shortURL){
 	if (LONG_URL == 1) return $shortURL;
@@ -514,7 +396,7 @@ function twitter_fetch($url) {
 	curl_close($ch);
 	return $response;
 }
-
+/*
 class Dabr_Autolink extends Twitter_Autolink {
 	function replacementURLs($matches) {
 		$replacement  = $matches[2];
@@ -530,12 +412,86 @@ class Dabr_Autolink extends Twitter_Autolink {
 	}
 }
 
-function twitter_parse_tags($input) {
+function twitter_parse_tags($input, $entities = false) {
+	//Expanded t.co links to find thumbnails etc
+	if ($entities) {
+		foreach ($entities->urls as $urls) {
+			if ($urls->expanded_url != "") {
+				$input = str_replace($urls->url, $urls->expanded_url, $input);
+			}
+		}
+	}
+	
 	$urls = Twitter_Extractor::extractURLS($input);
 	$out = $input;
+	
 	if (setting_fetch('showthumbs', 'yes') == 'yes') $out = twitter_embed_thumbnails($out);
+	
 	$autolink = new Dabr_Autolink();
 	$out = $autolink->autolink($out);
+	return $out;
+}
+*/
+function twitter_parse_tags($input, $entities = false) {
+
+	// Use the Entities to replace hyperlink URLs
+	// http://dev.twitter.com/pages/tweet_entities
+	if ($entities) {
+		$out = $input;
+		foreach ($entities->urls as $urls) {
+			if ($urls->expanded_url != "") {
+				$display_url = $urls->expanded_url;
+			} else {
+				$display_url = $urls->url;
+			}
+
+			if (setting_fetch('gwt') == 'on') {
+				$encoded = urlencode($display_url);
+				$link = "http://google.com/gwt/n?u={$encoded}";
+			} else {
+				$link = $display_url;
+			}
+			
+			$link_html = '<a href="'.$link.'">'.$display_url.'</a>';
+			$url = $urls->url;
+			
+			// Replace all URLs *UNLESS* they have already been linked (for example to an image)
+			$pattern = '#((?<!href\=(\'|\"))'.preg_quote($url,'#').')#i';
+			$out = preg_replace($pattern,  $link_html, $out);
+		}
+	} else {  // If Entities haven't been returned, use Autolink
+		// Create an array containing all URLs
+		$urls = Twitter_Extractor::create($input)
+				->extractURLs();
+			
+		$out = $input;	
+		
+		// Hyperlink the URLs 
+		if (setting_fetch('gwt') == 'on') {
+			foreach($urls as $url) {
+				$encoded = urlencode($url);
+				$out = str_replace($url, "<a href='http://google.com/gwt/n?u={$encoded}'>{$url}</a>", $out);
+			}	
+		} else {
+				$out = Twitter_Autolink::create($out)
+							->addLinksToURLs();
+		}
+	}
+	
+	// Hyperlink the @ and lists
+	$out = Twitter_Autolink::create($out)
+				->setTarget('')
+				->addLinksToUsernamesAndLists();
+
+	// Hyperlink the #	
+	$out = Twitter_Autolink::create($out)
+				->setTarget('')
+				->addLinksToHashtags();
+
+	//Linebreaks.  Some clients insert \n for formatting.
+	$out = nl2br($out);
+
+	//Return the completed string
 	return $out;
 }
 
@@ -619,7 +575,7 @@ function format_interval($timestamp, $granularity = 2) {
 function twitter_status_page($query) {
 	$id = (string) $query[1];
 	if (is_numeric($id)) {
-		$request = API_URL."statuses/show/{$id}.json";
+		$request = API_URL."statuses/show/{$id}.json?include_entities=true";
 		$status = twitter_process($request);
 		$content = theme('status', $status);
 		if (!$status->user->protected) {
@@ -642,7 +598,7 @@ function twitter_thread_timeline($thread_id) {
 function twitter_retweet_page($query) {
 	$id = (string) $query[1];
 	if (is_numeric($id)) {
-		$request = API_URL."statuses/show/{$id}.json";
+		$request = API_URL."statuses/show/{$id}.json?include_entities=true";
 		$tl = twitter_process($request);
 		$content = theme('retweet', $tl);
 		theme('page', __("Retweet"), $content);
@@ -821,7 +777,7 @@ function twitter_retweet($query) {
 
 function twitter_replies_page() {
 	$count = setting_fetch('tpp', 20);
-	$request = API_URL."statuses/mentions.json?count=$count&page=".intval($_GET['page']);
+	$request = API_URL."statuses/mentions.json?include_entities=true&count=$count&page=".intval($_GET['page']);
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'replies');
 	$content = theme('status_form');
@@ -831,7 +787,7 @@ function twitter_replies_page() {
 
 function twitter_retweets_page() {
 	$count = setting_fetch('tpp', 20);
-	$request = API_URL."statuses/retweeted_to_me.json?count=$count&page=".intval($_GET['page']);
+	$request = API_URL."statuses/retweeted_to_me.json?include_entities=true&count=$count&page=".intval($_GET['page']);
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'retweets');
 	$content = theme('status_form');
@@ -864,7 +820,7 @@ function twitter_directs_page($query) {
 		twitter_refresh('directs/sent');
 
 	case 'sent':
-		$request = API_URL.'direct_messages/sent.json?page='.intval($_GET['page']);
+		$request = API_URL.'direct_messages/sent.json?include_entities=true&page='.intval($_GET['page']);
 		$tl = twitter_standard_timeline(twitter_process($request), 'directs_sent');
 		$content = theme_directs_menu();
 		$content .= theme('timeline', $tl);
@@ -872,7 +828,7 @@ function twitter_directs_page($query) {
 
 	case 'inbox':
 	default:
-		$request = API_URL.'direct_messages.json?page='.intval($_GET['page']);
+		$request = API_URL.'direct_messages.json?include_entities=true&page='.intval($_GET['page']);
 		$tl = twitter_standard_timeline(twitter_process($request), 'directs_inbox');
 		$content = theme_directs_menu();
 		$content .= theme('timeline', $tl);
@@ -921,7 +877,7 @@ function twitter_search_page() {
 function twitter_search($search_query) {
 	$page = (int) $_GET['page'];
 	if ($page == 0) $page = 1;
-	$request = API_URLS."search.json?result_type=recent&q=$search_query&page=$page";
+	$request = API_URLS."search.json?include_entities=true&result_type=recent&q=$search_query&page=$page";
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'search');
 	return $tl;
@@ -932,7 +888,7 @@ function twitter_find_tweet_in_timeline($tweet_id, $tl) {
 	if (array_key_exists($tweet_id, $tl)) {
 		$tweet = $tl[$tweet_id];
 	} else {
-		$request = API_URL."statuses/show/{$tweet_id}.json";
+		$request = API_URL."statuses/show/{$tweet_id}.json?include_entities=true";
 		$tweet = twitter_process($request);
 	}
 	return $tweet;
@@ -947,7 +903,7 @@ function twitter_user_page($query) {
 	if (!$screen_name) theme('error', __('No username given'));
 	$user = twitter_user_info($screen_name);
 	if (isset($user->status)) {
-		$request = API_URL."statuses/user_timeline.json?screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
+		$request = API_URL."statuses/user_timeline.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
 		$tl = twitter_process($request);
 		$tl = twitter_standard_timeline($tl, 'user');
 	}
@@ -979,7 +935,7 @@ function twitter_favourites_page($query) {
 		user_ensure_authenticated();
 		$screen_name = user_current_username();
 	}
-	$request = API_URL."favorites/{$screen_name}.json?page=".intval($_GET['page']);
+	$request = API_URL."favorites/{$screen_name}.json?include_entities=true&page=".intval($_GET['page']);
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'favourites');
 	$content = theme('status_form');
@@ -1002,7 +958,7 @@ function twitter_mark_favourite_page($query) {
 function twitter_home_page() {
 	user_ensure_authenticated();
 	$count = setting_fetch('tpp', 20);
-	$request = API_URL."statuses/home_timeline.json?count=$count&include_rts=true&page=".intval($_GET['page']);
+	$request = API_URL."statuses/home_timeline.json?include_entities=true&count=$count&include_rts=true&page=".intval($_GET['page']);
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'friends');
 	$content = theme('status_form');
@@ -1030,7 +986,7 @@ function theme_status_form($text = '', $in_reply_to_id = NULL) {
 
 function theme_status($status) {
 	$time_since = theme('status_time_link', $status);
-	$parsed = twitter_parse_tags($status->text);
+	$parsed = twitter_parse_tags($status->text, $status->entities);
 	$out = theme('status_form', "@{$status->user->screen_name} ");
 	$out .= "<div class='timeline'>\n";
 	$out .= " <div class='tweet odd'>\n";
@@ -1076,12 +1032,13 @@ function theme_user_header($user) {
 	$raw_date_joined = strtotime($user->created_at);
 	$date_joined = date('Y-m-d', $raw_date_joined);
 	$tweets_per_day = twitter_tweets_per_day($user, 1);
-
+	$bio = twitter_parse_tags($user->description);
+	
 	$out = "<div class='profile'><table><tr>".(setting_fetch('avataro', 'yes') == 'yes' ? "<td width='50'><a href='$full_avatar'>".theme('avatar', $user->profile_image_url, 1)."</a></td>" : "")."<td class='shift'><b>{$name}</b> <small>";
 	if ($user->verified == true) $out .= '<i>'.__("Verified").'</i> ';
 	if ($user->protected == true) $out .= '<i>'.__("Private/Protected").'</i>';
 	$out .= "<br /><span class='about'>";
-	if ($user->description != "") $out .= __("Bio").": {$user->description}<br />";
+	if ($user->description != "") $out .= __("Bio").": {$bio}<br />";
 	if ($user->url != "") $out .= __("Link").": {$link}<br />";
 	if ($user->location != "") $out .= __("Location").": <a href='http://maps.google.com/m?q={$user->location}' target='_blank'>{$user->location}</a><br />";
 	$out .= __("Joined").": {$date_joined} ($tweets_per_day ".__("Tweets Per Day").")</small></span></td></tr></table><br /><span class='features'>";
@@ -1274,7 +1231,7 @@ function preg_match_one($pattern, $subject, $flags = NULL) {
 function twitter_user_info($username = null) {
 	if (!$username)
 	$username = user_current_username();
-	$request = API_URL."users/show.json?screen_name=$username";
+	$request = API_URL."users/show.json?include_entities=true&screen_name=$username";
 	$user = twitter_process($request);
 	return $user;
 }
@@ -1312,7 +1269,7 @@ function theme_timeline($feed) {
 		if ((setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($status->text)) {
 			$text = "<a href='".BASE_URL."status/{$status->id_str}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 		} else {
-			$text = twitter_parse_tags($status->text);
+			$text = twitter_parse_tags($status->text, $status->entities);
 		}
 
 		if (setting_fetch('buttontime', 'yes') == 'yes') {
@@ -1441,7 +1398,7 @@ function theme_no_tweets() {
 function theme_search_results($feed) {
 	$rows = array();
 	foreach ($feed->results as $status) {
-		$text = twitter_parse_tags($status->text);
+		$text = twitter_parse_tags($status->text, $status->entities);
 		$link = theme('status_time_link', $status);
 		$actions = theme('action_icons', $status);
 		$row = array(
@@ -1465,7 +1422,7 @@ function theme_search_form($query) {
 	return "<form action='".BASE_URL."search' method='GET'><input name='query' value=\"$query\" /><input type='submit' value='".__("Search")."' /></form>";
 }
 
-function theme_external_link($url) {
+function theme_external_link($url, $with_tags = true) {
 	if ((setting_fetch('longurl') == 'yes') && (LONG_URL == 1)) {
 		$lurl = long_url($url);
 	} else {
@@ -1484,7 +1441,8 @@ function theme_external_link($url) {
 			break;
 	}
 
-	return "<a href='$lurl'>$atext</a>";
+	if ($with_tags) return "<a href='$lurl'>$atext</a>";
+	return $atext;
 }
 
 function theme_pagination() {
@@ -1509,6 +1467,7 @@ function theme_action_icons($status) {
 	if (!$status->is_direct) {
 		$actions[] = theme('action_icon', BASE_URL."user/{$from}/reply/{$status->id_str}", 'images/reply.png', __('@'));
 	}
+	/*
 	if (substr_count(($status->text), '@') >= 1) {
 		$found = Twitter_Extractor::extractMentionedScreennames($status->text);
 		$to_users = array_unique($found);
@@ -1516,6 +1475,11 @@ function theme_action_icons($status) {
 		if ($key != NULL || $key !== FALSE) unset($to_users[$key]);
 		if (count($to_users) >= 1) $actions[] = theme('action_icon', "user/{$from}/replyall/{$status->id_str}", 'images/replyall.png', __('@@'));
 	}
+	*/
+	if($status->entities->user_mentions) {
+		$actions[] = theme('action_icon', "user/{$from}/replyall/{$status->id_str}", 'images/replyall.png', __('@@'));
+	}
+	
 	if (!user_is_current_user($from)) {
 		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
 	}
