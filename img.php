@@ -23,5 +23,6 @@
 				Header($header);
 				echo $ret;
 			}
+		}
 	}
 ?>

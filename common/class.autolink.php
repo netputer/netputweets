@@ -7,7 +7,7 @@
  * @package    Twitter
  */
 
-require_once 'Regex.php';
+require_once 'class.regex.php';
 
 /**
  * Twitter Autolink Class

@@ -51,10 +51,8 @@ function settings_page($args) {
 	if ($args[1] == 'save') {
 		$settings['browser'] = $_POST['browser'];
 		$settings['tpp'] = $_POST['tpp'];
-		$settings['gwt'] = $_POST['gwt'];
 		$settings['locale'] = $_POST['locale'];
 		$settings['colours'] = $_POST['colours'];
-		$settings['reverse'] = $_POST['reverse'];
 
 		$settings['topuser'] = $_POST['topuser'];
 		$settings['tophome'] = $_POST['tophome'];
@@ -89,7 +87,6 @@ function settings_page($args) {
 		$settings['buttonfrom'] = $_POST['buttonfrom'];
 		$settings['buttonend'] = $_POST['buttonend'];
 
-		$settings['longurl'] = $_POST['longurl'];
 		$settings['longtext'] = $_POST['longtext'];
 		$settings['showthumbs'] = $_POST['showthumbs'];
 		$settings['fixedtago'] = $_POST['fixedtago'];
@@ -177,8 +174,6 @@ function settings_page($args) {
 	$content .= '<label>　'.__("Language").': <select name="locale">'.theme('options', $locale, setting_fetch('locale', 'zh_CN')).'</select></label><br />';
 	$content .= '<label>　'.__("Showing URL").': <select name="linktrans">'.theme('options', $linktrans, setting_fetch('linktrans', 'd')).'</select></label><br /><small>　　'.__("Note").': "'.__("Domain Only").'" '.__("means change").' https://twitter.com/netputer '.__("to").' [twitter.com]</small><p />';
 	$content .= '<label>　'.__("Tweets Per Page").': <input type="text" id="tpp" name="tpp" value="'.setting_fetch('tpp', 20).'" maxlength="3" style="width:20px;" /> (20-200)</label><br />';
-	$content .= '<label>　<input type="checkbox" name="gwt" value="yes" '. (setting_fetch('gwt') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("use GWT for external links (reduces internet traffic)").'</label><br />';
-	if (LONG_URL == 1) {$content .= '<label>　<input type="checkbox" name="longurl" value="yes" '. (setting_fetch('longurl') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Show Long URL").'</label><br />';}
 	$content .= '<label>　<input type="checkbox" name="showthumbs" value="yes" '. (setting_fetch('showthumbs', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Preview Photos In Timelines").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="filtero" value="yes" '. (setting_fetch('filtero', 'no') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Enable Keyword Filter").'</label>: <input type="text" id="filterc" name="filterc" value="'.setting_fetch('filterc').'" /><br /><small>　　'.__("Note").': '.__("Separate keywords with space").'</small><p />';
 	$content .= '<p><label>'.__("Custom CSS").':<br /><textarea name="css" cols="50" rows="3" id="css" style="width:95%">'.setting_fetch('css').'</textarea></label></p>';

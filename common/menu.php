@@ -68,9 +68,6 @@ function theme_menu_top() {
 		if (setting_fetch('topsearch') == 'yes') {
 			$links[] = "<a href='".BASE_URL."search'>".__("Search")."</a>";
 		}
-		if (setting_fetch('toptwitpic') == 'yes') {
-			$links[] = "<a href='".BASE_URL."twitpic'>".__("Twitpic")."</a>";
-		}
 	} else {
 		$links[] = "<span style=font-weight:bold;color:#FFF;>".__("Enjoy Twitter with NetPutweets!")."</span>";
 	}
@@ -93,9 +90,6 @@ function theme_menu_bottom() {
 		}
 		if (setting_fetch('search') == 'yes') {
 			$links[] = "<a href='".BASE_URL."search'>".__("Search")."</a>";
-		}
-		if (setting_fetch('twitpic') == 'yes') {
-			$links[] = "<a href='".BASE_URL."twitpic'>".__("Twitpic")."</a>";
 		}
 		if (setting_fetch('favourites') == 'yes') {
 			$links[] = "<a href='".BASE_URL."favourites'>".__("Favourites")."</a>";

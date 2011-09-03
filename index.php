@@ -4,11 +4,6 @@ error_reporting(error_reporting() & ~E_NOTICE); // Thanks @Jimmy_xu_wrk
 if (!file_exists('config.php')) header('location: setup.php');
 require 'config.php';
 
-if ((FORCE_SSL == 1) && ($_SERVER['HTTPS'] != "on")) {
-	$redirect= "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-	header("Location:$redirect");
-}
-
 header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
 header('Last-Modified: ' . date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');

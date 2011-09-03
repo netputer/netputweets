@@ -4,7 +4,7 @@ require 'touch.php';
 function naiping_theme_status_form($text = '', $in_reply_to_id = NULL) {
 	if (user_is_authenticated()) {
 		$fixedtags = ((setting_fetch('fixedtago', 'no') == "yes") && ($text == '')) ? " #".setting_fetch('fixedtagc') : null;
-		$output = '<div id="statusform"><form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%;font-size:20px;">'.$text.$fixedtags.'</textarea><span id="remaining">140</span> <input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" /></div></form>'.js_counter('status');
+		$output = '<div id="statusform"><form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%;font-size:20px;">'.$text.$fixedtags.'</textarea><a href="'.BASE_URL.'upload">'.__('Upload Picture').'</a> <span id="remaining">140</span> <input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" /></div></form>'.js_counter('status');
 		return $output;
 	}
 }
@@ -23,7 +23,7 @@ function naiping_theme_menu_top() {
 		$html .= "<li $current><a href='".BASE_URL."$k'>$v</a></li>";
 	}
 
-	$html .= "<li id='more'><a href='#'>".__("More")." »</a></li></ul><ul id='sub-nav'>	<li><a href='#'>".__("More")." »</a></li>	<li><a href='".BASE_URL."favourites'>".__("Favourites")."</a></li><li><a href='".BASE_URL."followers'>".__("Followers")."</a></li><li><a href='".BASE_URL."friends'>".__("Friends")."</a></li><li><a href='".BASE_URL."blockings'>".__("Blockings")."</a></li><li><a href='".BASE_URL."twitpic'>".__("Twitpic")."</a></li><li><a href='".BASE_URL."trends'>".__("Trends")."</a></li><li><a href='".BASE_URL."lists'>".__("Lists")."</a></li><li><a href='".BASE_URL."settings'>".__("Settings")."</a></li><li><a href='".BASE_URL."about'>".__("About")."</a></li><li><a href='".BASE_URL."logout'>".__("Logout")."</a></li></ul></div><div class='clear'></div>";
+	$html .= "<li id='more'><a href='#'>".__("More")." »</a></li></ul><ul id='sub-nav'>	<li><a href='#'>".__("More")." »</a></li>	<li><a href='".BASE_URL."favourites'>".__("Favourites")."</a></li><li><a href='".BASE_URL."followers'>".__("Followers")."</a></li><li><a href='".BASE_URL."friends'>".__("Friends")."</a></li><li><a href='".BASE_URL."blockings'>".__("Blockings")."</a></li><li><a href='".BASE_URL."trends'>".__("Trends")."</a></li><li><a href='".BASE_URL."lists'>".__("Lists")."</a></li><li><a href='".BASE_URL."settings'>".__("Settings")."</a></li><li><a href='".BASE_URL."about'>".__("About")."</a></li><li><a href='".BASE_URL."logout'>".__("Logout")."</a></li></ul></div><div class='clear'></div>";
 	return $html;
 }
 
