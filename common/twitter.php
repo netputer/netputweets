@@ -224,9 +224,15 @@ function twitter_upload_page($query) {
 
 			$text = $json->text;
 			
-			$content = "<p>".__("Upload success. Image posted to Twitter.")."</p>
-							<p><img src=\"".IMAGE_PROXY_URL.$image_url."\" alt='' /></p>
-							<p>".twitter_parse_tags($text)."</p>";
+			$content = "<p>".__("Upload success. Image posted to Twitter.")."</p><p><img src=\"";
+			
+			if (IMGPROXY == 1) {
+				$content .= BASE_URL."img.php?u=".base64_encode(base64_encode($image_url));
+			} else {
+				$content .= $image_url;
+			}
+		
+			$content .= "\" alt='' /></p><p>".twitter_parse_tags($text)."</p>";
 		} else {
 			$content = __("Damn! Something went wrong. Sorry :-(")
 				."<br /> code=" . $code
@@ -855,27 +861,6 @@ function theme_status_form($text = '', $in_reply_to_id = NULL) {
 }
 
 function theme_status($status) {
-	/*
-	$time_since = theme('status_time_link', $status);
-	$parsed = twitter_parse_tags($status->text, $status->entities);
-	$avatar = theme('avatar', theme_get_avatar($status->user));
-	
-	$out = theme('status_form', "@{$status->user->screen_name} ");
-	$out .= "<div class='timeline'>\n";
-	$out .= " <div class='tweet odd'>\n";
-	$out .= "  <span class='avatar'>$avatar</span>\n";
-	$out .= "  <span class='status shift'><b><a href='user/{$status->user->screen_name}'>{$status->user->screen_name}</a></b> ";
-	$out .= theme('action_icons', $status);
-	$out .= " $time_since<br />$parsed</span>\n";
-	$out .= " </div>\n";
-	$out .= "</div>\n";
-	
-	if (user_is_current_user($status->user->screen_name)) {
-		$out .= "<form action='".BASE_URL."delete/{$status->id_str}' method='post'><input type='submit' value='".__("Delete without confirmation")."' /></form>";
-	}
-	
-	return $out;
-	*/
 	$feed[] = $status;
 	$tl = twitter_standard_timeline($feed, 'status');
 	$content = theme('timeline', $tl);

@@ -12,11 +12,11 @@
 		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		$hsize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
 		curl_close($ch);
-		
+
 		if ($httpcode == "200") {
 			$header = substr($ret, 0, $hsize);
 			$pat = "/(Content-Type:\s?image\/\w+)/i";
-			
+
 			if (preg_match_all($pat, $header, $m)) {
 				$header = $m[0][0];
 				$ret = substr($ret,$hsize);

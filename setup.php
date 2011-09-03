@@ -39,7 +39,7 @@ function rewritable() {
 function display_header($n) {
 	header('Content-Type: text/html; charset=utf-8');
 ?>
-<!doctype html><meta charset=utf-8 /><title>安装向导 - 奶瓶腿!</title><link rel="stylesheet" href="https://t.orzdream.com/images/setup.css" type="text/css" /><h1 id="logo"><img alt="奶瓶腿" src="https://t.orzdream.com/images/setup.jpg" /></h1><?php
+<!doctype html><meta charset=utf-8 /><title>安装向导 - 奶瓶腿!</title><link rel="stylesheet" href="images/setup.css" type="text/css" /><h1 id="logo"><img alt="奶瓶腿" src="images/setup.jpg" /></h1><?php
 	if ($n !== ''){
 		echo '<div id="error">'.$n.'</div>';
 	}
@@ -56,16 +56,7 @@ switch($step) {
 	break;
 	case 1:
 		display_header($notice);
-?><form method="post" action="setup.php?step=2"><p>请在下面的表单中填入对应的信息。</p><table class="form-table">
-<tr><th scope="row"><label for="t_title">标题</label></th><td><input name="t_title" id="t_title" type="text" value="奶瓶腿!" size="35" /></td><td>如「用户 NetPuter - 奶瓶腿!」</td></tr>
-<tr><th scope="row"><label for="t_ck">Cookie 密匙</label></th><td><input name="t_ck" id="t_ck" type="text" size="35" value="NetPutweets" /></td><td>如果有在同一主机内安装多个奶瓶腿的需要请修改此项</td></tr>
-<tr><th scope="row"><label for="t_tck">Twitter OAuth Consumer Key <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tck" id="t_tck" type="text" size="35" value="awGBKfiSSqf1B2iKGsmJQ" /></td><td>一般需要修改</td></tr>
-<tr><th scope="row"><label for="t_tcs">Twitter OAuth Consumer Secret <a href="https://dev.twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tcs" id="t_tcs" type="text" size="35" value="hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8" /></td><td>一般需要修改</td></tr>
-<tr><th scope="row"><label for="t_eak">Embedly API Key <a href="https://app.embed.ly/pricing/free" title="申请地址">#</a></label></th>
-<td><input name="t_eak" id="t_eak" type="text" value="317c0bfcd58811e0a3944040d3dc5c07" size="35" /></td><td>一般不需要修改</td></tr>
-<tr><th scope="row"><label for="t_ipp">图片预览代理</label></th><td><select name="t_ipp"><option selected="selected" value="1">开启</option><option value="0">停用</option></select></td><td>开启此功能可能会影响一点点儿速度 并无大碍</td></tr>
-<tr><th scope="row"><label for="t_ivt">仅受邀用户可登录</label></th><td><select name="t_ivt"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>请根据您的需要选择</td></tr>
-<tr><th scope="row"><label for="t_psw">设置邀请码</label></th><td><input name="t_psw" id="t_psw" type="text" value="twitter" size="20" /></td><td>用于「 <a href="invite.php">invite.php</a> 」</td></tr></table><?php
+?><form method="post" action="setup.php?step=2"><p>请在下面的表单中填入对应的信息。</p><table class="form-table"><tr><th scope="row"><label for="t_title">标题</label></th><td><input name="t_title" id="t_title" type="text" value="奶瓶腿!" size="35" /></td><td>如「用户 NetPuter - 奶瓶腿!」</td></tr><tr><th scope="row"><label for="t_ck">Cookie 密匙</label></th><td><input name="t_ck" id="t_ck" type="text" size="35" value="NetPutweets" /></td><td>如果有在同一主机内安装多个奶瓶腿的需要请修改此项</td></tr><tr><th scope="row"><label for="t_tck">Twitter OAuth Consumer Key <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tck" id="t_tck" type="text" size="35" value="awGBKfiSSqf1B2iKGsmJQ" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_tcs">Twitter OAuth Consumer Secret <a href="https://dev.twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tcs" id="t_tcs" type="text" size="35" value="hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_eak">Embedly API Key <a href="https://app.embed.ly/pricing/free" title="申请地址">#</a></label></th><td><input name="t_eak" id="t_eak" type="text" value="317c0bfcd58811e0a3944040d3dc5c07" size="35" /></td><td>一般不需要修改</td></tr><tr><th scope="row"><label for="t_ipp">图片预览代理</label></th><td><select name="t_ipp"><option selected="selected" value="1">开启</option><option value="0">停用</option></select></td><td>开启此功能可能会影响一点点儿速度 并无大碍</td></tr><tr><th scope="row"><label for="t_ivt">仅受邀用户可登录</label></th><td><select name="t_ivt"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>请根据您的需要选择</td></tr><tr><th scope="row"><label for="t_psw">设置邀请码</label></th><td><input name="t_psw" id="t_psw" type="text" value="twitter" size="20" /></td><td>用于「 <a href="invite.php">invite.php</a> 」</td></tr></table><?php
 		if ($notice !== ''){
 			echo '<p class="step"><a href="setup.php" class="button">出错了！</a></p>';
 		}else{
