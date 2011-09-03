@@ -855,6 +855,7 @@ function theme_status_form($text = '', $in_reply_to_id = NULL) {
 }
 
 function theme_status($status) {
+	/*
 	$time_since = theme('status_time_link', $status);
 	$parsed = twitter_parse_tags($status->text, $status->entities);
 	$avatar = theme('avatar', theme_get_avatar($status->user));
@@ -874,6 +875,11 @@ function theme_status($status) {
 	}
 	
 	return $out;
+	*/
+	$feed[] = $status;
+	$tl = twitter_standard_timeline($feed, 'status');
+	$content = theme('timeline', $tl);
+	return $content;
 }
 
 function theme_retweet($status) {
@@ -1002,6 +1008,7 @@ function twitter_standard_timeline($feed, $source) {
 	}
 
 	switch ($source) {
+		case 'status':
 		case 'favourites':
 		case 'friends':
 		case 'replies':
@@ -1135,6 +1142,8 @@ function is_64bit() {
 
 function theme_timeline($feed) {
 	if (count($feed) == 0) return theme('no_tweets');
+	
+	$hide_pagination = count($feed) < 2 ? true : false;
 	$rows = array();
 	$page = menu_current_page();
 	$date_heading = false;
@@ -1204,7 +1213,7 @@ function theme_timeline($feed) {
 		}
 		
 		if ($status->in_reply_to_status_id) {
-			$replyto = "<a href='".BASE_URL."status/{$status->in_reply_to_status_id}'>".__("in reply to")." {$status->in_reply_to_screen_name}</a>";
+			$replyto = "<a href='".BASE_URL."status/{$status->in_reply_to_status_id}'>>></a>";
 		} else {
 			$replyto = null;
 		}
@@ -1256,10 +1265,8 @@ function theme_timeline($feed) {
 
 	$content = theme('table', array(), $rows, array('class' => 'timeline'));
 	
-	if (setting_fetch('browser') <> 'blackberry'){
-		if (count($feed) >= 15) {
-			$content .= theme('pagination');
-		}
+	if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
+		$content .= theme('pagination');
 	}
 	return $content;
 }
