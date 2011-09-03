@@ -1296,7 +1296,7 @@ function theme_followers($feed, $hide_pagination = false) {
 		$content .= $user->statuses_count . " ".__("Tweets").", ";
 		$content .= $user->friends_count . " ".__("Friends").", ";
 		$content .= $user->followers_count . " ".__("Followers").", ";
-		$content .= "~" . $tweets_per_day . __("Tweets Per Day")."<br />";
+		$content .= "~" . $tweets_per_day . " ". __("Tweets Per Day")."<br />";
 		$content .= __("Last tweet").": ";
 		if($user->protected == 'true' && $last_tweet == 0)
 			$content .= __("Private");

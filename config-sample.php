@@ -9,8 +9,8 @@ define('BASE_URL', 'putyourinfohere');
 define('BASE_URF', 'putyourinfohere');
 
 define('NPT_TITLE', 'putyourinfohere');
-define('API_URL', 'putyourinfohere');
-define('API_URLS', 'putyourinfohere');
+define('API_URL', 'http://api.twitter.com/1/');
+define('API_URLS', 'http://search.twitter.com/');
 define('LANG', 'zh_CN');
 
 define('IMGPROXY', 0);
