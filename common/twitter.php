@@ -198,9 +198,9 @@ function twitter_upload_page($query) {
 
 	if ($_POST['message'] && $_FILES['image']['tmp_name']) {
 		require 'class.upload.php';
-		
+
 		list($oauth_token, $oauth_token_secret) = explode('|', $GLOBALS['user']['password']);
-		
+
 		$tmhOAuth = new tmhOAuth(array(
 			'consumer_key'    => OAUTH_KEY,
 			'consumer_secret' => OAUTH_SECRET,
@@ -215,7 +215,7 @@ function twitter_upload_page($query) {
 
 		if ($code == 200) {
 			$json = json_decode($tmhOAuth->response['response']);
-			
+
 			if ($_SERVER['HTTPS'] == "on") {
 				$image_url = $json->entities->media[0]->media_url_https;
 			} else {
@@ -223,15 +223,15 @@ function twitter_upload_page($query) {
 			}
 
 			$text = $json->text;
-			
+
 			$content = "<p>".__("Upload success. Image posted to Twitter.")."</p><p><img src=\"";
-			
+
 			if (IMGPROXY == 1) {
 				$content .= BASE_URL."img.php?u=".base64_encode(base64_encode($image_url));
 			} else {
 				$content .= $image_url;
 			}
-		
+
 			$content .= "\" alt='' /></p><p>".twitter_parse_tags($text)."</p>";
 		} else {
 			$content = __("Damn! Something went wrong. Sorry :-(")
@@ -246,7 +246,7 @@ function twitter_upload_page($query) {
 				. print_r($tmhOAuth->response['code'], TRUE) . "</pre>";
 		}
 	}
-	
+
 	if ($_POST) {
 		if (!$_POST['message']) {
 			$content .= "<p>".__("Please enter a message to go with your image.")."</p>";
@@ -256,7 +256,7 @@ function twitter_upload_page($query) {
 			$content .= "<p>".__("Please select an image to upload.")."</p>";
 		}
 	}
-	
+
 	$content .=	"<form method='post' action='".BASE_URL."upload' enctype='multipart/form-data'>
 						".__("Image")." <input type='file' name='image' /><br />
 						".__("Message (optional)").":<br />
@@ -364,7 +364,7 @@ function twitter_parse_tags($input, $entities = false) {
 			} else {
 				$display_url = $urls->url;
 			}
-			
+
 			switch (setting_fetch('linktrans', 'd')) {
 				case 'o':
 					$display_text = $display_url;
@@ -377,9 +377,9 @@ function twitter_parse_tags($input, $entities = false) {
 					$display_text = "[link]";
 					break;
 			}
-			
+
 			$link_html = '<a href="'.$display_url.'">'.$display_text.'</a>';
-			
+
 			$url = $urls->url;
 			// Replace all URLs *UNLESS* they have already been linked (for example to an image)
 			$pattern = '#((?<!href\=(\'|\"))'.preg_quote($url,'#').')#i';
@@ -388,26 +388,26 @@ function twitter_parse_tags($input, $entities = false) {
 	} else {  // If Entities haven't been returned, use Autolink
 		// Create an array containing all URLs
 		$urls = Twitter_Extractor::create($input)->extractURLs();
-			
-		$out = $input;	
-		
-		// Hyperlink the URLs 
+
+		$out = $input;
+
+		// Hyperlink the URLs
 		$out = Twitter_Autolink::create($out)->addLinksToURLs();
 	}
-	
+
 	// Hyperlink the @ and lists
 	$out = Twitter_Autolink::create($out)
 				->setTarget('')
 				->addLinksToUsernamesAndLists();
 
-	// Hyperlink the #	
+	// Hyperlink the #
 	$out = Twitter_Autolink::create($out)
 				->setTarget('')
 				->addLinksToHashtags();
 
 	//Linebreaks.  Some clients insert \n for formatting.
 	$out = nl2br($out);
-	
+
 	//Return the completed string
 	return $out;
 }
@@ -440,15 +440,15 @@ function twitter_status_page($query) {
 		$request = API_URL."statuses/show/{$id}.json?include_entities=true";
 		$status = twitter_process($request);
 		$content = theme('status', $status);
-		
+
 		if (!$status->user->protected) {
 			$thread = twitter_thread_timeline($id);
 		}
-		
+
 		if ($thread) {
 			$content .= theme('timeline', $thread);
 		}
-		
+
 		theme('page', __("Status")." $id", $content);
 	}
 }
@@ -595,38 +595,21 @@ function twitter_blockings_page($query) {
 function twitter_update() {
 	twitter_ensure_post_action();
 	$status = stripslashes(trim($_POST['status']));
-	$statusArr = array();
+
 	if ($status) {
 		if ((function_exists(mb_strlen)) && (mb_strlen($status, 'utf-8') > 140)) {
-			switch (setting_fetch('longtext', 'r')) {
-				case 'a':
-					$statusArr[] = mb_substr($status, 0, 140, 'utf-8');
-					break;
-				case 'd':
-					$num = ceil(mb_strlen($status, 'utf-8') / 100);
-					for ($i=0;$i<$num;$i++) {
-						$cnum = $i + 1;
-						$cstart = 100 * $i;
-						$cend = 100 * ($i + 1);
-						$statusArr[] = "($cnum/$num) ".mb_substr($status, $cstart, $cend, 'utf-8');
-					}
-					arsort($statusArr);
-					break;
-				case 'r':
-					$statusArr[] = $status;
+			if (setting_fetch('longtext', 'r') == 'a') {
+					$status = mb_substr($status, 0, 140, 'utf-8');
 			}
-		} else {
-			$statusArr[] = $status;
 		}
 
 		$request = API_URL.'statuses/update.json';
-		foreach ($statusArr as $s) {
-			$post_data = array('source' => 'dabr', 'status' => $s);
-			$in_reply_to_id = (string) $_POST['in_reply_to_id'];
-			if (is_numeric($in_reply_to_id)) $post_data['in_reply_to_status_id'] = $in_reply_to_id;
-			$b = twitter_process($request, $post_data);
-		}
+		$post_data = array('status' => $status);
+		$in_reply_to_id = (string) $_POST['in_reply_to_id'];
+		if (is_numeric($in_reply_to_id)) $post_data['in_reply_to_status_id'] = $in_reply_to_id;
+		$b = twitter_process($request, $post_data);
 	}
+
 	twitter_refresh($_POST['from'] ? $_POST['from'] : '');
 }
 
@@ -825,7 +808,7 @@ function twitter_home_page() {
 	user_ensure_authenticated();
 	$count = setting_fetch('tpp', 20);
 	$request = API_URL."statuses/home_timeline.json?include_entities=true&count=$count&include_rts=true&page=".intval($_GET['page']);
-	
+
 	if ($_GET['max_id']) {
 		$request .= "&max_id=".$_GET['max_id'];
 	}
@@ -833,7 +816,7 @@ function twitter_home_page() {
 	if ($_GET['since_id']) {
 		$request .= "&since_id=".$_GET['since_id'];
 	}
-	
+
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'friends');
 	$content = theme('status_form');
@@ -857,11 +840,11 @@ function theme_status_form($text = '', $in_reply_to_id = NULL) {
 	if (user_is_authenticated()) {
 		$fixedtags = ((setting_fetch('fixedtago', 'no') == "yes") && ($text == '')) ? " #".setting_fetch('fixedtagc') : null;
 		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea><div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" />';
-		
+
 		if (substr($_GET["q"], 0, 4) !== "user") {
 			$output .= ' <a href="'.BASE_URL.'upload">'.__('Upload Picture').'</a>';
 		}
-		
+
 		$output .= '</div></form>';
 
 		return $output;
@@ -904,7 +887,7 @@ function theme_user_header($user) {
 	$date_joined = date('jS M Y', $raw_date_joined);
 	$tweets_per_day = twitter_tweets_per_day($user, 1);
 	$bio = twitter_parse_tags($user->description);
-	
+
 	$out = "<div class='profile'><table><tr>".(setting_fetch('avataro', 'yes') == 'yes' ? "<td width='50'><a href='$full_avatar'>".theme('avatar', $user->profile_image_url, 1)."</a></td>" : "")."<td class='shift'><b>{$name}</b> <small>";
 	if ($user->verified == true) $out .= '<i>'.__("Verified").'</i> ';
 	if ($user->protected == true) $out .= '<i>'.__("Private/Protected").'</i>';
@@ -1009,7 +992,7 @@ function twitter_standard_timeline($feed, $source) {
 		case 'user':
 			foreach ($feed as $status) {
 				$new = $status;
-				
+
 				if ($new->retweeted_status) {
 					$retweet = $new->retweeted_status;
 					unset($new->retweeted_status);
@@ -1017,7 +1000,7 @@ function twitter_standard_timeline($feed, $source) {
 					$retweet->original_id = $new->id_str;
 					$new = $retweet;
 				}
-				
+
 				$new->from = $new->user;
 				unset($new->user);
 				$output[(string) $new->id_str] = $new;
@@ -1135,13 +1118,13 @@ function is_64bit() {
 
 function theme_timeline($feed) {
 	if (count($feed) == 0) return theme('no_tweets');
-	
+
 	$hide_pagination = count($feed) < 2 ? true : false;
 	$rows = array();
 	$page = menu_current_page();
 	$date_heading = false;
 	$first=0;
-	
+
 	foreach ($feed as &$status) {
 		$status->text = twitter_parse_tags($status->text, $status->entities);
 	}
@@ -1151,7 +1134,7 @@ function theme_timeline($feed) {
 	if (EMBEDLY_KEY !== '' && (setting_fetch('showthumbs', 'yes') == 'yes')) {
 		embedly_embed_thumbnails($feed);
 	}
-	
+
 	foreach ($feed as $status) {
 		if ($first==0) {
 			$since_id = $status->id;
@@ -1162,12 +1145,12 @@ function theme_timeline($feed) {
 				$max_id =  $status->original_id;
 			}
 		}
-		
+
 		$time = strtotime($status->created_at);
-		
+
 		if ($time > 0) {
 			$date = twitter_date('l jS F Y', strtotime($status->created_at));
-			
+
 			if ($date_heading !== $date) {
 				$date_heading = $date;
 				$rows[] = array(
@@ -1185,16 +1168,16 @@ function theme_timeline($feed) {
 			// $text = twitter_parse_tags($status->text, $status->entities);
 			$text = $status->text;
 		}
-		
+
 		if (setting_fetch('showthumbs', 'yes') == 'yes') $media = twitter_get_media($status);
 
 		if (setting_fetch('buttontime', 'yes') == 'yes') {
 			$link = theme('status_time_link', $status, !$status->is_direct);
 		}
-		
+
 		$actions = theme('action_icons', $status);
 		$avatar = theme('avatar', theme_get_avatar($status->from));
-		
+
 		if (setting_fetch('buttonfrom', 'yes') == 'yes') {
 			if ((substr($_GET['q'],0,4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser') == 'desktop')) {
 				$source = $status->source ? (" ".__("via")." {$status->source}") : '';
@@ -1204,7 +1187,7 @@ function theme_timeline($feed) {
 		} else {
 			$source = NULL;
 		}
-		
+
 		if ($status->in_reply_to_status_id) {
 			$replyto = "<a href='".BASE_URL."status/{$status->in_reply_to_status_id}'>>></a>";
 		} else {
@@ -1223,7 +1206,7 @@ function theme_timeline($feed) {
 		} else {
 			$html .= "<small class='sbutton'>$actions $link</small><br /><span class='stext'>{$text}</span><br />$media<small class='sbutton'>";
 		}
-		
+
 		$html .= " $source $replyto</small>";
 
 		if ($status->retweeted_by) {
@@ -1257,7 +1240,7 @@ function theme_timeline($feed) {
 	}
 
 	$content = theme('table', array(), $rows, array('class' => 'timeline'));
-	
+
 	if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
 		$content .= theme('pagination');
 	}
@@ -1398,7 +1381,7 @@ function theme_action_icons($status) {
 	if($status->entities->user_mentions) {
 		$actions[] = theme('action_icon', "user/{$from}/replyall/{$status->id_str}", 'images/replyall.png', __('@@'));
 	}
-	
+
 	if (!user_is_current_user($from)) {
 		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
 	}

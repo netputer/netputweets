@@ -120,7 +120,6 @@ function settings_page($args) {
 
 	$longtext = array(
 		'a' => __("Automatic Cut"),
-		'd' => __("Split into 2+ tweets"),
 		'r' => __("Return Error"),
 	);
 
