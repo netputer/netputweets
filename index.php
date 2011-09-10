@@ -16,7 +16,7 @@ require 'common/theme.php';
 require 'common/browser.php';
 if (INVITE == 1) require 'invitec.php';
 require 'common/menu.php';
-if (!function_exists('mcrypt_module_open')) require 'common/xxtea.php';
+if (!function_exists('mcrypt_module_open')) require 'common/class.xxtea.php';
 require 'common/user.php';
 require 'common/twitter.php';
 require 'common/settings.php';

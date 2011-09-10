@@ -777,7 +777,8 @@ function twitter_user_page($query) {
 		$tweet = twitter_find_tweet_in_timeline($in_reply_to_id, $tl);
 		$content .= "<p>".__("In reply to")." <strong>$screen_name</strong>: {$tweet->text}</p>";
 		if ($subaction == 'replyall') {
-			$found = Twitter_Extractor::extractMentionedScreennames($tweet->text);
+			$found = Twitter_Extractor::create($tweet->text)
+				->extractMentionedUsernames();
 			$to_users = array_unique(array_merge($to_users, $found));
 		}
 	}
@@ -855,7 +856,14 @@ function twitter_hashtag_page($query) {
 function theme_status_form($text = '', $in_reply_to_id = NULL) {
 	if (user_is_authenticated()) {
 		$fixedtags = ((setting_fetch('fixedtago', 'no') == "yes") && ($text == '')) ? " #".setting_fetch('fixedtagc') : null;
-		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea><div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" /> <a href="'.BASE_URL.'upload">'.__('Upload Picture').'</a></div></form>';
+		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea><div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" />';
+		
+		if (substr($_GET["q"], 0, 4) !== "user") {
+			$output .= ' <a href="'.BASE_URL.'upload">'.__('Upload Picture').'</a>';
+		}
+		
+		$output .= '</div></form>';
+
 		return $output;
 	}
 }
