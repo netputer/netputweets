@@ -59,10 +59,34 @@ $(function()
 
 function naiping_theme_timeline($feed) {
 	if (count($feed) == 0) return theme('no_tweets');
+	
+	$hide_pagination = count($feed) < 2 ? true : false;
 	$rows = array();
 	$page = menu_current_page();
 	$date_heading = false;
+	$first=0;
+	
+	foreach ($feed as &$status) {
+		$status->text = twitter_parse_tags($status->text, $status->entities);
+	}
+	unset($status);
+
+	// Only embed images in suitable browsers
+	if (EMBEDLY_KEY !== '' && (setting_fetch('showthumbs', 'yes') == 'yes')) {
+		embedly_embed_thumbnails($feed);
+	}
+	
 	foreach ($feed as $status) {
+		if ($first==0) {
+			$since_id = $status->id;
+			$first++;
+		} else {
+			$max_id =  $status->id;
+			if ($status->original_id) {
+				$max_id =  $status->original_id;
+			}
+		}
+		
 		$time = strtotime($status->created_at);
 		if ($time > 0) {
 			$date = twitter_date('l jS F Y', strtotime($status->created_at));
@@ -80,7 +104,7 @@ function naiping_theme_timeline($feed) {
 		if ((setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($status->text)) {
 			$text = "<a href='".BASE_URL."status/{$status->id}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 		} else {
-			$text = twitter_parse_tags($status->text);
+			$text = $status->text;
 		}
 
 		if (setting_fetch('buttontime', 'yes') == 'yes') {

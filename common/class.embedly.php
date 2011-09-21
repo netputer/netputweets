@@ -50,7 +50,7 @@ function embedly_embed_thumbnails(&$feed) {
 	$url = 'http://api.embed.ly/1/oembed?key='.EMBEDLY_KEY.'&urls=' . implode(',', $justUrls) . '&format=json';
 	$embedly_json = twitter_fetch($url);
 	$oembeds = json_decode($embedly_json);
-
+	
 	// Put the thumbnails into the $feed
 	foreach ($justUrls as $index => $url) {
 		if ($thumb = $oembeds[$index]->thumbnail_url) {
@@ -63,7 +63,13 @@ function embedly_embed_thumbnails(&$feed) {
 					$feed[$statusId]->text .= $thumb;
 				}
 
-				$feed[$statusId]->text .= "\" /></a>";
+				$feed[$statusId]->text .= "\" ";
+				
+				if ($oembeds[$index]->width > 200) {
+					$feed[$statusId]->text .= "style=\"width:200px;\"";
+				}
+				
+				$feed[$statusId]->text .= "/></a>";
 			}
 		}
 	}
