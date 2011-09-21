@@ -1252,15 +1252,15 @@ function theme_followers($feed, $hide_pagination = false) {
 		$last_tweet = strtotime($user->status->created_at);
 		$content = "{$name}<br /><span class='about'>";
 		if($user->description != "")
-			$content .= __("Bio: ").twitter_parse_tags($user->description) . "<br />";
+			$content .= "<strong>".__("Bio: ")."</strong>{$user->description}<br />";
 		if($user->location != "")
-			$content .= __("Location: ")."{$user->location}<br />";
-		$content .= __("Info: ");
+			$content .= "<strong>".__("Location: ")."</strong>{$user->location}<br />";
+		$content .= "<strong>".__("Info: ")."</strong>";
 		$content .= $user->statuses_count . " ".__("Tweets")." | ";
 		$content .= $user->friends_count . " ".__("Friends")." | ";
 		$content .= $user->followers_count . " ".__("Followers")." | ";
 		$content .= "~" . $tweets_per_day . " ". __("Tweets Per Day")."<br />";
-		$content .= __("Last tweet").": ";
+		$content .= "<strong>".__("Last tweet: ")."</strong>";
 		
 		if ($user->protected == 'true' && $last_tweet == 0) {
 			$content .= __("Private/Protected");

@@ -21,7 +21,7 @@
 			if (preg_match_all($pat, $header, $m)) {
 				$header = $m[0][0];
 				$ret = substr($ret,$hsize);
-				Header($header);
+				header($header);
 				echo $ret;
 			}
 		}
