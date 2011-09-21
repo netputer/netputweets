@@ -148,7 +148,6 @@ function settings_page($args) {
 	$content .= '<label>　<input type="checkbox" name="followers" value="yes" '. (setting_fetch('followers') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Followers").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="friends" value="yes" '. (setting_fetch('friends') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Friends").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="blockings" value="yes" '. (setting_fetch('blockings') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Blockings").'</label><br />';
-	$content .= '<label>　<input type="checkbox" name="trends" value="yes" '. (setting_fetch('trends') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Trends").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="about" value="yes" '. (setting_fetch('about') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("About").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="ssettings" value="yes" '. (setting_fetch('ssettings', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Settings").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="slogout" value="yes" '. (setting_fetch('slogout', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Logout").'</label><br />';
@@ -167,10 +166,10 @@ function settings_page($args) {
 	$content .= '<label>　'.__("Colour scheme").': <select name="colours">'.theme('options', $colour_schemes, setting_fetch('colours', 1)).'</select></label><br />';
 	$content .= '<label>　'.__("Mode").': <select name="browser">'.theme('options', $modes, $GLOBALS['current_theme']).'</select></label><br />';
 	$content .= '<label>　'.__("Language").': <select name="locale">'.theme('options', $locale, setting_fetch('locale', 'zh_CN')).'</select></label><br />';
-	$content .= '<label>　'.__("Showing URL").': <select name="linktrans">'.theme('options', $linktrans, setting_fetch('linktrans', 'd')).'</select></label><br /><small>　　'.__("Note").': "'.__("Domain Only").'" '.__("means change").' https://twitter.com/netputer '.__("to").' [twitter.com]</small><p />';
+	$content .= '<label>　'.__("Showing URL").': <select name="linktrans">'.theme('options', $linktrans, setting_fetch('linktrans', 'd')).'</select></label><br /><small>　　'.__("Note: ").'"'.__("Domain Only").'" '.__("means change").' https://twitter.com/netputer '.__("to").' [twitter.com]</small><p />';
 	$content .= '<label>　'.__("Tweets Per Page").': <input type="text" id="tpp" name="tpp" value="'.setting_fetch('tpp', 20).'" maxlength="3" style="width:20px;" /> (20-200)</label><br />';
 	$content .= '<label>　<input type="checkbox" name="showthumbs" value="yes" '. (setting_fetch('showthumbs', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Preview Photos In Timelines").'</label><br />';
-	$content .= '<label>　<input type="checkbox" name="filtero" value="yes" '. (setting_fetch('filtero', 'no') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Enable Keyword Filter").'</label>: <input type="text" id="filterc" name="filterc" value="'.setting_fetch('filterc').'" /><br /><small>　　'.__("Note").': '.__("Separate keywords with space").'</small><p />';
+	$content .= '<label>　<input type="checkbox" name="filtero" value="yes" '. (setting_fetch('filtero', 'no') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Enable Keyword Filter").'</label>: <input type="text" id="filterc" name="filterc" value="'.setting_fetch('filterc').'" /><br /><small>　　'.__("Note: ").__("Separate keywords with space").'</small><p />';
 	$content .= '<p><label>'.__("Custom CSS").':<br /><textarea name="css" cols="50" rows="3" id="css" style="width:95%">'.setting_fetch('css').'</textarea></label></p>';
 	$content .= '<hr /><p><input type="submit" name="Submit" value="'.__("Save").'" /> <small>'.__('Visit ').'<a href="'.BASE_URL.'reset">'.__("Reset").'</a>'.__(' if things go horribly wrong - it will log you out and clear all settings.').'</small></p></form>';
 

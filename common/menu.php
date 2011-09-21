@@ -106,9 +106,6 @@ function theme_menu_bottom() {
 		if (setting_fetch('blockings') == 'yes') {
 			$links[] = "<a href='".BASE_URL."blockings'>".__("Blockings")."</a>";
 		}
-		if (setting_fetch('trends') == 'yes') {
-			$links[] = "<a href='".BASE_URL."trends'>".__("Trends")."</a>";
-		}
 	}
 
 	if (user_is_authenticated()) {

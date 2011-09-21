@@ -154,6 +154,7 @@ menu_register(array(
 function friendship_exists($user_a) {
 	$request = API_URL."friendships/show.json?target_screen_name=$user_a";
 	$following = twitter_process($request);
+	
 	if ($following->relationship->target->following == 1) {
 		return true;
 	} else {
@@ -258,8 +259,8 @@ function twitter_upload_page($query) {
 	}
 
 	$content .=	"<form method='post' action='".BASE_URL."upload' enctype='multipart/form-data'>
-						".__("Image")." <input type='file' name='image' /><br />
-						".__("Message (optional)").":<br />
+						".__("Image: ")."<input type='file' name='image' /><br />
+						".__("Content: ")."<br />
 						<textarea name='message' style='width:90%; max-width: 400px;' rows='3' id='message'>" . $_POST['message'] . "</textarea><br>
 						<input type='submit' value='".__("Send")."'><span id='remaining'>120</span>
 					</form>";
@@ -282,7 +283,7 @@ function twitter_profile_page($query) {
 		twitter_refresh("user/{$user}");
 	} else {
 		$p = twitter_process($url, $post_data);
-		$content = "<form method=\"post\" action=\"".BASE_URL."profile\" enctype=\"multipart/form-data\">".__("Name")." <input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location")." <input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link")." <input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio")." (Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
+		$content = "<form method=\"post\" action=\"".BASE_URL."profile\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location: ")."<input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link: ")."<input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
 	}
 	$p = twitter_process($url, $post_data);
 	return theme('page', __("Update Profile"), $content);
@@ -422,14 +423,14 @@ function format_interval($timestamp, $granularity = 2) {
 	);
 	$output = '';
 	foreach ($units as $key => $value) {
-	if ($timestamp >= $value) {
-		$output .= ($output ? ' ' : '').floor($timestamp / $value).' '.$key;
-		$timestamp %= $value;
-		$granularity--;
-	}
-	if ($granularity == 0) {
-		break;
-	}
+		if ($timestamp >= $value) {
+			$output .= ($output ? ' ' : '').floor($timestamp / $value).' '.$key;
+			$timestamp %= $value;
+			$granularity--;
+		}
+		if ($granularity == 0) {
+			break;
+		}
 	}
 	return $output ? $output : __("0 sec");
 }
@@ -549,7 +550,7 @@ function twitter_confirmation_page($query) {
 			$status = twitter_process($request);
 			$parsed = $status->text;
 			$content = "<p>".__("Are you really sure you want to")." ".__("delete your tweet")."?</p>";
-			$content .= "<ul><li>".__("Tweet").": $parsed</li><li>".__("Note").": ".__("There is no way to undo this action").".</li></ul>";
+			$content .= "<ul><li>".__("Tweet").": $parsed</li><li>".__("Note: ").__("There is no way to undo this action").".</li></ul>";
 		break;
 		case 'spam':
 			$content  = "<p>".__("Are you really sure you want to")." ".__("report")." <strong>$target</strong> ".__("as a spammer?")."</p>";
@@ -696,7 +697,7 @@ function theme_directs_form($to) {
 			$html_to = __("Sending direct message to")." <b>$to</b><input name='to' value='$to' type='hidden'>";
 		}
 	} else {
-		$html_to = __("To").": <input name='to'><br />".__("Message").": ";
+		$html_to = __("To: ")."<input name='to'><br />".__("Content: ");
 	}
 	$content = "<form action='".BASE_URL."directs/send' method='post'>$html_to<br /><textarea name='message' style='width:100%;max-width:400px;' rows='3' id='message'></textarea><br /><input type='submit' value='".__("Send")."'><span id='remaining'>140</span></form>";
 	$content .= js_counter("message");
@@ -866,7 +867,7 @@ function theme_retweet($status) {
 	if($status->user->protected == 0) {
 		$content .= "<form action='".BASE_URL."twitter-retweet/{$status->id_str}' method='post'><input type='hidden' name='from' value='$from' /><input type='submit' value='Twitter ".__("Official Retweet")."'> ".__("or Traditional Retweet").":</form>";
 	} else {
-		$content .= __("Note").": ".__("It is not well suited to retweet a protected user 's tweet.");
+		$content .= __("Note: ").__("It is not well suited to retweet a protected user 's tweet.");
 	}
 
 	$content .= "</p><p><form action='".BASE_URL."update' method='post'><input type='hidden' name='from' value='$from' /><textarea name='status' style='width:100%;max-width:400px;' rows='3' id='status'>$text</textarea><br /><input type='submit' value='".__(Retweet)."'><span id='remaining'>" . (140 - $length) ."</span></form>".js_counter("status")."</p>";
@@ -892,10 +893,10 @@ function theme_user_header($user) {
 	if ($user->verified == true) $out .= '<i>'.__("Verified").'</i> ';
 	if ($user->protected == true) $out .= '<i>'.__("Private/Protected").'</i>';
 	$out .= "<br /><span class='about'>";
-	if ($user->description != "") $out .= __("Bio").": {$bio}<br />";
-	if ($user->url != "") $out .= __("Link").": {$link}<br />";
-	if ($user->location != "") $out .= __("Location").": <a href='http://maps.google.com/m?q={$user->location}' target='_blank'>{$user->location}</a><br />";
-	$out .= __("Joined").": {$date_joined} ($tweets_per_day ".__("Tweets Per Day").")</small></span></td></tr></table><br /><span class='features'>";
+	if ($user->description != "") $out .= __("Bio: ")."{$bio}<br />";
+	if ($user->url != "") $out .= __("Link: ")."{$link}<br />";
+	if ($user->location != "") $out .= __("Location: ")."<a href='http://maps.google.com/m?q={$user->location}' target='_blank'>{$user->location}</a><br />";
+	$out .= __("Joined: ")."{$date_joined} ($tweets_per_day ".__("Tweets Per Day").")</small></span></td></tr></table><br /><span class='features'>";
 	if (setting_fetch('avataro', 'yes') != 'yes') $out .= "<a href='$full_avatar'>".__("View picture")."</a> | ";
 	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
 		if ($user->following !== true) {
@@ -1047,38 +1048,24 @@ function twitter_standard_timeline($feed, $source) {
 		case 'thread':
 			$html_tweets = explode('</li>', $feed);
 			foreach ($html_tweets as $tweet) {
-			$id = preg_match_one('#msgtxt(\d*)#', $tweet);
-			if (!$id) continue;
-			$output[$id] = (object) array(
-				'id' => $id,
-				'text' => strip_tags(preg_match_one('#</a>: (.*)</span>#', $tweet)),
-				'source' => preg_match_one('#>from (.*)</span>#', $tweet),
-				'from' => (object) array(
-				'id' => preg_match_one('#profile_images/(\d*)#', $tweet),
-				'screen_name' => preg_match_one('#twitter.com/([^"]+)#', $tweet),
-				'profile_image_url' => preg_match_one('#src="([^"]*)"#' , $tweet),
-				),
-				'to' => (object) array(
-				'screen_name' => preg_match_one('#@([^<]+)#', $tweet),
-				),
-				'created_at' => str_replace('about', '', preg_match_one('#info">\s(.*)#', $tweet)),
-			);
+				$id = preg_match_one('#msgtxt(\d*)#', $tweet);
+				if (!$id) continue;
+				$output[$id] = (object) array(
+					'id' => $id,
+					'text' => strip_tags(preg_match_one('#</a>: (.*)</span>#', $tweet)),
+					'source' => preg_match_one('#>from (.*)</span>#', $tweet),
+					'from' => (object) array(
+					'id' => preg_match_one('#profile_images/(\d*)#', $tweet),
+					'screen_name' => preg_match_one('#twitter.com/([^"]+)#', $tweet),
+					'profile_image_url' => preg_match_one('#src="([^"]*)"#' , $tweet),
+					),
+					'to' => (object) array(
+					'screen_name' => preg_match_one('#@([^<]+)#', $tweet),
+					),
+					'created_at' => str_replace('about', '', preg_match_one('#info">\s(.*)#', $tweet)),
+				);
 			}
-			if (setting_fetch('reverse') == 'yes') {
-			$first = false;
-			foreach ($output as $id => $tweet) {
-				$date_string = str_replace('later', '', $tweet->created_at);
-				if ($first) {
-				$attempt = strtotime("+$date_string");
-				if ($attempt == 0) $attempt = time();
-				$previous = $current = $attempt - time() + $previous;
-				} else {
-				$previous = $current = $first = strtotime($date_string);
-				}
-				$output[$id]->created_at = date('r', $current);
-			}
-			$output = array_reverse($output);
-			}
+
 			return $output;
 
 		default:
@@ -1265,21 +1252,24 @@ function theme_followers($feed, $hide_pagination = false) {
 		$last_tweet = strtotime($user->status->created_at);
 		$content = "{$name}<br /><span class='about'>";
 		if($user->description != "")
-			$content .= __("Bio").": " . twitter_parse_tags($user->description) . "<br />";
+			$content .= __("Bio: ").twitter_parse_tags($user->description) . "<br />";
 		if($user->location != "")
-			$content .= __("Location").": {$user->location}<br />";
-		$content .= __("Info").": ";
-		$content .= $user->statuses_count . " ".__("Tweets").", ";
-		$content .= $user->friends_count . " ".__("Friends").", ";
-		$content .= $user->followers_count . " ".__("Followers").", ";
+			$content .= __("Location: ")."{$user->location}<br />";
+		$content .= __("Info: ");
+		$content .= $user->statuses_count . " ".__("Tweets")." | ";
+		$content .= $user->friends_count . " ".__("Friends")." | ";
+		$content .= $user->followers_count . " ".__("Followers")." | ";
 		$content .= "~" . $tweets_per_day . " ". __("Tweets Per Day")."<br />";
 		$content .= __("Last tweet").": ";
-		if($user->protected == 'true' && $last_tweet == 0)
-			$content .= __("Private");
-		else if($last_tweet == 0)
+		
+		if ($user->protected == 'true' && $last_tweet == 0) {
+			$content .= __("Private/Protected");
+		} else if($last_tweet == 0) {
 			$content .= __("Never tweeted");
-		else
+		} else {
 			$content .= twitter_date('l jS F Y', $last_tweet);
+		}
+		
 		$content .= "</span>";
 
 		$rows[] = array(

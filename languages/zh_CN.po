@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Tui\n"
+"Project-Id-Version: NetPutweets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-30 14:55+0800\n"
-"PO-Revision-Date: 2011-01-30 14:56+0800\n"
+"POT-Creation-Date: 2011-09-22 00:10+0800\n"
+"PO-Revision-Date: 2011-09-22 00:10+0800\n"
 "Last-Translator: NetPuter <netputer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,827 +14,824 @@ msgstr ""
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED STATES\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: D:\\Code\\Twitter\\NetPutweets\\Official\n"
+"X-Poedit-SearchPath-0: E:\\Code\\NetPutweets\n"
 
-#: D:\Code\Twitter\NetPutweets\Official/index.php:35
-#: D:\Code\Twitter\NetPutweets\Official/index.php:52
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:56
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:124
+#: E:\Code\NetPutweets/index.php:27
+#: E:\Code\NetPutweets/index.php:44
+#: E:\Code\NetPutweets/browsers/blackberry.php:51
+#: E:\Code\NetPutweets/browsers/naiping.php:30
 msgid "About"
 msgstr "关于"
 
-#: D:\Code\Twitter\NetPutweets\Official/index.php:40
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:62
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:130
+#: E:\Code\NetPutweets/index.php:32
+#: E:\Code\NetPutweets/browsers/blackberry.php:57
+#: E:\Code\NetPutweets/browsers/naiping.php:30
 msgid "Logout"
-msgstr "退出"
+msgstr "登出"
 
-#: D:\Code\Twitter\NetPutweets\Official/index.php:47
+#: E:\Code\NetPutweets/index.php:39
 msgid "Logged out"
-msgstr "已经退出啦"
+msgstr "已经登出啦"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:9
+#: E:\Code\NetPutweets/browsers/blackberry.php:9
 msgid "Newer"
 msgstr "上一页"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:10
+#: E:\Code\NetPutweets/browsers/blackberry.php:10
 msgid "Older"
 msgstr "下一页"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:15
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:18
-#: D:\Code\Twitter\NetPutweets\Official/browsers/touch.php:28
-#: D:\Code\Twitter\NetPutweets\Official/browsers/touch.php:36
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:57
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:83
+#: E:\Code\NetPutweets/browsers/blackberry.php:16
+#: E:\Code\NetPutweets/browsers/naiping.php:22
+#: E:\Code\NetPutweets/browsers/touch.php:30
+#: E:\Code\NetPutweets/browsers/touch.php:37
 msgid "Home"
 msgstr "首页"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:18
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:18
-#: D:\Code\Twitter\NetPutweets\Official/browsers/touch.php:29
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:60
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:86
+#: E:\Code\NetPutweets/browsers/blackberry.php:19
+#: E:\Code\NetPutweets/browsers/naiping.php:22
+#: E:\Code\NetPutweets/browsers/touch.php:31
 msgid "Replies"
 msgstr "回复"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:21
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:18
-#: D:\Code\Twitter\NetPutweets\Official/browsers/touch.php:30
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:63
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:89
+#: E:\Code\NetPutweets/browsers/blackberry.php:22
+#: E:\Code\NetPutweets/browsers/naiping.php:22
+#: E:\Code\NetPutweets/browsers/touch.php:32
 msgid "Retweets"
 msgstr "转发"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:24
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:18
-#: D:\Code\Twitter\NetPutweets\Official/browsers/touch.php:31
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:66
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:92
+#: E:\Code\NetPutweets/browsers/blackberry.php:25
+#: E:\Code\NetPutweets/browsers/naiping.php:22
+#: E:\Code\NetPutweets/browsers/touch.php:33
 msgid "Directs"
 msgstr "私信"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:27
-#: D:\Code\Twitter\NetPutweets\Official/browsers/desktop.php:13
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:18
-#: D:\Code\Twitter\NetPutweets\Official/browsers/touch.php:32
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:69
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:95
+#: E:\Code\NetPutweets/browsers/blackberry.php:28
+#: E:\Code\NetPutweets/browsers/desktop.php:17
+#: E:\Code\NetPutweets/browsers/naiping.php:22
+#: E:\Code\NetPutweets/browsers/touch.php:34
 msgid "Search"
 msgstr "搜索"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:30
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/browsers/touch.php:33
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:72
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:98
-msgid "Twitpic"
-msgstr "晒图"
-
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:33
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:101
+#: E:\Code\NetPutweets/browsers/blackberry.php:31
+#: E:\Code\NetPutweets/browsers/naiping.php:30
 msgid "Favourites"
 msgstr "收藏"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:36
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:104
+#: E:\Code\NetPutweets/browsers/blackberry.php:34
+#: E:\Code\NetPutweets/browsers/naiping.php:30
 msgid "Lists"
 msgstr "列表"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:39
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:107
+#: E:\Code\NetPutweets/browsers/blackberry.php:37
+#: E:\Code\NetPutweets/browsers/naiping.php:30
 msgid "Followers"
 msgstr "关注者"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:42
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:110
+#: E:\Code\NetPutweets/browsers/blackberry.php:40
+#: E:\Code\NetPutweets/browsers/naiping.php:30
 msgid "Friends"
 msgstr "好友"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:45
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:113
+#: E:\Code\NetPutweets/browsers/blackberry.php:43
+#: E:\Code\NetPutweets/browsers/naiping.php:30
 msgid "Blockings"
 msgstr "黑名单"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:48
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:116
-msgid "Trends"
-msgstr "热词"
-
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:59
-#: D:\Code\Twitter\NetPutweets\Official/browsers/desktop.php:6
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:127
+#: E:\Code\NetPutweets/browsers/blackberry.php:54
+#: E:\Code\NetPutweets/browsers/desktop.php:10
+#: E:\Code\NetPutweets/browsers/naiping.php:30
 msgid "Settings"
 msgstr "设置"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/blackberry.php:66
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:134
+#: E:\Code\NetPutweets/browsers/blackberry.php:61
 msgid "Refresh"
 msgstr "刷新"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/desktop.php:5
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:7
+#: E:\Code\NetPutweets/browsers/desktop.php:5
+#: E:\Code\NetPutweets/browsers/naiping.php:11
 msgid "Update"
 msgstr "发送"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/desktop.php:6
-msgid "On PC/Laptop? Why not try Nai Ping mode, for desktop better! Change it in"
-msgstr "在电脑上使用奶瓶腿? 为何不试试奶瓶模式, 专为桌面浏览器设计哦! 修改方法:"
+#: E:\Code\NetPutweets/browsers/desktop.php:7
+#: E:\Code\NetPutweets/browsers/naiping.php:9
+msgid "Upload Picture"
+msgstr "传图"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/desktop.php:6
+#: E:\Code\NetPutweets/browsers/desktop.php:10
+msgid "On PC/Laptop? Why not try Nai Ping mode, for desktop better! Change it in"
+msgstr "在电脑上使用奶瓶腿？为何不试试「奶瓶模式」，专为桌面浏览器设计。修改方法："
+
+#: E:\Code\NetPutweets/browsers/desktop.php:10
 msgid "Global Settings"
 msgstr "全局设置"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/desktop.php:6
+#: E:\Code\NetPutweets/browsers/desktop.php:10
 msgid "Mode"
 msgstr "模式"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:18
+#: E:\Code\NetPutweets/browsers/naiping.php:22
 msgid "Profile"
 msgstr "个人"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:26
-#: D:\Code\Twitter\NetPutweets\Official/browsers/touch.php:45
+#: E:\Code\NetPutweets/browsers/naiping.php:30
+#: E:\Code\NetPutweets/browsers/touch.php:46
 msgid "More"
 msgstr "更多"
 
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:89
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:91
-msgid "via"
-msgstr "通过"
-
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:97
-msgid "in reply to"
-msgstr "回复"
-
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:104
-msgid "retweeted by"
-msgstr "由"
-
-#: D:\Code\Twitter\NetPutweets\Official/browsers/naiping.php:104
-msgid "<span style='display:none;'>zhuanfa</span>"
-msgstr "转发"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/menu.php:75
-msgid "Enjoy Twitter with NetPutweets!"
-msgstr "抱着奶瓶腿 享受推的乐趣"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:130
-msgid "Normal phone"
-msgstr "手机模式"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:131
-msgid "Touch phone"
-msgstr "触屏模式"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:132
-msgid "PC/Laptop"
-msgstr "桌面模式"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:133
-msgid "BlackBerry (Pagination At Bottom)"
-msgstr "黑莓模式(翻页在最下方)"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:134
-msgid "Nai Ping (For PC Only)"
-msgstr "奶瓶模式(仅适用于桌面)"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:144
-msgid "Full URL"
-msgstr "完整链接"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:145
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:201
-msgid "Domain Only"
-msgstr "只显示域名"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:150
-msgid "Automatic Cut"
-msgstr "自动截断"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:151
-msgid "Split into 2+ tweets"
-msgstr "分成几条推发送"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:152
-msgid "Return Error"
-msgstr "提示错误"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:162
-msgid "Menu Settings"
-msgstr "菜单设置"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:163
-msgid "Choose what you want to display on the Top Bar."
-msgstr "选择你想显示在顶栏的链接"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:164
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:992
-msgid "User"
-msgstr "用户"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:171
-msgid "And Choose what you want to display on the Bottom Bar."
-msgstr "选择你想显示在底栏的链接"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:188
-msgid "Status Settings"
-msgstr "消息设置"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:189
-msgid "Show @/DM/RT/FAV/DEL As Text instead of images"
-msgstr "将 @/DM/RT/FAV/DEL 显示为文字而不是图片"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:190
-msgid "Put the Buttons after each Status"
-msgstr "将按钮放在消息后面"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:191
-msgid "Show Status Time"
-msgstr "显示消息时间"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:192
-msgid "Show Status Source"
-msgstr "显示消息来源"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:193
-msgid "Show Avatar"
-msgstr "显示头像"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:194
-msgid "Enable Fixed Tag"
-msgstr "使用固定标签"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:195
-msgid "When posting a 140+ chars tweet"
-msgstr "当消息超过140字时"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:198
-msgid "Colour scheme"
-msgstr "色彩方案"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:200
-msgid "Language"
-msgstr "语言"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:201
-msgid "Showing URL"
-msgstr "将链接显示为"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:201
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:207
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:211
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:753
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1079
-msgid "Note"
-msgstr "提示"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:201
-msgid "means change"
-msgstr "意思是将"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:201
-msgid "to"
-msgstr "显示为"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:202
-msgid "Tweets Per Page"
-msgstr "每页的推数"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:203
-msgid "use GWT for external links (reduces internet traffic)"
-msgstr "使用 GWT 打开外部链接(更节约流量)"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:204
-msgid "Show Long URL"
-msgstr "还原短链接"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:205
-msgid "Preview Photos In Timelines"
-msgstr "预览图片"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:207
-msgid "Enable Keyword Filter"
-msgstr "开启关键词过滤"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:207
-msgid "Separate keywords with space"
-msgstr "用空格分开每个关键词"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:209
-msgid "Custom CSS"
-msgstr "自定义 CSS"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:211
-msgid "Change Tui Password"
-msgstr "修改腿密码"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:211
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:201
-msgid "Set your tui password, you can sign in without Twitter OAuth."
-msgstr "设置你的腿密码, 以便于下次登录时无需通过 Twitter OAuth 验证."
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:211
-msgid "Leave blank if you don't want to change it."
-msgstr "如果不需要修改请留空."
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:211
-msgid "Delete my tui password please"
-msgstr "请删除我的腿密码"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:212
-msgid "Save"
-msgstr "保存"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:212
-msgid "Visit "
-msgstr "如果设置出错, 请"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:212
-msgid "Reset"
-msgstr "重置"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/settings.php:212
-msgid " if things go horribly wrong - it will log you out and clear all settings."
-msgstr "所有设置, 但你需要重新登陆."
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:229
-msgid "List page not found"
-msgstr "找不到列表"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:234
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:241
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:243
-msgid "Following"
-msgstr "关注"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:234
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:236
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:241
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:243
-msgid "'s Lists"
-msgstr "的列表"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:251
-msgid "'s Tweets"
-msgstr "的推儿"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:251
-msgid "View Members"
-msgstr "查看成员"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:251
-msgid "View Subscribers"
-msgstr "查看订户"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:260
-msgid "Members of"
-msgstr "成员"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:267
-msgid "Subscribers of"
-msgstr "订户"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:273
-msgid "No lists to display"
-msgstr "没有列表可显示"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:276
-msgid "Members"
-msgstr "成员"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:276
-msgid "Subscribers"
-msgstr "订户"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:337
-msgid "Current"
-msgstr "现在"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:337
-msgid "Daily"
-msgstr "每日"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:337
-msgid "Weekly"
-msgstr "每周"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:438
-msgid "Upload success. Image posted to Twitter"
-msgstr "图片上传成功, 并已发送至 Twitter"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:440
-msgid "Image"
-msgstr "图片"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:440
-msgid "Message (optional)"
-msgstr "消息(可选)"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:440
-msgid "Upload"
-msgstr "上传"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:461
-msgid "Name"
-msgstr "昵称"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:461
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1105
-msgid "Location"
-msgstr "地点"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:461
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1104
-msgid "Link"
-msgstr "链接"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:461
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1103
-msgid "Bio"
-msgstr "介绍"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:464
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1116
-msgid "Update Profile"
-msgstr "修改资料"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:506
-msgid "Error: Login credentials incorrect."
-msgstr "错误: 登录信息出错."
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:509
-msgid "Twitter timed out"
-msgstr "Twitter 迟到啦, 超时啦."
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:509
-msgid "Dabr gave up on waiting for Twitter to respond. They're probably overloaded right now, try again in a minute."
-msgstr "Twitter 又爆鲸了, 请稍后再试."
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:514
-msgid "Something broke on Twitter's end."
-msgstr "Twitter 出了点的问题, 具体部位是菊花, = =.."
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:516
-msgid "An error occured while calling the Twitter API"
-msgstr "在调用 API 时出现错误"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:620
-msgid "years"
-msgstr "年"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:621
-msgid "days"
-msgstr "天"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:622
-msgid "hours"
-msgstr "小时"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:623
-msgid "min"
-msgstr "分钟"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:624
-msgid "sec"
-msgstr "秒"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:637
-msgid "0 sec"
-msgstr "刚才"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:653
-msgid "Status"
-msgstr "状态"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:669
-msgid "Retweet"
-msgstr "转发"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:741
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:744
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:752
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:756
-msgid "Are you really sure you want to"
-msgstr "你确定"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:741
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1114
-msgid "Unblock"
-msgstr "取消屏蔽"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:742
-msgid "They will see your updates on their home page if they follow you again."
-msgstr "他们再也看不到你的推儿了"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:742
-msgid "You <em>can</em> block them again if you want."
-msgstr "你随时可以再次屏蔽他们"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:745
-msgid "You won't show up in their list of friends"
-msgstr "你将从他们的好友列表中消失"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:745
-msgid "They won't see your updates on their home page"
-msgstr "他们再也看不到你的推儿了"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:745
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:757
-msgid "They won't be able to follow you"
-msgstr "他们将不能够再关注你"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:745
-msgid "You <em>can</em> unblock them but you will need to follow them again afterwards"
-msgstr "你随时可以取消对他们的屏蔽"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:752
-msgid "delete your tweet"
-msgstr "删除你的推儿吗"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:753
-msgid "Tweet"
-msgstr "消息"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:753
-msgid "There is no way to undo this action"
-msgstr "无法撤销哦"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:756
-msgid "report"
-msgstr "举报"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:756
-msgid "as a spammer?"
-msgstr "为垃圾消息用户?"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:761
-msgid "Confirm"
-msgstr "确认"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:877
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:905
-msgid "Create DM"
-msgstr "新私信"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:892
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:905
-msgid "DM Sent"
-msgstr "已发送"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:900
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:905
-msgid "DM Inbox"
-msgstr "收信箱"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:911
-msgid "is not following you. You cannot send direct message to that guy."
-msgstr "没有关注你, 你无法发私信给他."
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:913
-msgid "Sending direct message to"
-msgstr "发私信给"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:916
-msgid "To"
-msgstr "收信人"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:916
-msgid "Message"
-msgstr "消息"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:918
-msgid "Send"
-msgstr "发送"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:935
-msgid "Save as default search"
-msgstr "保存为默认关键词"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:968
-msgid "Reply"
-msgstr "回复"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:969
-msgid "No username given"
-msgstr "没有提供用户名"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:979
-msgid "In reply to"
-msgstr "回复"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1045
-msgid "Hashtag"
-msgstr "标签"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1066
-msgid "Delete without confirmation"
-msgstr "确认删除"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1077
-msgid "Official Retweet"
-msgstr "官方锐推"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1077
-msgid "or Traditional Retweet"
-msgstr "或者传统锐推"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1079
-msgid "It is not well suited to retweet a protected user 's tweet."
-msgstr "不建议锐推隐私保护用户的推儿"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1100
-msgid "Verified"
-msgstr "认证用户"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1101
-msgid "Private/Protected"
-msgstr "隐私保护"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1106
-msgid "Joined"
-msgstr "注册时间"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1106
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1411
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1422
-msgid "Tweets Per Day"
-msgstr "推儿/天"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1107
-msgid "View picture"
-msgstr "查看头像"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1110
-msgid "Follow"
-msgstr "关注"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1112
-msgid "Unfollow"
-msgstr "取消关注"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1114
-msgid "Block"
-msgstr "屏蔽"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1114
-msgid "Report Spam"
-msgstr "举报"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1118
-msgid "Direct Message"
-msgstr "发私信"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1118
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1411
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1422
-msgid "Tweets"
-msgstr "推儿"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1135
-msgid " ago"
-msgstr "前"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1336
+#: E:\Code\NetPutweets/browsers/naiping.php:105
 msgid "Tweet Filtered"
 msgstr "已过滤"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1402
-msgid "No users to display."
-msgstr "没有用户可显示."
+#: E:\Code\NetPutweets/browsers/naiping.php:116
+msgid "via"
+msgstr "通过"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1411
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1422
-msgid "Info"
-msgstr "信息"
+#: E:\Code\NetPutweets/browsers/naiping.php:121
+msgid "in reply to"
+msgstr "回复"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1444
+#: E:\Code\NetPutweets/browsers/naiping.php:130
+msgid "retweeted by"
+msgstr "由"
+
+#: E:\Code\NetPutweets/browsers/naiping.php:130
+msgid "<span style='display:none;'>zhuanfa</span>"
+msgstr "转发"
+
+#: E:\Code\NetPutweets/common/lists.php:102
+msgid "List page not found"
+msgstr "找不到列表页"
+
+#: E:\Code\NetPutweets/common/lists.php:112
+#: E:\Code\NetPutweets/common/lists.php:120
+#: E:\Code\NetPutweets/common/lists.php:122
+msgid "Following"
+msgstr "关注"
+
+#: E:\Code\NetPutweets/common/lists.php:112
+#: E:\Code\NetPutweets/common/lists.php:114
+#: E:\Code\NetPutweets/common/lists.php:120
+#: E:\Code\NetPutweets/common/lists.php:122
+msgid "'s Lists"
+msgstr "的列表"
+
+#: E:\Code\NetPutweets/common/lists.php:131
+msgid "'s Tweets"
+msgstr "的推儿"
+
+#: E:\Code\NetPutweets/common/lists.php:131
+msgid "View Members"
+msgstr "查看成员"
+
+#: E:\Code\NetPutweets/common/lists.php:131
+msgid "View Subscribers"
+msgstr "查看订户"
+
+#: E:\Code\NetPutweets/common/lists.php:144
+msgid "Members of"
+msgstr "成员"
+
+#: E:\Code\NetPutweets/common/lists.php:152
+msgid "Subscribers of"
+msgstr "订户"
+
+#: E:\Code\NetPutweets/common/lists.php:161
+msgid "No lists to display"
+msgstr "没有列表可显示"
+
+#: E:\Code\NetPutweets/common/lists.php:164
+msgid "Members"
+msgstr "成员"
+
+#: E:\Code\NetPutweets/common/lists.php:164
+msgid "Subscribers"
+msgstr "订户"
+
+#: E:\Code\NetPutweets/common/menu.php:72
+msgid "Enjoy Twitter with NetPutweets!"
+msgstr "抱着奶瓶腿 享受推的乐趣"
+
+#: E:\Code\NetPutweets/common/settings.php:102
+msgid "Normal phone"
+msgstr "手机模式"
+
+#: E:\Code\NetPutweets/common/settings.php:103
+msgid "Touch phone"
+msgstr "触屏模式"
+
+#: E:\Code\NetPutweets/common/settings.php:104
+msgid "PC/Laptop"
+msgstr "桌面模式"
+
+#: E:\Code\NetPutweets/common/settings.php:105
+msgid "BlackBerry (Pagination At Bottom)"
+msgstr "黑莓模式（翻页在最下方）"
+
+#: E:\Code\NetPutweets/common/settings.php:106
+msgid "Nai Ping (For PC Only)"
+msgstr "奶瓶模式（仅适用于桌面）"
+
+#: E:\Code\NetPutweets/common/settings.php:116
+msgid "Full URL"
+msgstr "完整链接"
+
+#: E:\Code\NetPutweets/common/settings.php:117
+#: E:\Code\NetPutweets/common/settings.php:169
+msgid "Domain Only"
+msgstr "只显示域名"
+
+#: E:\Code\NetPutweets/common/settings.php:122
+msgid "Automatic Cut"
+msgstr "自动截断"
+
+#: E:\Code\NetPutweets/common/settings.php:123
+msgid "Return Error"
+msgstr "提示错误"
+
+#: E:\Code\NetPutweets/common/settings.php:133
+msgid "Menu Settings"
+msgstr "菜单设置"
+
+#: E:\Code\NetPutweets/common/settings.php:134
+msgid "Choose what you want to display on the Top Bar."
+msgstr "选择你想显示在顶栏的链接"
+
+#: E:\Code\NetPutweets/common/settings.php:135
+#: E:\Code\NetPutweets/common/twitter.php:776
+msgid "User"
+msgstr "用户"
+
+#: E:\Code\NetPutweets/common/settings.php:141
+msgid "And Choose what you want to display on the Bottom Bar."
+msgstr "选择你想显示在底栏的链接"
+
+#: E:\Code\NetPutweets/common/settings.php:156
+msgid "Status Settings"
+msgstr "消息设置"
+
+#: E:\Code\NetPutweets/common/settings.php:157
+msgid "Show @/DM/RT/FAV/DEL As Text instead of images"
+msgstr "将 @/DM/RT/FAV/DEL 显示为文字而不是图片"
+
+#: E:\Code\NetPutweets/common/settings.php:158
+msgid "Put the Buttons after each Status"
+msgstr "将按钮放在消息后面"
+
+#: E:\Code\NetPutweets/common/settings.php:159
+msgid "Show Status Time"
+msgstr "显示消息时间"
+
+#: E:\Code\NetPutweets/common/settings.php:160
+msgid "Show Status Source"
+msgstr "显示消息来源"
+
+#: E:\Code\NetPutweets/common/settings.php:161
+msgid "Show Avatar"
+msgstr "显示头像"
+
+#: E:\Code\NetPutweets/common/settings.php:162
+msgid "Enable Fixed Tag"
+msgstr "使用固定标签"
+
+#: E:\Code\NetPutweets/common/settings.php:163
+msgid "When posting a 140+ chars tweet"
+msgstr "当消息超过140字时"
+
+#: E:\Code\NetPutweets/common/settings.php:166
+msgid "Colour scheme"
+msgstr "色彩方案"
+
+#: E:\Code\NetPutweets/common/settings.php:168
+msgid "Language"
+msgstr "语言"
+
+#: E:\Code\NetPutweets/common/settings.php:169
+msgid "Showing URL"
+msgstr "将链接显示为"
+
+#: E:\Code\NetPutweets/common/settings.php:169
+#: E:\Code\NetPutweets/common/settings.php:172
+#: E:\Code\NetPutweets/common/twitter.php:553
+#: E:\Code\NetPutweets/common/twitter.php:870
+msgid "Note: "
+msgstr "提示："
+
+#: E:\Code\NetPutweets/common/settings.php:169
+msgid "means change"
+msgstr "意思是将"
+
+#: E:\Code\NetPutweets/common/settings.php:169
+msgid "to"
+msgstr "显示为"
+
+#: E:\Code\NetPutweets/common/settings.php:170
+msgid "Tweets Per Page"
+msgstr "每页的推数"
+
+#: E:\Code\NetPutweets/common/settings.php:171
+msgid "Preview Photos In Timelines"
+msgstr "预览图片"
+
+#: E:\Code\NetPutweets/common/settings.php:172
+msgid "Enable Keyword Filter"
+msgstr "开启关键词过滤"
+
+#: E:\Code\NetPutweets/common/settings.php:172
+msgid "Separate keywords with space"
+msgstr "用空格分开每个关键词"
+
+#: E:\Code\NetPutweets/common/settings.php:173
+msgid "Custom CSS"
+msgstr "自定义 CSS"
+
+#: E:\Code\NetPutweets/common/settings.php:174
+msgid "Save"
+msgstr "保存"
+
+#: E:\Code\NetPutweets/common/settings.php:174
+msgid "Visit "
+msgstr "如果设置出错，请"
+
+#: E:\Code\NetPutweets/common/settings.php:174
+msgid "Reset"
+msgstr "重置"
+
+#: E:\Code\NetPutweets/common/settings.php:174
+msgid " if things go horribly wrong - it will log you out and clear all settings."
+msgstr "所有设置，但你需要重新登录"
+
+#: E:\Code\NetPutweets/common/twitter.php:135
+msgid "Upload"
+msgstr "上传图片"
+
+#: E:\Code\NetPutweets/common/twitter.php:228
+msgid "Upload success. Image posted to Twitter."
+msgstr "图片已成功上传，并发送至 Twitter"
+
+#: E:\Code\NetPutweets/common/twitter.php:238
+msgid "Damn! Something went wrong. Sorry :-("
+msgstr "唔，出错了，掩面逃走……"
+
+#: E:\Code\NetPutweets/common/twitter.php:253
+msgid "Please enter a message to go with your image."
+msgstr "请给你的图片添加一段描述"
+
+#: E:\Code\NetPutweets/common/twitter.php:257
+msgid "Please select an image to upload."
+msgstr "请选择需要上传的照片"
+
+#: E:\Code\NetPutweets/common/twitter.php:262
+msgid "Image: "
+msgstr "图片："
+
+#: E:\Code\NetPutweets/common/twitter.php:263
+#: E:\Code\NetPutweets/common/twitter.php:700
+msgid "Content: "
+msgstr "内容："
+
+#: E:\Code\NetPutweets/common/twitter.php:265
+#: E:\Code\NetPutweets/common/twitter.php:702
+msgid "Send"
+msgstr "发送"
+
+#: E:\Code\NetPutweets/common/twitter.php:286
+msgid "Name: "
+msgstr "昵称："
+
+#: E:\Code\NetPutweets/common/twitter.php:286
+#: E:\Code\NetPutweets/common/twitter.php:898
+#: E:\Code\NetPutweets/common/twitter.php:1257
+msgid "Location: "
+msgstr "位置："
+
+#: E:\Code\NetPutweets/common/twitter.php:286
+#: E:\Code\NetPutweets/common/twitter.php:897
+msgid "Link: "
+msgstr "链接："
+
+#: E:\Code\NetPutweets/common/twitter.php:286
+#: E:\Code\NetPutweets/common/twitter.php:896
+#: E:\Code\NetPutweets/common/twitter.php:1255
+msgid "Bio: "
+msgstr "介绍："
+
+#: E:\Code\NetPutweets/common/twitter.php:289
+#: E:\Code\NetPutweets/common/twitter.php:909
+msgid "Update Profile"
+msgstr "修改资料"
+
+#: E:\Code\NetPutweets/common/twitter.php:331
+msgid "Error: Login credentials incorrect."
+msgstr "错误：登录信息出错"
+
+#: E:\Code\NetPutweets/common/twitter.php:334
+msgid "Twitter timed out"
+msgstr "Twitter 超时啦"
+
+#: E:\Code\NetPutweets/common/twitter.php:334
+msgid "Dabr gave up on waiting for Twitter to respond. They're probably overloaded right now, try again in a minute."
+msgstr "Twitter 又爆鲸了，请稍后再试"
+
+#: E:\Code\NetPutweets/common/twitter.php:339
+msgid "Something broke on Twitter's end."
+msgstr "Twitter 出了点的问题，具体部位是菊花"
+
+#: E:\Code\NetPutweets/common/twitter.php:341
+msgid "An error occured while calling the Twitter API"
+msgstr "在调用 API 时出现错误"
+
+#: E:\Code\NetPutweets/common/twitter.php:418
+msgid "years"
+msgstr "年"
+
+#: E:\Code\NetPutweets/common/twitter.php:419
+msgid "days"
+msgstr "天"
+
+#: E:\Code\NetPutweets/common/twitter.php:420
+msgid "hours"
+msgstr "小时"
+
+#: E:\Code\NetPutweets/common/twitter.php:421
+msgid "min"
+msgstr "分钟"
+
+#: E:\Code\NetPutweets/common/twitter.php:422
+msgid "sec"
+msgstr "秒"
+
+#: E:\Code\NetPutweets/common/twitter.php:435
+msgid "0 sec"
+msgstr "刚才"
+
+#: E:\Code\NetPutweets/common/twitter.php:453
+msgid "Status"
+msgstr "状态"
+
+#: E:\Code\NetPutweets/common/twitter.php:469
+msgid "Retweet"
+msgstr "转发"
+
+#: E:\Code\NetPutweets/common/twitter.php:541
+#: E:\Code\NetPutweets/common/twitter.php:544
+#: E:\Code\NetPutweets/common/twitter.php:552
+#: E:\Code\NetPutweets/common/twitter.php:556
+msgid "Are you really sure you want to"
+msgstr "你确定"
+
+#: E:\Code\NetPutweets/common/twitter.php:541
+msgid "Unblock"
+msgstr "取消屏蔽"
+
+#: E:\Code\NetPutweets/common/twitter.php:542
+msgid "They will see your updates on their home page if they follow you again."
+msgstr "他们再也看不到你的推儿了"
+
+#: E:\Code\NetPutweets/common/twitter.php:542
+msgid "You <em>can</em> block them again if you want."
+msgstr "你可以随时再次屏蔽他们"
+
+#: E:\Code\NetPutweets/common/twitter.php:545
+msgid "You won't show up in their list of friends"
+msgstr "你将从他们的好友列表中消失"
+
+#: E:\Code\NetPutweets/common/twitter.php:545
+msgid "They won't see your updates on their home page"
+msgstr "他们再也看不到你的推儿了"
+
+#: E:\Code\NetPutweets/common/twitter.php:545
+#: E:\Code\NetPutweets/common/twitter.php:557
+msgid "They won't be able to follow you"
+msgstr "他们将不能够再关注你"
+
+#: E:\Code\NetPutweets/common/twitter.php:545
+msgid "You <em>can</em> unblock them but you will need to follow them again afterwards"
+msgstr "你可以随时取消对他们的屏蔽"
+
+#: E:\Code\NetPutweets/common/twitter.php:552
+msgid "delete your tweet"
+msgstr "删除你的推儿吗"
+
+#: E:\Code\NetPutweets/common/twitter.php:553
+msgid "Tweet"
+msgstr "推儿"
+
+#: E:\Code\NetPutweets/common/twitter.php:553
+msgid "There is no way to undo this action"
+msgstr "无法撤销哦"
+
+#: E:\Code\NetPutweets/common/twitter.php:556
+msgid "report"
+msgstr "举报"
+
+#: E:\Code\NetPutweets/common/twitter.php:556
+msgid "as a spammer?"
+msgstr "为垃圾消息用户?"
+
+#: E:\Code\NetPutweets/common/twitter.php:561
+msgid "Confirm"
+msgstr "确认"
+
+#: E:\Code\NetPutweets/common/twitter.php:661
+#: E:\Code\NetPutweets/common/twitter.php:689
+msgid "Create DM"
+msgstr "新私信"
+
+#: E:\Code\NetPutweets/common/twitter.php:676
+#: E:\Code\NetPutweets/common/twitter.php:689
+msgid "DM Sent"
+msgstr "已发送"
+
+#: E:\Code\NetPutweets/common/twitter.php:684
+#: E:\Code\NetPutweets/common/twitter.php:689
+msgid "DM Inbox"
+msgstr "收信箱"
+
+#: E:\Code\NetPutweets/common/twitter.php:695
+msgid "is not following you. You cannot send direct message to that guy."
+msgstr "没有关注你，你无法发私信给他"
+
+#: E:\Code\NetPutweets/common/twitter.php:697
+msgid "Sending direct message to"
+msgstr "发私信给"
+
+#: E:\Code\NetPutweets/common/twitter.php:700
+msgid "To: "
+msgstr "收信人："
+
+#: E:\Code\NetPutweets/common/twitter.php:719
+msgid "Save as default search"
+msgstr "保存为默认关键词"
+
+#: E:\Code\NetPutweets/common/twitter.php:751
+msgid "Reply"
+msgstr "回复"
+
+#: E:\Code\NetPutweets/common/twitter.php:752
+msgid "No username given"
+msgstr "没有提供用户名"
+
+#: E:\Code\NetPutweets/common/twitter.php:762
+msgid "In reply to"
+msgstr "回复"
+
+#: E:\Code\NetPutweets/common/twitter.php:836
+msgid "Hashtag"
+msgstr "标签"
+
+#: E:\Code\NetPutweets/common/twitter.php:868
+msgid "Official Retweet"
+msgstr "官方 RT"
+
+#: E:\Code\NetPutweets/common/twitter.php:868
+msgid "or Traditional Retweet"
+msgstr "或者传统 RT"
+
+#: E:\Code\NetPutweets/common/twitter.php:870
+msgid "It is not well suited to retweet a protected user 's tweet."
+msgstr "不建议 RT 隐私保护用户的推儿"
+
+#: E:\Code\NetPutweets/common/twitter.php:893
+msgid "Verified"
+msgstr "认证用户"
+
+#: E:\Code\NetPutweets/common/twitter.php:894
+#: E:\Code\NetPutweets/common/twitter.php:1266
+msgid "Private/Protected"
+msgstr "隐私保护"
+
+#: E:\Code\NetPutweets/common/twitter.php:899
+msgid "Joined: "
+msgstr "注册时间："
+
+#: E:\Code\NetPutweets/common/twitter.php:899
+#: E:\Code\NetPutweets/common/twitter.php:1262
+msgid "Tweets Per Day"
+msgstr "推儿/天"
+
+#: E:\Code\NetPutweets/common/twitter.php:900
+msgid "View picture"
+msgstr "查看头像"
+
+#: E:\Code\NetPutweets/common/twitter.php:903
+msgid "Follow"
+msgstr "关注"
+
+#: E:\Code\NetPutweets/common/twitter.php:905
+msgid "Unfollow"
+msgstr "取消关注"
+
+#: E:\Code\NetPutweets/common/twitter.php:907
+msgid "Block"
+msgstr "屏蔽"
+
+#: E:\Code\NetPutweets/common/twitter.php:907
+msgid "Report Spam"
+msgstr "举报"
+
+#: E:\Code\NetPutweets/common/twitter.php:911
+msgid "Direct Message"
+msgstr "发私信"
+
+#: E:\Code\NetPutweets/common/twitter.php:911
+#: E:\Code\NetPutweets/common/twitter.php:1259
+msgid "Tweets"
+msgstr "推儿"
+
+#: E:\Code\NetPutweets/common/twitter.php:935
+msgid " ago"
+msgstr "前"
+
+#: E:\Code\NetPutweets/common/twitter.php:1258
+msgid "Info: "
+msgstr "概况："
+
+#: E:\Code\NetPutweets/common/twitter.php:1263
+msgid "Last tweet"
+msgstr "最近更新"
+
+#: E:\Code\NetPutweets/common/twitter.php:1268
+msgid "Never tweeted"
+msgstr "还没推过呢"
+
+#: E:\Code\NetPutweets/common/twitter.php:1300
 msgid "No tweets to display."
-msgstr "没有消息可显示."
+msgstr "没有消息可显示"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1516
+#: E:\Code\NetPutweets/common/twitter.php:1368
 msgid "@"
 msgstr "回复"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1523
+#: E:\Code\NetPutweets/common/twitter.php:1372
 msgid "@@"
 msgstr "群回"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1526
+#: E:\Code\NetPutweets/common/twitter.php:1376
 msgid "DM"
 msgstr "私信"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1530
+#: E:\Code\NetPutweets/common/twitter.php:1380
 msgid "UNFAV"
 msgstr "不藏"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1532
+#: E:\Code\NetPutweets/common/twitter.php:1382
 msgid "FAV"
 msgstr "收藏"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1535
+#: E:\Code\NetPutweets/common/twitter.php:1385
 msgid "UNDO"
 msgstr "撤销"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1537
+#: E:\Code\NetPutweets/common/twitter.php:1387
 msgid "RT"
 msgstr "转发"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1540
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1543
+#: E:\Code\NetPutweets/common/twitter.php:1390
+#: E:\Code\NetPutweets/common/twitter.php:1393
 msgid "DEL"
 msgstr "删除"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/twitter.php:1549
+#: E:\Code\NetPutweets/common/twitter.php:1399
 msgid "GEO"
 msgstr "位置"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:93
+#: E:\Code\NetPutweets/common/user.php:92
 msgid "Login"
 msgstr "登录"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:128
-msgid "Invalid username or password."
-msgstr "用户名或密码错误"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:135
-msgid "Please Sign in with Twitter OAuth."
-msgstr "请通过 Twitter OAuth 登录."
-
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:201
+#: E:\Code\NetPutweets/common/user.php:176
 msgid "No access to Twitter.com"
 msgstr "无法访问 Twitter.com"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:201
+#: E:\Code\NetPutweets/common/user.php:176
+msgid "Set your tui password, you can sign in without Twitter OAuth."
+msgstr "设置你的腿密码，以便于下次直接登录而无需通过 Twitter OAuth 验证"
+
+#: E:\Code\NetPutweets/common/user.php:176
 msgid "Registration steps"
 msgstr "使用方法"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:202
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:207
+#: E:\Code\NetPutweets/common/user.php:177
+#: E:\Code\NetPutweets/common/user.php:182
 msgid "Sign In with Twitter OAuth"
 msgstr "通过 Twitter OAuth 登录"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:202
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:207
+#: E:\Code\NetPutweets/common/user.php:177
+#: E:\Code\NetPutweets/common/user.php:182
 msgid "Proxy"
 msgstr "代理"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:202
+#: E:\Code\NetPutweets/common/user.php:177
 msgid "Visit"
 msgstr "访问"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:202
+#: E:\Code\NetPutweets/common/user.php:177
 msgid "settings"
 msgstr "设置"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:202
+#: E:\Code\NetPutweets/common/user.php:177
 msgid "page to enter a tui password."
-msgstr "页面并输入腿密码."
+msgstr "页面并输入腿密码"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:202
+#: E:\Code\NetPutweets/common/user.php:177
 msgid "Done! You can now enjoy Twitter with NetPutweets from anywhere (even #ChinaBlocksTwitter or else)."
-msgstr "完成! 现在你能在任何地方抱着奶瓶腿, 享受推的乐趣啦. (就算 Twitter 被封)"
+msgstr "完成！现在你能在任何地方抱着奶瓶腿，享受推的乐趣啦~ （就算 Twitter 被封）"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:203
+#: E:\Code\NetPutweets/common/user.php:178
 msgid "Tui Password"
 msgstr "腿密码"
 
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:208
-msgid "Enter your Twitter Username and"
-msgstr "输入你的 Twitter 用户名和"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:208
-msgid " Tui Password"
-msgstr "腿密码"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:208
-msgid "Username"
-msgstr "用户名"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:208
-msgid "Password"
-msgstr "腿密码"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:208
-msgid "Sign In"
-msgstr "登录"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:208
-msgid "Remember Me?"
-msgstr "记住我"
-
-#: D:\Code\Twitter\NetPutweets\Official/common/user.php:213
+#: E:\Code\NetPutweets/common/user.php:187
 msgid "Login again"
 msgstr "重新登录"
+
+#~ msgid "Note"
+#~ msgstr "提示"
+
+#~ msgid "Location"
+#~ msgstr "位置"
+
+#~ msgid "Link"
+#~ msgstr "链接"
+
+#~ msgid "Bio"
+#~ msgstr "介绍"
+
+#~ msgid "Private"
+#~ msgstr "隐私保护"
+
+#~ msgid "Content"
+#~ msgstr "内容"
+
+#~ msgid "Message"
+#~ msgstr "消息"
+
+#~ msgid "Trends"
+#~ msgstr "热词"
+
+#~ msgid "Message (optional)"
+#~ msgstr "消息(可选)"
+
+#~ msgid "Twitpic"
+#~ msgstr "晒图"
+
+#~ msgid "Split into 2+ tweets"
+#~ msgstr "分成几条推发送"
+
+#~ msgid "use GWT for external links (reduces internet traffic)"
+#~ msgstr "使用 GWT 打开外部链接(更节约流量)"
+
+#~ msgid "Show Long URL"
+#~ msgstr "还原短链接"
+
+#~ msgid "Change Tui Password"
+#~ msgstr "修改腿密码"
+
+#~ msgid "Leave blank if you don't want to change it."
+#~ msgstr "如果不需要修改请留空."
+
+#~ msgid "Delete my tui password please"
+#~ msgstr "请删除我的腿密码"
+
+#~ msgid "Current"
+#~ msgstr "现在"
+
+#~ msgid "Daily"
+#~ msgstr "每日"
+
+#~ msgid "Weekly"
+#~ msgstr "每周"
+
+#~ msgid "Delete without confirmation"
+#~ msgstr "确认删除"
+
+#~ msgid "No users to display."
+#~ msgstr "没有用户可显示."
+
+#~ msgid "Invalid username or password."
+#~ msgstr "用户名或密码错误"
+
+#~ msgid "Please Sign in with Twitter OAuth."
+#~ msgstr "请通过 Twitter OAuth 登录."
+
+#~ msgid "Enter your Twitter Username and"
+#~ msgstr "输入你的 Twitter 用户名和"
+
+#~ msgid " Tui Password"
+#~ msgstr "腿密码"
+
+#~ msgid "Username"
+#~ msgstr "用户名"
+
+#~ msgid "Password"
+#~ msgstr "腿密码"
+
+#~ msgid "Sign In"
+#~ msgstr "登录"
+
+#~ msgid "Remember Me?"
+#~ msgstr "记住我"
 
 #~ msgid "Not using"
 #~ msgstr "不使用"
@@ -872,6 +869,3 @@ msgstr "重新登录"
 
 #~ msgid "Inbox"
 #~ msgstr "收信箱"
-
-#~ msgid "Create"
-#~ msgstr "发私信"

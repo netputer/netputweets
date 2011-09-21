@@ -1,5 +1,5 @@
 <?php
-	if (isset($_GET["u"])) {
+	if (IMGPROXY && isset($_COOKIE["USER_AUTH"]) && isset($_GET["u"])) {
 		$url = base64_decode(base64_decode($_GET["u"]));
 
 		$ch = curl_init($url);
@@ -8,6 +8,7 @@
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 		$ret = curl_exec($ch);
 		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		$hsize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);

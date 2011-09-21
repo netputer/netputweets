@@ -46,8 +46,6 @@ function twitter_lists_list_subscribers($user, $list) {
 	return lists_paginated_process(API_URL."{$user}/{$list}/subscribers.xml");
 }
 
-
-
 /* Front controller for the new pages
 
 List URLS:
@@ -163,7 +161,7 @@ function theme_lists($json) {
 		return "<p>".__("No lists to display")."</p>";
 	}
 	$rows = array();
-	$headers = array(__('Lists'), __('Members'), __('Subscribers'));
+	$headers = array(__("Lists")." ", __("Members")." ", __("Subscribers")." ");
 	foreach ($json->lists->list as $list) {
 		$url = "lists/{$list->user->screen_name}/{$list->slug}";
 		$rows[] = array(
