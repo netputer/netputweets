@@ -71,7 +71,6 @@ function settings_page($args) {
 		$settings['followers'] = $_POST['followers'];
 		$settings['friends'] = $_POST['friends'];
 		$settings['blockings'] = $_POST['blockings'];
-		$settings['trends'] = $_POST['trends'];
 		$settings['about'] = $_POST['about'];
 		$settings['ssettings'] = $_POST['ssettings'];
 		$settings['slogout'] = $_POST['slogout'];

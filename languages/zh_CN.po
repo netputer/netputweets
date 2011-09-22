@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetPutweets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 09:59+0800\n"
-"PO-Revision-Date: 2011-09-22 09:59+0800\n"
+"POT-Creation-Date: 2011-09-22 11:01+0800\n"
+"PO-Revision-Date: 2011-09-22 11:01+0800\n"
 "Last-Translator: NetPuter <netputer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -212,152 +212,152 @@ msgstr "订户"
 msgid "Enjoy Twitter with NetPutweets!"
 msgstr "抱着奶瓶腿 享受推的乐趣"
 
-#: E:\Code\NetPutweets/common/settings.php:102
+#: E:\Code\NetPutweets/common/settings.php:101
 msgid "Normal phone"
 msgstr "手机模式"
 
-#: E:\Code\NetPutweets/common/settings.php:103
+#: E:\Code\NetPutweets/common/settings.php:102
 msgid "Touch phone"
 msgstr "触屏模式"
 
-#: E:\Code\NetPutweets/common/settings.php:104
+#: E:\Code\NetPutweets/common/settings.php:103
 msgid "PC/Laptop"
 msgstr "桌面模式"
 
-#: E:\Code\NetPutweets/common/settings.php:105
+#: E:\Code\NetPutweets/common/settings.php:104
 msgid "BlackBerry (Pagination At Bottom)"
 msgstr "黑莓模式（翻页在最下方）"
 
-#: E:\Code\NetPutweets/common/settings.php:106
+#: E:\Code\NetPutweets/common/settings.php:105
 msgid "Nai Ping (For PC Only)"
 msgstr "奶瓶模式（仅适用于桌面）"
 
-#: E:\Code\NetPutweets/common/settings.php:116
+#: E:\Code\NetPutweets/common/settings.php:115
 msgid "Full URL"
 msgstr "完整链接"
 
-#: E:\Code\NetPutweets/common/settings.php:117
-#: E:\Code\NetPutweets/common/settings.php:169
+#: E:\Code\NetPutweets/common/settings.php:116
+#: E:\Code\NetPutweets/common/settings.php:168
 msgid "Domain Only"
 msgstr "只显示域名"
 
-#: E:\Code\NetPutweets/common/settings.php:122
+#: E:\Code\NetPutweets/common/settings.php:121
 msgid "Automatic Cut"
 msgstr "自动截断"
 
-#: E:\Code\NetPutweets/common/settings.php:123
+#: E:\Code\NetPutweets/common/settings.php:122
 msgid "Return Error"
 msgstr "提示错误"
 
-#: E:\Code\NetPutweets/common/settings.php:133
+#: E:\Code\NetPutweets/common/settings.php:132
 msgid "Menu Settings"
 msgstr "菜单设置"
 
-#: E:\Code\NetPutweets/common/settings.php:134
+#: E:\Code\NetPutweets/common/settings.php:133
 msgid "Choose what you want to display on the Top Bar."
 msgstr "选择你想显示在顶栏的链接"
 
-#: E:\Code\NetPutweets/common/settings.php:135
+#: E:\Code\NetPutweets/common/settings.php:134
 #: E:\Code\NetPutweets/common/twitter.php:771
 msgid "User"
 msgstr "用户"
 
-#: E:\Code\NetPutweets/common/settings.php:141
+#: E:\Code\NetPutweets/common/settings.php:140
 msgid "And Choose what you want to display on the Bottom Bar."
 msgstr "选择你想显示在底栏的链接"
 
-#: E:\Code\NetPutweets/common/settings.php:156
+#: E:\Code\NetPutweets/common/settings.php:155
 msgid "Status Settings"
 msgstr "消息设置"
 
-#: E:\Code\NetPutweets/common/settings.php:157
+#: E:\Code\NetPutweets/common/settings.php:156
 msgid "Show @/DM/RT/FAV/DEL As Text instead of images"
 msgstr "将 @/DM/RT/FAV/DEL 显示为文字而不是图片"
 
-#: E:\Code\NetPutweets/common/settings.php:158
+#: E:\Code\NetPutweets/common/settings.php:157
 msgid "Put the Buttons after each Status"
 msgstr "将按钮放在消息后面"
 
-#: E:\Code\NetPutweets/common/settings.php:159
+#: E:\Code\NetPutweets/common/settings.php:158
 msgid "Show Status Time"
 msgstr "显示消息时间"
 
-#: E:\Code\NetPutweets/common/settings.php:160
+#: E:\Code\NetPutweets/common/settings.php:159
 msgid "Show Status Source"
 msgstr "显示消息来源"
 
-#: E:\Code\NetPutweets/common/settings.php:161
+#: E:\Code\NetPutweets/common/settings.php:160
 msgid "Show Avatar"
 msgstr "显示头像"
 
-#: E:\Code\NetPutweets/common/settings.php:162
+#: E:\Code\NetPutweets/common/settings.php:161
 msgid "Enable Fixed Tag"
 msgstr "使用固定标签"
 
-#: E:\Code\NetPutweets/common/settings.php:163
+#: E:\Code\NetPutweets/common/settings.php:162
 msgid "When posting a 140+ chars tweet"
 msgstr "当消息超过140字时"
 
-#: E:\Code\NetPutweets/common/settings.php:166
+#: E:\Code\NetPutweets/common/settings.php:165
 msgid "Colour scheme"
 msgstr "色彩方案"
 
-#: E:\Code\NetPutweets/common/settings.php:168
+#: E:\Code\NetPutweets/common/settings.php:167
 msgid "Language"
 msgstr "语言"
 
-#: E:\Code\NetPutweets/common/settings.php:169
+#: E:\Code\NetPutweets/common/settings.php:168
 msgid "Showing URL"
 msgstr "将链接显示为"
 
-#: E:\Code\NetPutweets/common/settings.php:169
-#: E:\Code\NetPutweets/common/settings.php:172
+#: E:\Code\NetPutweets/common/settings.php:168
+#: E:\Code\NetPutweets/common/settings.php:171
 #: E:\Code\NetPutweets/common/twitter.php:548
 #: E:\Code\NetPutweets/common/twitter.php:865
 msgid "Note: "
 msgstr "提示："
 
-#: E:\Code\NetPutweets/common/settings.php:169
+#: E:\Code\NetPutweets/common/settings.php:168
 msgid "means change"
 msgstr "意思是将"
 
-#: E:\Code\NetPutweets/common/settings.php:169
+#: E:\Code\NetPutweets/common/settings.php:168
 msgid "to"
 msgstr "显示为"
 
-#: E:\Code\NetPutweets/common/settings.php:170
+#: E:\Code\NetPutweets/common/settings.php:169
 msgid "Tweets Per Page"
 msgstr "每页的推数"
 
-#: E:\Code\NetPutweets/common/settings.php:171
+#: E:\Code\NetPutweets/common/settings.php:170
 msgid "Preview Photos In Timelines"
 msgstr "预览图片"
 
-#: E:\Code\NetPutweets/common/settings.php:172
+#: E:\Code\NetPutweets/common/settings.php:171
 msgid "Enable Keyword Filter"
 msgstr "开启关键词过滤"
 
-#: E:\Code\NetPutweets/common/settings.php:172
+#: E:\Code\NetPutweets/common/settings.php:171
 msgid "Separate keywords with space"
 msgstr "用空格分开每个关键词"
 
-#: E:\Code\NetPutweets/common/settings.php:173
+#: E:\Code\NetPutweets/common/settings.php:172
 msgid "Custom CSS"
 msgstr "自定义 CSS"
 
-#: E:\Code\NetPutweets/common/settings.php:174
+#: E:\Code\NetPutweets/common/settings.php:173
 msgid "Save"
 msgstr "保存"
 
-#: E:\Code\NetPutweets/common/settings.php:174
+#: E:\Code\NetPutweets/common/settings.php:173
 msgid "Visit "
 msgstr "如果设置出错，请"
 
-#: E:\Code\NetPutweets/common/settings.php:174
+#: E:\Code\NetPutweets/common/settings.php:173
 msgid "Reset"
 msgstr "重置"
 
-#: E:\Code\NetPutweets/common/settings.php:174
+#: E:\Code\NetPutweets/common/settings.php:173
 msgid " if things go horribly wrong - it will log you out and clear all settings."
 msgstr "所有设置，但你需要重新登录"
 
@@ -692,55 +692,48 @@ msgstr "删除"
 msgid "GEO"
 msgstr "位置"
 
-#: E:\Code\NetPutweets/common/user.php:92
+#: E:\Code\NetPutweets/common/user.php:88
 msgid "Login"
 msgstr "登录"
 
-#: E:\Code\NetPutweets/common/user.php:176
-msgid "No access to Twitter.com"
-msgstr "无法访问 Twitter.com"
-
-#: E:\Code\NetPutweets/common/user.php:176
-msgid "Set your tui password, you can sign in without Twitter OAuth."
-msgstr "设置你的腿密码，以便于下次直接登录而无需通过 Twitter OAuth 验证"
-
-#: E:\Code\NetPutweets/common/user.php:176
-msgid "Registration steps"
-msgstr "使用方法"
-
-#: E:\Code\NetPutweets/common/user.php:177
-#: E:\Code\NetPutweets/common/user.php:182
+#: E:\Code\NetPutweets/common/user.php:172
 msgid "Sign In with Twitter OAuth"
 msgstr "通过 Twitter OAuth 登录"
 
-#: E:\Code\NetPutweets/common/user.php:177
-#: E:\Code\NetPutweets/common/user.php:182
+#: E:\Code\NetPutweets/common/user.php:172
 msgid "Proxy"
 msgstr "代理"
 
 #: E:\Code\NetPutweets/common/user.php:177
-msgid "Visit"
-msgstr "访问"
-
-#: E:\Code\NetPutweets/common/user.php:177
-msgid "settings"
-msgstr "设置"
-
-#: E:\Code\NetPutweets/common/user.php:177
-msgid "page to enter a tui password."
-msgstr "页面并输入腿密码"
-
-#: E:\Code\NetPutweets/common/user.php:177
-msgid "Done! You can now enjoy Twitter with NetPutweets from anywhere (even #ChinaBlocksTwitter or else)."
-msgstr "完成！现在你能在任何地方抱着奶瓶腿，享受推的乐趣啦~ （就算 Twitter 被封）"
-
-#: E:\Code\NetPutweets/common/user.php:178
-msgid "Tui Password"
-msgstr "腿密码"
-
-#: E:\Code\NetPutweets/common/user.php:187
 msgid "Login again"
 msgstr "重新登录"
+
+#~ msgid "No access to Twitter.com"
+#~ msgstr "无法访问 Twitter.com"
+
+#~ msgid "Set your tui password, you can sign in without Twitter OAuth."
+#~ msgstr "设置你的腿密码，以便于下次直接登录而无需通过 Twitter OAuth 验证"
+
+#~ msgid "Registration steps"
+#~ msgstr "使用方法"
+
+#~ msgid "Visit"
+#~ msgstr "访问"
+
+#~ msgid "settings"
+#~ msgstr "设置"
+
+#~ msgid "page to enter a tui password."
+#~ msgstr "页面并输入腿密码"
+
+#~ msgid ""
+#~ "Done! You can now enjoy Twitter with NetPutweets from anywhere (even "
+#~ "#ChinaBlocksTwitter or else)."
+#~ msgstr ""
+#~ "完成！现在你能在任何地方抱着奶瓶腿，享受推的乐趣啦~ （就算 Twitter 被封）"
+
+#~ msgid "Tui Password"
+#~ msgstr "腿密码"
 
 #~ msgid "Upload"
 #~ msgstr "上传图片"

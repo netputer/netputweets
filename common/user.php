@@ -9,10 +9,6 @@ menu_register(array(
 		'callback' => 'user_itap',
 		'hidden' => 'true',
 	),
-	'tuipass' => array(
-		'callback' => 'user_tuipass',
-		'hidden' => 'true',
-	),
 ));
 
 function user_oauth() {
@@ -172,12 +168,6 @@ function _user_decrypt_cookie($crypt_text) {
 	list($GLOBALS['user']['username'], $GLOBALS['user']['password'], $GLOBALS['user']['type']) = explode(':', $plain_text);
 }
 
-function user_tuipass() {
-	$content = '<p>'.__("No access to Twitter.com").'? '.__("Set your tui password, you can sign in without Twitter OAuth.").'</p><p>'.__("Registration steps").':</p><ol>
-<li><a href="'.BASE_URL.'oauth">'.__("Sign In with Twitter OAuth").'</a></b> / <a href="'.BASE_URL.'itap">'.__('Proxy').'</a> .</li><li>'.__('Visit').' <a href="'.BASE_URL.'settings">'.__('settings').'</a> '.__('page to enter a tui password.').'</li><li>'.__('Done! You can now enjoy Twitter with NetPutweets from anywhere (even #ChinaBlocksTwitter or else).').'</li></ol>';
-	return theme('page', __("Tui Password"), $content);
-}
-
 function theme_login() {
 	$content = '<p><b>[1] <a href="'.BASE_URL.'oauth">'.__("Sign In with Twitter OAuth").'</a></b> / <a href="'.BASE_URL.'itap">'.__("Proxy").'</a></b></p>';
 	return $content;
@@ -186,5 +176,4 @@ function theme_login() {
 function theme_logged_out() {
 	return '<p>'.__("Logged out").'. <a href="'.BASE_URL.'">'.__("Login again").'?</a></p>';
 }
-
 ?>
