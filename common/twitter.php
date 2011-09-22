@@ -119,11 +119,6 @@ menu_register(array(
 		'security' => true,
 		'callback' => 'twitter_retweet_page',
 	),
-	'flickr' => array(
-		'security' => true,
-		'hidden' => true,
-		'callback' => 'generate_thumbnail',
-	),
 	'hash' => array(
 		'security' => true,
 		'hidden' => true,
@@ -132,7 +127,7 @@ menu_register(array(
 	'upload' => array(
 		'security' => true,
 		'callback' => 'twitter_upload_page',
-		'title' => __("Upload"),
+		'title' => __("Upload Picture"),
 	),
 	'profile' => array(
 		'hidden' => true,
@@ -885,7 +880,7 @@ function theme_user_header($user) {
 	$full_avatar = str_replace('_normal.', '.', theme_get_avatar($user));
 	$link = theme('external_link', $user->url);
 	$raw_date_joined = strtotime($user->created_at);
-	$date_joined = date('jS M Y', $raw_date_joined);
+	$date_joined = date('l jS F Y', $raw_date_joined);
 	$tweets_per_day = twitter_tweets_per_day($user, 1);
 	$bio = twitter_parse_tags($user->description);
 

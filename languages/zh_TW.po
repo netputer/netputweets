@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetPutweets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 00:16+0800\n"
-"PO-Revision-Date: 2011-09-22 00:16+0800\n"
+"POT-Creation-Date: 2011-09-22 10:00+0800\n"
+"PO-Revision-Date: 2011-09-22 10:00+0800\n"
 "Last-Translator: NetPuter <netputer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -258,7 +258,7 @@ msgid "Choose what you want to display on the Top Bar."
 msgstr "選擇你想顯示在頂欄的鏈接"
 
 #: E:\Code\NetPutweets/common/settings.php:135
-#: E:\Code\NetPutweets/common/twitter.php:776
+#: E:\Code\NetPutweets/common/twitter.php:771
 msgid "User"
 msgstr "用戶"
 
@@ -312,8 +312,8 @@ msgstr "將鏈接顯示為"
 
 #: E:\Code\NetPutweets/common/settings.php:169
 #: E:\Code\NetPutweets/common/settings.php:172
-#: E:\Code\NetPutweets/common/twitter.php:553
-#: E:\Code\NetPutweets/common/twitter.php:870
+#: E:\Code\NetPutweets/common/twitter.php:548
+#: E:\Code\NetPutweets/common/twitter.php:865
 msgid "Note: "
 msgstr "提示："
 
@@ -361,338 +361,334 @@ msgstr "重置"
 msgid " if things go horribly wrong - it will log you out and clear all settings."
 msgstr "所有設置，但你需要重新登錄"
 
-#: E:\Code\NetPutweets/common/twitter.php:135
-msgid "Upload"
-msgstr "上傳圖片"
-
-#: E:\Code\NetPutweets/common/twitter.php:228
+#: E:\Code\NetPutweets/common/twitter.php:223
 msgid "Upload success. Image posted to Twitter."
 msgstr "圖片已成功上傳，並發送至 Twitter"
 
-#: E:\Code\NetPutweets/common/twitter.php:238
+#: E:\Code\NetPutweets/common/twitter.php:233
 msgid "Damn! Something went wrong. Sorry :-("
 msgstr "唔，邊度錯左，等我轉身射個三分波先……"
 
-#: E:\Code\NetPutweets/common/twitter.php:253
+#: E:\Code\NetPutweets/common/twitter.php:248
 msgid "Please enter a message to go with your image."
 msgstr "請給你的圖片添加一段描述"
 
-#: E:\Code\NetPutweets/common/twitter.php:257
+#: E:\Code\NetPutweets/common/twitter.php:252
 msgid "Please select an image to upload."
 msgstr "請選擇需要上傳的圖片"
 
-#: E:\Code\NetPutweets/common/twitter.php:262
+#: E:\Code\NetPutweets/common/twitter.php:257
 msgid "Image: "
 msgstr "圖片："
 
-#: E:\Code\NetPutweets/common/twitter.php:263
-#: E:\Code\NetPutweets/common/twitter.php:700
+#: E:\Code\NetPutweets/common/twitter.php:258
+#: E:\Code\NetPutweets/common/twitter.php:695
 msgid "Content: "
 msgstr "內容："
 
-#: E:\Code\NetPutweets/common/twitter.php:265
-#: E:\Code\NetPutweets/common/twitter.php:702
+#: E:\Code\NetPutweets/common/twitter.php:260
+#: E:\Code\NetPutweets/common/twitter.php:697
 msgid "Send"
 msgstr "發送"
 
-#: E:\Code\NetPutweets/common/twitter.php:286
+#: E:\Code\NetPutweets/common/twitter.php:281
 msgid "Name: "
 msgstr "暱稱："
 
-#: E:\Code\NetPutweets/common/twitter.php:286
-#: E:\Code\NetPutweets/common/twitter.php:898
-#: E:\Code\NetPutweets/common/twitter.php:1257
+#: E:\Code\NetPutweets/common/twitter.php:281
+#: E:\Code\NetPutweets/common/twitter.php:893
+#: E:\Code\NetPutweets/common/twitter.php:1252
 msgid "Location: "
 msgstr "位置："
 
-#: E:\Code\NetPutweets/common/twitter.php:286
-#: E:\Code\NetPutweets/common/twitter.php:897
+#: E:\Code\NetPutweets/common/twitter.php:281
+#: E:\Code\NetPutweets/common/twitter.php:892
 msgid "Link: "
 msgstr "鏈接："
 
-#: E:\Code\NetPutweets/common/twitter.php:286
-#: E:\Code\NetPutweets/common/twitter.php:896
-#: E:\Code\NetPutweets/common/twitter.php:1255
+#: E:\Code\NetPutweets/common/twitter.php:281
+#: E:\Code\NetPutweets/common/twitter.php:891
+#: E:\Code\NetPutweets/common/twitter.php:1250
 msgid "Bio: "
 msgstr "介紹："
 
-#: E:\Code\NetPutweets/common/twitter.php:289
-#: E:\Code\NetPutweets/common/twitter.php:909
+#: E:\Code\NetPutweets/common/twitter.php:284
+#: E:\Code\NetPutweets/common/twitter.php:904
 msgid "Update Profile"
 msgstr "修改資料"
 
-#: E:\Code\NetPutweets/common/twitter.php:331
+#: E:\Code\NetPutweets/common/twitter.php:326
 msgid "Error: Login credentials incorrect."
 msgstr "錯誤：登錄信息出錯"
 
-#: E:\Code\NetPutweets/common/twitter.php:334
+#: E:\Code\NetPutweets/common/twitter.php:329
 msgid "Twitter timed out"
 msgstr "Twitter 超時啦"
 
-#: E:\Code\NetPutweets/common/twitter.php:334
+#: E:\Code\NetPutweets/common/twitter.php:329
 msgid "Dabr gave up on waiting for Twitter to respond. They're probably overloaded right now, try again in a minute."
 msgstr "Twitter 又爆鯨了，請稍後再試"
 
-#: E:\Code\NetPutweets/common/twitter.php:339
+#: E:\Code\NetPutweets/common/twitter.php:334
 msgid "Something broke on Twitter's end."
 msgstr "Twitter 出了點兒問題，具體部位是菊花"
 
-#: E:\Code\NetPutweets/common/twitter.php:341
+#: E:\Code\NetPutweets/common/twitter.php:336
 msgid "An error occured while calling the Twitter API"
 msgstr "在調用 API 時出現錯誤"
 
-#: E:\Code\NetPutweets/common/twitter.php:418
+#: E:\Code\NetPutweets/common/twitter.php:413
 msgid "years"
 msgstr "年"
 
-#: E:\Code\NetPutweets/common/twitter.php:419
+#: E:\Code\NetPutweets/common/twitter.php:414
 msgid "days"
 msgstr "天"
 
-#: E:\Code\NetPutweets/common/twitter.php:420
+#: E:\Code\NetPutweets/common/twitter.php:415
 msgid "hours"
 msgstr "小時"
 
-#: E:\Code\NetPutweets/common/twitter.php:421
+#: E:\Code\NetPutweets/common/twitter.php:416
 msgid "min"
 msgstr "分鐘"
 
-#: E:\Code\NetPutweets/common/twitter.php:422
+#: E:\Code\NetPutweets/common/twitter.php:417
 msgid "sec"
 msgstr "秒"
 
-#: E:\Code\NetPutweets/common/twitter.php:435
+#: E:\Code\NetPutweets/common/twitter.php:430
 msgid "0 sec"
 msgstr "剛才"
 
-#: E:\Code\NetPutweets/common/twitter.php:453
+#: E:\Code\NetPutweets/common/twitter.php:448
 msgid "Status"
 msgstr "狀態"
 
-#: E:\Code\NetPutweets/common/twitter.php:469
+#: E:\Code\NetPutweets/common/twitter.php:464
 msgid "Retweet"
 msgstr "轉發"
 
-#: E:\Code\NetPutweets/common/twitter.php:541
-#: E:\Code\NetPutweets/common/twitter.php:544
-#: E:\Code\NetPutweets/common/twitter.php:552
-#: E:\Code\NetPutweets/common/twitter.php:556
+#: E:\Code\NetPutweets/common/twitter.php:536
+#: E:\Code\NetPutweets/common/twitter.php:539
+#: E:\Code\NetPutweets/common/twitter.php:547
+#: E:\Code\NetPutweets/common/twitter.php:551
 msgid "Are you really sure you want to"
 msgstr "你確定"
 
-#: E:\Code\NetPutweets/common/twitter.php:541
+#: E:\Code\NetPutweets/common/twitter.php:536
 msgid "Unblock"
 msgstr "取消屏蔽"
 
-#: E:\Code\NetPutweets/common/twitter.php:542
+#: E:\Code\NetPutweets/common/twitter.php:537
 msgid "They will see your updates on their home page if they follow you again."
 msgstr "他們再也看不到你的推兒了"
 
-#: E:\Code\NetPutweets/common/twitter.php:542
+#: E:\Code\NetPutweets/common/twitter.php:537
 msgid "You <em>can</em> block them again if you want."
 msgstr "你可以隨時再次屏蔽他們"
 
-#: E:\Code\NetPutweets/common/twitter.php:545
+#: E:\Code\NetPutweets/common/twitter.php:540
 msgid "You won't show up in their list of friends"
 msgstr "你將從他們的好友列表中消失"
 
-#: E:\Code\NetPutweets/common/twitter.php:545
+#: E:\Code\NetPutweets/common/twitter.php:540
 msgid "They won't see your updates on their home page"
 msgstr "他們再也看不到你的推兒了"
 
-#: E:\Code\NetPutweets/common/twitter.php:545
-#: E:\Code\NetPutweets/common/twitter.php:557
+#: E:\Code\NetPutweets/common/twitter.php:540
+#: E:\Code\NetPutweets/common/twitter.php:552
 msgid "They won't be able to follow you"
 msgstr "他們將不能夠再關注你了"
 
-#: E:\Code\NetPutweets/common/twitter.php:545
+#: E:\Code\NetPutweets/common/twitter.php:540
 msgid "You <em>can</em> unblock them but you will need to follow them again afterwards"
 msgstr "你可以隨時取消對它們的屏蔽"
 
-#: E:\Code\NetPutweets/common/twitter.php:552
+#: E:\Code\NetPutweets/common/twitter.php:547
 msgid "delete your tweet"
 msgstr "刪除你的推兒嗎"
 
-#: E:\Code\NetPutweets/common/twitter.php:553
+#: E:\Code\NetPutweets/common/twitter.php:548
 msgid "Tweet"
 msgstr "推兒"
 
-#: E:\Code\NetPutweets/common/twitter.php:553
+#: E:\Code\NetPutweets/common/twitter.php:548
 msgid "There is no way to undo this action"
 msgstr "無法撤銷喔"
 
-#: E:\Code\NetPutweets/common/twitter.php:556
+#: E:\Code\NetPutweets/common/twitter.php:551
 msgid "report"
 msgstr "舉報"
 
-#: E:\Code\NetPutweets/common/twitter.php:556
+#: E:\Code\NetPutweets/common/twitter.php:551
 msgid "as a spammer?"
 msgstr "為垃圾消息用戶？"
 
-#: E:\Code\NetPutweets/common/twitter.php:561
+#: E:\Code\NetPutweets/common/twitter.php:556
 msgid "Confirm"
 msgstr "確認"
 
-#: E:\Code\NetPutweets/common/twitter.php:661
-#: E:\Code\NetPutweets/common/twitter.php:689
+#: E:\Code\NetPutweets/common/twitter.php:656
+#: E:\Code\NetPutweets/common/twitter.php:684
 msgid "Create DM"
 msgstr "新私信"
 
-#: E:\Code\NetPutweets/common/twitter.php:676
-#: E:\Code\NetPutweets/common/twitter.php:689
+#: E:\Code\NetPutweets/common/twitter.php:671
+#: E:\Code\NetPutweets/common/twitter.php:684
 msgid "DM Sent"
 msgstr "已發送"
 
+#: E:\Code\NetPutweets/common/twitter.php:679
 #: E:\Code\NetPutweets/common/twitter.php:684
-#: E:\Code\NetPutweets/common/twitter.php:689
 msgid "DM Inbox"
 msgstr "收信箱"
 
-#: E:\Code\NetPutweets/common/twitter.php:695
+#: E:\Code\NetPutweets/common/twitter.php:690
 msgid "is not following you. You cannot send direct message to that guy."
 msgstr "沒有關注你，你無法發私信給他"
 
-#: E:\Code\NetPutweets/common/twitter.php:697
+#: E:\Code\NetPutweets/common/twitter.php:692
 msgid "Sending direct message to"
 msgstr "發私信給"
 
-#: E:\Code\NetPutweets/common/twitter.php:700
+#: E:\Code\NetPutweets/common/twitter.php:695
 msgid "To: "
 msgstr "收信人："
 
-#: E:\Code\NetPutweets/common/twitter.php:719
+#: E:\Code\NetPutweets/common/twitter.php:714
 msgid "Save as default search"
 msgstr "保存為默認關鍵詞"
 
-#: E:\Code\NetPutweets/common/twitter.php:751
+#: E:\Code\NetPutweets/common/twitter.php:746
 msgid "Reply"
 msgstr "回覆"
 
-#: E:\Code\NetPutweets/common/twitter.php:752
+#: E:\Code\NetPutweets/common/twitter.php:747
 msgid "No username given"
 msgstr "沒有提供用戶名"
 
-#: E:\Code\NetPutweets/common/twitter.php:762
+#: E:\Code\NetPutweets/common/twitter.php:757
 msgid "In reply to"
 msgstr "回覆"
 
-#: E:\Code\NetPutweets/common/twitter.php:836
+#: E:\Code\NetPutweets/common/twitter.php:831
 msgid "Hashtag"
 msgstr "標籤"
 
-#: E:\Code\NetPutweets/common/twitter.php:868
+#: E:\Code\NetPutweets/common/twitter.php:863
 msgid "Official Retweet"
 msgstr "官方 RT"
 
-#: E:\Code\NetPutweets/common/twitter.php:868
+#: E:\Code\NetPutweets/common/twitter.php:863
 msgid "or Traditional Retweet"
 msgstr "或者傳統 RT"
 
-#: E:\Code\NetPutweets/common/twitter.php:870
+#: E:\Code\NetPutweets/common/twitter.php:865
 msgid "It is not well suited to retweet a protected user 's tweet."
 msgstr "不建議 RT 隱私保護用戶的推兒"
 
-#: E:\Code\NetPutweets/common/twitter.php:893
+#: E:\Code\NetPutweets/common/twitter.php:888
 msgid "Verified"
 msgstr "認證用戶"
 
-#: E:\Code\NetPutweets/common/twitter.php:894
-#: E:\Code\NetPutweets/common/twitter.php:1266
+#: E:\Code\NetPutweets/common/twitter.php:889
+#: E:\Code\NetPutweets/common/twitter.php:1261
 msgid "Private/Protected"
 msgstr "隱私保護"
 
-#: E:\Code\NetPutweets/common/twitter.php:899
+#: E:\Code\NetPutweets/common/twitter.php:894
 msgid "Joined: "
 msgstr "註冊時間："
 
-#: E:\Code\NetPutweets/common/twitter.php:899
-#: E:\Code\NetPutweets/common/twitter.php:1262
+#: E:\Code\NetPutweets/common/twitter.php:894
+#: E:\Code\NetPutweets/common/twitter.php:1257
 msgid "Tweets Per Day"
 msgstr "推兒/天"
 
-#: E:\Code\NetPutweets/common/twitter.php:900
+#: E:\Code\NetPutweets/common/twitter.php:895
 msgid "View picture"
 msgstr "查看頭像"
 
-#: E:\Code\NetPutweets/common/twitter.php:903
+#: E:\Code\NetPutweets/common/twitter.php:898
 msgid "Follow"
 msgstr "關注"
 
-#: E:\Code\NetPutweets/common/twitter.php:905
+#: E:\Code\NetPutweets/common/twitter.php:900
 msgid "Unfollow"
 msgstr "取消關注"
 
-#: E:\Code\NetPutweets/common/twitter.php:907
+#: E:\Code\NetPutweets/common/twitter.php:902
 msgid "Block"
 msgstr "屏蔽"
 
-#: E:\Code\NetPutweets/common/twitter.php:907
+#: E:\Code\NetPutweets/common/twitter.php:902
 msgid "Report Spam"
 msgstr "舉報"
 
-#: E:\Code\NetPutweets/common/twitter.php:911
+#: E:\Code\NetPutweets/common/twitter.php:906
 msgid "Direct Message"
 msgstr "發私信"
 
-#: E:\Code\NetPutweets/common/twitter.php:911
-#: E:\Code\NetPutweets/common/twitter.php:1259
+#: E:\Code\NetPutweets/common/twitter.php:906
+#: E:\Code\NetPutweets/common/twitter.php:1254
 msgid "Tweets"
 msgstr "推兒"
 
-#: E:\Code\NetPutweets/common/twitter.php:935
+#: E:\Code\NetPutweets/common/twitter.php:930
 msgid " ago"
 msgstr "前"
 
-#: E:\Code\NetPutweets/common/twitter.php:1258
+#: E:\Code\NetPutweets/common/twitter.php:1253
 msgid "Info: "
 msgstr "概況："
 
-#: E:\Code\NetPutweets/common/twitter.php:1263
+#: E:\Code\NetPutweets/common/twitter.php:1258
 msgid "Last tweet: "
 msgstr "最近更新："
 
-#: E:\Code\NetPutweets/common/twitter.php:1268
+#: E:\Code\NetPutweets/common/twitter.php:1263
 msgid "Never tweeted"
 msgstr "还没推过呢"
 
-#: E:\Code\NetPutweets/common/twitter.php:1300
+#: E:\Code\NetPutweets/common/twitter.php:1295
 msgid "No tweets to display."
 msgstr "沒有消息可顯示"
 
-#: E:\Code\NetPutweets/common/twitter.php:1368
+#: E:\Code\NetPutweets/common/twitter.php:1363
 msgid "@"
 msgstr "回覆"
 
-#: E:\Code\NetPutweets/common/twitter.php:1372
+#: E:\Code\NetPutweets/common/twitter.php:1367
 msgid "@@"
 msgstr "群回"
 
-#: E:\Code\NetPutweets/common/twitter.php:1376
+#: E:\Code\NetPutweets/common/twitter.php:1371
 msgid "DM"
 msgstr "私信"
 
-#: E:\Code\NetPutweets/common/twitter.php:1380
+#: E:\Code\NetPutweets/common/twitter.php:1375
 msgid "UNFAV"
 msgstr "不藏"
 
-#: E:\Code\NetPutweets/common/twitter.php:1382
+#: E:\Code\NetPutweets/common/twitter.php:1377
 msgid "FAV"
 msgstr "收藏"
 
-#: E:\Code\NetPutweets/common/twitter.php:1385
+#: E:\Code\NetPutweets/common/twitter.php:1380
 msgid "UNDO"
 msgstr "撤銷"
 
-#: E:\Code\NetPutweets/common/twitter.php:1387
+#: E:\Code\NetPutweets/common/twitter.php:1382
 msgid "RT"
 msgstr "轉發"
 
-#: E:\Code\NetPutweets/common/twitter.php:1390
-#: E:\Code\NetPutweets/common/twitter.php:1393
+#: E:\Code\NetPutweets/common/twitter.php:1385
+#: E:\Code\NetPutweets/common/twitter.php:1388
 msgid "DEL"
 msgstr "刪除"
 
-#: E:\Code\NetPutweets/common/twitter.php:1399
+#: E:\Code\NetPutweets/common/twitter.php:1394
 msgid "GEO"
 msgstr "位置"
 
@@ -745,6 +741,9 @@ msgstr "腿密碼"
 #: E:\Code\NetPutweets/common/user.php:187
 msgid "Login again"
 msgstr "重新登錄"
+
+#~ msgid "Upload"
+#~ msgstr "上傳圖片"
 
 #~ msgid "Note"
 #~ msgstr "提示"
