@@ -27,7 +27,7 @@ function embedly_embed_thumbnails(&$feed) {
 			$entities = $status->entities;
 
 			foreach ($entities->urls as $urls) {	// Loop through the URL entities
-				if ($urls->expanded_url != "") { // Use the expanded URL, if it exists, to pass to Embedly
+				if ($urls->expanded_url != "" || (preg_match("/img\.ly/i", $urls->url) && $urls->expanded_url = $urls->url)) { // Use the expanded URL, if it exists, to pass to Embedly
 					if (preg_match($embedly_re, $urls->expanded_url) > 0) { // If it matches an Embedly supported URL
 						$matched_urls[$urls->expanded_url][] = $status->id;
 					}
