@@ -880,7 +880,7 @@ function theme_user_header($user) {
 	$full_avatar = str_replace('_normal.', '.', theme_get_avatar($user));
 	$link = theme('external_link', $user->url);
 	$raw_date_joined = strtotime($user->created_at);
-	$date_joined = date('l jS F Y', $raw_date_joined);
+	$date_joined = date('Y-m-d H:i', $raw_date_joined);
 	$tweets_per_day = twitter_tweets_per_day($user, 1);
 	$bio = twitter_parse_tags($user->description);
 
@@ -1206,11 +1206,6 @@ function theme_timeline($feed) {
 		unset($row);
 		$class = 'status';
 
-		/*if ($page != 'user' && $avatar) {
-			$row[] = array('data' => $avatar, 'class' => 'avatar');
-			$class .= ' shift';
-		}*/
-
 		$row[] = array('data' => $html, 'class' => $class);
 		$class = 'tweet';
 
@@ -1239,7 +1234,7 @@ function twitter_is_reply($status) {
 
 function theme_followers($feed, $hide_pagination = false) {
 	$rows = array();
-	if (count($feed) == 0 || $feed == '[]') return '<p>No users to display.</p>';
+	if (count($feed) == 0 || $feed == '[]') return '<p>'.__('No users to display.').'</p>';
 
 	foreach ($feed->users->user as $user) {
 		$name = theme('full_name', $user);
@@ -1262,7 +1257,7 @@ function theme_followers($feed, $hide_pagination = false) {
 		} else if($last_tweet == 0) {
 			$content .= __("Never tweeted");
 		} else {
-			$content .= twitter_date('l jS F Y', $last_tweet);
+			$content .= twitter_date('Y-m-d H:i', $last_tweet);
 		}
 		
 		$content .= "</span>";

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetPutweets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 11:01+0800\n"
-"PO-Revision-Date: 2011-09-22 11:01+0800\n"
+"POT-Creation-Date: 2011-09-22 21:35+0800\n"
+"PO-Revision-Date: 2011-09-22 21:35+0800\n"
 "Last-Translator: NetPuter <netputer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -397,7 +397,7 @@ msgstr "昵称："
 
 #: E:\Code\NetPutweets/common/twitter.php:281
 #: E:\Code\NetPutweets/common/twitter.php:893
-#: E:\Code\NetPutweets/common/twitter.php:1252
+#: E:\Code\NetPutweets/common/twitter.php:1247
 msgid "Location: "
 msgstr "位置："
 
@@ -408,7 +408,7 @@ msgstr "链接："
 
 #: E:\Code\NetPutweets/common/twitter.php:281
 #: E:\Code\NetPutweets/common/twitter.php:891
-#: E:\Code\NetPutweets/common/twitter.php:1250
+#: E:\Code\NetPutweets/common/twitter.php:1245
 msgid "Bio: "
 msgstr "介绍："
 
@@ -593,7 +593,7 @@ msgid "Verified"
 msgstr "认证用户"
 
 #: E:\Code\NetPutweets/common/twitter.php:889
-#: E:\Code\NetPutweets/common/twitter.php:1261
+#: E:\Code\NetPutweets/common/twitter.php:1256
 msgid "Private/Protected"
 msgstr "隐私保护"
 
@@ -602,7 +602,7 @@ msgid "Joined: "
 msgstr "注册时间："
 
 #: E:\Code\NetPutweets/common/twitter.php:894
-#: E:\Code\NetPutweets/common/twitter.php:1257
+#: E:\Code\NetPutweets/common/twitter.php:1252
 msgid "Tweets Per Day"
 msgstr "推儿/天"
 
@@ -631,7 +631,7 @@ msgid "Direct Message"
 msgstr "发私信"
 
 #: E:\Code\NetPutweets/common/twitter.php:906
-#: E:\Code\NetPutweets/common/twitter.php:1254
+#: E:\Code\NetPutweets/common/twitter.php:1249
 msgid "Tweets"
 msgstr "推儿"
 
@@ -639,56 +639,60 @@ msgstr "推儿"
 msgid " ago"
 msgstr "前"
 
-#: E:\Code\NetPutweets/common/twitter.php:1253
+#: E:\Code\NetPutweets/common/twitter.php:1237
+msgid "No users to display."
+msgstr "没有用户可显示."
+
+#: E:\Code\NetPutweets/common/twitter.php:1248
 msgid "Info: "
 msgstr "概况："
 
-#: E:\Code\NetPutweets/common/twitter.php:1258
+#: E:\Code\NetPutweets/common/twitter.php:1253
 msgid "Last tweet: "
 msgstr "最近更新："
 
-#: E:\Code\NetPutweets/common/twitter.php:1263
+#: E:\Code\NetPutweets/common/twitter.php:1258
 msgid "Never tweeted"
 msgstr "还没推过呢"
 
-#: E:\Code\NetPutweets/common/twitter.php:1295
+#: E:\Code\NetPutweets/common/twitter.php:1290
 msgid "No tweets to display."
 msgstr "没有消息可显示"
 
-#: E:\Code\NetPutweets/common/twitter.php:1363
+#: E:\Code\NetPutweets/common/twitter.php:1358
 msgid "@"
 msgstr "回复"
 
-#: E:\Code\NetPutweets/common/twitter.php:1367
+#: E:\Code\NetPutweets/common/twitter.php:1362
 msgid "@@"
 msgstr "群回"
 
-#: E:\Code\NetPutweets/common/twitter.php:1371
+#: E:\Code\NetPutweets/common/twitter.php:1366
 msgid "DM"
 msgstr "私信"
 
-#: E:\Code\NetPutweets/common/twitter.php:1375
+#: E:\Code\NetPutweets/common/twitter.php:1370
 msgid "UNFAV"
 msgstr "不藏"
 
-#: E:\Code\NetPutweets/common/twitter.php:1377
+#: E:\Code\NetPutweets/common/twitter.php:1372
 msgid "FAV"
 msgstr "收藏"
 
-#: E:\Code\NetPutweets/common/twitter.php:1380
+#: E:\Code\NetPutweets/common/twitter.php:1375
 msgid "UNDO"
 msgstr "撤销"
 
-#: E:\Code\NetPutweets/common/twitter.php:1382
+#: E:\Code\NetPutweets/common/twitter.php:1377
 msgid "RT"
 msgstr "转发"
 
-#: E:\Code\NetPutweets/common/twitter.php:1385
-#: E:\Code\NetPutweets/common/twitter.php:1388
+#: E:\Code\NetPutweets/common/twitter.php:1380
+#: E:\Code\NetPutweets/common/twitter.php:1383
 msgid "DEL"
 msgstr "删除"
 
-#: E:\Code\NetPutweets/common/twitter.php:1394
+#: E:\Code\NetPutweets/common/twitter.php:1389
 msgid "GEO"
 msgstr "位置"
 
@@ -797,9 +801,6 @@ msgstr "重新登录"
 
 #~ msgid "Delete without confirmation"
 #~ msgstr "确认删除"
-
-#~ msgid "No users to display."
-#~ msgstr "没有用户可显示."
 
 #~ msgid "Invalid username or password."
 #~ msgstr "用户名或密码错误"

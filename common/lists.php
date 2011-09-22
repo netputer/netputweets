@@ -177,10 +177,10 @@ function theme_lists($json) {
 
 function theme_list_pagination($json) {
 	if ($cursor = (string) $json->next_cursor) {
-		$links[] = "<a href='{$_GET['q']}?cursor={$cursor}'>Next</a>";
+		$links[] = "<a href='{$_GET['q']}?cursor={$cursor}'>".__("Older")."</a>";
 	}
 	if ($cursor = (string) $json->previous_cursor) {
-		$links[] = "<a href='{$_GET['q']}?cursor={$cursor}'>Previous</a>";
+		$links[] = "<a href='{$_GET['q']}?cursor={$cursor}'>".__("Newer")."</a>";
 	}
 	if (count($links) > 0) return '<p>'.implode(' | ', $links).'</p>';
 }
