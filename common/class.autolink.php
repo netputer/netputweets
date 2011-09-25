@@ -394,10 +394,9 @@ class Twitter_Autolink extends Twitter_Regex {
    * @return  string  The link-wrapped hashtag.
    */
   protected function _addLinksToHashtags($matches) {
-    $replacement = $matches[1];
-    $element = $matches[2] . $matches[3];
-    $url = $this->url_base_hash . 'hash/' . $matches[3];
-    $replacement .= $this->wrap($url, $this->class_hash, $element);
+    $element = $matches[1].$matches[2].$matches[3];
+    $url = $this->url_base_hash . 'hash/' . $matches[2];
+	$replacement = $this->wrap($url, $this->class_hash, $element);
     return $replacement;
   }
 
