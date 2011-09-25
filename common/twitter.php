@@ -793,11 +793,13 @@ function twitter_mark_favourite_page($query) {
 	if (!is_numeric($id)) return;
 	if ($query[0] == 'unfavourite') {
 		$request = API_URL."favorites/destroy/$id.json";
+		$content = "<p>".__("Unfavourite Success")."</p>";
 	} else {
 		$request = API_URL."favorites/create/$id.json";
+		$content = "<p>".__("Favourite Success")."</p>";
 	}
 	twitter_process($request, true);
-	twitter_refresh();
+	theme('page', __("Favourites"), $content);
 }
 
 function twitter_home_page() {
@@ -1147,27 +1149,22 @@ function theme_timeline($feed) {
 		if (substr($_GET["q"], 0, 6) !== "status" && (setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($status->text)) {
 			$text = "<a href='".BASE_URL."status/{$status->id_str}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 		} else {
-			// $text = twitter_parse_tags($status->text, $status->entities);
 			$text = $status->text;
 		}
 
-		if (setting_fetch('showthumbs', 'yes') == 'yes') $media = twitter_get_media($status);
-
-		if (setting_fetch('buttontime', 'yes') == 'yes') {
-			$link = theme('status_time_link', $status, !$status->is_direct);
+		if (setting_fetch('showthumbs', 'yes') == 'yes') {
+			$media = twitter_get_media($status);
 		}
+
+		$link = theme('status_time_link', $status, !$status->is_direct);
 
 		$actions = theme('action_icons', $status);
 		$avatar = theme('avatar', theme_get_avatar($status->from));
-
-		if (setting_fetch('buttonfrom', 'yes') == 'yes') {
-			if ((substr($_GET['q'],0,4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser') == 'desktop')) {
-				$source = $status->source ? (" ".__("via")." {$status->source}") : '';
-			} else {
-				$source = $status->source ? (" ".__("via")." ".strip_tags($status->source) ."") : '';
-			}
+		
+		if ((substr($_GET['q'], 0, 4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser') == 'desktop')) {
+			$source = $status->source ? (" ".__("via")." {$status->source}") : '';
 		} else {
-			$source = NULL;
+			$source = $status->source ? (" ".__("via")." ".strip_tags($status->source) ."") : '';
 		}
 
 		if ($status->in_reply_to_status_id) {

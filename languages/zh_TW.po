@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetPutweets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 21:35+0800\n"
-"PO-Revision-Date: 2011-09-22 21:35+0800\n"
+"POT-Creation-Date: 2011-09-25 20:39+0800\n"
+"PO-Revision-Date: 2011-09-25 20:40+0800\n"
 "Last-Translator: NetPuter <netputer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -313,7 +313,7 @@ msgstr "將鏈接顯示為"
 #: E:\Code\NetPutweets/common/settings.php:168
 #: E:\Code\NetPutweets/common/settings.php:171
 #: E:\Code\NetPutweets/common/twitter.php:548
-#: E:\Code\NetPutweets/common/twitter.php:865
+#: E:\Code\NetPutweets/common/twitter.php:867
 msgid "Note: "
 msgstr "提示："
 
@@ -396,24 +396,24 @@ msgid "Name: "
 msgstr "暱稱："
 
 #: E:\Code\NetPutweets/common/twitter.php:281
-#: E:\Code\NetPutweets/common/twitter.php:893
-#: E:\Code\NetPutweets/common/twitter.php:1247
+#: E:\Code\NetPutweets/common/twitter.php:895
+#: E:\Code\NetPutweets/common/twitter.php:1244
 msgid "Location: "
 msgstr "位置："
 
 #: E:\Code\NetPutweets/common/twitter.php:281
-#: E:\Code\NetPutweets/common/twitter.php:892
+#: E:\Code\NetPutweets/common/twitter.php:894
 msgid "Link: "
 msgstr "鏈接："
 
 #: E:\Code\NetPutweets/common/twitter.php:281
-#: E:\Code\NetPutweets/common/twitter.php:891
-#: E:\Code\NetPutweets/common/twitter.php:1245
+#: E:\Code\NetPutweets/common/twitter.php:893
+#: E:\Code\NetPutweets/common/twitter.php:1242
 msgid "Bio: "
 msgstr "介紹："
 
 #: E:\Code\NetPutweets/common/twitter.php:284
-#: E:\Code\NetPutweets/common/twitter.php:904
+#: E:\Code\NetPutweets/common/twitter.php:906
 msgid "Update Profile"
 msgstr "修改資料"
 
@@ -572,127 +572,135 @@ msgstr "沒有提供用戶名"
 msgid "In reply to"
 msgstr "回覆"
 
-#: E:\Code\NetPutweets/common/twitter.php:831
+#: E:\Code\NetPutweets/common/twitter.php:796
+msgid "Unfavourite Success"
+msgstr "取消收藏成功"
+
+#: E:\Code\NetPutweets/common/twitter.php:799
+msgid "Favourite Success"
+msgstr "收藏成功"
+
+#: E:\Code\NetPutweets/common/twitter.php:833
 msgid "Hashtag"
 msgstr "標籤"
 
-#: E:\Code\NetPutweets/common/twitter.php:863
+#: E:\Code\NetPutweets/common/twitter.php:865
 msgid "Official Retweet"
 msgstr "官方 RT"
 
-#: E:\Code\NetPutweets/common/twitter.php:863
+#: E:\Code\NetPutweets/common/twitter.php:865
 msgid "or Traditional Retweet"
 msgstr "或者傳統 RT"
 
-#: E:\Code\NetPutweets/common/twitter.php:865
+#: E:\Code\NetPutweets/common/twitter.php:867
 msgid "It is not well suited to retweet a protected user 's tweet."
 msgstr "不建議 RT 隱私保護用戶的推兒"
 
-#: E:\Code\NetPutweets/common/twitter.php:888
+#: E:\Code\NetPutweets/common/twitter.php:890
 msgid "Verified"
 msgstr "認證用戶"
 
-#: E:\Code\NetPutweets/common/twitter.php:889
-#: E:\Code\NetPutweets/common/twitter.php:1256
+#: E:\Code\NetPutweets/common/twitter.php:891
+#: E:\Code\NetPutweets/common/twitter.php:1253
 msgid "Private/Protected"
 msgstr "隱私保護"
 
-#: E:\Code\NetPutweets/common/twitter.php:894
+#: E:\Code\NetPutweets/common/twitter.php:896
 msgid "Joined: "
 msgstr "註冊時間："
 
-#: E:\Code\NetPutweets/common/twitter.php:894
-#: E:\Code\NetPutweets/common/twitter.php:1252
+#: E:\Code\NetPutweets/common/twitter.php:896
+#: E:\Code\NetPutweets/common/twitter.php:1249
 msgid "Tweets Per Day"
 msgstr "推兒/天"
 
-#: E:\Code\NetPutweets/common/twitter.php:895
+#: E:\Code\NetPutweets/common/twitter.php:897
 msgid "View picture"
 msgstr "查看頭像"
 
-#: E:\Code\NetPutweets/common/twitter.php:898
+#: E:\Code\NetPutweets/common/twitter.php:900
 msgid "Follow"
 msgstr "關注"
 
-#: E:\Code\NetPutweets/common/twitter.php:900
+#: E:\Code\NetPutweets/common/twitter.php:902
 msgid "Unfollow"
 msgstr "取消關注"
 
-#: E:\Code\NetPutweets/common/twitter.php:902
+#: E:\Code\NetPutweets/common/twitter.php:904
 msgid "Block"
 msgstr "屏蔽"
 
-#: E:\Code\NetPutweets/common/twitter.php:902
+#: E:\Code\NetPutweets/common/twitter.php:904
 msgid "Report Spam"
 msgstr "舉報"
 
-#: E:\Code\NetPutweets/common/twitter.php:906
+#: E:\Code\NetPutweets/common/twitter.php:908
 msgid "Direct Message"
 msgstr "發私信"
 
-#: E:\Code\NetPutweets/common/twitter.php:906
-#: E:\Code\NetPutweets/common/twitter.php:1249
+#: E:\Code\NetPutweets/common/twitter.php:908
+#: E:\Code\NetPutweets/common/twitter.php:1246
 msgid "Tweets"
 msgstr "推兒"
 
-#: E:\Code\NetPutweets/common/twitter.php:930
+#: E:\Code\NetPutweets/common/twitter.php:932
 msgid " ago"
 msgstr "前"
 
-#: E:\Code\NetPutweets/common/twitter.php:1237
+#: E:\Code\NetPutweets/common/twitter.php:1234
 msgid "No users to display."
 msgstr "没有用户可显示."
 
-#: E:\Code\NetPutweets/common/twitter.php:1248
+#: E:\Code\NetPutweets/common/twitter.php:1245
 msgid "Info: "
 msgstr "概況："
 
-#: E:\Code\NetPutweets/common/twitter.php:1253
+#: E:\Code\NetPutweets/common/twitter.php:1250
 msgid "Last tweet: "
 msgstr "最近更新："
 
-#: E:\Code\NetPutweets/common/twitter.php:1258
+#: E:\Code\NetPutweets/common/twitter.php:1255
 msgid "Never tweeted"
 msgstr "还没推过呢"
 
-#: E:\Code\NetPutweets/common/twitter.php:1290
+#: E:\Code\NetPutweets/common/twitter.php:1287
 msgid "No tweets to display."
 msgstr "沒有消息可顯示"
 
-#: E:\Code\NetPutweets/common/twitter.php:1358
+#: E:\Code\NetPutweets/common/twitter.php:1355
 msgid "@"
 msgstr "回覆"
 
-#: E:\Code\NetPutweets/common/twitter.php:1362
+#: E:\Code\NetPutweets/common/twitter.php:1359
 msgid "@@"
 msgstr "群回"
 
-#: E:\Code\NetPutweets/common/twitter.php:1366
-msgid "DM"
-msgstr "私信"
-
-#: E:\Code\NetPutweets/common/twitter.php:1370
+#: E:\Code\NetPutweets/common/twitter.php:1368
 msgid "UNFAV"
 msgstr "不藏"
 
-#: E:\Code\NetPutweets/common/twitter.php:1372
+#: E:\Code\NetPutweets/common/twitter.php:1370
 msgid "FAV"
 msgstr "收藏"
 
-#: E:\Code\NetPutweets/common/twitter.php:1375
+#: E:\Code\NetPutweets/common/twitter.php:1373
 msgid "UNDO"
 msgstr "撤銷"
 
-#: E:\Code\NetPutweets/common/twitter.php:1377
+#: E:\Code\NetPutweets/common/twitter.php:1375
 msgid "RT"
 msgstr "轉發"
 
-#: E:\Code\NetPutweets/common/twitter.php:1380
-#: E:\Code\NetPutweets/common/twitter.php:1383
+#: E:\Code\NetPutweets/common/twitter.php:1378
+#: E:\Code\NetPutweets/common/twitter.php:1382
 msgid "DEL"
 msgstr "刪除"
 
-#: E:\Code\NetPutweets/common/twitter.php:1389
+#: E:\Code\NetPutweets/common/twitter.php:1381
+msgid "DM"
+msgstr "私信"
+
+#: E:\Code\NetPutweets/common/twitter.php:1388
 msgid "GEO"
 msgstr "位置"
 
