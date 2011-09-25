@@ -884,7 +884,7 @@ function theme_user_header($user) {
 	$tweets_per_day = twitter_tweets_per_day($user, 1);
 	$bio = twitter_parse_tags($user->description);
 
-	$out = "<div class='profile'><table><tr>".(setting_fetch('avataro', 'yes') == 'yes' ? "<td width='50'><a href='$full_avatar'>".theme('avatar', $user->profile_image_url, 1)."</a></td>" : "")."<td class='shift'><b>{$name}</b> <small>";
+	$out = "<div class='profile'><table><tr>".(setting_fetch('avataro', 'yes') == 'yes' ? "<td width='50'><a href='$full_avatar'>".theme('avatar', theme_get_avatar($user), 1)."</a></td>" : "")."<td class='shift'><b>{$name}</b> <small>";
 	if ($user->verified == true) $out .= '<i>'.__("Verified").'</i> ';
 	if ($user->protected == true) $out .= '<i>'.__("Private/Protected").'</i>';
 	$out .= "<br /><span class='about'>";
@@ -1144,7 +1144,7 @@ function theme_timeline($feed) {
 			$date = $status->created_at;
 		}
 
-		if ((setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($status->text)) {
+		if (substr($_GET["q"], 0, 6) !== "status" && (setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($status->text)) {
 			$text = "<a href='".BASE_URL."status/{$status->id_str}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 		} else {
 			// $text = twitter_parse_tags($status->text, $status->entities);
@@ -1177,7 +1177,7 @@ function theme_timeline($feed) {
 		}
 
 		if (setting_fetch('avataro', 'yes') == 'yes') {
-			$html = "<table><tr><td width='".(setting_fetch('browser')=='touch' ? '50' : '26')."'>$avatar</td><td>";
+			$html = "<table><tr valign='top'><td width='".(setting_fetch('browser')=='touch' ? '50' : '26')."'>$avatar</td><td>";
 		} else {
 			$html = "";
 		}
@@ -1361,10 +1361,11 @@ function theme_action_icons($status) {
 	if($status->entities->user_mentions) {
 		$actions[] = theme('action_icon', "user/{$from}/replyall/{$status->id_str}", 'images/replyall.png', __('@@'));
 	}
-
+/*
 	if (!user_is_current_user($from)) {
 		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
 	}
+*/
 	if (!$status->is_direct) {
 		if ($status->favorited == '1') {
 			$actions[] = theme('action_icon', BASE_URL."unfavourite/{$status->id_str}", 'images/star.png', __('UNFAV'));
@@ -1380,6 +1381,7 @@ function theme_action_icons($status) {
 			$actions[] = theme('action_icon', "confirm/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 		}
 	} else {
+		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
 		$actions[] = theme('action_icon', BASE_URL."directs/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 	}
 	if ($geo !== null) {
@@ -1390,7 +1392,6 @@ function theme_action_icons($status) {
 	}
 	return implode(' ', $actions);
 }
-
 
 function theme_action_icon($url, $image_url, $text) {
 	if (setting_fetch('buttonintext', 'yes') == 'yes') {

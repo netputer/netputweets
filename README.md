@@ -7,6 +7,8 @@
 
 “奶瓶腿”是一个安全的、个性的中文 Twitter 手机客户端，基于 [Dabr](http://code.google.com/p/dabr) 源码，由 @[NetPuter](https://twitter.com/NetPuter) 修改、架设。同时也感谢 @[iChada](https://twitter.com/iChada) @[17th](https://twitter.com/17th) @[yegle](https://twitter.com/yegle) @[luosheng](https://twitter.com/luosheng) @[LonelySwan](https://twitter.com/LonelySwan) 的协助。
 
+如果你关注奶瓶 @[NetPuter](https://twitter.com/NetPuter) 和他折腾的一些项目，并且希望帮助他，欢迎以[捐助的形式](http://orzdream.com/donate/)使他更好地折腾。
+
 架设
 ----
 
