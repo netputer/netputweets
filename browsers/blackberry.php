@@ -6,8 +6,8 @@ function blackberry_theme_pagination() {
 	}
 	if ($page == 0) $page = 1;
 	$ht = ((BASE_URL == BASE_URF) ? "?" : "&");
-	if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}{$ht}page=".($page-1)."$query' accesskey='8'>".__("Newer")."</a> 8";
-	$links[] = "<a href='".BASE_URL."{$_GET['q']}{$ht}page=".($page+1)."$query' accesskey='9'>".__("Older")."</a> 9";
+	if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}{$ht}page=".($page-1)."$query'>".__("Newer")."</a>";
+	$links[] = "<a href='".BASE_URL."{$_GET['q']}{$ht}page=".($page+1)."$query'>".__("Older")."</a>";
 	return '<div>'.implode(' | ', $links).'</div>';
 }
 
