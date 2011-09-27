@@ -40,12 +40,12 @@ a.tl-rt:hover{background-position:-40px -48px;}
 #header{background:#FFF;height:60px;}
 #logo{float:left;}
 #logo a{display:block;text-indent:-9999em;background:url(../images/logo.png) no-repeat 0 0;height:60px;width:170px;}
-#nav{float:right;list-style-type:none;margin:33px 58px 0 0;}
+#nav{float:right;list-style-type:none;margin:33px 0 0 0;}
 #nav li{float:left;margin:0 5px;}
 #nav li.current{border-bottom:3px #079ACC solid;}
-#nav li a{color:#079ACC;text-decoration:none;display:block;width:48px;height:26px;line-height:25px;text-align:center;}
+#nav li a{color:#079ACC;text-decoration:none;display:block;width:60px;height:26px;line-height:25px;text-align:center;}
 #nav li a:hover{color:#FFF;background:#079ACC;}
-#sub-nav{margin:0;padding:0;list-style:none;display:none;position:absolute;background:#FFF;}
-#sub-nav li a{color:#079ACC;text-decoration:none;display:block;width:48px;height:26px;line-height:25px;text-align:center;}
+#sub-nav{margin:0;padding:0;list-style:none;display:none;position:absolute;background:#FFF;border:1px solid #079ACC;}
+#sub-nav li a{color:#079ACC;text-decoration:none;display:block;width:60px;height:26px;line-height:25px;text-align:center;}
 #sub-nav li a:hover{color:#FFF;background:#079ACC;}
 #statusform{width:700px;margin:5px auto;text-align:right;}
