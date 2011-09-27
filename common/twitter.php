@@ -348,12 +348,12 @@ function twitter_fetch($url) {
 }
 
 function twitter_parse_tags($input, $entities = false) {
-
+	//Linebreaks.  Some clients insert \n for formatting.
+	$out = nl2br($input);
+	
 	// Use the Entities to replace hyperlink URLs
 	// http://dev.twitter.com/pages/tweet_entities
 	if ($entities) {
-		$out = $input;
-
 		foreach ($entities->urls as $urls) {
 			if ($urls->expanded_url != "") {
 				$display_url = $urls->expanded_url;
@@ -385,24 +385,18 @@ function twitter_parse_tags($input, $entities = false) {
 		// Create an array containing all URLs
 		$urls = Twitter_Extractor::create($input)->extractURLs();
 
-		$out = $input;
-
 		// Hyperlink the URLs
 		$out = Twitter_Autolink::create($out)->addLinksToURLs();
+		
+		// Hyperlink the #
+		$out = Twitter_Autolink::create($out)->setTarget('')->addLinksToHashtags();
 	}
 
 	// Hyperlink the @ and lists
-	$out = Twitter_Autolink::create($out)
-				->setTarget('')
-				->addLinksToUsernamesAndLists();
+	$out = Twitter_Autolink::create($out)->setTarget('')->addLinksToUsernamesAndLists();
 
 	// Hyperlink the #
-	$out = Twitter_Autolink::create($out)
-				->setTarget('')
-				->addLinksToHashtags();
-
-	//Linebreaks.  Some clients insert \n for formatting.
-	$out = nl2br($out);
+	$out = Twitter_Autolink::create($out)->setTarget('')->addLinksToHashtags();
 
 	//Return the completed string
 	return $out;
@@ -890,26 +884,35 @@ function theme_user_header($user) {
 	$tweets_per_day = twitter_tweets_per_day($user, 1);
 	$bio = twitter_parse_tags($user->description);
 
-	$out = "<div class='profile'><table><tr>".(setting_fetch('avataro', 'yes') == 'yes' ? "<td width='50'><a href='$full_avatar'>".theme('avatar', theme_get_avatar($user), 1)."</a></td>" : "")."<td class='shift'><b>{$name}</b> <small>";
+	$out = "<div class='profile'><span class='avatar'><a href='$full_avatar'>".theme('avatar', theme_get_avatar($user), 1)."</a></span><span class='status shift48'><b>{$name}</b><br /><small>";
+
 	if ($user->verified == true) $out .= '<i>'.__("Verified").'</i> ';
 	if ($user->protected == true) $out .= '<i>'.__("Private/Protected").'</i>';
-	$out .= "<br /><span class='about'>";
+	$out .= "<span class='about'>";
 	if ($user->description != "") $out .= __("Bio: ")."{$bio}<br />";
 	if ($user->url != "") $out .= __("Link: ")."{$link}<br />";
 	if ($user->location != "") $out .= __("Location: ")."<a href='http://maps.google.com/m?q={$user->location}' target='_blank'>{$user->location}</a><br />";
-	$out .= __("Joined: ")."{$date_joined} ($tweets_per_day ".__("Tweets Per Day").")</small></span></td></tr></table><br /><span class='features'>";
-	if (setting_fetch('avataro', 'yes') != 'yes') $out .= "<a href='$full_avatar'>".__("View picture")."</a> | ";
+	$out .= __("Joined: ")."{$date_joined} ($tweets_per_day ".__("Tweets Per Day").")</small></span></span><br /><span class='features'>";
+	
 	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
 		if ($user->following !== true) {
 			$out.= "<a href='".BASE_URL."follow/{$user->screen_name}'>".__("Follow")."</a>";
 		} else {
 			$out.= "<a href='".BASE_URL."unfollow/{$user->screen_name}'>".__("Unfollow")."</a>";
 		}
-		$out .= " | <a href='".BASE_URL."confirm/block/{$user->screen_name}/{$user->id_str}'>".__("Block")."?</a> | <a href='".BASE_URL."confirm/spam/{$user->screen_name}/{$user->id_str}'>".__('Report Spam')."</a> | ";
+		
+		$out .= " - <a href='".BASE_URL."directs/create/{$user->screen_name}'>".__("Direct Message")."</a>";
 	} else {
-		$out .= "<a href='".BASE_URL."profile'>".__("Update Profile")."</a> | ";
+		$out .= "<a href='".BASE_URL."profile'>".__("Update Profile")."</a>";
 	}
-	$out.= "<a href='".BASE_URL."directs/create/{$user->screen_name}'>".__("Direct Message")."</a> || <b>{$user->statuses_count} ".__("Tweets")."</b> | <a href='".BASE_URL."followers/{$user->screen_name}'>{$user->followers_count} ".__("Followers")."</a> | <a href='".BASE_URL."friends/{$user->screen_name}'>{$user->friends_count} ".__("Friends")."</a> | <a href='".BASE_URL."favourites/{$user->screen_name}'>{$user->favourites_count} ".__("Favourites")."</a> | <a href='".BASE_URL."lists/{$user->screen_name}'>{$user->listed_count} ".__("Lists")."</a></span></div>";
+	
+	$out.= " | <b>{$user->statuses_count} ".__("Tweets")."</b> - <a href='".BASE_URL."followers/{$user->screen_name}'>{$user->followers_count} ".__("Followers")."</a> - <a href='".BASE_URL."friends/{$user->screen_name}'>{$user->friends_count} ".__("Friends")."</a> - <a href='".BASE_URL."favourites/{$user->screen_name}'>{$user->favourites_count} ".__("Favourites")."</a> - <a href='".BASE_URL."lists/{$user->screen_name}'>{$user->listed_count} ".__("Lists")."</a>";
+	
+	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
+		$out .= " | <a href='".BASE_URL."confirm/block/{$user->screen_name}/{$user->id_str}'>".__("Block")."?</a> - <a href='".BASE_URL."confirm/spam/{$user->screen_name}/{$user->id_str}'>".__('Report Spam')."</a>";
+	}
+	
+	$out .= "</span></div>";
 	return $out;
 }
 
@@ -923,7 +926,7 @@ function theme_get_avatar($object) {
 
 function theme_avatar($url, $force_large = false) {
 	$size = $force_large ? 48 : 24;
-	if (setting_fetch('avataro', 'yes') == 'yes') {
+	if (substr($_GET['q'], 0, 4) == 'user' || setting_fetch('avataro', 'yes') == 'yes') {
 		return "<img class='shead' src='$url' height='$size' width='$size' />";
 	} else {
 		return '';

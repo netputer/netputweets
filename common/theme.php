@@ -150,7 +150,7 @@ function theme_colours() {
 
 function theme_css() {
 	$c = theme('colours');
-	$out = "<style type='text/css'>a{color:#{$c->links};}form{margin:.3em;}img{border:0;}small,small a{color:#{$c->small};font-weight:normal;}body{background:#{$c->bodybg};color:#{$c->bodyt};margin:0;font:90% sans-serif;}.odd{background:#{$c->odd};}.even{background:#{$c->even};}.reply{background:#{$c->replyodd};}.reply.even{background:#{$c->replyeven};}.menu{color:#{$c->menut};background:#{$c->menubg};padding:2px;}.menu a{color:#{$c->menua};text-decoration:none;}.tweet,.features{padding:5px}.stext a,.features a{font-weight:bold;}.date{padding:5px;font-size:0.75em;color:#{$c->small}}.avatar{display:block;left:0.3em;margin:0;overflow:hidden;position:absolute;}.status{display:block;}.shift{margin-left:30px;min-height:24px;}".setting_fetch('css')."</style>";
+	$out = "<style type='text/css'>a{color:#{$c->links};}form{margin:.3em;}img{border:0;}small,small a{color:#{$c->small};font-weight:normal;}body{background:#{$c->bodybg};color:#{$c->bodyt};margin:0;font:90% sans-serif;}.odd{background:#{$c->odd};}.even{background:#{$c->even};}.reply{background:#{$c->replyodd};}.reply.even{background:#{$c->replyeven};}.menu{color:#{$c->menut};background:#{$c->menubg};padding:2px;}.menu a{color:#{$c->menua};text-decoration:none;}.tweet,.features{padding:5px}.stext a,.features a{font-weight:bold;}.date{padding:5px;font-size:0.75em;color:#{$c->small}}.avatar{display:block;left:0.3em;margin:0;overflow:hidden;position:absolute;}.status{display:block;}.shift{margin-left:30px;min-height:24px;}.shift48{margin-left:60px;min-height:48px;}".setting_fetch('css')."</style>";
 	return $out;
 }
 
