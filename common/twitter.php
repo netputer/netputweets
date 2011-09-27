@@ -622,6 +622,10 @@ function twitter_retweet($query) {
 function twitter_replies_page() {
 	$count = setting_fetch('tpp', 20);
 	$request = API_URL."statuses/mentions.json?include_entities=true&count=$count&page=".intval($_GET['page']);
+	
+	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
+	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
+
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'replies');
 	$content = theme('status_form');
@@ -632,6 +636,10 @@ function twitter_replies_page() {
 function twitter_retweets_page() {
 	$count = setting_fetch('tpp', 20);
 	$request = API_URL."statuses/retweeted_to_me.json?include_entities=true&count=$count&page=".intval($_GET['page']);
+	
+	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
+	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
+	
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'retweets');
 	$content = theme('status_form');
@@ -721,6 +729,7 @@ function twitter_search_page() {
 function twitter_search($search_query) {
 	$page = (int) $_GET['page'];
 	if ($page == 0) $page = 1;
+	
 	$request = API_URLS."search.json?include_entities=true&result_type=recent&q=$search_query&page=$page";
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'search');
@@ -807,13 +816,8 @@ function twitter_home_page() {
 	$count = setting_fetch('tpp', 20);
 	$request = API_URL."statuses/home_timeline.json?include_entities=true&count=$count&include_rts=true&page=".intval($_GET['page']);
 
-	if ($_GET['max_id']) {
-		$request .= "&max_id=".$_GET['max_id'];
-	}
-
-	if ($_GET['since_id']) {
-		$request .= "&since_id=".$_GET['since_id'];
-	}
+	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
+	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
 
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'friends');
@@ -1006,22 +1010,22 @@ function twitter_standard_timeline($feed, $source) {
 			return $output;
 		case 'search':
 			foreach ($feed->results as $status) {
-			$output[(string) $status->id_str] = (object) array(
-				'id' => $status->id_str,
-				'text' => $status->text,
-				'source' => strpos($status->source, '&lt;') !== false ? html_entity_decode($status->source) : $status->source,
-				'from' => (object) array(
-					'id' => $status->from_user_id,
-					'screen_name' => $status->from_user,
-					'profile_image_url' => $status->profile_image_url,
-				),
-				'to' => (object) array(
-					'id' => $status->to_user_id,
-					'screen_name' => $status->to_user,
-				),
-				'created_at' => $status->created_at,
-				'geo' => $status->geo,
-			);
+				$output[(string) $status->id_str] = (object) array(
+					'id' => $status->id_str,
+					'text' => $status->text,
+					'source' => strpos($status->source, '&lt;') !== false ? html_entity_decode($status->source) : $status->source,
+					'from' => (object) array(
+						'id' => $status->from_user_id,
+						'screen_name' => $status->from_user,
+						'profile_image_url' => $status->profile_image_url,
+					),
+					'to' => (object) array(
+						'id' => $status->to_user_id,
+						'screen_name' => $status->to_user,
+					),
+					'created_at' => $status->created_at,
+					'geo' => $status->geo,
+				);
 			}
 			return $output;
 
@@ -1107,8 +1111,26 @@ function theme_timeline($feed) {
 	$rows = array();
 	$page = menu_current_page();
 	$date_heading = false;
-	$first=0;
-
+	
+	$need_max_id = in_array(substr($_GET["q"], 0, 4), array("", "repl", "retw"));
+	$max_id = $since_id = 0;
+	
+	if ($need_max_id) {
+		$first = 0;
+		
+		foreach ($feed as $status) {
+			if ($first == 0) {
+				$since_id = $status->id;
+				$first++;
+			} else {
+				$max_id =  $status->id;
+				if ($status->original_id) {
+					$max_id = $status->original_id;
+				}
+			}
+		}
+	}
+	
 	foreach ($feed as &$status) {
 		$status->text = twitter_parse_tags($status->text, $status->entities);
 	}
@@ -1120,16 +1142,6 @@ function theme_timeline($feed) {
 	}
 
 	foreach ($feed as $status) {
-		if ($first==0) {
-			$since_id = $status->id;
-			$first++;
-		} else {
-			$max_id =  $status->id;
-			if ($status->original_id) {
-				$max_id =  $status->original_id;
-			}
-		}
-
 		$time = strtotime($status->created_at);
 
 		if ($time > 0) {
@@ -1213,8 +1225,9 @@ function theme_timeline($feed) {
 	$content = theme('table', array(), $rows, array('class' => 'timeline'));
 
 	if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
-		$content .= theme('pagination');
+		$content .= theme('pagination', $max_id);
 	}
+	
 	return $content;
 }
 
@@ -1329,15 +1342,18 @@ function theme_external_link($url) {
 	return "<a href='$url'>$atext</a>";
 }
 
-function theme_pagination() {
+function theme_pagination($max_id = false) {
 	$page = intval($_GET['page']);
-	if (preg_match('#&q(.*)#', $_SERVER['QUERY_STRING'], $matches)) {
-		$query = $matches[0];
-	}
+	if (preg_match('#&q(.*)#', $_SERVER['QUERY_STRING'], $matches)) $query = $matches[0];
 	if ($page == 0) $page = 1;
-	$ht = ((BASE_URL == BASE_URF) ? "?" : "&");
-	$links[] = "<a href='".BASE_URL."{$_GET['q']}{$ht}page=".($page+1)."$query'>".__("Older")."</a>";
-	if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}{$ht}page=".($page-1)."$query'>".__("Newer")."</a>";
+
+	if ($max_id == false) {
+		$links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page+1)."$query'>".__("Older")."</a>";
+		if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page-1)."$query'>".__("Newer")."</a>";
+	} else {
+		$links[] = "<a href='".BASE_URL."{$_GET['q']}?max_id=$max_id'>".__("More")." &raquo;</a>";
+	}
+
 	return '<p class="pagination">'.implode(' | ', $links).'</p>';
 }
 
