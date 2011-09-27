@@ -884,35 +884,48 @@ function theme_user_header($user) {
 	$tweets_per_day = twitter_tweets_per_day($user, 1);
 	$bio = twitter_parse_tags($user->description);
 
-	$out = "<div class='profile'><span class='avatar'><a href='$full_avatar'>".theme('avatar', theme_get_avatar($user), 1)."</a></span><span class='status shift48'><b>{$name}</b><br /><small>";
+	$out = "<div class='profile'>";
+	
+	if (setting_fetch('avataro', 'yes') == 'yes') {
+		$out .= "<span class='avatar'><a href='$full_avatar'>".theme('avatar', theme_get_avatar($user), 1)."</a></span><span class='status shift48'>";
+	} else {
+		$out .= "<span class='status'>";
+	}
+	
+	$out .= "<b>{$name}</b> ";
 
-	if ($user->verified == true) $out .= '<i>'.__("Verified").'</i> ';
-	if ($user->protected == true) $out .= '<i>'.__("Private/Protected").'</i>';
-	$out .= "<span class='about'>";
-	if ($user->description != "") $out .= __("Bio: ")."{$bio}<br />";
-	if ($user->url != "") $out .= __("Link: ")."{$link}<br />";
-	if ($user->location != "") $out .= __("Location: ")."<a href='http://maps.google.com/m?q={$user->location}' target='_blank'>{$user->location}</a><br />";
-	$out .= __("Joined: ")."{$date_joined} ($tweets_per_day ".__("Tweets Per Day").")</small></span></span><br /><span class='features'>";
+	if ($user->verified == true) $out .= '<small><i>'.__("Verified").'</i></small> ';
+	if ($user->protected == true) $out .= '<small><i>'.__("Private/Protected").'</i></small>';
+	
+	$out .= "<br /><span class='features'>[ ";
+	
+	if (setting_fetch('avataro', 'yes') != 'yes') $out .= "<a href='$full_avatar'>".__("View picture")."</a> | ";
 	
 	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
 		if ($user->following !== true) {
-			$out.= "<a href='".BASE_URL."follow/{$user->screen_name}'>".__("Follow")."</a>";
+			$out .= "<a href='".BASE_URL."follow/{$user->screen_name}'>".__("Follow")."</a>";
 		} else {
-			$out.= "<a href='".BASE_URL."unfollow/{$user->screen_name}'>".__("Unfollow")."</a>";
+			$out .= "<a href='".BASE_URL."unfollow/{$user->screen_name}'>".__("Unfollow")."</a>";
 		}
 		
-		$out .= " - <a href='".BASE_URL."directs/create/{$user->screen_name}'>".__("Direct Message")."</a>";
+		$out .= " | <a href='".BASE_URL."directs/create/{$user->screen_name}'>".__("Direct Message")."</a>";
 	} else {
 		$out .= "<a href='".BASE_URL."profile'>".__("Update Profile")."</a>";
 	}
 	
-	$out.= " | <b>{$user->statuses_count} ".__("Tweets")."</b> - <a href='".BASE_URL."followers/{$user->screen_name}'>{$user->followers_count} ".__("Followers")."</a> - <a href='".BASE_URL."friends/{$user->screen_name}'>{$user->friends_count} ".__("Friends")."</a> - <a href='".BASE_URL."favourites/{$user->screen_name}'>{$user->favourites_count} ".__("Favourites")."</a> - <a href='".BASE_URL."lists/{$user->screen_name}'>{$user->listed_count} ".__("Lists")."</a>";
+	$out .= " ] [ {$user->statuses_count} ".__("Tweets")." | <a href='".BASE_URL."followers/{$user->screen_name}'>{$user->followers_count} ".__("Followers")."</a> | <a href='".BASE_URL."friends/{$user->screen_name}'>{$user->friends_count} ".__("Friends")."</a> | <a href='".BASE_URL."favourites/{$user->screen_name}'>{$user->favourites_count} ".__("Favourites")."</a> | <a href='".BASE_URL."lists/{$user->screen_name}'>{$user->listed_count} ".__("Lists")."</a> ]";
 	
 	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
-		$out .= " | <a href='".BASE_URL."confirm/block/{$user->screen_name}/{$user->id_str}'>".__("Block")."?</a> - <a href='".BASE_URL."confirm/spam/{$user->screen_name}/{$user->id_str}'>".__('Report Spam')."</a>";
+		$out .= " [ <a href='".BASE_URL."confirm/block/{$user->screen_name}/{$user->id_str}'>".__("Block")."?</a> - <a href='".BASE_URL."confirm/spam/{$user->screen_name}/{$user->id_str}'>".__('Report Spam')."</a> ]";
 	}
 	
-	$out .= "</span></div>";
+	$out .= "</span><br /><small class='about'>";
+
+	if ($user->description != "") $out .= __("Bio: ")."{$bio}<br />";
+	if ($user->url != "") $out .= __("Link: ")."{$link}<br />";
+	if ($user->location != "") $out .= __("Location: ")."<a href='http://maps.google.com/m?q={$user->location}' target='_blank'>{$user->location}</a><br />";
+	
+	$out .= __("Joined: ")."{$date_joined} ($tweets_per_day ".__("Tweets Per Day").")</small></span></div>";
 	return $out;
 }
 
@@ -926,7 +939,7 @@ function theme_get_avatar($object) {
 
 function theme_avatar($url, $force_large = false) {
 	$size = $force_large ? 48 : 24;
-	if (substr($_GET['q'], 0, 4) == 'user' || setting_fetch('avataro', 'yes') == 'yes') {
+	if (setting_fetch('avataro', 'yes') == 'yes') {
 		return "<img class='shead' src='$url' height='$size' width='$size' />";
 	} else {
 		return '';
