@@ -8,14 +8,11 @@ function touch_theme_search_form($query) {
 	return desktop_theme_search_form($query);
 }
 
-function touch_theme_avatar($url, $force_large = false) {
+function touch_theme_avatar($url, $force_large = true) {
 	if (setting_fetch('avataro', 'yes') == 'yes') {
-		if (FORCE_SSL == 1) {
-			$url = preg_replace("/^http:\/\/[^.]+\.twimg\.com\/(.+)$/i", "https://s3.amazonaws.com/twitter_production/$1", $url);
-		}
-		return "<img class='shead' src='$url' width='48' height='48' />";
+		return "<img class='shead' src='$url' height='48' width='48' />";
 	} else {
-		return null;
+		return '';
 	}
 }
 

@@ -16,3 +16,7 @@ body.show-menu #menu-extras { display: block; }
 .pagination{text-align:center;margin:20px 0 30px 0;}
 .pagination a{border:1px solid #DDDDDD;padding:2px 5px;text-decoration:none;}
 .pagination a:hover {border-color:#ccc;background:#06c;color:#fff;}
+
+.avatar{display:block;left:0.3em;margin:0;overflow:hidden;position:absolute;}
+.status{display:block;}
+.shift{margin-left:54px;min-height:48px;

@@ -1173,11 +1173,7 @@ function theme_timeline($feed) {
 			$replyto = null;
 		}
 
-		if (setting_fetch('avataro', 'yes') == 'yes') {
-			$html = "<table><tr valign='top'><td width='".(setting_fetch('browser')=='touch' ? '50' : '26')."'>$avatar</td><td>";
-		} else {
-			$html = "";
-		}
+		$html = "";
 
 		$html .= "<b class='suser'><a href='".BASE_URL."user/{$status->from->screen_name}'>{$status->from->screen_name}</a></b> ";
 		if (setting_fetch('buttonend') == 'yes') {
@@ -1196,13 +1192,14 @@ function theme_timeline($feed) {
 			$html .= " <small class='sretweet'>".__("retweeted by")." <a href='".BASE_URL."user/{$retweeted_by}'>{$retweeted_by}</a>{$retweeted_times_str} ".__("<span style='display:none;'>zhuanfa</span>")."</small>";
 		}
 
-		if (setting_fetch('avataro', 'yes') == 'yes') {
-			$html .= "</td></tr></table>";
-		}
-
 		unset($row);
 		$class = 'status';
 
+		if ($page != 'user' && $avatar)	{
+			$row[] = array('data' => $avatar, 'class' => 'avatar');
+			$class .= ' shift';
+		}
+		
 		$row[] = array('data' => $html, 'class' => $class);
 		$class = 'tweet';
 
