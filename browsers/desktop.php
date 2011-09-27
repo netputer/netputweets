@@ -3,11 +3,13 @@ function desktop_theme_status_form($text = '', $in_reply_to_id = NULL, $is_deskt
 	if (user_is_authenticated()) {
 		$fixedtags = ((setting_fetch('fixedtago', 'no') == "yes") && ($text == '')) ? " #".setting_fetch('fixedtagc') : null;
 		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea><div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" /> <span id="remaining">140</span> ';
+		
 		if (substr($_GET["q"], 0, 4) !== "user") {
 			$output .= ' <a href="'.BASE_URL.'upload">'.__('Upload Picture').'</a>';
 		}
+		
 		$output .= '</div></form>';
-		if ((setting_fetch('browser') == null) && $is_desktop) $output .= ">> ".__("On PC/Laptop? Why not try Nai Ping mode, for desktop better! Change it in")." [".__("Settings")."]->[".__("Global Settings")."]->[".__("Mode")."] .";
+
 		return $output;
 	}
 }

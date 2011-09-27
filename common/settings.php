@@ -102,7 +102,6 @@ function settings_page($args) {
 		'touch' => __("Touch phone"),
 		'desktop' => __("PC/Laptop"),
 		'blackberry' => __("BlackBerry (Pagination At Bottom)"),
-		'naiping' => __("Nai Ping (For PC Only)"),
 	);
 
 	$locale = array(
