@@ -538,12 +538,12 @@ function twitter_confirmation_page($query) {
 			$request = API_URL."statuses/show/$target.json";
 			$status = twitter_process($request);
 			$parsed = $status->text;
-			$content = "<p>".__("Are you really sure you want to")." ".__("delete your tweet")."?</p>";
-			$content .= "<ul><li>".__("Tweet").": $parsed</li><li>".__("Note: ").__("There is no way to undo this action").".</li></ul>";
+			$content = "<p>".__("Are you really sure you want to")." ".__("delete your tweet?")."</p>";
+			$content .= "<ul><li>".__("Tweet: ")."$parsed</li><li>".__("Note: ").__("There is no way to undo this action.")."</li></ul>";
 		break;
 		case 'spam':
 			$content  = "<p>".__("Are you really sure you want to")." ".__("report")." <strong>$target</strong> ".__("as a spammer?")."</p>";
-			$content .= "<p>".__("They won't be able to follow you").".</p>";
+			$content .= "<p>".__("They won't be able to follow you.")."</p>";
 		break;
 		}
 	$content .= "<form action='".BASE_URL."$action/$target' method='post'><input type='submit' value='Yes' /></form>";
@@ -1134,22 +1134,22 @@ function theme_timeline($feed) {
 	if ($need_max_id) {
 		$first = 0;
 		
-		foreach ($feed as $status) {
+		foreach ($feed as &$status) {
 			if ($first == 0) {
 				$since_id = $status->id;
 				$first++;
 			} else {
-				$max_id =  $status->id;
-				if ($status->original_id) {
-					$max_id = $status->original_id;
-				}
+				$max_id = $status->original_id ? $status->original_id : $status->id;
 			}
+			
+			$status->text = twitter_parse_tags($status->text, $status->entities);
+		}
+	} else {
+		foreach ($feed as &$status) {
+			$status->text = twitter_parse_tags($status->text, $status->entities);
 		}
 	}
 	
-	foreach ($feed as &$status) {
-		$status->text = twitter_parse_tags($status->text, $status->entities);
-	}
 	unset($status);
 
 	// Only embed images in suitable browsers

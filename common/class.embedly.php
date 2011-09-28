@@ -17,19 +17,50 @@ function twitter_get_media($status) {
 	}
 }
 
+function img_proxy_url($url) {
+	if (IMGPROXY == 1) return BASE_URL."img.php?u=".base64_encode(base64_encode($url));
+	return $url;
+}
+
 function embedly_embed_thumbnails(&$feed) {
-	// Find URLs throughout the $feed, noting the tweet IDs they occur in
 	$matched_urls = array();
-	$embedly_re = "/http:\/\/(.*yfrog\..*\/.*|tweetphoto\.com\/.*|www\.flickr\.com\/photos\/.*|flic\.kr\/.*|twitpic\.com\/.*|www\.twitpic\.com\/.*|twitpic\.com\/photos\/.*|www\.twitpic\.com\/photos\/.*|.*imgur\.com\/.*|.*\.posterous\.com\/.*|post\.ly\/.*|twitgoo\.com\/.*|i.*\.photobucket\.com\/albums\/.*|s.*\.photobucket\.com\/albums\/.*|phodroid\.com\/.*\/.*\/.*|www\.mobypicture\.com\/user\/.*\/view\/.*|moby\.to\/.*|xkcd\.com\/.*|www\.xkcd\.com\/.*|imgs\.xkcd\.com\/.*|www\.asofterworld\.com\/index\.php\?id=.*|www\.asofterworld\.com\/.*\.jpg|asofterworld\.com\/.*\.jpg|www\.qwantz\.com\/index\.php\?comic=.*|23hq\.com\/.*\/photo\/.*|www\.23hq\.com\/.*\/photo\/.*|.*dribbble\.com\/shots\/.*|drbl\.in\/.*|.*\.smugmug\.com\/.*|.*\.smugmug\.com\/.*#.*|emberapp\.com\/.*\/images\/.*|emberapp\.com\/.*\/images\/.*\/sizes\/.*|emberapp\.com\/.*\/collections\/.*\/.*|emberapp\.com\/.*\/categories\/.*\/.*\/.*|embr\.it\/.*|picasaweb\.google\.com.*\/.*\/.*#.*|picasaweb\.google\.com.*\/lh\/photo\/.*|picasaweb\.google\.com.*\/.*\/.*|dailybooth\.com\/.*\/.*|brizzly\.com\/pic\/.*|pics\.brizzly\.com\/.*\.jpg|img\.ly\/.*|www\.tinypic\.com\/view\.php.*|tinypic\.com\/view\.php.*|www\.tinypic\.com\/player\.php.*|tinypic\.com\/player\.php.*|www\.tinypic\.com\/r\/.*\/.*|tinypic\.com\/r\/.*\/.*|.*\.tinypic\.com\/.*\.jpg|.*\.tinypic\.com\/.*\.png|meadd\.com\/.*\/.*|meadd\.com\/.*|.*\.deviantart\.com\/art\/.*|.*\.deviantart\.com\/gallery\/.*|.*\.deviantart\.com\/#\/.*|fav\.me\/.*|.*\.deviantart\.com|.*\.deviantart\.com\/gallery|.*\.deviantart\.com\/.*\/.*\.jpg|.*\.deviantart\.com\/.*\/.*\.gif|.*\.deviantart\.net\/.*\/.*\.jpg|.*\.deviantart\.net\/.*\/.*\.gif|plixi\.com\/p\/.*|plixi\.com\/profile\/home\/.*|plixi\.com\/.*|www\.fotopedia\.com\/.*\/.*|fotopedia\.com\/.*\/.*|photozou\.jp\/photo\/show\/.*\/.*|photozou\.jp\/photo\/photo_only\/.*\/.*|instagr\.am\/p\/.*|skitch\.com\/.*\/.*\/.*|img\.skitch\.com\/.*|https:\/\/skitch\.com\/.*\/.*\/.*|https:\/\/img\.skitch\.com\/.*|share\.ovi\.com\/media\/.*\/.*|www\.questionablecontent\.net\/|questionablecontent\.net\/|www\.questionablecontent\.net\/view\.php.*|questionablecontent\.net\/view\.php.*|questionablecontent\.net\/comics\/.*\.png|www\.questionablecontent\.net\/comics\/.*\.png|picplz\.com\/user\/.*\/pic\/.*\/|twitrpix\.com\/.*|.*\.twitrpix\.com\/.*|www\.someecards\.com\/.*\/.*|someecards\.com\/.*\/.*|some\.ly\/.*|www\.some\.ly\/.*|pikchur\.com\/.*|achewood\.com\/.*|www\.achewood\.com\/.*|achewood\.com\/index\.php.*|www\.achewood\.com\/index\.php.*|.*\.(jpg|png|gif))/i";
+	$embedly_re = '/www\.flickr\.com\/photos\/.*|flic\.kr\/.*|www\.mobypicture\.com\/user\/.*\/view\/.*|moby\.to\/.*|.*imgur\.com\/.*|.*\.posterous\.com\/.*|post\.ly\/.*|i.*\.photobucket\.com\/albums\/.*|s.*\.photobucket\.com\/albums\/.*|phodroid\.com\/.*\/.*\/.*|xkcd\.com\/.*|www\.xkcd\.com\/.*|imgs\.xkcd\.com\/.*|www\.asofterworld\.com\/index\.php\?id=.*|www\.asofterworld\.com\/.*\.jpg|asofterworld\.com\/.*\.jpg|www\.qwantz\.com\/index\.php\?comic=.*|23hq\.com\/.*\/photo\/.*|www\.23hq\.com\/.*\/photo\/.*|.*dribbble\.com\/shots\/.*|drbl\.in\/.*|.*\.smugmug\.com\/.*|.*\.smugmug\.com\/.*#.*|emberapp\.com\/.*\/images\/.*|emberapp\.com\/.*\/images\/.*\/sizes\/.*|emberapp\.com\/.*\/collections\/.*\/.*|emberapp\.com\/.*\/categories\/.*\/.*\/.*|embr\.it\/.*|picasaweb\.google\.com.*\/.*\/.*#.*|picasaweb\.google\.com.*\/lh\/photo\/.*|picasaweb\.google\.com.*\/.*\/.*|dailybooth\.com\/.*\/.*|brizzly\.com\/pic\/.*|pics\.brizzly\.com\/.*\.jpg|www\.tinypic\.com\/view\.php.*|tinypic\.com\/view\.php.*|www\.tinypic\.com\/player\.php.*|tinypic\.com\/player\.php.*|www\.tinypic\.com\/r\/.*\/.*|tinypic\.com\/r\/.*\/.*|.*\.tinypic\.com\/.*\.jpg|.*\.tinypic\.com\/.*\.png|meadd\.com\/.*\/.*|meadd\.com\/.*|.*\.deviantart\.com\/art\/.*|.*\.deviantart\.com\/gallery\/.*|.*\.deviantart\.com\/#\/.*|fav\.me\/.*|.*\.deviantart\.com|.*\.deviantart\.com\/gallery|.*\.deviantart\.com\/.*\/.*\.jpg|.*\.deviantart\.com\/.*\/.*\.gif|.*\.deviantart\.net\/.*\/.*\.jpg|.*\.deviantart\.net\/.*\/.*\.gif|plixi\.com\/p\/.*|plixi\.com\/profile\/home\/.*|plixi\.com\/.*|www\.fotopedia\.com\/.*\/.*|fotopedia\.com\/.*\/.*|photozou\.jp\/photo\/show\/.*\/.*|photozou\.jp\/photo\/photo_only\/.*\/.*|skitch\.com\/.*\/.*\/.*|img\.skitch\.com\/.*|https:\/\/skitch\.com\/.*\/.*\/.*|https:\/\/img\.skitch\.com\/.*|share\.ovi\.com\/media\/.*\/.*|www\.questionablecontent\.net\/|questionablecontent\.net\/|www\.questionablecontent\.net\/view\.php.*|questionablecontent\.net\/view\.php.*|questionablecontent\.net\/comics\/.*\.png|www\.questionablecontent\.net\/comics\/.*\.png|twitrpix\.com\/.*|.*\.twitrpix\.com\/.*|www\.someecards\.com\/.*\/.*|someecards\.com\/.*\/.*|some\.ly\/.*|www\.some\.ly\/.*|pikchur\.com\/.*|achewood\.com\/.*|www\.achewood\.com\/.*|achewood\.com\/index\.php.*|www\.achewood\.com\/index\.php.*|.*\.(jpg|png|gif)/i';
+	
+	$services = array(
+		'#twitpic\.com\/([\d\w]+)#i' => 'http://twitpic.com/show/thumb/%s',
+		'#twitgoo\.com\/([\d\w]+)#i' => 'http://twitgoo.com/show/thumb/%s',
+		'#tweetphoto\.com\/(\d+)#' => 'http://api.plixi.com/api/tpapi.svc/imagefromurl?url=http://tweetphoto.com/%s',
+		'#img\.ly\/([\w\d]+)#i' => 'http://img.ly/show/thumb/%s',
+		'#picplz\.com\/([\d\w\.]+)#' => 'http://picplz.com/%s/thumb',
+		'#yfrog\.com\/([\d\w]+)#' => 'http://yfrog.com/%s:small',
+		'#instagr\.am\/p\/([_-\d\w]+)#i' => 'http://instagr.am/p/%s/media/?size=t',
+		'#instagram\.com\/p\/([_-\d\w]+)#i' => 'http://instagr.am/p/%s/media/?size=t',
+	);
 
-	foreach ($feed as &$status) { // Loop through the feed
-		if ($status->entities) { // If there are entities
+	foreach ($feed as &$status) {
+		if ($status->entities) {
 			$entities = $status->entities;
+			
+			foreach($entities->urls as $urls) {
+				if (!preg_match("/t\.co/i", $urls->url)) {
+					$urls->expanded_url = $urls->url;
+				}
+				
+				if ($urls->expanded_url != "") {
 
-			foreach ($entities->urls as $urls) {	// Loop through the URL entities
-				if ($urls->expanded_url != "" || (preg_match("/img\.ly/i", $urls->url) && $urls->expanded_url = $urls->url)) { // Use the expanded URL, if it exists, to pass to Embedly
 					if (preg_match($embedly_re, $urls->expanded_url) > 0) { // If it matches an Embedly supported URL
 						$matched_urls[$urls->expanded_url][] = $status->id;
+					} else {
+					
+						foreach ($services as $pattern => $thumbnail_url) {
+							if (preg_match_all($pattern, $urls->expanded_url, $matches, PREG_PATTERN_ORDER) > 0) {
+							
+								foreach ($matches[1] as $key => $match) {
+									$html = "<a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url(sprintf($thumbnail_url, $match))."\" /></a>";
+									$feed[$status->id]->text .= "<br />$html";
+								}
+							}
+						}
 					}
 				}
 			}
@@ -59,18 +90,10 @@ function embedly_embed_thumbnails(&$feed) {
 
 		if ($thumb = $oembeds[$index]->thumbnail_url) {
 			foreach ($matched_urls[$url] as $statusId) {
-				$feed[$statusId]->text .= "<br /><a href=\"$url\"><img src=\"";
-
-				if (IMGPROXY == 1) {
-					$feed[$statusId]->text .= BASE_URL."img.php?u=".base64_encode(base64_encode($thumb));
-				} else {
-					$feed[$statusId]->text .= $thumb;
-				}
-
-				$feed[$statusId]->text .= "\" ";
+				$feed[$statusId]->text .= "<br /><a href=\"$url\"><img src=\"".img_proxy_url($thumb)."\"";
 
 				if ($oembeds[$index]->width > 200) {
-					$feed[$statusId]->text .= "style=\"width:200px;\"";
+					$feed[$statusId]->text .= " style=\"width:200px;\"";
 				}
 
 				$feed[$statusId]->text .= "/></a>";
