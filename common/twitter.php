@@ -587,7 +587,7 @@ function twitter_update() {
 	$status = stripslashes(trim($_POST['status']));
 
 	if ($status) {
-		if ((function_exists(mb_strlen)) && (mb_strlen($status, 'utf-8') > 140)) {
+		if (function_exists(mb_strlen) && (mb_strlen($status, 'utf-8') > 140)) {
 			if (setting_fetch('longtext', 'r') == 'a') {
 					$status = mb_substr($status, 0, 140, 'utf-8');
 			}
@@ -1026,8 +1026,11 @@ function twitter_standard_timeline($feed, $source) {
 			return $output;
 		case 'search':
 			foreach ($feed->results as $status) {
+				var_dump($status);
+				
 				$output[(string) $status->id_str] = (object) array(
 					'id' => $status->id_str,
+					'id_str' => $status->id_str,
 					'text' => $status->text,
 					'source' => strpos($status->source, '&lt;') !== false ? html_entity_decode($status->source) : $status->source,
 					'from' => (object) array(
