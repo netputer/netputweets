@@ -121,9 +121,7 @@ function theme_menu_bottom() {
 			$links[] = "<a href='".BASE_URL."logout'>".__("Logout")."</a>";
 		}
 	}
-	if (setting_fetch('srefresh', 'yes') == 'yes') {
-		$links[] = "<a href='".BASE_URL."{$_GET['q']}' accesskey='5'>".__("Refresh")."</a> 5";
-	}
+
 	return '<div class="menu menu-$menu">'.implode(' | ', $links).'</div>';
 }
 ?>

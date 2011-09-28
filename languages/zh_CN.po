@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetPutweets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-28 21:14+0800\n"
-"PO-Revision-Date: 2011-09-28 21:14+0800\n"
+"POT-Creation-Date: 2011-09-28 21:42+0800\n"
+"PO-Revision-Date: 2011-09-28 21:42+0800\n"
 "Last-Translator: NetPuter <netputer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -159,156 +159,156 @@ msgstr "订户"
 msgid "Enjoy Twitter with NetPutweets!"
 msgstr "抱着奶瓶腿 享受推的乐趣"
 
-#: E:\Code\NetPutweets/common/settings.php:101
+#: E:\Code\NetPutweets/common/settings.php:100
 msgid "Normal phone"
 msgstr "手机模式"
 
-#: E:\Code\NetPutweets/common/settings.php:102
+#: E:\Code\NetPutweets/common/settings.php:101
 msgid "Touch phone"
 msgstr "触屏模式"
 
-#: E:\Code\NetPutweets/common/settings.php:103
+#: E:\Code\NetPutweets/common/settings.php:102
 msgid "PC/Laptop"
 msgstr "桌面模式"
 
-#: E:\Code\NetPutweets/common/settings.php:104
+#: E:\Code\NetPutweets/common/settings.php:103
 msgid "BlackBerry (Pagination At Bottom)"
 msgstr "黑莓模式（翻页在最下方）"
 
-#: E:\Code\NetPutweets/common/settings.php:114
+#: E:\Code\NetPutweets/common/settings.php:113
 msgid "Full URL"
 msgstr "完整链接"
 
-#: E:\Code\NetPutweets/common/settings.php:115
-#: E:\Code\NetPutweets/common/settings.php:167
+#: E:\Code\NetPutweets/common/settings.php:114
+#: E:\Code\NetPutweets/common/settings.php:165
 msgid "Domain Only"
 msgstr "只显示域名"
 
-#: E:\Code\NetPutweets/common/settings.php:120
+#: E:\Code\NetPutweets/common/settings.php:119
 msgid "Automatic Cut"
 msgstr "自动截断"
 
-#: E:\Code\NetPutweets/common/settings.php:121
+#: E:\Code\NetPutweets/common/settings.php:120
 msgid "Return Error"
 msgstr "提示错误"
 
-#: E:\Code\NetPutweets/common/settings.php:131
+#: E:\Code\NetPutweets/common/settings.php:130
 msgid "Menu Settings"
 msgstr "菜单设置"
 
-#: E:\Code\NetPutweets/common/settings.php:132
+#: E:\Code\NetPutweets/common/settings.php:131
 msgid "Choose what you want to display on the Top Bar."
 msgstr "选择你想显示在顶栏的链接"
 
-#: E:\Code\NetPutweets/common/settings.php:133
+#: E:\Code\NetPutweets/common/settings.php:132
 #: E:\Code\NetPutweets/common/twitter.php:774
 msgid "User"
 msgstr "用户"
 
-#: E:\Code\NetPutweets/common/settings.php:139
+#: E:\Code\NetPutweets/common/settings.php:138
 msgid "And Choose what you want to display on the Bottom Bar."
 msgstr "选择你想显示在底栏的链接"
 
-#: E:\Code\NetPutweets/common/settings.php:154
+#: E:\Code\NetPutweets/common/settings.php:152
 msgid "Status Settings"
 msgstr "消息设置"
 
-#: E:\Code\NetPutweets/common/settings.php:155
+#: E:\Code\NetPutweets/common/settings.php:153
 msgid "Show @/DM/RT/FAV/DEL As Text instead of images"
 msgstr "将 @/DM/RT/FAV/DEL 显示为文字而不是图片"
 
-#: E:\Code\NetPutweets/common/settings.php:156
+#: E:\Code\NetPutweets/common/settings.php:154
 msgid "Put the Buttons after each Status"
 msgstr "将按钮放在消息后面"
 
-#: E:\Code\NetPutweets/common/settings.php:157
+#: E:\Code\NetPutweets/common/settings.php:155
 msgid "Show Status Time"
 msgstr "显示消息时间"
 
-#: E:\Code\NetPutweets/common/settings.php:158
+#: E:\Code\NetPutweets/common/settings.php:156
 msgid "Show Status Source"
 msgstr "显示消息来源"
 
-#: E:\Code\NetPutweets/common/settings.php:159
+#: E:\Code\NetPutweets/common/settings.php:157
 msgid "Show Avatar"
 msgstr "显示头像"
 
-#: E:\Code\NetPutweets/common/settings.php:160
-msgid "Enable Fixed Tag"
-msgstr "使用固定标签"
+#: E:\Code\NetPutweets/common/settings.php:158
+msgid "Enable Fixed Tag: "
+msgstr "使用固定标签："
+
+#: E:\Code\NetPutweets/common/settings.php:159
+msgid "When posting a 140+ chars tweet: "
+msgstr "当消息超过140字时："
 
 #: E:\Code\NetPutweets/common/settings.php:161
-msgid "When posting a 140+ chars tweet"
-msgstr "当消息超过140字时"
-
-#: E:\Code\NetPutweets/common/settings.php:163
 msgid "Global Settings"
 msgstr "全局设置"
 
+#: E:\Code\NetPutweets/common/settings.php:162
+msgid "Colour scheme: "
+msgstr "色彩方案："
+
+#: E:\Code\NetPutweets/common/settings.php:163
+msgid "Mode: "
+msgstr "模式："
+
 #: E:\Code\NetPutweets/common/settings.php:164
-msgid "Colour scheme"
-msgstr "色彩方案"
+msgid "Language: "
+msgstr "语言："
 
 #: E:\Code\NetPutweets/common/settings.php:165
-msgid "Mode"
-msgstr "模式"
+msgid "Showing URL: "
+msgstr "将链接显示为："
 
-#: E:\Code\NetPutweets/common/settings.php:166
-msgid "Language"
-msgstr "语言"
-
-#: E:\Code\NetPutweets/common/settings.php:167
-msgid "Showing URL"
-msgstr "将链接显示为"
-
-#: E:\Code\NetPutweets/common/settings.php:167
-#: E:\Code\NetPutweets/common/settings.php:170
+#: E:\Code\NetPutweets/common/settings.php:165
+#: E:\Code\NetPutweets/common/settings.php:168
 #: E:\Code\NetPutweets/common/twitter.php:542
 #: E:\Code\NetPutweets/common/twitter.php:865
 msgid "Note: "
 msgstr "提示："
 
-#: E:\Code\NetPutweets/common/settings.php:167
+#: E:\Code\NetPutweets/common/settings.php:165
 msgid "means change"
 msgstr "意思是将"
 
-#: E:\Code\NetPutweets/common/settings.php:167
+#: E:\Code\NetPutweets/common/settings.php:165
 msgid "to"
 msgstr "显示为"
 
-#: E:\Code\NetPutweets/common/settings.php:168
-msgid "Tweets Per Page"
-msgstr "每页的推数"
+#: E:\Code\NetPutweets/common/settings.php:166
+msgid "Tweets Per Page: "
+msgstr "每页的推数："
 
-#: E:\Code\NetPutweets/common/settings.php:169
+#: E:\Code\NetPutweets/common/settings.php:167
 msgid "Preview Photos In Timelines"
 msgstr "预览图片"
 
-#: E:\Code\NetPutweets/common/settings.php:170
-msgid "Enable Keyword Filter"
-msgstr "开启关键词过滤"
+#: E:\Code\NetPutweets/common/settings.php:168
+msgid "Enable Keyword Filter: "
+msgstr "开启关键词过滤："
 
-#: E:\Code\NetPutweets/common/settings.php:170
+#: E:\Code\NetPutweets/common/settings.php:168
 msgid "Separate keywords with space"
 msgstr "用空格分开每个关键词"
 
-#: E:\Code\NetPutweets/common/settings.php:171
-msgid "Custom CSS"
-msgstr "自定义 CSS"
+#: E:\Code\NetPutweets/common/settings.php:169
+msgid "Custom CSS: "
+msgstr "自定义 CSS ："
 
-#: E:\Code\NetPutweets/common/settings.php:172
+#: E:\Code\NetPutweets/common/settings.php:170
 msgid "Save"
 msgstr "保存"
 
-#: E:\Code\NetPutweets/common/settings.php:172
+#: E:\Code\NetPutweets/common/settings.php:170
 msgid "Visit "
 msgstr "如果设置出错，请"
 
-#: E:\Code\NetPutweets/common/settings.php:172
+#: E:\Code\NetPutweets/common/settings.php:170
 msgid "Reset"
 msgstr "重置"
 
-#: E:\Code\NetPutweets/common/settings.php:172
+#: E:\Code\NetPutweets/common/settings.php:170
 msgid " if things go horribly wrong - it will log you out and clear all settings."
 msgstr "所有设置，但你需要重新登录"
 
