@@ -1026,8 +1026,6 @@ function twitter_standard_timeline($feed, $source) {
 			return $output;
 		case 'search':
 			foreach ($feed->results as $status) {
-				var_dump($status);
-				
 				$output[(string) $status->id_str] = (object) array(
 					'id' => $status->id_str,
 					'id_str' => $status->id_str,
@@ -1063,6 +1061,9 @@ function twitter_standard_timeline($feed, $source) {
 			$new->is_direct = true;
 			$output[] = $new;
 			}
+			
+			var_dump($output);
+			
 			return $output;
 
 		case 'thread':
@@ -1139,10 +1140,10 @@ function theme_timeline($feed) {
 		
 		foreach ($feed as &$status) {
 			if ($first == 0) {
-				$since_id = $status->id;
+				$since_id = $status->id_str;
 				$first++;
 			} else {
-				$max_id = $status->original_id ? $status->original_id : $status->id;
+				$max_id = $status->original_id_str ? $status->original_id_str : $status->id_str;
 			}
 			
 			$status->text = twitter_parse_tags($status->text, $status->entities);
