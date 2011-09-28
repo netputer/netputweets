@@ -149,7 +149,7 @@ menu_register(array(
 function friendship_exists($user_a) {
 	$request = API_URL."friendships/show.json?target_screen_name=$user_a";
 	$following = twitter_process($request);
-	
+
 	if ($following->relationship->target->following == 1) {
 		return true;
 	} else {
@@ -350,7 +350,7 @@ function twitter_fetch($url) {
 function twitter_parse_tags($input, $entities = false) {
 	//Linebreaks.  Some clients insert \n for formatting.
 	$out = nl2br($input);
-	
+
 	// Use the Entities to replace hyperlink URLs
 	// http://dev.twitter.com/pages/tweet_entities
 	if ($entities) {
@@ -387,7 +387,7 @@ function twitter_parse_tags($input, $entities = false) {
 
 		// Hyperlink the URLs
 		$out = Twitter_Autolink::create($out)->addLinksToURLs();
-		
+
 		// Hyperlink the #
 		$out = Twitter_Autolink::create($out)->setTarget('')->addLinksToHashtags();
 	}
@@ -616,7 +616,7 @@ function twitter_retweet($query) {
 function twitter_replies_page() {
 	$count = setting_fetch('tpp', 20);
 	$request = API_URL."statuses/mentions.json?include_entities=true&count=$count&page=".intval($_GET['page']);
-	
+
 	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
 	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
 
@@ -630,10 +630,10 @@ function twitter_replies_page() {
 function twitter_retweets_page() {
 	$count = setting_fetch('tpp', 20);
 	$request = API_URL."statuses/retweeted_to_me.json?include_entities=true&count=$count&page=".intval($_GET['page']);
-	
+
 	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
 	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
-	
+
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'retweets');
 	$content = theme('status_form');
@@ -723,7 +723,7 @@ function twitter_search_page() {
 function twitter_search($search_query) {
 	$page = (int) $_GET['page'];
 	if ($page == 0) $page = 1;
-	
+
 	$request = API_URLS."search.json?include_entities=true&result_type=recent&q=$search_query&page=$page";
 	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'search');
@@ -885,46 +885,46 @@ function theme_user_header($user) {
 	$bio = twitter_parse_tags($user->description);
 
 	$out = "<div class='profile'>";
-	
+
 	if (setting_fetch('avataro', 'yes') == 'yes') {
 		$out .= "<span class='avatar'><a href='$full_avatar'>".theme('avatar', theme_get_avatar($user), 1)."</a></span><span class='status shift48'>";
 	} else {
 		$out .= "<span class='status'>";
 	}
-	
+
 	$out .= "<b>{$name}</b> ";
 
 	if ($user->verified == true) $out .= '<small><i>'.__("Verified").'</i></small> ';
 	if ($user->protected == true) $out .= '<small><i>'.__("Private/Protected").'</i></small>';
-	
+
 	$out .= "<br /><span class='features'>[ ";
-	
+
 	if (setting_fetch('avataro', 'yes') != 'yes') $out .= "<a href='$full_avatar'>".__("View picture")."</a> | ";
-	
+
 	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
 		if ($user->following !== true) {
 			$out .= "<a href='".BASE_URL."follow/{$user->screen_name}'>".__("Follow")."</a>";
 		} else {
 			$out .= "<a href='".BASE_URL."unfollow/{$user->screen_name}'>".__("Unfollow")."</a>";
 		}
-		
+
 		$out .= " | <a href='".BASE_URL."directs/create/{$user->screen_name}'>".__("Direct Message")."</a>";
 	} else {
 		$out .= "<a href='".BASE_URL."profile'>".__("Update Profile")."</a>";
 	}
-	
+
 	$out .= " ] [ {$user->statuses_count} ".__("Tweets")." | <a href='".BASE_URL."followers/{$user->screen_name}'>{$user->followers_count} ".__("Followers")."</a> | <a href='".BASE_URL."friends/{$user->screen_name}'>{$user->friends_count} ".__("Friends")."</a> | <a href='".BASE_URL."favourites/{$user->screen_name}'>{$user->favourites_count} ".__("Favourites")."</a> | <a href='".BASE_URL."lists/{$user->screen_name}'>{$user->listed_count} ".__("Lists")."</a> ]";
-	
+
 	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
 		$out .= " [ <a href='".BASE_URL."confirm/block/{$user->screen_name}/{$user->id_str}'>".__("Block")."?</a> - <a href='".BASE_URL."confirm/spam/{$user->screen_name}/{$user->id_str}'>".__('Report Spam')."</a> ]";
 	}
-	
+
 	$out .= "</span><br /><small class='about'>";
 
 	if ($user->description != "") $out .= __("Bio: ")."{$bio}<br />";
 	if ($user->url != "") $out .= __("Link: ")."{$link}<br />";
 	if ($user->location != "") $out .= __("Location: ")."<a href='http://maps.google.com/m?q={$user->location}' target='_blank'>{$user->location}</a><br />";
-	
+
 	$out .= __("Joined: ")."{$date_joined} ($tweets_per_day ".__("Tweets Per Day").")</small></span></div>";
 	return $out;
 }
@@ -1049,21 +1049,19 @@ function twitter_standard_timeline($feed, $source) {
 		case 'directs_sent':
 		case 'directs_inbox':
 			foreach ($feed as $status) {
-			$new = $status;
-			if ($source == 'directs_inbox') {
-				$new->from = $new->sender;
-				$new->to = $new->recipient;
-			} else {
-				$new->from = $new->recipient;
-				$new->to = $new->sender;
+				$new = $status;
+				if ($source == 'directs_inbox') {
+					$new->from = $new->sender;
+					$new->to = $new->recipient;
+				} else {
+					$new->from = $new->recipient;
+					$new->to = $new->sender;
+				}
+				unset($new->sender, $new->recipient);
+				$new->is_direct = true;
+				$output[] = $new;
 			}
-			unset($new->sender, $new->recipient);
-			$new->is_direct = true;
-			$output[] = $new;
-			}
-			
-			var_dump($output);
-			
+
 			return $output;
 
 		case 'thread':
@@ -1118,12 +1116,6 @@ function twitter_timeline_filter($input) {
 	return false;
 }
 
-function is_64bit() {
-	$int = "9223372036854775807";
-	$int = intval($int);
-	return ($int == 9223372036854775807);
-}
-
 function theme_timeline($feed) {
 	if (count($feed) == 0) return theme('no_tweets');
 
@@ -1131,13 +1123,13 @@ function theme_timeline($feed) {
 	$rows = array();
 	$page = menu_current_page();
 	$date_heading = false;
-	
+
 	$need_max_id = in_array(substr($_GET["q"], 0, 4), array("", "repl", "retw"));
 	$max_id = $since_id = 0;
-	
+
 	if ($need_max_id) {
 		$first = 0;
-		
+
 		foreach ($feed as &$status) {
 			if ($first == 0) {
 				$since_id = $status->id_str;
@@ -1145,7 +1137,7 @@ function theme_timeline($feed) {
 			} else {
 				$max_id = $status->original_id_str ? $status->original_id_str : $status->id_str;
 			}
-			
+
 			$status->text = twitter_parse_tags($status->text, $status->entities);
 		}
 	} else {
@@ -1153,7 +1145,7 @@ function theme_timeline($feed) {
 			$status->text = twitter_parse_tags($status->text, $status->entities);
 		}
 	}
-	
+
 	unset($status);
 
 	// Only embed images in suitable browsers
@@ -1184,15 +1176,11 @@ function theme_timeline($feed) {
 			$text = $status->text;
 		}
 
-		if (setting_fetch('showthumbs', 'yes') == 'yes') {
-			$media = twitter_get_media($status);
-		}
-
 		$link = theme('status_time_link', $status, !$status->is_direct);
 
 		$actions = theme('action_icons', $status);
 		$avatar = theme('avatar', theme_get_avatar($status->from));
-		
+
 		if ((substr($_GET['q'], 0, 4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser') == 'desktop')) {
 			$source = $status->source ? (" ".__("via")." {$status->source}") : '';
 		} else {
@@ -1205,13 +1193,12 @@ function theme_timeline($feed) {
 			$replyto = null;
 		}
 
-		$html = "";
+		$html = "<b class='suser'><a href='".BASE_URL."user/{$status->from->screen_name}'>{$status->from->screen_name}</a></b> ";
 
-		$html .= "<b class='suser'><a href='".BASE_URL."user/{$status->from->screen_name}'>{$status->from->screen_name}</a></b> ";
 		if (setting_fetch('buttonend') == 'yes') {
-			$html .= "<span class='stext'>{$text}</span><br />$media<small class='sbutton'>$actions $link ";
+			$html .= "<span class='stext'>{$text}</span><br /><small class='sbutton'>$actions $link ";
 		} else {
-			$html .= "<small class='sbutton'>$actions</small><br /><span class='stext'>{$text}</span><br />$media<small class='sbutton'>$link";
+			$html .= "<small class='sbutton'>$actions</small><br /><span class='stext'>{$text}</span><br /><small class='sbutton'>$link";
 		}
 
 		$html .= " $source $replyto</small>";
@@ -1231,7 +1218,7 @@ function theme_timeline($feed) {
 			$row[] = array('data' => $avatar, 'class' => 'avatar');
 			$class .= ' shift';
 		}
-		
+
 		$row[] = array('data' => $html, 'class' => $class);
 		$class = 'tweet';
 
@@ -1247,7 +1234,7 @@ function theme_timeline($feed) {
 	if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
 		$content .= theme('pagination', $max_id);
 	}
-	
+
 	return $content;
 }
 
@@ -1278,7 +1265,7 @@ function theme_followers($feed, $hide_pagination = false) {
 		$content .= $user->followers_count . " ".__("Followers")." | ";
 		$content .= "~" . $tweets_per_day . " ". __("Tweets Per Day")."<br />";
 		$content .= "<strong>".__("Last tweet: ")."</strong>";
-		
+
 		if ($user->protected == 'true' && $last_tweet == 0) {
 			$content .= __("Private/Protected");
 		} else if($last_tweet == 0) {
@@ -1286,7 +1273,7 @@ function theme_followers($feed, $hide_pagination = false) {
 		} else {
 			$content .= twitter_date('Y-m-d H:i', $last_tweet);
 		}
-		
+
 		$content .= "</span>";
 
 		$rows[] = array(
