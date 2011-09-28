@@ -546,7 +546,7 @@ function twitter_confirmation_page($query) {
 			$content .= "<p>".__("They won't be able to follow you.")."</p>";
 		break;
 		}
-	$content .= "<form action='".BASE_URL."$action/$target' method='post'><input type='submit' value='Yes' /></form>";
+	$content .= "<form action='".BASE_URL."$action/$target' method='post'><input type='submit' value='".__("Yes")."' /></form>";
 	theme('Page', __("Confirm"), $content);
 }
 
