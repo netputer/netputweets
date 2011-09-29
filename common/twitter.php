@@ -1206,8 +1206,10 @@ function theme_timeline($feed) {
 		if ($status->retweeted_by) {
 			$retweeted_by = $status->retweeted_by->user->screen_name;
 			$retweeted_times = $status->retweet_count;
-			$retweeted_times_minus = $retweeted_times - 1;
+
+			$retweeted_times_minus = is_numeric($retweeted_times) ? $retweeted_times - 1 : $retweeted_times;
 			$retweeted_times_str = ($retweeted_times && $retweeted_times_minus) ? "+{$retweeted_times_minus}" : "";
+
 			$html .= " <small class='sretweet'>".__("retweeted by")." <a href='".BASE_URL."user/{$retweeted_by}'>{$retweeted_by}</a>{$retweeted_times_str} ".__("<span style='display:none;'>zhuanfa</span>")."</small>";
 		}
 
