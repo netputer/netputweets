@@ -1245,7 +1245,7 @@ function twitter_is_reply($status) {
 		return false;
 	}
 
-	return stripos($status->text, user_current_username());
+	return stripos($status->text, "@".user_current_username());
 }
 
 function theme_followers($feed, $hide_pagination = false) {
@@ -1305,7 +1305,7 @@ function theme_full_name($user) {
 function theme_no_tweets() {
 	return '<p>'.__("No tweets to display.").'</p>';
 }
-
+/*
 function theme_search_results($feed) {
 	return "";
 	$rows = array();
@@ -1328,7 +1328,7 @@ function theme_search_results($feed) {
 	}
 	return $content;
 }
-
+*/
 function theme_search_form($query) {
 	$query = stripslashes(htmlspecialchars($query));
 	return "<form action='".BASE_URL."search' method='GET'><input name='query' value=\"$query\" /><input type='submit' value='".__("Search")."' /></form>";
