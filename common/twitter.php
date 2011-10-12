@@ -353,7 +353,7 @@ function twitter_parse_tags($input, $entities = false) {
 
 	// Use the Entities to replace hyperlink URLs
 	// http://dev.twitter.com/pages/tweet_entities
-	if ($entities) {
+	if ($entities && $entities->urls) {
 		foreach ($entities->urls as $urls) {
 			if ($urls->expanded_url != "") {
 				$display_url = $urls->expanded_url;
@@ -1042,6 +1042,7 @@ function twitter_standard_timeline($feed, $source) {
 					),
 					'created_at' => $status->created_at,
 					'geo' => $status->geo,
+					'entities' => $status->entities,
 				);
 			}
 			return $output;

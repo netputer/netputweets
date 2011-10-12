@@ -20,7 +20,7 @@ function embedly_embed_thumbnails(&$feed) {
 	);
 
 	foreach ($feed as &$status) {
-		if ($status->entities) {
+		if ($status->entities && $status->entities->urls) {
 			$entities = $status->entities;
 
 			foreach($entities->urls as $urls) {
