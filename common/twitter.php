@@ -361,25 +361,16 @@ function twitter_parse_tags($input, $entities = false) {
 				$display_url = $urls->url;
 			}
 
-			switch (setting_fetch('linktrans', 'd')) {
-				case 'o':
-					$display_text = $display_url;
-					break;
-				case 'd':
-					$urlpara = parse_url($display_url);
-					$display_text = "[{$urlpara[host]}]";
-					break;
-				case 'l':
-					$display_text = "[link]";
-					break;
+			$url_detect = parse_url($display_url);
+			
+			if (isset($url_detect["scheme"])) {
+				$link_html = theme('external_link', $display_url);
+
+				$url = $urls->url;
+				// Replace all URLs *UNLESS* they have already been linked (for example to an image)
+				$pattern = '#((?<!href\=(\'|\"))'.preg_quote($url,'#').')#i';
+				$out = preg_replace($pattern,  $link_html, $out);
 			}
-
-			$link_html = '<a href="'.$display_url.'">'.$display_text.'</a>';
-
-			$url = $urls->url;
-			// Replace all URLs *UNLESS* they have already been linked (for example to an image)
-			$pattern = '#((?<!href\=(\'|\"))'.preg_quote($url,'#').')#i';
-			$out = preg_replace($pattern,  $link_html, $out);
 		}
 	} else {  // If Entities haven't been returned, use Autolink
 		// Create an array containing all URLs
@@ -1246,7 +1237,7 @@ function twitter_is_reply($status) {
 		return false;
 	}
 
-	return stripos($status->text, "@".user_current_username());
+	return stripos($status->text, "user/".user_current_username());
 }
 
 function theme_followers($feed, $hide_pagination = false) {
@@ -1306,30 +1297,7 @@ function theme_full_name($user) {
 function theme_no_tweets() {
 	return '<p>'.__("No tweets to display.").'</p>';
 }
-/*
-function theme_search_results($feed) {
-	return "";
-	$rows = array();
-	foreach ($feed->results as $status) {
-		$text = twitter_parse_tags($status->text, $status->entities);
-		$link = theme('status_time_link', $status);
-		$actions = theme('action_icons', $status);
-		$row = array(
-			theme('avatar', $status->profile_image_url),
-			"<a href='".BASE_URL."user/{$status->from_user}'>{$status->from_user}</a> $actions - {$link}<br />{$text}",
-		);
-		if (twitter_is_reply($status)) {
-			$row = array('class' => 'reply', 'data' => $row);
-		}
-		$rows[] = $row;
-	}
-	$content = theme('table', array(), $rows, array('class' => 'timeline'));
-	if (setting_fetch('browser') <> 'blackberry'){
-		$content .= theme('pagination');
-	}
-	return $content;
-}
-*/
+
 function theme_search_form($query) {
 	$query = stripslashes(htmlspecialchars($query));
 	return "<form action='".BASE_URL."search' method='GET'><input name='query' value=\"$query\" /><input type='submit' value='".__("Search")."' /></form>";
@@ -1338,18 +1306,18 @@ function theme_search_form($query) {
 function theme_external_link($url) {
 	switch (setting_fetch('linktrans', 'd')) {
 		case 'o':
-			$atext = $url;
+			$text = $url;
 			break;
 		case 'd':
 			$urlpara = parse_url($url);
-			$atext = "[{$urlpara[host]}]";
+			$text = "[{$urlpara[host]}]";
 			break;
 		case 'l':
-			$atext = "[link]";
+			$text = "[link]";
 			break;
 	}
 
-	return "<a href='$url'>$atext</a>";
+	return "<a href='$url'>$text</a>";
 }
 
 function theme_pagination($max_id = false) {
