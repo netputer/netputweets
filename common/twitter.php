@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("Asia/Shanghai");
+
 require 'class.autolink.php';
 require 'class.extractor.php';
 require 'lists.php';
@@ -362,7 +364,7 @@ function twitter_parse_tags($input, $entities = false) {
 			}
 
 			$url_detect = parse_url($display_url);
-			
+
 			if (isset($url_detect["scheme"])) {
 				$link_html = theme('external_link', $display_url);
 
@@ -393,7 +395,7 @@ function twitter_parse_tags($input, $entities = false) {
 	return $out;
 }
 
-function format_interval($timestamp, $granularity = 2) {
+function format_interval($timestamp, $granularity = 1) {
 	$units = array(
 		__("years") => 31536000,
 		__("days") => 86400,
@@ -695,19 +697,25 @@ function theme_directs_form($to) {
 function twitter_search_page() {
 	$search_query = $_GET['query'];
 	$content = theme('search_form', $search_query);
+
 	if (isset($_POST['query'])) {
 		$duration = time() + (3600 * 24 * 365);
 		setcookie('search_favourite', $_POST['query'], $duration, '/');
 		twitter_refresh('search');
 	}
+
 	if (!isset($search_query) && array_key_exists('search_favourite', $_COOKIE)) $search_query = $_COOKIE['search_favourite'];
+
 	if ($search_query) {
 		$tl = twitter_search($search_query);
+
 		if ($search_query !== $_COOKIE['search_favourite']) {
 			$content .= '<form action="'.BASE_URL.'search/bookmark" method="post"><input type="hidden" name="query" value="'.htmlspecialchars($search_query).'" /><input type="submit" value="'.__("Save as default search").'" /></form>';
 		}
+
 		$content .= theme('timeline', $tl);
 	}
+
 	theme('page', __("Search")." $search_query", $content);
 }
 
@@ -785,6 +793,7 @@ function twitter_favourites_page($query) {
 function twitter_mark_favourite_page($query) {
 	$id = (string) $query[1];
 	if (!is_numeric($id)) return;
+
 	if ($query[0] == 'unfavourite') {
 		$request = API_URL."favorites/destroy/$id.json";
 		$content = "<p>".__("Unfavourite Success")."</p>";
@@ -792,6 +801,7 @@ function twitter_mark_favourite_page($query) {
 		$request = API_URL."favorites/create/$id.json";
 		$content = "<p>".__("Favourite Success")."</p>";
 	}
+
 	twitter_process($request, true);
 	theme('page', __("Favourites"), $content);
 }
@@ -940,7 +950,7 @@ function theme_status_time_link($status, $is_link = true) {
 	$time = strtotime($status->created_at);
 	if ($time > 0) {
 		if (twitter_date('dmy') == twitter_date('dmy', $time)) {
-			$out = format_interval(time() - $time, 1).__(" ago");
+			$out = format_interval(time() - $time).__(" ago");
 		} else {
 			$out = twitter_date('H:i', $time);
 		}
@@ -1262,10 +1272,11 @@ function theme_followers($feed, $hide_pagination = false) {
 
 		if ($user->protected == 'true' && $last_tweet == 0) {
 			$content .= __("Private/Protected");
-		} else if($last_tweet == 0) {
+		} elseif ($last_tweet == 0) {
 			$content .= __("Never tweeted");
 		} else {
-			$content .= twitter_date('Y-m-d H:i', $last_tweet);
+			// $content .= twitter_date('Y-m-d H:i', $last_tweet);
+			$content .= format_interval(time() - $last_tweet).__(" ago");
 		}
 
 		$content .= "</span>";

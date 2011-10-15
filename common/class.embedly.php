@@ -20,10 +20,9 @@ function embedly_embed_thumbnails(&$feed) {
 	);
 
 	foreach ($feed as &$status) {
-		// if ($status->entities && $status->entities->urls) {
 		if ($status->entities) {
 			$entities = $status->entities;
-			
+
 			foreach($entities->urls as $urls) {
 				if (preg_match($embedly_re, $urls->expanded_url) > 0) { // If it matches an Embedly supported URL
 					$matched_urls[$urls->expanded_url][] = $status->id;
@@ -49,7 +48,7 @@ function embedly_embed_thumbnails(&$feed) {
 			}
 
 			if ($status->entities->media) {
-			
+
 				$image = $status->entities->media[0]->media_url;
 
 				$media_html = "<a href=\"".$image."\"><img src=\"".img_proxy_url($image)."\" width=\"{$status->entities->media[0]->sizes->thumb->w}\" height=\"{$status->entities->media[0]->sizes->thumb->h}\" /></a>";
@@ -71,7 +70,7 @@ function embedly_embed_thumbnails(&$feed) {
 	}
 
 	$url = 'http://api.embed.ly/1/oembed?key='.EMBEDLY_KEY.'&urls=' . implode(',', $justUrls) . '&format=json';
-	
+
 	$embedly_json = twitter_fetch($url);
 	$oembeds = json_decode($embedly_json);
 
