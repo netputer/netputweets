@@ -614,8 +614,9 @@ function twitter_replies_page() {
 	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
 	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
 
-	var_dump($tl = twitter_process($request));exit;
+	$tl = twitter_process($request);
 	$tl = twitter_standard_timeline($tl, 'replies');
+	
 	$content = theme('status_form');
 	$content .= theme('timeline', $tl);
 	theme('page', __("Replies"), $content);
