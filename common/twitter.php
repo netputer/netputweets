@@ -419,27 +419,28 @@ function format_interval($timestamp, $granularity = 1) {
 
 function twitter_status_page($query) {
 	$id = (string) $query[1];
-	if (is_numeric($id)) {
-		$request = API_URL."statuses/show/{$id}.json?include_entities=true";
-		$status = twitter_process($request);
-		$content = theme('status', $status);
+	$thread = array();
 
-		if (!$status->user->protected) {
-			$thread = twitter_thread_timeline($id);
+	if (is_numeric($id)) {
+		$next_id = $id;
+
+		for ($i = 0;$i<3 && $next_id;$i++) {
+			$request = API_URL."statuses/show/{$next_id}.json?include_entities=true";
+			$status = twitter_process($request);
+
+			$thread[] = $status;
+			$next_id = $status->in_reply_to_status_id_str;
 		}
 
-		if ($thread) {
-			$content .= theme('timeline', $thread);
+		$tl = twitter_standard_timeline($thread, 'friends');
+		$content .= theme('timeline', $tl);
+
+		if ($next_id) {
+			$content .= "<p><a href=\"".BASE_URL."status/$next_id\">".__("Show previous conversations")." &raquo;</a></p>";
 		}
 
 		theme('page', __("Status")." $id", $content);
 	}
-}
-
-function twitter_thread_timeline($thread_id) {
-	$request = API_URLS."search/thread/{$thread_id}";
-	$tl = twitter_standard_timeline(twitter_fetch($request), 'thread');
-	return $tl;
 }
 
 function twitter_retweet_page($query) {
@@ -613,7 +614,7 @@ function twitter_replies_page() {
 	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
 	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
 
-	$tl = twitter_process($request);
+	var_dump($tl = twitter_process($request));exit;
 	$tl = twitter_standard_timeline($tl, 'replies');
 	$content = theme('status_form');
 	$content .= theme('timeline', $tl);
@@ -1121,7 +1122,7 @@ function twitter_timeline_filter($input) {
 function theme_timeline($feed) {
 	if (count($feed) == 0) return theme('no_tweets');
 
-	$hide_pagination = count($feed) < 2 ? true : false;
+	$hide_pagination = count($feed) < 5 ? true : false;
 	$rows = array();
 	$page = menu_current_page();
 	$date_heading = false;
