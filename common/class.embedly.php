@@ -20,14 +20,11 @@ function embedly_embed_thumbnails(&$feed) {
 	);
 
 	foreach ($feed as &$status) {
-		if ($status->entities && $status->entities->urls) {
+		// if ($status->entities && $status->entities->urls) {
+		if ($status->entities) {
 			$entities = $status->entities;
-
+			
 			foreach($entities->urls as $urls) {
-				if (!preg_match("/t\.co/i", $urls->url)) {
-					$urls->expanded_url = $urls->url;
-				}
-
 				if (preg_match($embedly_re, $urls->expanded_url) > 0) { // If it matches an Embedly supported URL
 					$matched_urls[$urls->expanded_url][] = $status->id;
 				} elseif (preg_match("/.*\.(jpg|png|gif)/i", $urls->expanded_url)) {
@@ -52,6 +49,7 @@ function embedly_embed_thumbnails(&$feed) {
 			}
 
 			if ($status->entities->media) {
+			
 				$image = $status->entities->media[0]->media_url;
 
 				$media_html = "<a href=\"".$image."\"><img src=\"".img_proxy_url($image)."\" width=\"{$status->entities->media[0]->sizes->thumb->w}\" height=\"{$status->entities->media[0]->sizes->thumb->h}\" /></a>";
@@ -73,15 +71,12 @@ function embedly_embed_thumbnails(&$feed) {
 	}
 
 	$url = 'http://api.embed.ly/1/oembed?key='.EMBEDLY_KEY.'&urls=' . implode(',', $justUrls) . '&format=json';
+	
 	$embedly_json = twitter_fetch($url);
 	$oembeds = json_decode($embedly_json);
 
 	// Put the thumbnails into the $feed
 	foreach ($justUrls as $index => $url) {
-		if (preg_match("/.*\.(jpg|png|gif)/i", $oembeds[$index]->url)) {
-			$oembeds[$index]->thumbnail_url = $oembeds[$index]->url;
-		}
-
 		if ($thumb = $oembeds[$index]->thumbnail_url) {
 			foreach ($matched_urls[$url] as $statusId) {
 				$feed[$statusId]->text .= "<br /><a href=\"$url\"><img src=\"".img_proxy_url($thumb)."\"";
