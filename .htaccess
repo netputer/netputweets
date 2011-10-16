@@ -1,7 +1,8 @@
 # 若无法进行正常操作 部分主机可能需要将下面一行最前面的注释符号删除
 # RewriteBase /
 
-IndexIgnore *
+# IndexIgnore *
+
 Options -Indexes
 Options +FollowSymlinks
 

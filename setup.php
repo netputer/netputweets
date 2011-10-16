@@ -1,11 +1,16 @@
 <?php
 error_reporting(E_ALL ^ E_WARNING);
-$base_url = 'http://'.$_SERVER['HTTP_HOST'];
+
+$base_url = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http';
+$base_url .= '://'.$_SERVER['HTTP_HOST'];
+
 if ($directory = trim(dirname($_SERVER['SCRIPT_NAME']), '/\,')){
 	$base_url .= '/'.$directory;
 }
+
 define('BASE_URL', $base_url.'/');
 define('ABSPATH', dirname(__FILE__).'/');
+
 $configFile = file(ABSPATH . 'config-sample.php');
 $notice = '';
 
