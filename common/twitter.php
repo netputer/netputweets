@@ -439,14 +439,16 @@ function twitter_status_page($query) {
 
 		for ($i=0;$i<3;$i++) {
 			$reply_id = $status->in_reply_to_status_id_str;
-			$reply_user = $status->in_reply_to_user_id_str;
+			$reply_user = $status->in_reply_to_screen_name;
 
 			if (!$reply_id) break;
 
-			$request = API_URL."users/show/{$reply_user}.json?include_entities=true";
-			$result = twitter_process($request);
+			if (strtolower($reply_user) != strtolower(user_current_username())) {
+				$request = API_URL."users/show/{$reply_user}.json?include_entities=true";
+				$result = twitter_process($request);
 
-			if ($result->protected && !$result->following) break;
+				if ($result->protected && !$result->following) break;
+			}
 
 			$request = API_URL."statuses/show/{$reply_id}.json?include_entities=true";
 			$status = twitter_process($request);

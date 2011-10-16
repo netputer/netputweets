@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetPutweets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-15 23:57+0800\n"
-"PO-Revision-Date: 2011-10-15 23:57+0800\n"
+"POT-Creation-Date: 2011-10-16 16:24+0800\n"
+"PO-Revision-Date: 2011-10-16 16:25+0800\n"
 "Last-Translator: NetPuter <netputer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,689 +14,819 @@ msgstr ""
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED STATES\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: E:\\Code\\NetPutweets\n"
+"X-Poedit-SearchPath-0: E:\\PHPnow\\vhosts\\tui.netputer.com\n"
 
-#: E:\Code\NetPutweets/index.php:27
-#: E:\Code\NetPutweets/index.php:44
-#: E:\Code\NetPutweets/browsers/blackberry.php:51
+#: E:\PHPnow\vhosts\tui.netputer.com/index-ssl.php:32
+#: E:\PHPnow\vhosts\tui.netputer.com/index-ssl.php:49
+#: E:\PHPnow\vhosts\tui.netputer.com/index.php:27
+#: E:\PHPnow\vhosts\tui.netputer.com/index.php:44
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:51
 msgid "About"
 msgstr "關於"
 
-#: E:\Code\NetPutweets/index.php:32
-#: E:\Code\NetPutweets/browsers/blackberry.php:57
+#: E:\PHPnow\vhosts\tui.netputer.com/index-ssl.php:37
+#: E:\PHPnow\vhosts\tui.netputer.com/index.php:32
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:57
 msgid "Logout"
 msgstr "登出"
 
-#: E:\Code\NetPutweets/index.php:39
+#: E:\PHPnow\vhosts\tui.netputer.com/index-ssl.php:44
+#: E:\PHPnow\vhosts\tui.netputer.com/index.php:39
 msgid "Logged out"
 msgstr "已經登出啦"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:9
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:7
 msgid "Newer"
 msgstr "上一頁"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:10
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:9
 msgid "Older"
 msgstr "下一頁"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:16
-#: E:\Code\NetPutweets/browsers/touch.php:27
-#: E:\Code\NetPutweets/browsers/touch.php:34
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:16
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/touch.php:27
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/touch.php:34
 msgid "Home"
 msgstr "首頁"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:19
-#: E:\Code\NetPutweets/browsers/touch.php:28
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:19
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/touch.php:28
 msgid "Replies"
 msgstr "回覆"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:22
-#: E:\Code\NetPutweets/browsers/touch.php:29
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:22
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/touch.php:29
 msgid "Retweets"
 msgstr "轉發"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:25
-#: E:\Code\NetPutweets/browsers/touch.php:30
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:25
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/touch.php:30
 msgid "Directs"
 msgstr "私訊"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:28
-#: E:\Code\NetPutweets/browsers/desktop.php:19
-#: E:\Code\NetPutweets/browsers/touch.php:31
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:28
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/desktop.php:19
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/touch.php:31
 msgid "Search"
 msgstr "搜索"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:31
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:31
 msgid "Favourites"
 msgstr "收藏"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:34
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:34
 msgid "Lists"
 msgstr "列表"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:37
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:37
 msgid "Followers"
 msgstr "關注者"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:40
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:40
 msgid "Friends"
 msgstr "好友"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:43
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:43
 msgid "Blockings"
 msgstr "黑名單"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:54
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:54
 msgid "Settings"
 msgstr "設置"
 
-#: E:\Code\NetPutweets/browsers/blackberry.php:61
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:61
 msgid "Refresh"
 msgstr "刷新"
 
-#: E:\Code\NetPutweets/browsers/desktop.php:5
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/desktop.php:5
 msgid "Update"
 msgstr "發送"
 
-#: E:\Code\NetPutweets/browsers/desktop.php:8
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/desktop.php:8
 msgid "Upload Picture"
 msgstr "發圖"
 
-#: E:\Code\NetPutweets/browsers/touch.php:43
+#: E:\PHPnow\vhosts\tui.netputer.com/browsers/touch.php:43
 msgid "More"
 msgstr "更多"
 
-#: E:\Code\NetPutweets/common/lists.php:102
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:102
 msgid "List page not found"
 msgstr "找不到列表頁"
 
-#: E:\Code\NetPutweets/common/lists.php:112
-#: E:\Code\NetPutweets/common/lists.php:120
-#: E:\Code\NetPutweets/common/lists.php:122
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:120
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:122
 msgid "Following"
 msgstr "關注"
 
-#: E:\Code\NetPutweets/common/lists.php:112
-#: E:\Code\NetPutweets/common/lists.php:114
-#: E:\Code\NetPutweets/common/lists.php:120
-#: E:\Code\NetPutweets/common/lists.php:122
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:114
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:120
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:122
 msgid "'s Lists"
 msgstr "的列表"
 
-#: E:\Code\NetPutweets/common/lists.php:131
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:131
 msgid "'s Tweets"
 msgstr "的推兒"
 
-#: E:\Code\NetPutweets/common/lists.php:131
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:131
 msgid "View Members"
 msgstr "查看成員"
 
-#: E:\Code\NetPutweets/common/lists.php:131
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:131
 msgid "View Subscribers"
 msgstr "查看訂戶"
 
-#: E:\Code\NetPutweets/common/lists.php:144
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:144
 msgid "Members of"
 msgstr "成員"
 
-#: E:\Code\NetPutweets/common/lists.php:152
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:152
 msgid "Subscribers of"
 msgstr "訂戶"
 
-#: E:\Code\NetPutweets/common/lists.php:161
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:161
 msgid "No lists to display"
 msgstr "沒有列表可以顯示"
 
-#: E:\Code\NetPutweets/common/lists.php:164
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:164
 msgid "Members"
 msgstr "成員"
 
-#: E:\Code\NetPutweets/common/lists.php:164
+#: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:164
 msgid "Subscribers"
 msgstr "訂戶"
 
-#: E:\Code\NetPutweets/common/menu.php:72
+#: E:\PHPnow\vhosts\tui.netputer.com/common/menu.php:72
 msgid "Enjoy Twitter with NetPutweets!"
 msgstr "抱著奶瓶腿 享受推的樂趣"
 
-#: E:\Code\NetPutweets/common/settings.php:100
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:125
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:100
 msgid "Normal phone"
 msgstr "手機模式"
 
-#: E:\Code\NetPutweets/common/settings.php:101
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:126
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:101
 msgid "Touch phone"
 msgstr "觸屏模式"
 
-#: E:\Code\NetPutweets/common/settings.php:102
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:127
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:102
 msgid "PC/Laptop"
 msgstr "桌面模式"
 
-#: E:\Code\NetPutweets/common/settings.php:103
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:128
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:103
 msgid "BlackBerry (Pagination At Bottom)"
 msgstr "黑莓模式（翻頁在最下方）"
 
-#: E:\Code\NetPutweets/common/settings.php:113
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:138
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:113
 msgid "Full URL"
 msgstr "完整鏈接"
 
-#: E:\Code\NetPutweets/common/settings.php:114
-#: E:\Code\NetPutweets/common/settings.php:165
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:139
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:114
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
 msgid "Domain Only"
 msgstr "只顯示域名"
 
-#: E:\Code\NetPutweets/common/settings.php:119
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:144
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:119
 msgid "Automatic Cut"
 msgstr "自動截斷"
 
-#: E:\Code\NetPutweets/common/settings.php:120
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:145
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:120
 msgid "Return Error"
 msgstr "提示錯誤"
 
-#: E:\Code\NetPutweets/common/settings.php:130
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:155
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:130
 msgid "Menu Settings"
 msgstr "菜單設置"
 
-#: E:\Code\NetPutweets/common/settings.php:131
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:156
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:131
 msgid "Choose what you want to display on the Top Bar."
 msgstr "選擇你想顯示在頂欄的鏈接"
 
-#: E:\Code\NetPutweets/common/settings.php:132
-#: E:\Code\NetPutweets/common/twitter.php:774
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:157
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:132
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:801
 msgid "User"
 msgstr "用戶"
 
-#: E:\Code\NetPutweets/common/settings.php:138
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:163
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:138
 msgid "And Choose what you want to display on the Bottom Bar."
 msgstr "選擇你想顯示在底欄的鏈接"
 
-#: E:\Code\NetPutweets/common/settings.php:152
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:177
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:152
 msgid "Status Settings"
 msgstr "消息設置"
 
-#: E:\Code\NetPutweets/common/settings.php:153
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:178
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:153
 msgid "Show @/DM/RT/FAV/DEL As Text instead of images"
 msgstr "將 @/DM/RT/FAV/DEL 顯示為文字而不是圖片"
 
-#: E:\Code\NetPutweets/common/settings.php:154
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:179
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:154
 msgid "Put the Buttons after each Status"
 msgstr "將按鈕放在消息後面"
 
-#: E:\Code\NetPutweets/common/settings.php:155
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:180
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:155
 msgid "Show Status Time"
 msgstr "顯示消息時間"
 
-#: E:\Code\NetPutweets/common/settings.php:156
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:181
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:156
 msgid "Show Status Source"
 msgstr "顯示消息來源"
 
-#: E:\Code\NetPutweets/common/settings.php:157
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:182
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:157
 msgid "Show Avatar"
 msgstr "顯示頭像"
 
-#: E:\Code\NetPutweets/common/settings.php:158
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:183
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:158
 msgid "Enable Fixed Tag: "
 msgstr "使用固定標籤："
 
-#: E:\Code\NetPutweets/common/settings.php:159
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:184
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:159
 msgid "When posting a 140+ chars tweet: "
 msgstr "當消息超過140字時："
 
-#: E:\Code\NetPutweets/common/settings.php:161
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:186
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:161
 msgid "Global Settings"
 msgstr "全局設置"
 
-#: E:\Code\NetPutweets/common/settings.php:162
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:187
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:162
 msgid "Colour scheme: "
 msgstr "色彩方案："
 
-#: E:\Code\NetPutweets/common/settings.php:163
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:188
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:163
 msgid "Mode: "
 msgstr "模式："
 
-#: E:\Code\NetPutweets/common/settings.php:164
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:189
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:164
 msgid "Language: "
 msgstr "語言："
 
-#: E:\Code\NetPutweets/common/settings.php:165
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
 msgid "Showing URL: "
 msgstr "將鏈接顯示為："
 
-#: E:\Code\NetPutweets/common/settings.php:165
-#: E:\Code\NetPutweets/common/settings.php:168
-#: E:\Code\NetPutweets/common/twitter.php:536
-#: E:\Code\NetPutweets/common/twitter.php:867
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:193
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:168
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:562
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:894
 msgid "Note: "
 msgstr "提示："
 
-#: E:\Code\NetPutweets/common/settings.php:165
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
 msgid "means change"
 msgstr "意思是將"
 
-#: E:\Code\NetPutweets/common/settings.php:165
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
 msgid "to"
 msgstr "顯示為"
 
-#: E:\Code\NetPutweets/common/settings.php:166
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:191
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:166
 msgid "Tweets Per Page: "
 msgstr "每頁的推數："
 
-#: E:\Code\NetPutweets/common/settings.php:167
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:192
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:167
 msgid "Preview Photos In Timelines"
 msgstr "預覽圖片"
 
-#: E:\Code\NetPutweets/common/settings.php:168
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:193
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:168
 msgid "Enable Keyword Filter: "
 msgstr "開啟關鍵詞過濾："
 
-#: E:\Code\NetPutweets/common/settings.php:168
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:193
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:168
 msgid "Separate keywords with space"
 msgstr "用空格分開每個關鍵詞"
 
-#: E:\Code\NetPutweets/common/settings.php:169
-msgid "Custom CSS: "
-msgstr "自定義 CSS ："
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:194
+msgid "Custom CSS"
+msgstr "自定義 CSS"
 
-#: E:\Code\NetPutweets/common/settings.php:170
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+msgid "Change Tui Password: "
+msgstr "修改腿密码："
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:201
+msgid "Set your tui password, you can sign in without Twitter OAuth."
+msgstr "設置你的腿密碼，以便於下次直接登錄而無需通過 Twitter OAuth 驗證"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+msgid "Leave blank if you don't want to change it."
+msgstr "如果不需要修改请留空."
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+msgid "Delete my tui password please"
+msgstr "请删除我的腿密码"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:196
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:170
 msgid "Save"
 msgstr "保存"
 
-#: E:\Code\NetPutweets/common/settings.php:170
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:196
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:170
 msgid "Visit "
 msgstr "如果設置出錯，請"
 
-#: E:\Code\NetPutweets/common/settings.php:170
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:196
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:170
 msgid "Reset"
 msgstr "重置"
 
-#: E:\Code\NetPutweets/common/settings.php:170
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:196
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:170
 msgid " if things go horribly wrong - it will log you out and clear all settings."
 msgstr "所有設置，但你需要重新登錄"
 
-#: E:\Code\NetPutweets/common/twitter.php:225
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:169
+msgid "Custom CSS: "
+msgstr "自定義 CSS ："
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:225
 msgid "Upload success. Image posted to Twitter."
 msgstr "圖片已成功上傳，並發送至 Twitter"
 
-#: E:\Code\NetPutweets/common/twitter.php:235
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:235
 msgid "Damn! Something went wrong. Sorry :-("
 msgstr "唔，邊度錯左，等我轉身射個三分波先……"
 
-#: E:\Code\NetPutweets/common/twitter.php:250
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:250
 msgid "Please enter a message to go with your image."
 msgstr "請給你的圖片添加一段描述"
 
-#: E:\Code\NetPutweets/common/twitter.php:254
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:254
 msgid "Please select an image to upload."
 msgstr "請選擇需要上傳的圖片"
 
-#: E:\Code\NetPutweets/common/twitter.php:259
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:259
 msgid "Image: "
 msgstr "圖片："
 
-#: E:\Code\NetPutweets/common/twitter.php:260
-#: E:\Code\NetPutweets/common/twitter.php:691
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:260
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:718
 msgid "Content: "
 msgstr "內容："
 
-#: E:\Code\NetPutweets/common/twitter.php:262
-#: E:\Code\NetPutweets/common/twitter.php:693
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:262
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:720
 msgid "Send"
 msgstr "發送"
 
-#: E:\Code\NetPutweets/common/twitter.php:283
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:283
 msgid "Name: "
 msgstr "暱稱："
 
-#: E:\Code\NetPutweets/common/twitter.php:283
-#: E:\Code\NetPutweets/common/twitter.php:928
-#: E:\Code\NetPutweets/common/twitter.php:1266
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:283
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:955
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1293
 msgid "Location: "
 msgstr "位置："
 
-#: E:\Code\NetPutweets/common/twitter.php:283
-#: E:\Code\NetPutweets/common/twitter.php:927
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:283
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:954
 msgid "Link: "
 msgstr "鏈接："
 
-#: E:\Code\NetPutweets/common/twitter.php:283
-#: E:\Code\NetPutweets/common/twitter.php:926
-#: E:\Code\NetPutweets/common/twitter.php:1264
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:283
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:953
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1291
 msgid "Bio: "
 msgstr "介紹："
 
-#: E:\Code\NetPutweets/common/twitter.php:286
-#: E:\Code\NetPutweets/common/twitter.php:915
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:286
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:942
 msgid "Update Profile"
 msgstr "修改資料"
 
-#: E:\Code\NetPutweets/common/twitter.php:328
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:332
 msgid "Error: Login credentials incorrect."
 msgstr "錯誤：登錄信息出錯"
 
-#: E:\Code\NetPutweets/common/twitter.php:331
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:337
 msgid "Twitter timed out"
 msgstr "Twitter 超時啦"
 
-#: E:\Code\NetPutweets/common/twitter.php:331
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:337
 msgid "Dabr gave up on waiting for Twitter to respond. They're probably overloaded right now, try again in a minute."
 msgstr "Twitter 又爆鯨了，請稍後再試"
 
-#: E:\Code\NetPutweets/common/twitter.php:336
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:344
 msgid "Something broke on Twitter's end."
 msgstr "Twitter 出了點兒問題，具體部位是菊花"
 
-#: E:\Code\NetPutweets/common/twitter.php:338
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:347
 msgid "An error occured while calling the Twitter API"
 msgstr "在調用 API 時出現錯誤"
 
-#: E:\Code\NetPutweets/common/twitter.php:400
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:409
 msgid "years"
 msgstr "年"
 
-#: E:\Code\NetPutweets/common/twitter.php:401
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:410
 msgid "days"
 msgstr "天"
 
-#: E:\Code\NetPutweets/common/twitter.php:402
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:411
 msgid "hours"
 msgstr "小時"
 
-#: E:\Code\NetPutweets/common/twitter.php:403
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:412
 msgid "min"
 msgstr "分鐘"
 
-#: E:\Code\NetPutweets/common/twitter.php:404
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:413
 msgid "sec"
 msgstr "秒"
 
-#: E:\Code\NetPutweets/common/twitter.php:417
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:426
 msgid "0 sec"
 msgstr "剛才"
 
-#: E:\Code\NetPutweets/common/twitter.php:439
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:464
 msgid "Show previous conversations"
 msgstr "顯示之前的對話"
 
-#: E:\Code\NetPutweets/common/twitter.php:442
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:468
 msgid "Status"
 msgstr "狀態"
 
-#: E:\Code\NetPutweets/common/twitter.php:452
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:478
 msgid "Retweet"
 msgstr "轉發"
 
-#: E:\Code\NetPutweets/common/twitter.php:524
-#: E:\Code\NetPutweets/common/twitter.php:527
-#: E:\Code\NetPutweets/common/twitter.php:535
-#: E:\Code\NetPutweets/common/twitter.php:539
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:550
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:553
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:561
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:565
 msgid "Are you really sure you want to"
 msgstr "你確定"
 
-#: E:\Code\NetPutweets/common/twitter.php:524
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:550
 msgid "Unblock"
 msgstr "取消屏蔽"
 
-#: E:\Code\NetPutweets/common/twitter.php:525
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:551
 msgid "They will see your updates on their home page if they follow you again."
 msgstr "他們再也看不到你的推兒了"
 
-#: E:\Code\NetPutweets/common/twitter.php:525
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:551
 msgid "You <em>can</em> block them again if you want."
 msgstr "你可以隨時再次屏蔽他們"
 
-#: E:\Code\NetPutweets/common/twitter.php:528
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
 msgid "You won't show up in their list of friends"
 msgstr "你將從他們的好友列表中消失"
 
-#: E:\Code\NetPutweets/common/twitter.php:528
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
 msgid "They won't see your updates on their home page"
 msgstr "他們再也看不到你的推兒了"
 
-#: E:\Code\NetPutweets/common/twitter.php:528
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
 msgid "They won't be able to follow you"
 msgstr "他們將不能夠再關注你了"
 
-#: E:\Code\NetPutweets/common/twitter.php:528
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
 msgid "You <em>can</em> unblock them but you will need to follow them again afterwards"
 msgstr "你可以隨時取消對它們的屏蔽"
 
-#: E:\Code\NetPutweets/common/twitter.php:535
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:561
 msgid "delete your tweet?"
 msgstr "刪除你的推兒嗎？"
 
-#: E:\Code\NetPutweets/common/twitter.php:536
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:562
 msgid "Tweet: "
 msgstr "推兒："
 
-#: E:\Code\NetPutweets/common/twitter.php:536
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:562
 msgid "There is no way to undo this action."
 msgstr "無法撤銷喔~"
 
-#: E:\Code\NetPutweets/common/twitter.php:539
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:565
 msgid "report"
 msgstr "舉報"
 
-#: E:\Code\NetPutweets/common/twitter.php:539
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:565
 msgid "as a spammer?"
 msgstr "為垃圾消息用戶？"
 
-#: E:\Code\NetPutweets/common/twitter.php:540
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:566
 msgid "They won't be able to follow you."
 msgstr "他們將不能夠再關注你了"
 
-#: E:\Code\NetPutweets/common/twitter.php:543
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:569
 msgid "Yes"
 msgstr "是的"
 
-#: E:\Code\NetPutweets/common/twitter.php:544
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:570
 msgid "Confirm"
 msgstr "確認操作"
 
-#: E:\Code\NetPutweets/common/twitter.php:652
-#: E:\Code\NetPutweets/common/twitter.php:680
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:679
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:707
 msgid "Create DM"
 msgstr "新私信"
 
-#: E:\Code\NetPutweets/common/twitter.php:667
-#: E:\Code\NetPutweets/common/twitter.php:680
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:694
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:707
 msgid "DM Sent"
 msgstr "已發送"
 
-#: E:\Code\NetPutweets/common/twitter.php:675
-#: E:\Code\NetPutweets/common/twitter.php:680
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:702
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:707
 msgid "DM Inbox"
 msgstr "收信箱"
 
-#: E:\Code\NetPutweets/common/twitter.php:686
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:713
 msgid "is not following you. You cannot send direct message to that guy."
 msgstr "沒有關注你，你無法發私信給他"
 
-#: E:\Code\NetPutweets/common/twitter.php:688
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:715
 msgid "Sending direct message to"
 msgstr "發私信給"
 
-#: E:\Code\NetPutweets/common/twitter.php:691
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:718
 msgid "To: "
 msgstr "收信人："
 
-#: E:\Code\NetPutweets/common/twitter.php:714
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:741
 msgid "Save as default search"
 msgstr "保存為默認關鍵詞"
 
-#: E:\Code\NetPutweets/common/twitter.php:749
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:776
 msgid "Reply"
 msgstr "回覆"
 
-#: E:\Code\NetPutweets/common/twitter.php:750
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:777
 msgid "No username given"
 msgstr "沒有提供用戶名"
 
-#: E:\Code\NetPutweets/common/twitter.php:760
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:787
 msgid "In reply to"
 msgstr "回覆"
 
-#: E:\Code\NetPutweets/common/twitter.php:800
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:827
 msgid "Unfavourite Success"
 msgstr "取消收藏成功"
 
-#: E:\Code\NetPutweets/common/twitter.php:803
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:830
 msgid "Favourite Success"
 msgstr "收藏成功"
 
-#: E:\Code\NetPutweets/common/twitter.php:833
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:860
 msgid "Hashtag"
 msgstr "標籤"
 
-#: E:\Code\NetPutweets/common/twitter.php:865
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:892
 msgid "Official Retweet"
 msgstr "官方 RT"
 
-#: E:\Code\NetPutweets/common/twitter.php:865
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:892
 msgid "or Traditional Retweet"
 msgstr "或者傳統 RT"
 
-#: E:\Code\NetPutweets/common/twitter.php:867
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:894
 msgid "It is not well suited to retweet a protected user 's tweet."
 msgstr "不建議 RT 隱私保護用戶的推兒"
 
-#: E:\Code\NetPutweets/common/twitter.php:899
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:926
 msgid "Verified"
 msgstr "認證用戶"
 
-#: E:\Code\NetPutweets/common/twitter.php:900
-#: E:\Code\NetPutweets/common/twitter.php:1275
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:927
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1302
 msgid "Private/Protected"
 msgstr "隱私保護"
 
-#: E:\Code\NetPutweets/common/twitter.php:904
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:931
 msgid "View picture"
 msgstr "查看頭像"
 
-#: E:\Code\NetPutweets/common/twitter.php:908
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:935
 msgid "Follow"
 msgstr "關注"
 
-#: E:\Code\NetPutweets/common/twitter.php:910
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:937
 msgid "Unfollow"
 msgstr "取消關注"
 
-#: E:\Code\NetPutweets/common/twitter.php:913
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:940
 msgid "Direct Message"
 msgstr "發私信"
 
-#: E:\Code\NetPutweets/common/twitter.php:918
-#: E:\Code\NetPutweets/common/twitter.php:1268
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:945
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1295
 msgid "Tweets"
 msgstr "推兒"
 
-#: E:\Code\NetPutweets/common/twitter.php:921
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:948
 msgid "Block"
 msgstr "屏蔽"
 
-#: E:\Code\NetPutweets/common/twitter.php:921
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:948
 msgid "Report Spam"
 msgstr "舉報"
 
-#: E:\Code\NetPutweets/common/twitter.php:930
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:957
 msgid "Joined: "
 msgstr "註冊時間："
 
-#: E:\Code\NetPutweets/common/twitter.php:930
-#: E:\Code\NetPutweets/common/twitter.php:1271
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:957
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1298
 msgid "Tweets Per Day"
 msgstr "推兒/天"
 
-#: E:\Code\NetPutweets/common/twitter.php:954
-#: E:\Code\NetPutweets/common/twitter.php:1280
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:981
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1307
 msgid " ago"
 msgstr "前"
 
-#: E:\Code\NetPutweets/common/twitter.php:1177
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1204
 msgid "Tweet Filtered"
 msgstr "已過濾"
 
-#: E:\Code\NetPutweets/common/twitter.php:1188
-#: E:\Code\NetPutweets/common/twitter.php:1190
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1215
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1217
 msgid "via"
 msgstr "通過"
 
-#: E:\Code\NetPutweets/common/twitter.php:1216
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1243
 msgid "retweeted by"
 msgstr "由"
 
-#: E:\Code\NetPutweets/common/twitter.php:1216
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1243
 msgid "<span style='display:none;'>zhuanfa</span>"
 msgstr "轉發"
 
-#: E:\Code\NetPutweets/common/twitter.php:1256
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1283
 msgid "No users to display."
 msgstr "没有用户可显示."
 
-#: E:\Code\NetPutweets/common/twitter.php:1267
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1294
 msgid "Info: "
 msgstr "概況："
 
-#: E:\Code\NetPutweets/common/twitter.php:1272
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1299
 msgid "Last tweet: "
 msgstr "最近更新："
 
-#: E:\Code\NetPutweets/common/twitter.php:1277
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1304
 msgid "Never tweeted"
 msgstr "还没推过呢"
 
-#: E:\Code\NetPutweets/common/twitter.php:1310
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1337
 msgid "No tweets to display."
 msgstr "沒有消息可顯示"
 
-#: E:\Code\NetPutweets/common/twitter.php:1358
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1385
 msgid "@"
 msgstr "回覆"
 
-#: E:\Code\NetPutweets/common/twitter.php:1362
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1389
 msgid "@@"
 msgstr "群回"
 
-#: E:\Code\NetPutweets/common/twitter.php:1371
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1398
 msgid "UNFAV"
 msgstr "不藏"
 
-#: E:\Code\NetPutweets/common/twitter.php:1373
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1400
 msgid "FAV"
 msgstr "收藏"
 
-#: E:\Code\NetPutweets/common/twitter.php:1376
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1403
 msgid "UNDO"
 msgstr "撤銷"
 
-#: E:\Code\NetPutweets/common/twitter.php:1378
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1405
 msgid "RT"
 msgstr "轉發"
 
-#: E:\Code\NetPutweets/common/twitter.php:1381
-#: E:\Code\NetPutweets/common/twitter.php:1385
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1408
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1412
 msgid "DEL"
 msgstr "刪除"
 
-#: E:\Code\NetPutweets/common/twitter.php:1384
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1411
 msgid "DM"
 msgstr "私信"
 
-#: E:\Code\NetPutweets/common/twitter.php:1391
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1418
 msgid "GEO"
 msgstr "位置"
 
-#: E:\Code\NetPutweets/common/user.php:88
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:92
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user.php:88
 msgid "Login"
 msgstr "登錄"
 
-#: E:\Code\NetPutweets/common/user.php:172
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:128
+msgid "Invalid username or password."
+msgstr "用户名或密码错误"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:135
+msgid "Please Sign in with Twitter OAuth."
+msgstr "请通过 Twitter OAuth 登录."
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:201
+msgid "No access to Twitter.com"
+msgstr "無法訪問 Twitter.com"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:201
+msgid "Registration steps"
+msgstr "使用方法"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:202
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:207
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user.php:172
 msgid "Sign In with Twitter OAuth"
 msgstr "通過 Twitter OAuth 登錄"
 
-#: E:\Code\NetPutweets/common/user.php:172
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:202
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:207
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user.php:172
 msgid "Proxy"
 msgstr "代理"
 
-#: E:\Code\NetPutweets/common/user.php:177
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:202
+msgid "Visit"
+msgstr "訪問"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:202
+msgid "settings"
+msgstr "設置"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:202
+msgid "page to enter a tui password."
+msgstr "頁面並輸入腿密碼"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:202
+msgid "Done! You can now enjoy Twitter with NetPutweets from anywhere (even #ChinaBlocksTwitter or else)."
+msgstr "完成！現在你能在任何地方抱著奶瓶腿，享受推的樂趣啦~ （就算 Twitter 被封）"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:203
+msgid "Tui Password"
+msgstr "腿密碼"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:208
+msgid "Enter your Twitter Username and"
+msgstr "输入你的 Twitter 用户名和"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:208
+msgid " Tui Password"
+msgstr "腿密码"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:208
+msgid "Username"
+msgstr "用户名"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:208
+msgid "Password"
+msgstr "腿密码"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:208
+msgid "Sign In"
+msgstr "登录"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:208
+msgid "Remember Me?"
+msgstr "记住我"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:213
+#: E:\PHPnow\vhosts\tui.netputer.com/common/user.php:177
 msgid "Login again"
 msgstr "重新登錄"
 
@@ -713,33 +843,6 @@ msgstr "重新登錄"
 
 #~ msgid "Nai Ping (For PC Only)"
 #~ msgstr "奶瓶模式（僅適用於桌面）"
-
-#~ msgid "No access to Twitter.com"
-#~ msgstr "無法訪問 Twitter.com"
-
-#~ msgid "Set your tui password, you can sign in without Twitter OAuth."
-#~ msgstr "設置你的腿密碼，以便於下次直接登錄而無需通過 Twitter OAuth 驗證"
-
-#~ msgid "Registration steps"
-#~ msgstr "使用方法"
-
-#~ msgid "Visit"
-#~ msgstr "訪問"
-
-#~ msgid "settings"
-#~ msgstr "設置"
-
-#~ msgid "page to enter a tui password."
-#~ msgstr "頁面並輸入腿密碼"
-
-#~ msgid ""
-#~ "Done! You can now enjoy Twitter with NetPutweets from anywhere (even "
-#~ "#ChinaBlocksTwitter or else)."
-#~ msgstr ""
-#~ "完成！現在你能在任何地方抱著奶瓶腿，享受推的樂趣啦~ （就算 Twitter 被封）"
-
-#~ msgid "Tui Password"
-#~ msgstr "腿密碼"
 
 #~ msgid "Upload"
 #~ msgstr "上傳圖片"
@@ -783,15 +886,6 @@ msgstr "重新登錄"
 #~ msgid "Show Long URL"
 #~ msgstr "还原短链接"
 
-#~ msgid "Change Tui Password"
-#~ msgstr "修改腿密码"
-
-#~ msgid "Leave blank if you don't want to change it."
-#~ msgstr "如果不需要修改请留空."
-
-#~ msgid "Delete my tui password please"
-#~ msgstr "请删除我的腿密码"
-
 #~ msgid "Current"
 #~ msgstr "现在"
 
@@ -803,30 +897,6 @@ msgstr "重新登錄"
 
 #~ msgid "Delete without confirmation"
 #~ msgstr "确认删除"
-
-#~ msgid "Invalid username or password."
-#~ msgstr "用户名或密码错误"
-
-#~ msgid "Please Sign in with Twitter OAuth."
-#~ msgstr "请通过 Twitter OAuth 登录."
-
-#~ msgid "Enter your Twitter Username and"
-#~ msgstr "输入你的 Twitter 用户名和"
-
-#~ msgid " Tui Password"
-#~ msgstr "腿密码"
-
-#~ msgid "Username"
-#~ msgstr "用户名"
-
-#~ msgid "Password"
-#~ msgstr "腿密码"
-
-#~ msgid "Sign In"
-#~ msgstr "登录"
-
-#~ msgid "Remember Me?"
-#~ msgstr "记住我"
 
 #~ msgid "Not using"
 #~ msgstr "不使用"
