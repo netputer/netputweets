@@ -1,13 +1,13 @@
 <?php
 function blackberry_theme_pagination() {
 	$page = intval($_GET['page']);
-	if (preg_match('#&q(.*)#', $_SERVER['QUERY_STRING'], $matches)) {
-		$query = $matches[0];
-	}
+	
+	if (preg_match('#&q(.*)#', $_SERVER['QUERY_STRING'], $matches)) $query = $matches[0];
 	if ($page == 0) $page = 1;
-	$ht = ((BASE_URL == BASE_URF) ? "?" : "&");
-	if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}{$ht}page=".($page-1)."$query'>".__("Newer")."</a>";
-	$links[] = "<a href='".BASE_URL."{$_GET['q']}{$ht}page=".($page+1)."$query'>".__("Older")."</a>";
+	if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page-1)."$query'>".__("Newer")."</a>";
+	
+	$links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page+1)."$query'>".__("Older")."</a>";
+	
 	return '<div>'.implode(' | ', $links).'</div>';
 }
 

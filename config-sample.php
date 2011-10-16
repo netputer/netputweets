@@ -6,7 +6,6 @@ define('OAUTH_SECRET', 'putyourinfohere');
 define('EMBEDLY_KEY', 'putyourinfohere');
 
 define('BASE_URL', 'putyourinfohere');
-define('BASE_URF', 'putyourinfohere');
 
 define('NPT_TITLE', 'putyourinfohere');
 define('API_URL', 'http://api.twitter.com/1/');

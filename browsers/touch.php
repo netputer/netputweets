@@ -18,7 +18,7 @@ function touch_theme_avatar($url, $force_large = true) {
 
 function touch_theme_page($title, $content) {
 	$page = ($_GET['page'] == 0 ? null : " - Page ".$_GET['page'])." - ";
-	echo '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0;" /><link href="'.BASE_URF.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$page.NPT_TITLE.'</title><base href="'.BASE_URF.'" />'.theme('css').'</head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom').'</body></html>';
+	echo '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0;" /><link href="'.BASE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$page.NPT_TITLE.'</title><base href="'.BASE_URL.'" />'.theme('css').'</head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom').'</body></html>';
 	exit();
 }
 
@@ -53,7 +53,7 @@ function touch_theme_menu_bottom() {
 }
 
 function touch_theme_css() {
-	$out = theme_css().'<link rel="stylesheet" href="'.BASE_URF.'browsers/touch.css" /><script type="text/javascript">'.file_get_contents('browsers/touch.js').'</script>';
+	$out = theme_css().'<link rel="stylesheet" href="'.BASE_URL.'browsers/touch.css" /><script type="text/javascript">'.file_get_contents('browsers/touch.js').'</script>';
 	$out .= '<style type="text/css">'.setting_fetch('css').'</style>';
 	return $out;
 }

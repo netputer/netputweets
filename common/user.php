@@ -44,7 +44,7 @@ function user_itap() {
 	$response = twitter_process('https://api.twitter.com/oauth/request_token', $params);
 	parse_str($response, $token);
 	$_SESSION['oauth_request_token_secret'] = $token['oauth_token_secret'];
-	$authorise_url = BASE_URF.'oauthproxy/authorize?oauth_token='.$token['oauth_token'];
+	$authorise_url = BASE_URL.'oauthproxy/authorize?oauth_token='.$token['oauth_token'];
 	header("Location: $authorise_url");
 }
 
