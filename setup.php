@@ -87,9 +87,6 @@ switch($step) {
 						case "EDLY_":
 							fwrite($handle, str_replace('putyourinfohere', $t_eak, $line));
 							break;
-						case "E_URL":
-							fwrite($handle, str_replace('putyourinfohere', BASE_URL, $line));
-							break;
 						case "_TITL":
 							fwrite($handle, str_replace('putyourinfohere', $t_title, $line));
 							break;
