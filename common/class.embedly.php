@@ -21,26 +21,26 @@ function embedly_embed_thumbnails(&$feed) {
 
 	foreach ($feed as &$status) {
 		if ($status->entities) {
-			$entities = $status->entities;
+			if ($status->entities->urls) {
+				foreach($status->entities->urls as $urls) {
+					if (preg_match($embedly_re, $urls->expanded_url) > 0) { // If it matches an Embedly supported URL
+						$matched_urls[$urls->expanded_url][] = $status->id;
+					} elseif (preg_match("/.*\.(jpg|png|gif)/i", $urls->expanded_url)) {
+						$img_size = getimagesize($urls->expanded_url);
 
-			foreach($entities->urls as $urls) {
-				if (preg_match($embedly_re, $urls->expanded_url) > 0) { // If it matches an Embedly supported URL
-					$matched_urls[$urls->expanded_url][] = $status->id;
-				} elseif (preg_match("/.*\.(jpg|png|gif)/i", $urls->expanded_url)) {
-					$img_size = getimagesize($urls->expanded_url);
+						$html = "<a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url($urls->expanded_url)."\"";
+						if ($img_size[0] > 150) $html .= "style=\"width:150px;\"";
+						$html .= "/></a>";
 
-					$html = "<a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url($urls->expanded_url)."\"";
-					if ($img_size[0] > 150) $html .= "style=\"width:150px;\"";
-					$html .= "/></a>";
+						$feed[$status->id]->text .= "<br />$html";
+					} else {
+						foreach ($services as $pattern => $thumbnail_url) {
+							if (preg_match_all($pattern, $urls->expanded_url, $matches, PREG_PATTERN_ORDER) > 0) {
 
-					$feed[$status->id]->text .= "<br />$html";
-				} else {
-					foreach ($services as $pattern => $thumbnail_url) {
-						if (preg_match_all($pattern, $urls->expanded_url, $matches, PREG_PATTERN_ORDER) > 0) {
-
-							foreach ($matches[1] as $key => $match) {
-								$html = "<a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url(sprintf($thumbnail_url, $match))."\" /></a>";
-								$feed[$status->id]->text .= "<br />$html";
+								foreach ($matches[1] as $key => $match) {
+									$html = "<a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url(sprintf($thumbnail_url, $match))."\" /></a>";
+									$feed[$status->id]->text .= "<br />$html";
+								}
 							}
 						}
 					}
