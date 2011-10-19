@@ -358,12 +358,16 @@ function twitter_fetch($url) {
 	return $response;
 }
 
-function twitter_parse_tags($input, $entities = false) {
-	//Linebreaks.  Some clients insert \n for formatting.
+function twitter_parse_tags($input, $entities = false, $id = false) {
+	// Filter.
+	if ($id && substr($_GET["q"], 0, 6) !== "status" && (setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($input)) {
+		return "<a href='".BASE_URL."status/{$id}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
+	}
+	
+	// Linebreaks.  Some clients insert \n for formatting.
 	$out = nl2br($input);
-
+	
 	// Use the Entities to replace hyperlink URLs
-	// http://dev.twitter.com/pages/tweet_entities
 	if ($entities && $entities->urls) {
 		foreach ($entities->urls as $urls) {
 			if ($urls->expanded_url != "") {
@@ -1168,11 +1172,11 @@ function theme_timeline($feed) {
 				$max_id = $status->original_id_str ? $status->original_id_str : $status->id_str;
 			}
 
-			$status->text = twitter_parse_tags($status->text, $status->entities);
+			$status->text = twitter_parse_tags($status->text, $status->entities, $status->id_str);
 		}
 	} else {
 		foreach ($feed as &$status) {
-			$status->text = twitter_parse_tags($status->text, $status->entities);
+			$status->text = twitter_parse_tags($status->text, $status->entities, $status->id_str);
 		}
 	}
 
@@ -1199,13 +1203,13 @@ function theme_timeline($feed) {
 		} else {
 			$date = $status->created_at;
 		}
-
+/*
 		if (substr($_GET["q"], 0, 6) !== "status" && (setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($status->text)) {
 			$text = "<a href='".BASE_URL."status/{$status->id_str}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 		} else {
 			$text = $status->text;
 		}
-
+*/
 		$link = theme('status_time_link', $status, !$status->is_direct);
 
 		$actions = theme('action_icons', $status);
@@ -1226,9 +1230,9 @@ function theme_timeline($feed) {
 		$html = "<b class='suser'><a href='".BASE_URL."user/{$status->from->screen_name}'>{$status->from->screen_name}</a></b> ";
 
 		if (setting_fetch('buttonend') == 'yes') {
-			$html .= "<span class='stext'>{$text}</span><br /><small class='sbutton'>$actions $link ";
+			$html .= "<span class='stext'>{$status->text}</span><br /><small class='sbutton'>$actions $link ";
 		} else {
-			$html .= "<small class='sbutton'>$actions</small><br /><span class='stext'>{$text}</span><br /><small class='sbutton'>$link";
+			$html .= "<small class='sbutton'>$actions</small><br /><span class='stext'>{$status->text}</span><br /><small class='sbutton'>$link";
 		}
 
 		$html .= " $source $replyto</small>";
