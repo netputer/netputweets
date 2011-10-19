@@ -222,15 +222,9 @@ function twitter_upload_page($query) {
 
 			$text = $json->text;
 
-			$content = "<p>".__("Upload success. Image posted to Twitter.")."</p><p><img src=\"";
+			$content = "<p>".__("Upload success. Image posted to Twitter.")."</p>";
 
-			if (IMGPROXY == 1) {
-				$content .= BASE_URL."img.php?u=".base64_encode(base64_encode($image_url));
-			} else {
-				$content .= $image_url;
-			}
-
-			$content .= "\" alt='' /></p><p>".twitter_parse_tags($text)."</p>";
+			return theme('page', __('Upload Picture'), $content);
 		} else {
 			$content = __("Damn! Something went wrong. Sorry :-(")
 				."<br /> code=" . $code
@@ -268,6 +262,7 @@ function twitter_upload_page($query) {
 
 function twitter_profile_page($query) {
 	$url = API_URL."account/update_profile.json";
+	
 	if ($_POST['name']) {
 		$post_data = array(
 			'name' => stripslashes($_POST['name']),
@@ -283,6 +278,7 @@ function twitter_profile_page($query) {
 		$content = "<form method=\"post\" action=\"".BASE_URL."profile\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location: ")."<input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link: ")."<input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
 	}
 	$p = twitter_process($url, $post_data);
+	
 	return theme('page', __("Update Profile"), $content);
 }
 
