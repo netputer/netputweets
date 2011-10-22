@@ -165,7 +165,7 @@ function friendship($user_a) {
 }
 
 function twitter_block_exists($query) {
-	$request = API_URL.'blocks/blocking/ids.json';
+	$request = API_URL.'blocks/blocking/ids.json?stringify_ids=true';
 	$blocked = (array) twitter_process($request);
 	return in_array($query,$blocked);
 }
@@ -572,12 +572,15 @@ function twitter_confirmation_page($query) {
 
 function twitter_friends_page($query) {
 	$user = $query[1];
+
 	if (!$user) {
-	user_ensure_authenticated();
-	$user = user_current_username();
+		user_ensure_authenticated();
+		$user = user_current_username();
 	}
+
 	$request = API_URL."statuses/friends/{$user}.xml";
 	$tl = lists_paginated_process($request);
+
 	$content = theme('followers', $tl);
 	theme('page', __("Friends"), $content);
 }
@@ -592,14 +595,17 @@ function twitter_followers_page($query) {
 
 	$request = API_URL."statuses/followers/{$user}.xml";
 	$tl = lists_paginated_process($request);
+
 	$content = theme('followers', $tl);
 	theme('page', __("Followers"), $content);
 }
 
 function twitter_blockings_page($query) {
-	$request = API_URL.'blocks/blocking.xml?page='.intval($_GET['page']);
-	//$tl = twitter_process($request);
-	$tl = lists_paginated_process($request);
+	$request = API_URL.'blocks/blocking/ids.json?stringify_ids=true';
+	$lists = twitter_process($request);
+
+	$request = API_URL.'users/lookup.json?user_id='.implode($lists, ',').'&include_entities=true';
+	$tl = twitter_process($request);
 
 	$content = theme('followers', $tl);
 	theme('page', __("Blockings"), $content);
@@ -629,10 +635,12 @@ function twitter_update() {
 function twitter_retweet($query) {
 	twitter_ensure_post_action();
 	$id = $query[1];
+
 	if (is_numeric($id)) {
 		$request = API_URL.'statuses/retweet/'.$id.'.xml';
 		twitter_process($request, true);
 	}
+
 	twitter_refresh($_POST['from'] ? $_POST['from'] : '');
 }
 
