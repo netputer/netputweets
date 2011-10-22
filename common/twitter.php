@@ -774,33 +774,48 @@ function twitter_user_page($query) {
 	$in_reply_to_id = (string) $query[3];
 	$content = '';
 	$str = __("Reply");
+	
 	if (!$screen_name) theme('error', __('No username given'));
+	
 	$user = twitter_user_info($screen_name);
-	if (isset($user->status)) {
-		$request = API_URL."statuses/user_timeline.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
-		$tl = twitter_process($request);
-		$tl = twitter_standard_timeline($tl, 'user');
-	}
+
 	$to_users = array($user->screen_name);
+	
 	if (is_numeric($in_reply_to_id)) {
 		$tweet = twitter_find_tweet_in_timeline($in_reply_to_id, $tl);
 		$content .= "<p>".__("In reply to")." <strong>$screen_name</strong>: {$tweet->text}</p>";
+		
 		if ($subaction == 'replyall') {
 			$found = Twitter_Extractor::create($tweet->text)
 				->extractMentionedUsernames();
 			$to_users = array_unique(array_merge($to_users, $found));
 		}
 	}
+	
 	$status = '';
+	
 	foreach ($to_users as $username) {
 		if (!user_is_current_user($username)) $status .= "@{$username} ";
 	}
+	
 	$content .= theme('status_form', $status, $in_reply_to_id, true);
 	$content .= theme('user_header', $user);
-	if ($in_reply_to_id == 0) {
+	
+	if ($in_reply_to_id == 0 && isset($user->status)) {
 		$str = __("User");
+		
+		if ($subaction == "retweets") {
+			$request = API_URL."statuses/retweeted_by_user.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
+		} else {
+			$request = API_URL."statuses/user_timeline.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
+		}
+		
+		$tl = twitter_process($request);
+			$tl = twitter_standard_timeline($tl, 'user');
+		
 		$content .= theme('timeline', $tl);
 	}
+	
 	theme('page', "$str $screen_name", $content);
 }
 
@@ -942,7 +957,7 @@ function theme_user_header($user) {
 		$out .= "<a href='".BASE_URL."profile'>".__("Update Profile")."</a>";
 	}
 
-	$out .= " ] [ {$user->statuses_count} ".__("Tweets")." | <a href='".BASE_URL."followers/{$user->screen_name}'>{$user->followers_count} ".__("Followers")."</a> | <a href='".BASE_URL."friends/{$user->screen_name}'>{$user->friends_count} ".__("Friends")."</a> | <a href='".BASE_URL."favourites/{$user->screen_name}'>{$user->favourites_count} ".__("Favourites")."</a> | <a href='".BASE_URL."lists/{$user->screen_name}'>{$user->listed_count} ".__("Lists")."</a> ]";
+	$out .= " ] [ {$user->statuses_count} ".__("Tweets")." | <a href='".BASE_URL."followers/{$user->screen_name}'>{$user->followers_count} ".__("Followers")."</a> | <a href='".BASE_URL."friends/{$user->screen_name}'>{$user->friends_count} ".__("Friends")."</a> | <a href='".BASE_URL."favourites/{$user->screen_name}'>{$user->favourites_count} ".__("Favourites")."</a> | <a href='".BASE_URL."lists/{$user->screen_name}'>{$user->listed_count} ".__("Lists")."</a> | <a href='".BASE_URL."user/{$user->screen_name}/retweets'>".__("Retweets")."</a> ]";
 
 	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
 		$out .= " [ <a href='".BASE_URL."confirm/block/{$user->screen_name}/{$user->id_str}'>".__("Block")."?</a> - <a href='".BASE_URL."confirm/spam/{$user->screen_name}/{$user->id_str}'>".__('Report Spam')."</a> ]";
