@@ -262,7 +262,7 @@ function twitter_upload_page($query) {
 
 function twitter_profile_page($query) {
 	$url = API_URL."account/update_profile.json";
-	
+
 	if ($_POST['name']) {
 		$post_data = array(
 			'name' => stripslashes($_POST['name']),
@@ -278,7 +278,7 @@ function twitter_profile_page($query) {
 		$content = "<form method=\"post\" action=\"".BASE_URL."profile\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location: ")."<input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link: ")."<input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
 	}
 	$p = twitter_process($url, $post_data);
-	
+
 	return theme('page', __("Update Profile"), $content);
 }
 
@@ -359,10 +359,10 @@ function twitter_parse_tags($input, $entities = false, $id = false) {
 	if ($id && substr($_GET["q"], 0, 6) !== "status" && (setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($input)) {
 		return "<a href='".BASE_URL."status/{$id}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 	}
-	
+
 	// Linebreaks.  Some clients insert \n for formatting.
 	$out = nl2br($input);
-	
+
 	// Use the Entities to replace hyperlink URLs
 	if ($entities && $entities->urls) {
 		foreach ($entities->urls as $urls) {
@@ -584,12 +584,12 @@ function twitter_friends_page($query) {
 
 function twitter_followers_page($query) {
 	$user = $query[1];
-	
+
 	if (!$user) {
 		user_ensure_authenticated();
 		$user = user_current_username();
 	}
-	
+
 	$request = API_URL."statuses/followers/{$user}.xml";
 	$tl = lists_paginated_process($request);
 	$content = theme('followers', $tl);
@@ -600,7 +600,7 @@ function twitter_blockings_page($query) {
 	$request = API_URL.'blocks/blocking.xml?page='.intval($_GET['page']);
 	//$tl = twitter_process($request);
 	$tl = lists_paginated_process($request);
-	
+
 	$content = theme('followers', $tl);
 	theme('page', __("Blockings"), $content);
 }
@@ -777,48 +777,48 @@ function twitter_user_page($query) {
 	$in_reply_to_id = (string) $query[3];
 	$content = '';
 	$str = __("Reply");
-	
+
 	if (!$screen_name) theme('error', __('No username given'));
-	
+
 	$user = twitter_user_info($screen_name);
 
 	$to_users = array($user->screen_name);
-	
+
 	if (is_numeric($in_reply_to_id)) {
 		$tweet = twitter_find_tweet_in_timeline($in_reply_to_id, $tl);
 		$content .= "<p>".__("In reply to")." <strong>$screen_name</strong>: {$tweet->text}</p>";
-		
+
 		if ($subaction == 'replyall') {
 			$found = Twitter_Extractor::create($tweet->text)
 				->extractMentionedUsernames();
 			$to_users = array_unique(array_merge($to_users, $found));
 		}
 	}
-	
+
 	$status = '';
-	
+
 	foreach ($to_users as $username) {
 		if (!user_is_current_user($username)) $status .= "@{$username} ";
 	}
-	
+
 	$content .= theme('status_form', $status, $in_reply_to_id, true);
 	$content .= theme('user_header', $user);
-	
+
 	if ($in_reply_to_id == 0 && isset($user->status)) {
 		$str = __("User");
-		
+
 		if ($subaction == "retweets") {
 			$request = API_URL."statuses/retweeted_by_user.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
 		} else {
 			$request = API_URL."statuses/user_timeline.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
 		}
-		
+
 		$tl = twitter_process($request);
 			$tl = twitter_standard_timeline($tl, 'user');
-		
+
 		$content .= theme('timeline', $tl);
 	}
-	
+
 	theme('page', "$str $screen_name", $content);
 }
 
@@ -994,6 +994,7 @@ function theme_avatar($url, $force_large = false) {
 }
 function theme_status_time_link($status, $is_link = true) {
 	$time = strtotime($status->created_at);
+
 	if ($time > 0) {
 		if (twitter_date('dmy') == twitter_date('dmy', $time)) {
 			$out = format_interval(time() - $time).__(" ago");
@@ -1003,9 +1004,10 @@ function theme_status_time_link($status, $is_link = true) {
 	} else {
 		$out = $status->created_at;
 	}
-	if ($is_link)
-		$out = "<a href='".BASE_URL."status/{$status->id_str}'>$out</a>";
-	if ((substr($_GET['q'],0,4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser') == 'desktop') || (setting_fetch('browser') == 'naiping')) {
+
+	if ($is_link) $out = "<a href='".BASE_URL."status/{$status->id_str}'>$out</a>";
+
+	if ((substr($_GET['q'],0,4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser', 'desktop') == 'desktop') || (setting_fetch('browser') == 'naiping')) {
 		return $out;
 	} else {
 		return strip_tags($out);
@@ -1217,19 +1219,13 @@ function theme_timeline($feed) {
 		} else {
 			$date = $status->created_at;
 		}
-/*
-		if (substr($_GET["q"], 0, 6) !== "status" && (setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($status->text)) {
-			$text = "<a href='".BASE_URL."status/{$status->id_str}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
-		} else {
-			$text = $status->text;
-		}
-*/
+
 		$link = theme('status_time_link', $status, !$status->is_direct);
 
 		$actions = theme('action_icons', $status);
 		$avatar = theme('avatar', theme_get_avatar($status->from));
 
-		if ((substr($_GET['q'], 0, 4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser') == 'desktop')) {
+		if ((substr($_GET['q'], 0, 4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser', 'desktop') == 'desktop')) {
 			$source = $status->source ? (" ".__("via")." {$status->source}") : '';
 		} else {
 			$source = $status->source ? (" ".__("via")." ".strip_tags($status->source) ."") : '';
@@ -1298,7 +1294,7 @@ function twitter_is_reply($status) {
 
 function theme_followers($feed, $hide_pagination = false) {
 	$rows = array();
-	
+
 	if (count($feed) == 0 || $feed == '[]') return '<p>'.__('No users to display.').'</p>';
 
 	if ($_GET["q"] == "blockings") {
@@ -1312,10 +1308,10 @@ function theme_followers($feed, $hide_pagination = false) {
 		$tweets_per_day = twitter_tweets_per_day($user);
 		$last_tweet = strtotime($user->status->created_at);
 		$content = "{$name}<br /><span class='about'>";
-		
+
 		if ($user->description != "") $content .= "<strong>".__("Bio: ")."</strong>{$user->description}<br />";
 		if ($user->location != "") $content .= "<strong>".__("Location: ")."</strong>{$user->location}<br />";
-		
+
 		$content .= "<strong>".__("Info: ")."</strong>";
 		$content .= $user->statuses_count . " ".__("Tweets")." | ";
 		$content .= $user->friends_count . " ".__("Friends")." | ";

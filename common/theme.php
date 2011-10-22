@@ -1,5 +1,4 @@
 <?php
-
 $current_theme = false;
 
 function theme() {
@@ -7,22 +6,25 @@ function theme() {
 	$args = func_get_args();
 	$function = array_shift($args);
 	$function = 'theme_'.$function;
+
 	if ($current_theme) {
 		$custom_function = $current_theme.'_'.$function;
-		if (function_exists($custom_function))
-			$function = $custom_function;
+
+		if (function_exists($custom_function)) $function = $custom_function;
 	} else {
-		if (!function_exists($function))
-			return "<p>Error: theme function <b>$function</b> not found.</p>";
+		if (!function_exists($function)) return "<p>Error: theme function <b>$function</b> not found.</p>";
 	}
+
 	return call_user_func_array($function, $args);
 }
 
 function theme_csv($headers, $rows) {
 	$out = implode(',', $headers)."\n";
+
 	foreach ($rows as $row) {
 		$out .= implode(',', $row)."\n";
 	}
+
 	return $out;
 }
 
@@ -30,17 +32,23 @@ function theme_list($items, $attributes) {
 	if (!is_array($items) || count($items) == 0) {
 		return '';
 	}
+
 	$output = '<ul'.theme_attributes($attributes).'>';
+
 	foreach ($items as $item) {
 		$output .= "<li>$item</li>\n";
 	}
+
 	$output .= "</ul>\n";
+
 	return $output;
 }
 
 function theme_options($options, $selected = NULL) {
 	if (count($options) == 0) return '';
+
 	$output = '';
+
 	foreach($options as $value => $name) {
 		if (is_array($name)) {
 			$output .= '<optgroup label="'.$value.'">';
@@ -50,19 +58,23 @@ function theme_options($options, $selected = NULL) {
 			$output .= '<option value="'.$value.'"'.($selected == $value ? ' selected="selected"' : '').'>'.$name."</option>\n";
 		}
 	}
+
 	return $output;
 }
 
 function theme_info($info) {
 	$rows = array();
+
 	foreach ($info as $name => $value) {
 		$rows[] = array($name, $value);
 	}
+
 	return theme('table', array(), $rows);
 }
 
 function theme_table($headers, $rows, $attributes = NULL) {
 	$out = '<div'.theme_attributes($attributes).'>';
+
 	if (count($headers) > 0) {
 		$out .= '<thead><tr>';
 		foreach ($headers as $cell) {
@@ -70,15 +82,19 @@ function theme_table($headers, $rows, $attributes = NULL) {
 		}
 		$out .= '</tr></thead>';
 	}
+
 	if (count($rows) > 0) {
 		$out .= theme('table_rows', $rows);
 	}
+
 	$out .= '</div>';
+
 	return $out;
 }
 
 function theme_table_rows($rows) {
 	$i = 0;
+
 	foreach ($rows as $row) {
 		if ($row['data']) {
 			$cells = $row['data'];
@@ -88,21 +104,27 @@ function theme_table_rows($rows) {
 			$cells = $row;
 			$attributes = FALSE;
 		}
+
 		$attributes['class'] .= ($attributes['class'] ? ' ' : '') . ($i++ %2 ? 'even' : 'odd');
 		$out .= '<div'.theme_attributes($attributes).'>';
+
 		foreach ($cells as $cell) {
 			$out .= theme_table_cell($cell);
 		}
+
 		$out .= "</div>\n";
 	}
+
 	return $out;
 }
 
 function theme_attributes($attributes) {
 	if (!$attributes) return;
+
 	foreach ($attributes as $name => $value) {
 		$out .= " $name=\"$value\"";
 	}
+
 	return $out;
 }
 
@@ -115,6 +137,7 @@ function theme_table_cell($contents, $header = FALSE) {
 		$value = $contents;
 		$attributes = false;
 	}
+
 	return "<span".theme_attributes($attributes).">$value</span>";
 }
 
@@ -125,14 +148,17 @@ function theme_error($message) {
 
 function theme_page($title, $content) {
 	$page = ($_GET['page'] == 0 ? null : " - Page ".$_GET['page'])." - ";
+
 	echo '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link href="'.BASE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$page.NPT_TITLE.'</title><base href="'.BASE_URL.'" />'.theme('css').'<meta name="viewport" content="width=device-width; initial-scale=1.0;" /></head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom').'</body></html>';
+
 	exit();
 }
 
 function theme_colours() {
-	$info = $GLOBALS['colour_schemes'][setting_fetch('colours', 1)];
+	$info = $GLOBALS['colour_schemes'][setting_fetch('colours', 0)];
 	list($name, $bits) = explode('|', $info);
 	$colours = explode(',', $bits);
+
 	return (object) array(
 		'links' => $colours[0],
 		'bodybg' => $colours[1],
@@ -151,6 +177,7 @@ function theme_colours() {
 function theme_css() {
 	$c = theme('colours');
 	$out = "<style type='text/css'>a{color:#{$c->links};}form{margin:.3em;}img{border:0;}small,small a{color:#{$c->small};font-weight:normal;}body{background:#{$c->bodybg};color:#{$c->bodyt};margin:0;font:90% sans-serif;}.odd{background:#{$c->odd};}.even{background:#{$c->even};}.reply{background:#{$c->replyodd};}.reply.even{background:#{$c->replyeven};}.menu{color:#{$c->menut};background:#{$c->menubg};padding:2px;}.menu a{color:#{$c->menua};text-decoration:none;}.profile,.tweet{padding:5px;}.stext a{font-weight:bold;}.date{padding:5px;font-size:0.75em;color:#{$c->small}}.avatar{display:block;left:0.3em;margin:0;overflow:hidden;position:absolute;}.status{display:block;}.shift{margin-left:30px;min-height:24px;}.shift48{margin-left:60px;min-height:48px;}".setting_fetch('css')."</style>";
+
 	return $out;
 }
 
