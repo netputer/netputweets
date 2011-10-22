@@ -514,14 +514,18 @@ function twitter_spam_page($query) {
 
 function twitter_follow_page($query) {
 	$user = $query[1];
+
 	if ($user) {
 		if($query[0] == 'follow'){
 			$request = API_URL."friendships/create/{$user}.json";
+			$content = "<p>".__("Follow Success")."</p>";
 		} else {
 			$request = API_URL."friendships/destroy/{$user}.json";
+			$content = "<p>".__("Unfollow Success")."</p>";
 		}
+
 		twitter_process($request, true);
-		twitter_refresh('friends');
+		theme('page', __("User")." $user", $content);
 	}
 }
 
@@ -846,6 +850,7 @@ function twitter_favourites_page($query) {
 
 function twitter_mark_favourite_page($query) {
 	$id = (string) $query[1];
+
 	if (!is_numeric($id)) return;
 
 	if ($query[0] == 'unfavourite') {

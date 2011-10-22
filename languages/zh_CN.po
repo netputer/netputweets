@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetPutweets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-16 16:22+0800\n"
-"PO-Revision-Date: 2011-10-16 16:23+0800\n"
+"POT-Creation-Date: 2011-10-22 21:03+0800\n"
+"PO-Revision-Date: 2011-10-22 21:03+0800\n"
 "Last-Translator: NetPuter <netputer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -163,216 +163,217 @@ msgstr "订户"
 msgid "Enjoy Twitter with NetPutweets!"
 msgstr "抱着奶瓶腿 享受推的乐趣"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:125
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:100
-msgid "Normal phone"
-msgstr "手机模式"
-
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:126
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:101
-msgid "Touch phone"
-msgstr "触屏模式"
-
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:127
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:102
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:123
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:98
 msgid "PC/Laptop"
 msgstr "桌面模式"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:128
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:103
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:124
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:99
+msgid "Normal phone"
+msgstr "手机模式"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:125
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:100
+msgid "Touch phone"
+msgstr "触屏模式"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:126
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:101
 msgid "BlackBerry (Pagination At Bottom)"
 msgstr "黑莓模式（翻页在最下方）"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:138
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:113
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:136
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:111
 msgid "Full URL"
 msgstr "完整链接"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:139
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:114
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:137
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:189
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:112
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:164
 msgid "Domain Only"
 msgstr "只显示域名"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:144
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:119
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:142
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:117
 msgid "Automatic Cut"
 msgstr "自动截断"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:145
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:120
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:143
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:118
 msgid "Return Error"
 msgstr "提示错误"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:155
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:130
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:154
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:129
 msgid "Menu Settings"
 msgstr "菜单设置"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:156
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:131
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:155
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:130
 msgid "Choose what you want to display on the Top Bar."
 msgstr "选择你想显示在顶栏的链接"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:157
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:132
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:801
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:156
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:131
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:528
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:820
 msgid "User"
 msgstr "用户"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:163
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:138
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:162
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:137
 msgid "And Choose what you want to display on the Bottom Bar."
 msgstr "选择你想显示在底栏的链接"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:177
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:152
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:176
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:151
 msgid "Status Settings"
 msgstr "消息设置"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:178
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:153
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:177
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:152
 msgid "Show @/DM/RT/FAV/DEL As Text instead of images"
 msgstr "将 @/DM/RT/FAV/DEL 显示为文字而不是图片"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:179
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:154
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:178
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:153
 msgid "Put the Buttons after each Status"
 msgstr "将按钮放在消息后面"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:180
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:155
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:179
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:154
 msgid "Show Status Time"
 msgstr "显示消息时间"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:181
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:156
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:180
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:155
 msgid "Show Status Source"
 msgstr "显示消息来源"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:182
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:157
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:181
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:156
 msgid "Show Avatar"
 msgstr "显示头像"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:183
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:158
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:182
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:157
 msgid "Enable Fixed Tag: "
 msgstr "使用固定标签："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:184
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:159
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:183
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:158
 msgid "When posting a 140+ chars tweet: "
 msgstr "当消息超过140字时："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:186
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:161
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:185
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:160
 msgid "Global Settings"
 msgstr "全局设置"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:187
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:162
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:186
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:161
 msgid "Colour scheme: "
 msgstr "色彩方案："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:188
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:163
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:187
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:162
 msgid "Mode: "
 msgstr "模式："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:189
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:164
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:188
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:163
 msgid "Language: "
 msgstr "语言："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:189
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:164
 msgid "Showing URL: "
 msgstr "将链接显示为："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:193
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:168
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:562
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:894
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:189
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:192
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:194
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:164
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:167
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:566
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:925
 msgid "Note: "
 msgstr "提示："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:189
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:164
 msgid "means change"
 msgstr "意思是将"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:189
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:164
 msgid "to"
 msgstr "显示为"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:191
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:166
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:190
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:165
 msgid "Tweets Per Page: "
 msgstr "每页的推数："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:192
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:167
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:191
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:166
 msgid "Preview Photos In Timelines"
 msgstr "预览图片"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:193
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:168
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:192
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:167
 msgid "Enable Keyword Filter: "
 msgstr "开启关键词过滤："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:193
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:168
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:192
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:167
 msgid "Separate keywords with space"
 msgstr "用空格分开每个关键词"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:194
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:193
 msgid "Custom CSS"
 msgstr "自定义 CSS"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:194
 msgid "Change Tui Password: "
 msgstr "修改腿密码："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:194
 #: E:\PHPnow\vhosts\tui.netputer.com/common/user-ssl.php:201
 msgid "Set your tui password, you can sign in without Twitter OAuth."
 msgstr "设置你的腿密码，以便于下次直接登录而无需通过 Twitter OAuth 验证"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:194
 msgid "Leave blank if you don't want to change it."
 msgstr "如果不需要修改请留空."
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:194
 msgid "Delete my tui password please"
 msgstr "请删除我的腿密码"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:196
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:170
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:169
 msgid "Save"
 msgstr "保存"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:196
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:170
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:169
 msgid "Visit "
 msgstr "如果设置出错，请"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:196
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:170
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:169
 msgid "Reset"
 msgstr "重置"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:196
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:170
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings-ssl.php:195
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:169
 msgid " if things go horribly wrong - it will log you out and clear all settings."
 msgstr "所有设置，但你需要重新登录"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:169
+#: E:\PHPnow\vhosts\tui.netputer.com/common/settings.php:168
 msgid "Custom CSS: "
 msgstr "自定义 CSS ："
 
@@ -380,77 +381,81 @@ msgstr "自定义 CSS ："
 msgid "Upload success. Image posted to Twitter."
 msgstr "图片已成功上传，并发送至 Twitter"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:235
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:229
 msgid "Damn! Something went wrong. Sorry :-("
 msgstr "唔，出错了，掩面逃走……"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:250
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:244
 msgid "Please enter a message to go with your image."
 msgstr "请给你的图片添加一段描述"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:254
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:248
 msgid "Please select an image to upload."
 msgstr "请选择需要上传的照片"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:259
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:253
 msgid "Image: "
 msgstr "图片："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:260
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:718
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:254
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:733
 msgid "Content: "
 msgstr "内容："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:262
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:720
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:256
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:735
 msgid "Send"
 msgstr "发送"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:283
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:278
 msgid "Name: "
 msgstr "昵称："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:283
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:955
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1293
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:278
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:986
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1326
 msgid "Location: "
 msgstr "位置："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:283
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:954
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:278
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:985
 msgid "Link: "
 msgstr "链接："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:283
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:953
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1291
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:278
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:984
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1325
 msgid "Bio: "
 msgstr "介绍："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:286
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:942
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:282
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:973
 msgid "Update Profile"
 msgstr "修改资料"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:332
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:328
 msgid "Error: Login credentials incorrect."
 msgstr "错误：登录信息出错"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:337
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:333
 msgid "Twitter timed out"
 msgstr "Twitter 超时啦"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:337
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:333
 msgid "Dabr gave up on waiting for Twitter to respond. They're probably overloaded right now, try again in a minute."
 msgstr "Twitter 又爆鲸了，请稍后再试"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:344
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:340
 msgid "Something broke on Twitter's end."
 msgstr "Twitter 出了点的问题，具体部位是菊花"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:347
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:343
 msgid "An error occured while calling the Twitter API"
 msgstr "在调用 API 时出现错误"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:360
+msgid "Tweet Filtered"
+msgstr "已过滤"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:409
 msgid "years"
@@ -488,263 +493,267 @@ msgstr "状态"
 msgid "Retweet"
 msgstr "转发"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:550
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:553
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:561
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:521
+msgid "Follow Success"
+msgstr "关注成功"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:524
+msgid "Unfollow Success"
+msgstr "取消关注成功"
+
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:557
 #: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:565
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:569
 msgid "Are you really sure you want to"
 msgstr "你确定"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:550
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
 msgid "Unblock"
 msgstr "取消屏蔽"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:551
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:555
 msgid "They will see your updates on their home page if they follow you again."
 msgstr "他们再也看不到你的推儿了"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:551
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:555
 msgid "You <em>can</em> block them again if you want."
 msgstr "你可以随时再次屏蔽他们"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:558
 msgid "You won't show up in their list of friends"
 msgstr "你将从他们的好友列表中消失"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:558
 msgid "They won't see your updates on their home page"
 msgstr "他们再也看不到你的推儿了"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:558
 msgid "They won't be able to follow you"
 msgstr "他们将不能够再关注你"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:554
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:558
 msgid "You <em>can</em> unblock them but you will need to follow them again afterwards"
 msgstr "你可以随时取消对他们的屏蔽"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:561
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:565
 msgid "delete your tweet?"
 msgstr "删除你的推儿吗？"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:562
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:566
 msgid "Tweet: "
 msgstr "推儿："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:562
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:566
 msgid "There is no way to undo this action."
 msgstr "无法撤销哟~"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:565
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:569
 msgid "report"
 msgstr "举报"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:565
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:569
 msgid "as a spammer?"
 msgstr "为垃圾消息用户?"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:566
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:570
 msgid "They won't be able to follow you."
 msgstr "他们将不能够再次关注你"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:569
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:573
 msgid "Yes"
 msgstr "是的"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:570
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:574
 msgid "Confirm"
 msgstr "确认操作"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:679
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:707
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:694
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:722
 msgid "Create DM"
 msgstr "新私信"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:694
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:707
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:709
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:722
 msgid "DM Sent"
 msgstr "已发送"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:702
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:707
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:717
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:722
 msgid "DM Inbox"
 msgstr "收信箱"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:713
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:728
 msgid "is not following you. You cannot send direct message to that guy."
 msgstr "没有关注你，你无法发私信给他"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:715
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:730
 msgid "Sending direct message to"
 msgstr "发私信给"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:718
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:733
 msgid "To: "
 msgstr "收信人："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:741
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:756
 msgid "Save as default search"
 msgstr "保存为默认关键词"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:776
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:791
 msgid "Reply"
 msgstr "回复"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:777
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:793
 msgid "No username given"
 msgstr "没有提供用户名"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:787
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:801
 msgid "In reply to"
 msgstr "回复"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:827
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:858
 msgid "Unfavourite Success"
 msgstr "取消收藏成功"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:830
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:861
 msgid "Favourite Success"
 msgstr "收藏成功"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:860
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:891
 msgid "Hashtag"
 msgstr "标签"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:892
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:923
 msgid "Official Retweet"
 msgstr "官方 RT"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:892
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:923
 msgid "or Traditional Retweet"
 msgstr "或者传统 RT"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:894
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:925
 msgid "It is not well suited to retweet a protected user 's tweet."
 msgstr "不建议 RT 隐私保护用户的推儿"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:926
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:957
 msgid "Verified"
 msgstr "认证用户"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:927
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1302
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:958
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1336
 msgid "Private/Protected"
 msgstr "隐私保护"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:931
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:962
 msgid "View picture"
 msgstr "查看头像"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:935
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:966
 msgid "Follow"
 msgstr "关注"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:937
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:968
 msgid "Unfollow"
 msgstr "取消关注"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:940
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:971
 msgid "Direct Message"
 msgstr "发私信"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:945
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1295
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:976
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1329
 msgid "Tweets"
 msgstr "推儿"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:948
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:979
 msgid "Block"
 msgstr "屏蔽"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:948
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:979
 msgid "Report Spam"
 msgstr "举报"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:957
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:988
 msgid "Joined: "
 msgstr "注册时间："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:957
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1298
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:988
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1332
 msgid "Tweets Per Day"
 msgstr "推儿/天"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:981
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1307
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1013
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1341
 msgid " ago"
 msgstr "前"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1204
-msgid "Tweet Filtered"
-msgstr "已过滤"
-
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1215
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1217
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1242
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1244
 msgid "via"
 msgstr "通过"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1243
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1270
 msgid "retweeted by"
 msgstr "由"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1243
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1270
 msgid "<span style='display:none;'>zhuanfa</span>"
 msgstr "转发"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1283
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1311
 msgid "No users to display."
 msgstr "没有用户可显示."
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1294
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1328
 msgid "Info: "
 msgstr "概况："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1299
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1333
 msgid "Last tweet: "
 msgstr "最近更新："
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1304
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1338
 msgid "Never tweeted"
 msgstr "还没推过呢"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1337
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1371
 msgid "No tweets to display."
 msgstr "没有消息可显示"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1385
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1419
 msgid "@"
 msgstr "回复"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1389
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1423
 msgid "@@"
 msgstr "群回"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1398
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1432
 msgid "UNFAV"
 msgstr "不藏"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1400
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1434
 msgid "FAV"
 msgstr "收藏"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1403
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1437
 msgid "UNDO"
 msgstr "撤销"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1405
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1439
 msgid "RT"
 msgstr "转发"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1408
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1412
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1442
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1446
 msgid "DEL"
 msgstr "删除"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1411
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1445
 msgid "DM"
 msgstr "私信"
 
-#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1418
+#: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:1452
 msgid "GEO"
 msgstr "位置"
 
