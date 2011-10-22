@@ -584,10 +584,12 @@ function twitter_friends_page($query) {
 
 function twitter_followers_page($query) {
 	$user = $query[1];
+	
 	if (!$user) {
-	user_ensure_authenticated();
-	$user = user_current_username();
+		user_ensure_authenticated();
+		$user = user_current_username();
 	}
+	
 	$request = API_URL."statuses/followers/{$user}.xml";
 	$tl = lists_paginated_process($request);
 	$content = theme('followers', $tl);
@@ -598,6 +600,7 @@ function twitter_blockings_page($query) {
 	$request = API_URL.'blocks/blocking.xml?page='.intval($_GET['page']);
 	//$tl = twitter_process($request);
 	$tl = lists_paginated_process($request);
+	
 	$content = theme('followers', $tl);
 	theme('page', __("Blockings"), $content);
 }
@@ -1295,17 +1298,24 @@ function twitter_is_reply($status) {
 
 function theme_followers($feed, $hide_pagination = false) {
 	$rows = array();
+	
 	if (count($feed) == 0 || $feed == '[]') return '<p>'.__('No users to display.').'</p>';
 
-	foreach ($feed->users->user as $user) {
+	if ($_GET["q"] == "blockings") {
+		$lists = $feed;
+	} else {
+		$lists = $feed->users->user;
+	}
+
+	foreach ($lists as $user) {
 		$name = theme('full_name', $user);
 		$tweets_per_day = twitter_tweets_per_day($user);
 		$last_tweet = strtotime($user->status->created_at);
 		$content = "{$name}<br /><span class='about'>";
-		if($user->description != "")
-			$content .= "<strong>".__("Bio: ")."</strong>{$user->description}<br />";
-		if($user->location != "")
-			$content .= "<strong>".__("Location: ")."</strong>{$user->location}<br />";
+		
+		if ($user->description != "") $content .= "<strong>".__("Bio: ")."</strong>{$user->description}<br />";
+		if ($user->location != "") $content .= "<strong>".__("Location: ")."</strong>{$user->location}<br />";
+		
 		$content .= "<strong>".__("Info: ")."</strong>";
 		$content .= $user->statuses_count . " ".__("Tweets")." | ";
 		$content .= $user->friends_count . " ".__("Friends")." | ";
