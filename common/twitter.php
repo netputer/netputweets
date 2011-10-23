@@ -608,10 +608,28 @@ function twitter_blockings_page($query) {
 	$request = API_URL.'blocks/blocking/ids.json?stringify_ids=true';
 	$lists = twitter_process($request);
 
-	$request = API_URL.'users/lookup.json?user_id='.implode($lists, ',').'&include_entities=true';
+	$lists_count = count($lists);
+	$page = 1;
+
+	if (isset($_GET["page"])) {
+		$page = $_GET["page"] <= 0 ? 1 : intval($_GET["page"]);
+	}
+
+	$list = array();
+	$for_start = ($page - 1) * 100;
+	$for_end = $page * 100;
+
+	for ($i=$for_start;$i<$for_end;$i++) {
+		$list[] = $lists[$i];
+	}
+
+	$request = API_URL."users/lookup.json?user_id=".implode($list, ',')."&include_entities=true";
 	$tl = twitter_process($request);
 
 	$content = theme('followers', $tl);
+
+	if ($lists_count > 100) $content .= theme('pagination');
+
 	theme('page', __("Blockings"), $content);
 }
 
