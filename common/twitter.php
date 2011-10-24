@@ -790,61 +790,58 @@ function twitter_search($search_query) {
 	return $tl;
 }
 
-function twitter_find_tweet_in_timeline($tweet_id, $tl) {
-	if (!is_numeric($tweet_id) || !$tl) return;
-	if (array_key_exists($tweet_id, $tl)) {
-		$tweet = $tl[$tweet_id];
-	} else {
-		$request = API_URL."statuses/show/{$tweet_id}.json?include_entities=true";
-		$tweet = twitter_process($request);
-	}
-	return $tweet;
-}
-
 function twitter_user_page($query) {
-	$screen_name = $query[1];
+	if ($screen_name = $query[1]) {
+		$to_users = array($screen_name);
+	} else {
+		theme('error', __('No username given'));
+	}
+
 	$subaction = $query[2];
 	$in_reply_to_id = (string) $query[3];
 	$content = '';
-	$str = __("Reply");
-
-	if (!$screen_name) theme('error', __('No username given'));
-
-	$user = twitter_user_info($screen_name);
-
-	$to_users = array($user->screen_name);
 
 	if (is_numeric($in_reply_to_id)) {
-		$tweet = twitter_find_tweet_in_timeline($in_reply_to_id, $tl);
-		$content .= "<p>".__("In reply to")." <strong>$screen_name</strong>: {$tweet->text}</p>";
+		$str = __("Reply");
 
-		if ($subaction == 'replyall') {
-			$found = Twitter_Extractor::create($tweet->text)
-				->extractMentionedUsernames();
-			$to_users = array_unique(array_merge($to_users, $found));
+		$request = API_URL."statuses/show/{$in_reply_to_id}.json?include_entities=true";
+		$status = twitter_process($request);
+
+		$user = $status->user;
+
+		$content .= "<p>".__("In reply to")." <strong>$screen_name</strong>: {$status->text}</p>";
+
+		if ($subaction == 'replyall' && $status->entities->user_mentions) {
+			foreach ($status->entities->user_mentions as $mentions) {
+				$to_users[] = $mentions->screen_name;
+			}
 		}
-	}
-
-	$status = '';
-
-	foreach ($to_users as $username) {
-		if (!user_is_current_user($username)) $status .= "@{$username} ";
-	}
-
-	$content .= theme('status_form', $status, $in_reply_to_id, true);
-	$content .= theme('user_header', $user);
-
-	if ($in_reply_to_id == 0 && isset($user->status)) {
+	} else {
 		$str = __("User");
 
+		$user = twitter_user_info($screen_name);
+	}
+
+	$status_content = '';
+
+	foreach ($to_users as $username) {
+		if (!user_is_current_user($username)) $status_content .= "@{$username} ";
+	}
+
+	$content .= theme('status_form', $status_content, $in_reply_to_id, true);
+	$content .= theme('user_header', $user);
+
+	if ($in_reply_to_id == 0) {
 		if ($subaction == "retweets") {
+			$str = __("Retweets");
+
 			$request = API_URL."statuses/retweeted_by_user.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
 		} else {
 			$request = API_URL."statuses/user_timeline.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
 		}
 
 		$tl = twitter_process($request);
-			$tl = twitter_standard_timeline($tl, 'user');
+		$tl = twitter_standard_timeline($tl, 'user');
 
 		$content .= theme('timeline', $tl);
 	}
@@ -1440,11 +1437,7 @@ function theme_action_icons($status) {
 	if($status->entities->user_mentions) {
 		$actions[] = theme('action_icon', "user/{$from}/replyall/{$status->id_str}", 'images/replyall.png', __('@@'));
 	}
-/*
-	if (!user_is_current_user($from)) {
-		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
-	}
-*/
+
 	if (!$status->is_direct) {
 		if ($status->favorited == '1') {
 			$actions[] = theme('action_icon', BASE_URL."unfavourite/{$status->id_str}", 'images/star.png', __('UNFAV'));
