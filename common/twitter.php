@@ -1400,7 +1400,7 @@ function theme_external_link($url) {
 	return "<a href='$url'>$text</a>";
 }
 
-function theme_pagination($max_id = false, $max_page = false) {
+function theme_pagination($max_id = false, $max_page = 1000) {
 	$page = intval($_GET['page']);
 	$links = array();
 
@@ -1409,7 +1409,7 @@ function theme_pagination($max_id = false, $max_page = false) {
 	if ($page == 0) $page = 1;
 
 	if ($max_id == false) {
-		if (!$max_page && $page < $max_page) {
+		if ($page < $max_page) {
 			$links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page+1)."$query'>".__("Older")."</a>";
 
 			if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page - 1)."$query'>".__("Newer")."</a>";
