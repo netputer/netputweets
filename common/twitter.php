@@ -606,29 +606,21 @@ function twitter_followers_page($query) {
 
 function twitter_blockings_page($query) {
 	$request = API_URL.'blocks/blocking/ids.json?stringify_ids=true';
-	$lists = twitter_process($request);
+	$lists = array_chunk(twitter_process($request), 20);
+	$count = count($lists);
 
-	$lists_count = count($lists);
 	$page = 1;
 
 	if (isset($_GET["page"])) {
 		$page = $_GET["page"] <= 0 ? 1 : intval($_GET["page"]);
 	}
 
-	$list = array();
-	$for_start = ($page - 1) * 100;
-	$for_end = $page * 100;
-
-	for ($i=$for_start;$i<$for_end;$i++) {
-		$list[] = $lists[$i];
-	}
-
-	$request = API_URL."users/lookup.json?user_id=".implode($list, ',')."&include_entities=true";
+	$request = API_URL."users/lookup.json?user_id=".implode($lists[$page - 1], ',')."&include_entities=true";
 	$tl = twitter_process($request);
 
 	$content = theme('followers', $tl);
 
-	if ($lists_count > 100) $content .= theme('pagination');
+	if ($count > 1) $content .= theme('pagination', false, $count);
 
 	theme('page', __("Blockings"), $content);
 }
@@ -1408,14 +1400,20 @@ function theme_external_link($url) {
 	return "<a href='$url'>$text</a>";
 }
 
-function theme_pagination($max_id = false) {
+function theme_pagination($max_id = false, $max_page = false) {
 	$page = intval($_GET['page']);
+	$links = array();
+
 	if (preg_match('#&q(.*)#', $_SERVER['QUERY_STRING'], $matches)) $query = $matches[0];
+
 	if ($page == 0) $page = 1;
 
 	if ($max_id == false) {
-		$links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page+1)."$query'>".__("Older")."</a>";
-		if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page-1)."$query'>".__("Newer")."</a>";
+		if (!$max_page && $page < $max_page) {
+			$links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page+1)."$query'>".__("Older")."</a>";
+
+			if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page - 1)."$query'>".__("Newer")."</a>";
+		}
 	} else {
 		$links[] = "<a href='".BASE_URL."{$_GET['q']}?max_id=$max_id'>".__("More")." &raquo;</a>";
 	}
