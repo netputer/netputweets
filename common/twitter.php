@@ -282,24 +282,30 @@ function twitter_profile_page($query) {
 	return theme('page', __("Update Profile"), $content);
 }
 
-function twitter_process($url, $post_data = false) {
+function twitter_process($url, $post_data = false, $original = false) {
 	if ($post_data === true) $post_data = array();
+
 	if (user_type() == 'oauth') {
 		user_oauth_sign($url, $post_data);
 	//} elseif (strpos($url, 'twitter.com') !== false && is_array($post_data)) {
 	} elseif (is_array($post_data)) {
 		$s = array();
+
 		foreach ($post_data as $name => $value)
 			$s[] = $name.'='.urlencode($value);
 		$post_data = implode('&', $s);
 	}
+
 	$ch = curl_init($url);
+
 	if ($post_data !== false && !$_GET['page']) {
 		curl_setopt ($ch, CURLOPT_HTTPHEADER, array('Expect:'));
 		curl_setopt ($ch, CURLOPT_POST, true);
 		curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
 	}
+
 	if (user_type() != 'oauth' && user_is_authenticated()) curl_setopt($ch, CURLOPT_USERPWD, user_current_username().':'.$GLOBALS['user']['password']);
+
 	curl_setopt($ch, CURLOPT_USERAGENT, 'dabr');
 	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); //15
 	curl_setopt($ch, CURLOPT_TIMEOUT, 15); //30
@@ -307,11 +313,14 @@ function twitter_process($url, $post_data = false) {
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 	curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
 	$response = curl_exec($ch);
 	$response_info=curl_getinfo($ch);
 	$erno = curl_errno($ch);
 	$er = curl_error($ch);
 	curl_close($ch);
+
+	if ($original) return json_decode($response);
 
 	switch (intval( $response_info['http_code'])) {
 		case 200:
@@ -405,6 +414,7 @@ function twitter_parse_tags($input, $entities = false, $id = false) {
 }
 
 function format_interval($timestamp, $granularity = 1) {
+	$output = '';
 	$units = array(
 		__("years") => 31536000,
 		__("days") => 86400,
@@ -412,16 +422,15 @@ function format_interval($timestamp, $granularity = 1) {
 		__("min") => 60,
 		__("sec") => 1
 	);
-	$output = '';
+
 	foreach ($units as $key => $value) {
 		if ($timestamp >= $value) {
 			$output .= ($output ? ' ' : '').floor($timestamp / $value).' '.$key;
 			$timestamp %= $value;
 			$granularity--;
 		}
-		if ($granularity == 0) {
-			break;
-		}
+
+		if ($granularity == 0) break;
 	}
 	return $output ? $output : __("0 sec");
 }
@@ -443,15 +452,12 @@ function twitter_status_page($query) {
 
 			if (!$reply_id) break;
 
-			if (strtolower($reply_user) != strtolower(user_current_username())) {
-				$request = API_URL."users/show/{$reply_user}.json?include_entities=true";
-				$result = twitter_process($request);
-
-				if ($result->protected && !$result->following) break;
-			}
-
 			$request = API_URL."statuses/show/{$reply_id}.json?include_entities=true";
-			$status = twitter_process($request);
+			$status = twitter_process($request, false, true);
+
+			if (isset($result->error)) {
+				break;
+			}
 
 			$thread[] = $status;
 		}
