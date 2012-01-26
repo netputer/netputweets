@@ -34,14 +34,14 @@ menu_register(array(
 ));
 
 function logout_page() {
-  user_logout();
-  $content = theme('logged_out');
-  theme('page', __("Logged out"), $content);
+	user_logout();
+	header("Location: ".BASE_URL);
+	exit;
 }
 
 function about_page() {
-  $content = file_get_contents('about.html');
-  theme('page', __("About"), $content);
+	$content = file_get_contents('about.html');
+	theme('page', __("About"), $content);
 }
 
 browser_detect();
