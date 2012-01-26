@@ -830,18 +830,20 @@ function twitter_user_page($query) {
 	$content .= theme('user_header', $user);
 
 	if ($in_reply_to_id == 0) {
-		if ($subaction == "retweets") {
-			$str = __("Retweets");
+		if (isset($user->status)) {
+			if ($subaction == "retweets") {
+				$str = __("Retweets");
 
-			$request = API_URL."statuses/retweeted_by_user.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
-		} else {
-			$request = API_URL."statuses/user_timeline.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
+				$request = API_URL."statuses/retweeted_by_user.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
+			} else {
+				$request = API_URL."statuses/user_timeline.json?include_entities=true&screen_name={$screen_name}&include_rts=true&page=".intval($_GET['page']);
+			}
+
+			$tl = twitter_process($request);
+			$tl = twitter_standard_timeline($tl, 'user');
+
+			$content .= theme('timeline', $tl);
 		}
-
-		$tl = twitter_process($request);
-		$tl = twitter_standard_timeline($tl, 'user');
-
-		$content .= theme('timeline', $tl);
 	}
 
 	theme('page', "$str $screen_name", $content);
