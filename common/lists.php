@@ -7,13 +7,19 @@
 
  */
 
-function lists_paginated_process($url) {
+function lists_paginated_process($url, $param = FALSE) {
 	// Adds cursor/pagination parameters to a query
 	$cursor = $_GET['cursor'];
 	if (!is_numeric($cursor)) {
 		$cursor = -1;
 	}
-	$url .= '?cursor='.$cursor;
+	
+	if ($param) {
+		$url .= '&cursor='.$cursor;
+	} else {
+		$url .= '?cursor='.$cursor;
+	}
+	
 	$xml = twitter_process($url);
 	return simplexml_load_string($xml);
 }
@@ -38,12 +44,14 @@ function twitter_lists_user_memberships($user) {
 
 function twitter_lists_list_members($user, $list) {
 	// Members of a list
-	return lists_paginated_process(API_URL."{$user}/{$list}/members.xml");
+	// return lists_paginated_process(API_URL."{$user}/{$list}/members.xml");
+	return lists_paginated_process(API_URL."lists/members.xml?slug={$list}&owner_screen_name={$user}", TRUE);
 }
 
 function twitter_lists_list_subscribers($user, $list) {
 	// Subscribers of a list
-	return lists_paginated_process(API_URL."{$user}/{$list}/subscribers.xml");
+	// return lists_paginated_process(API_URL."{$user}/{$list}/subscribers.xml");
+	return lists_paginated_process(API_URL."lists/subscribers.xml?slug={$list}&owner_screen_name={$user}", TRUE);
 }
 
 /* Front controller for the new pages

@@ -448,12 +448,6 @@ class Twitter_Autolink extends Twitter_Regex {
       $url = $this->url_base_user . 'user/' . $element;
       $postfix = '';
     }
-
-    if (isset($_GET["s"])) {
-      var_dump($matches);
-	  exit;
-    }
-
     return $before . $at . $this->wrap($url, $class, $element) . $postfix . $after;
   }
 
