@@ -86,7 +86,7 @@ abstract class Twitter_Regex {
    *
    * @var  string
    */
-  const REGEX_USERNAME_LIST = '/([^a-z0-9_\/]|^|RT:?)([@＠]+)([a-z0-9_]{1,20})(\/[a-z][-_a-z0-9\x80-\xFF]{0,24})?([@＠\xC0-\xD6\xD8-\xF6\xF8-\xFF]?)/iu';
+  const REGEX_USERNAME_LIST = '/([^a-z0-9_\/]|^|RT:?)([@＠]+)([a-z0-9_]{1,20})(\/[0-9a-zA-Z\-_\/\x{4e00}-\x{9fa5}]{0,24})?([@＠\xC0-\xD6\xD8-\xF6\xF8-\xFF]?)/iu';
 
   /**
    * Expression to match a username mentioned anywhere in a tweet.
