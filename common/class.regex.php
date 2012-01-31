@@ -100,8 +100,7 @@ abstract class Twitter_Regex {
    *
    * @var  string
    */
-  // const REGEX_HASHTAG = '/(^|[^0-9A-Z&\/\?]+)([#＃]+)([0-9A-Z_]*[A-Z_]+[a-z0-9_üÀ-ÖØ-öø-ÿ]*)/iu';
-  const REGEX_HASHTAG = '/(^|[^0-9A-Z&\/\?]+)([#＃])([a-z0-9\-_\/\x{4e00}-\x{9fa5}]{1,20})([#＃]?)/iu';
+  const REGEX_HASHTAG = '/(^|[^0-9a-zA-Z\x{4e00}-\x{9fa5}&\/\?]+)([#＃])([0-9a-zA-Z\-_\/\x{4e00}-\x{9fa5}]{1,20})([#＃]?)/iu';
 
   /**
    * Expression to match whitespace.
