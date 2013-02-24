@@ -15,8 +15,7 @@
 	error_reporting(0);
 
 
-	define('OAUTH_URL','https://twitter.com/oauth/');
-	define('API_URL','https://api.twitter.com/');
+	define('OAUTH_URL','https://api.twitter.com/oauth/');
 	define('ITAP_VERSION','r8 - 20100816 - Valentine\'s Day');
 
 	$allowed_method = array(
@@ -45,8 +44,6 @@
 			$a->auth_post_l();
 		} elseif($method=='authenticate') {
 			$a->auth_show_l();
-		} elseif($method=='') {
-			$a->test_connection();
 		} else {
 			exit('Invalid Method `'.htmlspecialchars($method).'`.');
 		}

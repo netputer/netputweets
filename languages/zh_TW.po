@@ -117,15 +117,15 @@ msgstr "找不到列表頁"
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:120
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:122
-msgid "Following"
-msgstr "關注"
+msgid "'s Memberships"
+msgstr "所屬列表"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:114
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:120
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:122
-msgid "'s Lists"
-msgstr "的列表"
+msgid "'s Subscriptions"
+msgstr "訂閱列表"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:131
 msgid "'s Tweets"

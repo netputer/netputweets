@@ -7,51 +7,46 @@
 
  */
 
-function lists_paginated_process($url, $param = FALSE) {
-	// Adds cursor/pagination parameters to a query
-	$cursor = $_GET['cursor'];
-	if (!is_numeric($cursor)) {
-		$cursor = -1;
-	}
-	
-	if ($param) {
-		$url .= '&cursor='.$cursor;
-	} else {
-		$url .= '?cursor='.$cursor;
-	}
-	
-	$xml = twitter_process($url);
-	return simplexml_load_string($xml);
-}
-
 function twitter_lists_tweets($user, $list) {
 	// Tweets belonging to a list
-	$url = API_URL."lists/statuses.json?slug={$list}&owner_screen_name={$user}&include_entities=true";
-	$page = intval($_GET['page']);
-	if ($page > 0) $url .= '&page='.$page;
+	$count = setting_fetch('tpp', 20);
+	$url = API_URLS."lists/statuses.json?slug={$list}&owner_screen_name={$user}&include_entities=true&include_rts=true&count={$count}";
+        if ($_GET['max_id']) $url .= "&max_id=".$_GET['max_id'];
+        if ($_GET['since_id']) $url .= "&since_id=".$_GET['since_id'];
+
 	return twitter_process($url);
 }
 
 function twitter_lists_user_lists($user) {
-	// Lists a user has created
-	return lists_paginated_process(API_URL."{$user}/lists.xml");
+	// Lists a user subscribed to
+	return twitter_process(API_URLS."lists/list.json?screen_name={$user}");
 }
 
 function twitter_lists_user_memberships($user) {
 	// Lists a user belongs to
-	return lists_paginated_process(API_URL."{$user}/lists/memberships.xml");
+	$cursor = $_GET['cursor'];
+        if (!is_numeric($cursor)) {
+                $cursor = -1;
+        }
+	return twitter_process(API_URLS."lists/memberships.json?screen_name={$user}&cursor={$cursor}");
 }
 
 function twitter_lists_list_members($user, $list) {
 	// Members of a list
-	// return lists_paginated_process(API_URL."{$user}/{$list}/members.xml");
-	return lists_paginated_process(API_URL."lists/members.xml?slug={$list}&owner_screen_name={$user}", TRUE);
+	$cursor = $_GET['cursor'];
+        if (!is_numeric($cursor)) {
+                $cursor = -1;
+        }
+	return twitter_process(API_URLS."lists/members.json?slug={$list}&owner_screen_name={$user}&cursor={$cursor}");
 }
 
 function twitter_lists_list_subscribers($user, $list) {
 	// Subscribers of a list
-	// return lists_paginated_process(API_URL."{$user}/{$list}/subscribers.xml");
-	return lists_paginated_process(API_URL."lists/subscribers.xml?slug={$list}&owner_screen_name={$user}", TRUE);
+	$cursor = $_GET['cursor'];
+        if (!is_numeric($cursor)) {
+                $cursor = -1;
+        }
+	return twitter_process(API_URLS."lists/subscribers.json?slug={$list}&owner_screen_name={$user}&cursor={$cursor}");
 }
 
 /* Front controller for the new pages
@@ -117,7 +112,7 @@ function lists_controller($query) {
 function lists_lists_page($user) {
 	// Show a user's lists
 	$lists = twitter_lists_user_lists($user);
-	$content = "<p><a href='".BASE_URL."lists/{$user}/memberships'>".__("Following")." {$user} ".__("'s Lists")."</a> | <strong>{$user} ".__("'s Lists")."</strong></p>";
+	$content = "<p><a href='".BASE_URL."lists/{$user}/memberships'>{$user} ".__("'s Memberships")."</a> | <strong>{$user} ".__("'s Subscriptions")."</strong></p>";
 	$content .= theme('lists', $lists);
 	theme('page', "{$user} ".__("'s Lists"), $content);
 }
@@ -125,7 +120,7 @@ function lists_lists_page($user) {
 function lists_membership_page($user) {
 	// Show lists a user belongs to
 	$lists = twitter_lists_user_memberships($user);
-	$content = "<p><strong>".__("Following")." {$user} ".__("'s Lists")."</strong> | <a href='".BASE_URL."lists/{$user}'>{$user} ".__("'s Lists")."</a></p>";
+	$content = "<p><strong>{$user} ".__("'s Memberships")."</strong> | <a href='".BASE_URL."lists/{$user}'>{$user} ".__("'s Subscriptions")."</a></p>";
 	$content .= theme('lists', $lists);
 	theme('page', __("Following")." {$user} ".__("'s Lists"), $content);
 }
@@ -165,12 +160,16 @@ function lists_list_subscribers_page($user, $list) {
 /* Theme functions */
 
 function theme_lists($json) {
-	if (count($json->lists) == 0) {
+	if ($json->lists)
+		$feed = $json->lists;
+	else
+		$feed = $json;	
+	if (count($feed) == 0) {
 		return "<p>".__("No lists to display")."</p>";
 	}
 	$rows = array();
 	$headers = array(__("Lists")." ", __("Members")." ", __("Subscribers")." ");
-	foreach ($json->lists->list as $list) {
+	foreach ($feed as $list) {
 		$url = "lists/{$list->user->screen_name}/{$list->slug}";
 		$rows[] = array(
 			"<a href='user/{$list->user->screen_name}'>@{$list->user->screen_name}</a>/<a href='{$url}'><strong>{$list->slug}</strong></a> ",

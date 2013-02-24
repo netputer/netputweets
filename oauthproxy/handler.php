@@ -142,15 +142,6 @@
 			header("Location: {$ms[1]}");
 		}
 
-		public function test_connection() {
-			$result = $this->_GET(API_URL.'1/help/test.json');
-			if($result=='"ok"') {
-				echo 'Connected to Twitter API successfully.';
-			} else {
-				echo 'Something is wrong.';
-			}
-		}
-
 		public function __destruct() {
 			if(!$this->data['keepCookie']) {
 				@unlink($this->_cookie());
