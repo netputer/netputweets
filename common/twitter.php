@@ -597,30 +597,17 @@ function twitter_friends_page($query) {
 		$user = user_current_username();
 	}
 
-	$page = 1;
-	if (isset($_GET["page"])) {
-		$page = $_GET["page"] <= 0 ? 1 : intval($_GET["page"]);
-	}
-	
-	$next_cursor = -1;
-	$original_list = array();
-	do {
-		$request = API_URLS.'friends/ids.json?stringify_ids=true&screen_name='.$user.'&cursor='.$next_cursor;
-		$process_result = twitter_process($request);
-		$original_list = array_merge($original_list, $process_result->ids);
-		$next_cursor = $process_result->next_cursor;
-	} while ($next_cursor != 0 && count($original_list) <= ($page-1)*20);
-	$lists = array_chunk($original_list, 20);
-	$count = count($lists);
-
-	$request = API_URLS."users/lookup.json?user_id=".implode($lists[$page - 1], ',')."&include_entities=true";
+	$cursor = $_GET['cursor'];
+        if (!is_numeric($cursor)) {
+                $cursor = -1;
+        }
+	$request = API_URLS.'friends/list.json?screen_name='.$user.'&cursor='.$cursor;
 	$tl = twitter_process($request);
 
-	$content = theme('followers', $tl);
+	$content = theme('followers', $tl, 1);
+	$content .= theme('list_pagination', $tl);
 
-	if ($count > 1) $content .= theme('pagination', false, $count);
-
-	theme('page', __("Friends"), $content);
+	theme('page', "{$user} ".__("'s Friends"), $content);
 }
 
 function twitter_followers_page($query) {
@@ -631,62 +618,31 @@ function twitter_followers_page($query) {
 		$user = user_current_username();
 	}
 
-	$page = 1;
-	if (isset($_GET["page"])) {
-		$page = $_GET["page"] <= 0 ? 1 : intval($_GET["page"]);
-	}
-	
-	$next_cursor = -1;
-	$original_list = array();
-	do {
-		$request = API_URLS.'followers/ids.json?stringify_ids=true&screen_name='.$user.'&cursor='.$next_cursor;
-		$process_result = twitter_process($request);
-		$original_list = array_merge($original_list, $process_result->ids);
-		$next_cursor = $process_result->next_cursor;
-	} while ($next_cursor != 0 && count($original_list) <= ($page-1)*20);
-	$lists = array_chunk($original_list, 20);
-	$count = count($lists);
-
-	$request = API_URLS."users/lookup.json?user_id=".implode($lists[$page - 1], ',')."&include_entities=true";
+	$cursor = $_GET['cursor'];
+        if (!is_numeric($cursor)) {
+                $cursor = -1;
+        }
+	$request = API_URLS.'followers/list.json?screen_name='.$user.'&cursor='.$cursor;
 	$tl = twitter_process($request);
 
-	$content = theme('followers', $tl);
+	$content = theme('followers', $tl, 1);
+	$content .= theme('list_pagination', $tl);
 
-	if ($count > 1) $content .= theme('pagination', false, $count);
-
-	theme('page', __("Followers"), $content);
+	theme('page', "{$user} ".__("'s Followers"), $content);
 }
 
 function twitter_blockings_page($query) {
-	$user = $query[1];
+	user_ensure_authenticated();
 
-	if (!$user) {
-		user_ensure_authenticated();
-		$user = user_current_username();
-	}
-
-	$page = 1;
-	if (isset($_GET["page"])) {
-		$page = $_GET["page"] <= 0 ? 1 : intval($_GET["page"]);
-	}
-	
-	$next_cursor = -1;
-	$original_list = array();
-	do {
-		$request = API_URLS.'blocks/ids.json?stringify_ids=true&screen_name='.$user.'&cursor='.$next_cursor;
-		$process_result = twitter_process($request);
-		$original_list = array_merge($original_list, $process_result->ids);
-		$next_cursor = $process_result->next_cursor;
-	} while ($next_cursor != 0 && count($original_list) <= ($page-1)*20);
-	$lists = array_chunk($original_list, 20);
-	$count = count($lists);
-
-	$request = API_URLS."users/lookup.json?user_id=".implode($lists[$page - 1], ',')."&include_entities=true";
+	$cursor = $_GET['cursor'];
+        if (!is_numeric($cursor)) {
+                $cursor = -1;
+        }
+	$request = API_URLS.'blocks/list.json?cursor='.$cursor;
 	$tl = twitter_process($request);
 
-	$content = theme('followers', $tl);
-
-	if ($count > 1) $content .= theme('pagination', false, $count);
+	$content = theme('followers', $tl, 1);
+	$content .= theme('list_pagination', $tl);
 
 	theme('page', __("Blockings"), $content);
 }
@@ -933,7 +889,7 @@ function twitter_favourites_page($query) {
 	$tl = twitter_standard_timeline($tl, 'favourites');
 	$content = theme('status_form');
 	$content .= theme('timeline', $tl);
-	theme('page', __("Favourites"), $content);
+	theme('page', "{$screen_name} ".__("'s Favourites"), $content);
 }
 
 function twitter_mark_favourite_page($query) {
@@ -1384,13 +1340,8 @@ function twitter_is_reply($status) {
 function theme_followers($feed, $hide_pagination = false) {
 	$rows = array();
 
-	if (count($feed) == 0 || $feed == '[]') return '<p>'.__('No users to display.').'</p>';
-
-	if (in_array(substr($_GET["q"], 0, 5), array("frien", "follo", "block"))) {
-		$lists = $feed;
-	} else {
-		$lists = $feed->users;
-	}
+	$lists = $feed->users;
+	if (count($lists) == 0) return '<p>'.__('No users to display.').'</p>';
 
 	foreach ($lists as $user) {
 		$name = theme('full_name', $user);

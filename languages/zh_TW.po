@@ -73,18 +73,26 @@ msgstr "搜索"
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:31
 msgid "Favourites"
 msgstr "收藏"
+msgid "'s Favourites"
+msgstr "的收藏"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:34
 msgid "Lists"
 msgstr "列表"
+msgid "'s Lists"
+msgstr "的列表"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:37
 msgid "Followers"
 msgstr "關注者"
+msgid "'s Followers"
+msgstr "的關注者"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:40
 msgid "Friends"
 msgstr "好友"
+msgid "'s Friends"
+msgstr "的好友"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:43
 msgid "Blockings"
