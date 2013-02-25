@@ -73,18 +73,26 @@ msgstr "搜索"
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:31
 msgid "Favourites"
 msgstr "收藏"
+msgid "'s Favourites"
+msgstr "的收藏"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:34
 msgid "Lists"
 msgstr "列表"
+msgid "'s Lists"
+msgstr "的列表"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:37
 msgid "Followers"
 msgstr "關注者"
+msgid "'s Followers"
+msgstr "的關注者"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:40
 msgid "Friends"
 msgstr "好友"
+msgid "'s Friends"
+msgstr "的好友"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/blackberry.php:43
 msgid "Blockings"
@@ -117,15 +125,15 @@ msgstr "找不到列表頁"
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:120
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:122
-msgid "Following"
-msgstr "關注"
+msgid "'s Memberships"
+msgstr "所屬列表"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:114
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:120
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:122
-msgid "'s Lists"
-msgstr "的列表"
+msgid "'s Subscriptions"
+msgstr "訂閱列表"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:131
 msgid "'s Tweets"
