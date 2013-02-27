@@ -1441,12 +1441,12 @@ function theme_action_icons($status) {
 			$actions[] = theme('action_icon', BASE_URL."favourite/{$status->id_str}", 'images/star_grey.png', __('FAV'));
 		}
 		if (user_is_current_user($retweeted_by)) {
-			$actions[] = theme('action_icon', "confirm/delete/{$retweeted_id}", 'images/trash.gif', __('UNDO'));
+			$actions[] = theme('action_icon', BASE_URL."confirm/delete/{$retweeted_id}", 'images/trash.gif', __('UNDO'));
 		} else {
-			$actions[] = theme('action_icon', "retweet/{$status->id_str}", 'images/retweet.png', __('RT'));
+			$actions[] = theme('action_icon', BASE_URL."retweet/{$status->id_str}", 'images/retweet.png', __('RT'));
 		}
 		if (user_is_current_user($from)) {
-			$actions[] = theme('action_icon', "confirm/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
+			$actions[] = theme('action_icon', BASE_URL."confirm/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 		}
 	} else {
 		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
