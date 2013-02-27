@@ -28,9 +28,7 @@ function embedly_embed_thumbnails(&$feed) {
 					} elseif (preg_match("/.*\.(jpg|png|gif)/i", $urls->expanded_url)) {
 						$img_size = getimagesize($urls->expanded_url);
 
-						$html = "<a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url($urls->expanded_url)."\"";
-						if ($img_size[0] > 150) $html .= "style=\"width:150px;\"";
-						$html .= "/></a>";
+						$html = "<a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url($urls->expanded_url)."\" style=\"max-width:150px;\" /></a>";
 
 						$feed[$status->id]->text .= "<br />$html";
 					} else {
@@ -38,7 +36,7 @@ function embedly_embed_thumbnails(&$feed) {
 							if (preg_match_all($pattern, $urls->expanded_url, $matches, PREG_PATTERN_ORDER) > 0) {
 
 								foreach ($matches[1] as $key => $match) {
-									$html = "<a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url(sprintf($thumbnail_url, $match))."\" /></a>";
+									$html = "<a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url(sprintf($thumbnail_url, $match))."\" style=\"max-width:150px;\" /></a>";
 									$feed[$status->id]->text .= "<br />$html";
 								}
 							}
@@ -48,10 +46,9 @@ function embedly_embed_thumbnails(&$feed) {
 			}
 
 			if ($status->entities->media) {
+				$image = substr(BASE_URL, 4, 5) == 's' ? $status->entities->media[0]->media_url_https : $status->entities->media[0]->media_url;
 
-				$image = $status->entities->media[0]->media_url;
-
-				$media_html = "<a href=\"".$image."\"><img src=\"".img_proxy_url($image)."\" width=\"{$status->entities->media[0]->sizes->thumb->w}\" height=\"{$status->entities->media[0]->sizes->thumb->h}\" /></a>";
+				$media_html = "<a href=\"".$image."\"><img src=\"".img_proxy_url($image)."\" style=\"max-width:150px;\" /></a>";
 
 				$feed[$status->id]->text .= "<br />$media_html";
 			}
@@ -78,13 +75,7 @@ function embedly_embed_thumbnails(&$feed) {
 	foreach ($justUrls as $index => $url) {
 		if ($thumb = $oembeds[$index]->thumbnail_url) {
 			foreach ($matched_urls[$url] as $statusId) {
-				$feed[$statusId]->text .= "<br /><a href=\"$url\"><img src=\"".img_proxy_url($thumb)."\"";
-
-				if ($oembeds[$index]->width > 200) {
-					$feed[$statusId]->text .= " style=\"width:200px;\"";
-				}
-
-				$feed[$statusId]->text .= "/></a>";
+				$feed[$statusId]->text .= "<br /><a href=\"$url\"><img src=\"".img_proxy_url($thumb)."\" style=\"max-width:200px;\" /></a>";
 			}
 		}
 	}
