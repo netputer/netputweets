@@ -16,5 +16,6 @@ define("API_ROOT", "https://api.twitter.com/1.1/");
 define("LANG", "zh_CN");
 
 define("IMGPROXY", 0);
+define("IMGPROXY_THUMB", 1);
 define("INVITE", 0);
 define("INVITE_CODE", "putyourinfohere");
