@@ -447,6 +447,8 @@ msgstr "介绍："
 #: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:973
 msgid "Update Profile"
 msgstr "修改资料"
+msgid "Update List Profile"
+msgstr "修改列表资料"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:328
 msgid "Error: Login credentials incorrect."
