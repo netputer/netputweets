@@ -63,7 +63,6 @@ switch($step) {
 			header('location: index.php');
 		} else {
 			$t_title= (empty($t_title)) ? trim($_POST['t_title']) : '奶瓶腿!';
-			$t_ck	= (empty($t_ck)) ? trim($_POST['t_ck']) : 'NetPutweets';
 			$t_tck	= (empty($t_tck)) ? trim($_POST['t_tck']) : 'awGBKfiSSqf1B2iKGsmJQ';
 			$t_tcs	= (empty($t_tcs)) ? trim($_POST['t_tcs']) : 'hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8';
 			$t_eak	= trim($_POST['t_eak']);

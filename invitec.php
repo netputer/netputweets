@@ -11,15 +11,13 @@ function config_log_request() {
 
 	if (!in_array(strtolower(user_current_username())."\n", $allowed_users)) {
 		user_logout();
-		die("对不起，您不是受邀用户，无法登录。");
+		die("对不起，您不是受邀用户，无法登录。如果你有邀请码，<a href=\"".BASE_URL."invite.php\">请自行添加</a>。");
 	}
 }
 
-$pwd = INVITE_CODE;
-
 if (isset($_GET['p']) && isset($_GET['u'])) {
 
-	if ($_GET['p'] == $pwd) {
+	if ($_GET['p'] == INVITE_CODE) {
 		$user = strtolower($_GET['u'])."\n";
 		$handle = fopen('invite.php', 'a');
 

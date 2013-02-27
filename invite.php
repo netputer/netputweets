@@ -1,1 +1,1 @@
-<!doctype html><meta charset=utf-8 /><title>添加受邀用户 - 奶瓶腿!</title><form action="invitec.php" method="GET"><label>用户名<input name="u" /></label> <label>邀请码<input name="p" /></label> <input type="submit" /></form><?php die(); ?>
+<!doctype html><meta charset="utf-8" /><title>添加受邀用户 - 奶瓶腿!</title><form action="invitec.php" method="GET"><label>用户名 <input name="u" /></label> <label>邀请码 <input name="p" /></label> <input type="submit" /></form><?php die(); ?>
