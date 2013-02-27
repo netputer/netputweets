@@ -167,6 +167,13 @@ msgstr "成員"
 msgid "Subscribers"
 msgstr "訂戶"
 
+msgid "Description: "
+msgstr "簡介："
+msgid "Public"
+msgstr "公開"
+msgid "Private"
+msgstr "私有"
+
 #: E:\PHPnow\vhosts\tui.netputer.com/common/menu.php:72
 msgid "Enjoy Twitter with NetPutweets!"
 msgstr "抱著奶瓶腿 享受推的樂趣"
@@ -875,9 +882,6 @@ msgstr "重新登錄"
 
 #~ msgid "Bio"
 #~ msgstr "介紹"
-
-#~ msgid "Private"
-#~ msgstr "隱私保護"
 
 #~ msgid "Content"
 #~ msgstr "内容"
