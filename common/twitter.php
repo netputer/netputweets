@@ -1223,14 +1223,14 @@ function theme_timeline($feed) {
 	$max_id = $since_id = 0;
 
 	if ($need_max_id) {
-		$first = 0;
+		$first = TRUE;
 
 		foreach ($feed as &$status) {
-			if ($first == 0) {
+			if ($first) {
 				$since_id = $status->id_str;
-				$first++;
+				$first = FALSE;
 			} else {
-				$max_id = $status->original_id_str ? $status->original_id_str : $status->id_str;
+				$max_id = isset($status->retweeted_by) ? $status->retweeted_by->id_str : $status->id_str;
 			}
 
 			$status->text = twitter_parse_tags($status->text, $status->entities, $status->id_str);
