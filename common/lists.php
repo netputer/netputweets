@@ -172,9 +172,9 @@ function theme_lists($json) {
 	foreach ($feed as $list) {
 		$url = "lists/{$list->user->screen_name}/{$list->slug}";
 		$rows[] = array(
-			"<a href='user/{$list->user->screen_name}'>@{$list->user->screen_name}</a>/<a href='{$url}'><strong>{$list->slug}</strong></a> ",
-			"<a href='{$url}/members'>{$list->member_count}</a> ",
-			"<a href='{$url}/subscribers'>{$list->subscriber_count}</a>",
+			"<a href='".BASE_URL."user/{$list->user->screen_name}'>@{$list->user->screen_name}</a>/<a href='".BASE_URL."{$url}'><strong>{$list->slug}</strong></a> ",
+			"<a href='".BASE_URL."{$url}/members'>{$list->member_count}</a> ",
+			"<a href='".BASE_URL."{$url}/subscribers'>{$list->subscriber_count}</a>",
 		);
 	}
 	$content = theme('table', $headers, $rows);
@@ -184,10 +184,10 @@ function theme_lists($json) {
 
 function theme_list_pagination($json) {
 	if ($cursor = (string) $json->next_cursor) {
-		$links[] = "<a href='{$_GET['q']}?cursor={$cursor}'>".__("Older")."</a>";
+		$links[] = "<a href='".BASE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Older")."</a>";
 	}
 	if ($cursor = (string) $json->previous_cursor) {
-		$links[] = "<a href='{$_GET['q']}?cursor={$cursor}'>".__("Newer")."</a>";
+		$links[] = "<a href='".BASE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Newer")."</a>";
 	}
 	if (count($links) > 0) return '<p>'.implode(' | ', $links).'</p>';
 }
