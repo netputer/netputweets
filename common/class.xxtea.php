@@ -107,4 +107,3 @@ function xxtea_decrypt($str, $key) {
     }
     return long2str($v, true);
 }
-?>

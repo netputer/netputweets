@@ -47,4 +47,3 @@
 		} else {
 			exit('Invalid Method `'.htmlspecialchars($method).'`.');
 		}
-?>

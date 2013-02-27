@@ -46,4 +46,3 @@ if (isset($_GET['p']) && isset($_GET['u'])) {
         echo "邀请密码错误！";
     }
 }
-?>

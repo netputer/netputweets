@@ -22,4 +22,3 @@ function desktop_theme_search_form($query) {
 function desktop_theme_menu_bottom() {
 	return theme_menu_bottom().js_counter('status');
 }
-?>

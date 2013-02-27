@@ -34,4 +34,3 @@ function __($text) {
 }
 
 $gettext = load_textdomain();
-?>

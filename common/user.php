@@ -176,4 +176,3 @@ function theme_login() {
 function theme_logged_out() {
 	return '<p>'.__("Logged out").'. <a href="'.BASE_URL.'">'.__("Login again").'?</a></p>';
 }
-?>

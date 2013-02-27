@@ -184,4 +184,3 @@ function theme_css() {
 if(!function_exists('__')) {
 	function __($text) {return $text;}
 }
-?>

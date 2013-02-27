@@ -57,4 +57,3 @@ function touch_theme_css() {
 	$out .= '<style type="text/css">'.setting_fetch('css').'</style>';
 	return $out;
 }
-?>

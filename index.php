@@ -50,4 +50,3 @@ function about_page() {
 
 browser_detect();
 menu_execute_active_handler();
-?>

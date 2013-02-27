@@ -18,4 +18,3 @@ define("LANG", "zh_CN");
 define("IMGPROXY", 0);
 define("INVITE", 0);
 define("INVITE_CODE", "putyourinfohere");
-?>

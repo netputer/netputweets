@@ -62,4 +62,3 @@ function blackberry_theme_menu_bottom() {
 	}
 	return "<div class='menu menu-$menu'>".implode(' | ', $links)."</div>".theme('pagination');
 }
-?>
