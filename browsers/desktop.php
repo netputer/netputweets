@@ -14,11 +14,6 @@ function desktop_theme_status_form($text = '', $in_reply_to_id = NULL, $is_deskt
 	}
 }
 
-function desktop_theme_search_form($query) {
-	$query = stripslashes(htmlspecialchars($query));
-	return "<form action='".BASE_URL."search' method='get'><input name='query' value=\"$query\" style='width:100%; max-width: 300px' /><input type='submit' value='".__("Search")."' /></form>";
-}
-
 function desktop_theme_menu_bottom() {
 	return theme_menu_bottom().js_counter('status');
 }

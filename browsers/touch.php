@@ -4,10 +4,6 @@ function touch_theme_status_form($text = '', $in_reply_to_id = NULL) {
 	return desktop_theme_status_form($text, $in_reply_to_id, false);
 }
 
-function touch_theme_search_form($query) {
-	return desktop_theme_search_form($query);
-}
-
 function touch_theme_avatar($url, $force_large = true) {
 	if (setting_fetch('avataro', 'yes') == 'yes') {
 		return "<img class='shead' src='$url' height='48' width='48' />";

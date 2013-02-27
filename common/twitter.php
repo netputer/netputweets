@@ -148,6 +148,8 @@ menu_register(array(
 	),
 ));
 
+$blackberry_pagination = NULL;
+
 function friendship_exists($user_a) {
 	$following = friendship($user_a);
 
@@ -1318,6 +1320,9 @@ function theme_timeline($feed) {
 
 	if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
 		$content .= theme('pagination', $max_id-1);
+	} else {
+		global $blackberry_pagination;
+		$blackberry_pagination = theme('pagination', $max_id-1);
 	}
 
 	return $content;
