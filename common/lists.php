@@ -132,7 +132,10 @@ function lists_list_tweets_page($user, $list) {
 	$tl = twitter_standard_timeline($tweets, 'user');
 	$content = theme('status_form');
 	$list_url = "lists/{$user}/{$list}";
-	$content .= "<p><a href='".BASE_URL."user/{$user}'>{$user}</a>/<strong>{$list}</strong> ".__("'s Tweets")." | <a href='".BASE_URL."{$list_url}/members'>".__("View Members")."</a> | <a href='".BASE_URL."{$list_url}/subscribers'>".__("View Subscribers")."</a> | <a href='".BASE_URL."{$list_url}/edit'>".__("Update Profile")."</a></p>";
+	$content .= "<p><a href='".BASE_URL."user/{$user}'>{$user}</a>/<strong>{$list}</strong> ".__("'s Tweets")." | <a href='".BASE_URL."{$list_url}/members'>".__("View Members")."</a> | <a href='".BASE_URL."{$list_url}/subscribers'>".__("View Subscribers");
+	if(user_is_current_user($user))
+		$content .= "</a> | <a href='".BASE_URL."{$list_url}/edit'>".__("Update Profile");
+	$content .= "</a></p>";
 	$content .= theme('timeline', $tl);
 	theme('page', __("Lists")." {$user}/{$list}", $content);
 }
