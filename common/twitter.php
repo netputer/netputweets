@@ -160,9 +160,9 @@ function friendship_exists($user_a) {
 
 function friendship($user_a, $user_id = 0) {
 	if ($user_a != NULL)
-		$request = API_URLS.'friendships/show.json?target_screen_name=' . $user_a;
+		$request = API_ROOT.'friendships/show.json?target_screen_name=' . $user_a;
 	else
-		$request = API_URLS.'friendships/show.json?target_id=' . $user_id;
+		$request = API_ROOT.'friendships/show.json?target_id=' . $user_id;
 	return twitter_process($request);
 }
 
@@ -218,7 +218,7 @@ function twitter_upload_page($query) {
 		$image = "{$_FILES['image']['tmp_name']};type={$_FILES['image']['type']};filename={$_FILES['image']['name']}";
 		$status = $_POST['message'];
 
-		$code = $tmhOAuth->request('POST', API_URLS.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message']), true, true);
+		$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message']), true, true);
 
 		if ($code == 200) {
 			$json = json_decode($tmhOAuth->response['response']);
@@ -270,7 +270,7 @@ function twitter_upload_page($query) {
 }
 
 function twitter_profile_page($query) {
-	$url = API_URLS."account/update_profile.json";
+	$url = API_ROOT."account/update_profile.json";
 
 	if ($_POST['name']) {
 		$post_data = array(
@@ -448,7 +448,7 @@ function twitter_status_page($query) {
 	if (is_numeric($id)) {
 		$thread = array();
 
-		$request = API_URLS."statuses/show.json?id={$id}&include_entities=true";
+		$request = API_ROOT."statuses/show.json?id={$id}&include_entities=true";
 		$status = twitter_process($request);
 
 		$content = theme('status', $status);
@@ -459,7 +459,7 @@ function twitter_status_page($query) {
 
 			if (!$reply_id) break;
 
-			$request = API_URLS."statuses/show.json?id={$reply_id}&include_entities=true";
+			$request = API_ROOT."statuses/show.json?id={$reply_id}&include_entities=true";
 			$status = twitter_process($request, false, true);
 
 			if (isset($result->error)) {
@@ -485,7 +485,7 @@ function twitter_status_page($query) {
 function twitter_retweet_page($query) {
 	$id = (string) $query[1];
 	if (is_numeric($id)) {
-		$request = API_URLS."statuses/show.json?id={$id}&include_entities=true";
+		$request = API_ROOT."statuses/show.json?id={$id}&include_entities=true";
 		$tl = twitter_process($request);
 		$content = theme('retweet', $tl);
 		theme('page', __("Retweet"), $content);
@@ -506,7 +506,7 @@ function twitter_delete_page($query) {
 	twitter_ensure_post_action();
 	$id = (string) $query[1];
 	if (is_numeric($id)) {
-		$request = API_URLS."statuses/destroy/{$id}.json?page=".intval($_GET['page']);
+		$request = API_ROOT."statuses/destroy/{$id}.json?page=".intval($_GET['page']);
 		$tl = twitter_process($request, true);
 		twitter_refresh('user/'.user_current_username());
 	}
@@ -520,7 +520,7 @@ function twitter_spam_page($query) {
 	twitter_ensure_post_action();
 	$user = $query[1];
 	$post_data = array("screen_name" => $user);
-	$request = API_URLS."users/report_spam.json";
+	$request = API_ROOT."users/report_spam.json";
 	twitter_process($request, $post_data);
 	twitter_refresh("user/{$user}");
 }
@@ -531,10 +531,10 @@ function twitter_follow_page($query) {
 	if ($user) {
 		$post_data = array("screen_name" => $user);
 		if($query[0] == 'follow'){
-			$request = API_URLS."friendships/create.json";
+			$request = API_ROOT."friendships/create.json";
 			$content = "<p>".__("Follow Success")."</p>";
 		} else {
-			$request = API_URLS."friendships/destroy.json";
+			$request = API_ROOT."friendships/destroy.json";
 			$content = "<p>".__("Unfollow Success")."</p>";
 		}
 
@@ -549,9 +549,9 @@ function twitter_block_page($query) {
 	if ($user) {
 		$post_data = array("screen_name" => $user);
 		if($query[0] == 'block'){
-			$request = API_URLS."blocks/create.json";
+			$request = API_ROOT."blocks/create.json";
 		} else {
-			$request = API_URLS."blocks/destroy.json";
+			$request = API_ROOT."blocks/destroy.json";
 		}
 		twitter_process($request, $post_data);
 		twitter_refresh("user/{$user}");
@@ -574,7 +574,7 @@ function twitter_confirmation_page($query) {
 		}
 		break;
 		case 'delete':
-			$request = API_URLS."statuses/show.json?id=$target";
+			$request = API_ROOT."statuses/show.json?id=$target";
 			$status = twitter_process($request);
 			$parsed = $status->text;
 			$content = "<p>".__("Are you really sure you want to")." ".__("delete your tweet?")."</p>";
@@ -601,7 +601,7 @@ function twitter_friends_page($query) {
         if (!is_numeric($cursor)) {
                 $cursor = -1;
         }
-	$request = API_URLS.'friends/list.json?screen_name='.$user.'&cursor='.$cursor;
+	$request = API_ROOT.'friends/list.json?screen_name='.$user.'&cursor='.$cursor;
 	$tl = twitter_process($request);
 
 	$content = theme('followers', $tl, 1);
@@ -622,7 +622,7 @@ function twitter_followers_page($query) {
         if (!is_numeric($cursor)) {
                 $cursor = -1;
         }
-	$request = API_URLS.'followers/list.json?screen_name='.$user.'&cursor='.$cursor;
+	$request = API_ROOT.'followers/list.json?screen_name='.$user.'&cursor='.$cursor;
 	$tl = twitter_process($request);
 
 	$content = theme('followers', $tl, 1);
@@ -638,7 +638,7 @@ function twitter_blockings_page($query) {
         if (!is_numeric($cursor)) {
                 $cursor = -1;
         }
-	$request = API_URLS.'blocks/list.json?cursor='.$cursor;
+	$request = API_ROOT.'blocks/list.json?cursor='.$cursor;
 	$tl = twitter_process($request);
 
 	$content = theme('followers', $tl, 1);
@@ -658,7 +658,7 @@ function twitter_update() {
 			}
 		}
 
-		$request = API_URLS.'statuses/update.json';
+		$request = API_ROOT.'statuses/update.json';
 		$post_data = array('status' => $status);
 		$in_reply_to_id = (string) $_POST['in_reply_to_id'];
 		if (is_numeric($in_reply_to_id)) $post_data['in_reply_to_status_id'] = $in_reply_to_id;
@@ -673,7 +673,7 @@ function twitter_retweet($query) {
 	$id = $query[1];
 
 	if (is_numeric($id)) {
-		$request = API_URLS.'statuses/retweet/'.$id.'.json';
+		$request = API_ROOT.'statuses/retweet/'.$id.'.json';
 		twitter_process($request, true);
 	}
 
@@ -682,7 +682,7 @@ function twitter_retweet($query) {
 
 function twitter_replies_page() {
 	$count = setting_fetch('tpp', 20);
-	$request = API_URLS."statuses/mentions_timeline.json?include_entities=true&count={$count}";
+	$request = API_ROOT."statuses/mentions_timeline.json?include_entities=true&count={$count}";
 
 	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
 	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
@@ -697,7 +697,7 @@ function twitter_replies_page() {
 
 function twitter_retweets_page() {
 	$count = setting_fetch('tpp', 20);
-	$request = API_URLS."statuses/retweets_of_me.json?include_entities=true&count={$count}";
+	$request = API_ROOT."statuses/retweets_of_me.json?include_entities=true&count={$count}";
 
 	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
 	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
@@ -717,7 +717,7 @@ function twitter_directs_page($query) {
 		$id = $query[2];
 		if (!is_numeric($id)) return;
 		$post_data = array("id" => $id);
-		$request = API_URLS."direct_messages/destroy.json";
+		$request = API_ROOT."direct_messages/destroy.json";
 		twitter_process($request, $post_data);
 		twitter_refresh();
 
@@ -730,13 +730,13 @@ function twitter_directs_page($query) {
 		twitter_ensure_post_action();
 		$to = trim(stripslashes($_POST['to']));
 		$message = trim(stripslashes($_POST['message']));
-		$request = API_URLS.'direct_messages/new.json';
+		$request = API_ROOT.'direct_messages/new.json';
 		twitter_process($request, array('screen_name' => $to, 'text' => $message));
 		twitter_refresh('directs/sent');
 
 	case 'sent':
 		$count = setting_fetch('tpp', 20);
-		$request = API_URLS."direct_messages/sent.json?include_entities=true&count={$count}";
+		$request = API_ROOT."direct_messages/sent.json?include_entities=true&count={$count}";
 
         	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
         	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
@@ -749,7 +749,7 @@ function twitter_directs_page($query) {
 	case 'inbox':
 	default:
 		$count = setting_fetch('tpp', 20);
-		$request = API_URLS."direct_messages.json?include_entities=true&count={$count}";
+		$request = API_ROOT."direct_messages.json?include_entities=true&count={$count}";
 
         	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
         	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
@@ -806,7 +806,7 @@ function twitter_search_page() {
 }
 
 function twitter_search($search_query) {
-	$request = API_URLS."search/tweets.json?include_entities=true&result_type=recent&q=$search_query";
+	$request = API_ROOT."search/tweets.json?include_entities=true&result_type=recent&q=$search_query";
 
 	$max_id = (int) $_GET['max_id'];
 	if ($max_id != 0) $request .= "&max_id=$max_id";
@@ -830,7 +830,7 @@ function twitter_user_page($query) {
 	if (is_numeric($in_reply_to_id)) {
 		$str = __("Reply");
 
-		$request = API_URLS."statuses/show.json?id={$in_reply_to_id}&include_entities=true";
+		$request = API_ROOT."statuses/show.json?id={$in_reply_to_id}&include_entities=true";
 		$status = twitter_process($request);
 
 		$user = $status->user;
@@ -860,7 +860,7 @@ function twitter_user_page($query) {
 	if ($in_reply_to_id == 0) {
 		if (isset($user->status)) {
 			$count = setting_fetch('tpp', 20);
-			$request = API_URLS."statuses/user_timeline.json?include_entities=true&screen_name={$screen_name}&include_rts=true&count={$count}";
+			$request = API_ROOT."statuses/user_timeline.json?include_entities=true&screen_name={$screen_name}&include_rts=true&count={$count}";
         		if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
         		if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
 
@@ -881,7 +881,7 @@ function twitter_favourites_page($query) {
 		$screen_name = user_current_username();
 	}
 	$count = setting_fetch('tpp', 20);
-	$request = API_URLS."favorites/list.json?screen_name={$screen_name}&include_entities=true&count={$count}";
+	$request = API_ROOT."favorites/list.json?screen_name={$screen_name}&include_entities=true&count={$count}";
         if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
         if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
 
@@ -899,10 +899,10 @@ function twitter_mark_favourite_page($query) {
 	if (!is_numeric($id)) return;
 
 	if ($query[0] == 'unfavourite') {
-		$request = API_URLS."favorites/destroy.json";
+		$request = API_ROOT."favorites/destroy.json";
 		$content = "<p>".__("Unfavourite Success")."</p>";
 	} else {
-		$request = API_URLS."favorites/create.json";
+		$request = API_ROOT."favorites/create.json";
 		$content = "<p>".__("Favourite Success")."</p>";
 	}
 
@@ -913,7 +913,7 @@ function twitter_mark_favourite_page($query) {
 function twitter_home_page() {
 	user_ensure_authenticated();
 	$count = setting_fetch('tpp', 20);
-	$request = API_URLS."statuses/home_timeline.json?include_entities=true&count={$count}";
+	$request = API_ROOT."statuses/home_timeline.json?include_entities=true&count={$count}";
 
 	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
 	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
@@ -1196,7 +1196,7 @@ function preg_match_one($pattern, $subject, $flags = NULL) {
 function twitter_user_info($username = null) {
 	if (!$username)
 	$username = user_current_username();
-	$request = API_URLS."users/show.json?include_entities=true&screen_name=$username";
+	$request = API_ROOT."users/show.json?include_entities=true&screen_name=$username";
 	$user = twitter_process($request);
 	return $user;
 }

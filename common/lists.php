@@ -10,7 +10,7 @@
 function twitter_lists_tweets($user, $list) {
 	// Tweets belonging to a list
 	$count = setting_fetch('tpp', 20);
-	$url = API_URLS."lists/statuses.json?slug={$list}&owner_screen_name={$user}&include_entities=true&include_rts=true&count={$count}";
+	$url = API_ROOT."lists/statuses.json?slug={$list}&owner_screen_name={$user}&include_entities=true&include_rts=true&count={$count}";
         if ($_GET['max_id']) $url .= "&max_id=".$_GET['max_id'];
         if ($_GET['since_id']) $url .= "&since_id=".$_GET['since_id'];
 
@@ -19,7 +19,7 @@ function twitter_lists_tweets($user, $list) {
 
 function twitter_lists_user_lists($user) {
 	// Lists a user subscribed to
-	return twitter_process(API_URLS."lists/list.json?screen_name={$user}");
+	return twitter_process(API_ROOT."lists/list.json?screen_name={$user}");
 }
 
 function twitter_lists_user_memberships($user) {
@@ -28,7 +28,7 @@ function twitter_lists_user_memberships($user) {
         if (!is_numeric($cursor)) {
                 $cursor = -1;
         }
-	return twitter_process(API_URLS."lists/memberships.json?screen_name={$user}&cursor={$cursor}");
+	return twitter_process(API_ROOT."lists/memberships.json?screen_name={$user}&cursor={$cursor}");
 }
 
 function twitter_lists_list_members($user, $list) {
@@ -37,7 +37,7 @@ function twitter_lists_list_members($user, $list) {
         if (!is_numeric($cursor)) {
                 $cursor = -1;
         }
-	return twitter_process(API_URLS."lists/members.json?slug={$list}&owner_screen_name={$user}&cursor={$cursor}");
+	return twitter_process(API_ROOT."lists/members.json?slug={$list}&owner_screen_name={$user}&cursor={$cursor}");
 }
 
 function twitter_lists_list_subscribers($user, $list) {
@@ -46,7 +46,7 @@ function twitter_lists_list_subscribers($user, $list) {
         if (!is_numeric($cursor)) {
                 $cursor = -1;
         }
-	return twitter_process(API_URLS."lists/subscribers.json?slug={$list}&owner_screen_name={$user}&cursor={$cursor}");
+	return twitter_process(API_ROOT."lists/subscribers.json?slug={$list}&owner_screen_name={$user}&cursor={$cursor}");
 }
 
 /* Front controller for the new pages

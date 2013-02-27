@@ -21,7 +21,7 @@ function user_oauth() {
 		parse_str($response, $token);
 		$GLOBALS['user']['password'] = $token['oauth_token'] .'|'.$token['oauth_token_secret'];
 		unset($_SESSION['oauth_request_token_secret']);
-		$user = twitter_process(API_URLS . 'account/verify_credentials.json');
+		$user = twitter_process(API_ROOT . 'account/verify_credentials.json');
 		$GLOBALS['user']['username'] = $user->screen_name;
 		_user_save_cookie(1);
 		header('Location: '. BASE_URL);

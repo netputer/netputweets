@@ -12,7 +12,7 @@ define("EMBEDLY_KEY", "putyourinfohere");
 define("BASE_URL", $base_url);
 
 define("NPT_TITLE", "putyourinfohere");
-define("API_URLS", "https://api.twitter.com/1.1/");
+define("API_ROOT", "https://api.twitter.com/1.1/");
 define("LANG", "zh_CN");
 
 define("IMGPROXY", 0);
