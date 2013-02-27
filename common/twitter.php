@@ -1204,7 +1204,7 @@ function twitter_user_info($username = null) {
 function twitter_timeline_filter($input) {
 	$filter_keywords = explode(" ",setting_fetch('filterc'));
 	foreach ($filter_keywords as $filter_keyword) {
-		if (stripos($input, $filter_keyword)) {
+		if (stripos($input, $filter_keyword) !== FALSE) {
 			return true;
 		}
 	}
