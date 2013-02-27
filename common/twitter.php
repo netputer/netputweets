@@ -1034,7 +1034,7 @@ function theme_user_header($user) {
 
 	if ($user->description != "") $out .= __("Bio: ")."{$bio}<br />";
 	if ($user->url != "") $out .= __("Link: ")."{$link}<br />";
-	if ($user->location != "") $out .= __("Location: ")."<a href='http://maps.google.com/m?q={$user->location}' target='_blank'>{$user->location}</a><br />";
+	if ($user->location != "") $out .= __("Location: ")."<a href='http://maps.google.com/maps?q={$user->location}' target='_blank'>{$user->location}</a><br />";
 
 	$out .= __("Joined: ")."{$date_joined} ($tweets_per_day ".__("Tweets Per Day").")</small></span></div>";
 	return $out;
@@ -1472,7 +1472,7 @@ function theme_action_icons($status) {
 		$latlong = $geo->coordinates;
 		$lat = $latlong[0];
 		$long = $latlong[1];
-		$actions[] = theme('action_icon', "http://maps.google.com/m?q={$lat},{$long}", 'images/map.png', __('GEO'));
+		$actions[] = theme('action_icon', "http://maps.google.com/maps?q={$lat},{$long}", 'images/map.png', __('GEO'));
 	}
 	return implode(' ', $actions);
 }

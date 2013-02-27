@@ -24,7 +24,7 @@ function embedly_embed_thumbnails(&$feed) {
 			if ($status->entities->urls) {
 				foreach($status->entities->urls as $urls) {
 					if (preg_match($embedly_re, $urls->expanded_url) > 0) { // If it matches an Embedly supported URL
-						$matched_urls[$urls->expanded_url][] = $status->id;
+						$matched_urls[urlencode($urls->expanded_url)][] = $status->id;
 					} elseif (preg_match("/.*\.(jpg|png|gif)/i", $urls->expanded_url)) {
 						$img_size = getimagesize($urls->expanded_url);
 
