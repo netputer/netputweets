@@ -149,7 +149,7 @@ function theme_error($message) {
 function theme_page($title, $content) {
 	$page = ($_GET['page'] == 0 ? null : " - Page ".$_GET['page'])." - ";
 
-	echo '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link href="'.BASE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$page.NPT_TITLE.'</title><base href="'.BASE_URL.'" />'.theme('css').'<meta name="viewport" content="width=device-width; initial-scale=1.0;" /></head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom').'</body></html>';
+	echo '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="'.BASE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$page.NPT_TITLE.'</title>'.theme('css').'</head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom').'</body></html>';
 
 	exit();
 }
