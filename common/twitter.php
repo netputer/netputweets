@@ -217,16 +217,6 @@ function twitter_upload_page($query) {
 		$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message']), true, true);
 
 		if ($code == 200) {
-			$json = json_decode($tmhOAuth->response['response']);
-
-			if ($_SERVER['HTTPS'] == "on") {
-				$image_url = $json->entities->media[0]->media_url_https;
-			} else {
-				$image_url = $json->entities->media[0]->media_url;
-			}
-
-			$text = $json->text;
-
 			$content = "<p>".__("Upload success. Image posted to Twitter.")."</p>";
 
 			return theme('page', __('Upload Picture'), $content);

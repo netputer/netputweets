@@ -169,7 +169,7 @@ function _user_decrypt_cookie($crypt_text) {
 }
 
 function theme_login() {
-	$content = '<p><b>[1] <a href="'.BASE_URL.'oauth">'.__("Sign In with Twitter OAuth").'</a></b> / <a href="'.BASE_URL.'itap">'.__("Proxy").'</a></b></p>';
+	$content = '<p>　→ <strong><a href="'.BASE_URL.'oauth">'.__("Sign In with Twitter OAuth").'</a></strong> / <a href="'.BASE_URL.'itap">'.__("Proxy").'</a></p>';
 	return $content;
 }
 
