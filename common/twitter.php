@@ -1355,7 +1355,7 @@ function theme_followers($feed, $hide_pagination = false) {
 
 
 function theme_full_name($user) {
-	$name = "<a href='user/{$user->screen_name}'>{$user->screen_name}</a>";
+	$name = "<a href='".BASE_URL."user/{$user->screen_name}'>{$user->screen_name}</a>";
 	if ($user->name && $user->name != $user->screen_name) {
 	$name .= " ({$user->name})";
 	}
@@ -1421,7 +1421,7 @@ function theme_action_icons($status) {
 	}
 
 	if($status->entities->user_mentions) {
-		$actions[] = theme('action_icon', "user/{$from}/replyall/{$status->id_str}", 'images/replyall.png', __('@@'));
+		$actions[] = theme('action_icon', BASE_URL."user/{$from}/replyall/{$status->id_str}", 'images/replyall.png', __('@@'));
 	}
 
 	if (!$status->is_direct) {
