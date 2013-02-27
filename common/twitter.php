@@ -269,10 +269,9 @@ function twitter_profile_page($query) {
 		$user = user_current_username();
 		twitter_refresh("user/{$user}");
 	} else {
-		$p = twitter_process($url, $post_data);
+		$p = twitter_process(API_ROOT."account/verify_credentials.json");
 		$content = "<form method=\"post\" action=\"".BASE_URL."profile\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location: ")."<input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link: ")."<input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
 	}
-	$p = twitter_process($url, $post_data);
 
 	return theme('page', __("Update Profile"), $content);
 }

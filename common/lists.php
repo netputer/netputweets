@@ -93,7 +93,8 @@ function lists_controller($query) {
 			// Show subscribers of a list
 			return lists_list_subscribers_page($user, $list);
 		case 'edit':
-			// TODO: List editting page (name and availability)
+			// List editting page (name and availability)
+			return lists_list_edit_page($user, $list);
 			break;
 		default:
 			// Show tweets in a particular list
@@ -131,7 +132,10 @@ function lists_list_tweets_page($user, $list) {
 	$tl = twitter_standard_timeline($tweets, 'user');
 	$content = theme('status_form');
 	$list_url = "lists/{$user}/{$list}";
-	$content .= "<p><a href='".BASE_URL."user/{$user}'>{$user}</a>/<strong>{$list}</strong> ".__("'s Tweets")." | <a href='".BASE_URL."{$list_url}/members'>".__("View Members")."</a> | <a href='".BASE_URL."{$list_url}/subscribers'>".__("View Subscribers")."</a></p>";
+	$content .= "<p><a href='".BASE_URL."user/{$user}'>{$user}</a>/<strong>{$list}</strong> ".__("'s Tweets")." | <a href='".BASE_URL."{$list_url}/members'>".__("View Members")."</a> | <a href='".BASE_URL."{$list_url}/subscribers'>".__("View Subscribers");
+	if(user_is_current_user($user))
+		$content .= "</a> | <a href='".BASE_URL."{$list_url}/edit'>".__("Update Profile");
+	$content .= "</a></p>";
 	$content .= theme('timeline', $tl);
 	theme('page', __("Lists")." {$user}/{$list}", $content);
 }
@@ -155,7 +159,30 @@ function lists_list_subscribers_page($user, $list) {
 	theme('page', __("Subscribers of")." {$user}/{$list}", $content);
 }
 
+function lists_list_edit_page($user, $list) {
+	$url = API_ROOT."lists/update.json";
 
+	if ($_POST['name']) {
+		$post_data = array(
+			'owner_screen_name' => $user,
+			'slug' => $list,
+			'name' => stripslashes($_POST['name']),
+			'mode' => $_POST['mode'],
+			'description' => $_POST['description'],
+		);
+		$p = twitter_process($url, $post_data);
+		twitter_refresh("lists/{$user}/{$p->slug}");
+	} else {
+		$p = twitter_process(API_ROOT."lists/show.json?owner_screen_name={$user}&slug={$list}");
+		$content = "<form method=\"post\" action=\"".BASE_URL."lists/{$user}/{$list}/edit\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Mode: ")."<select name=\"mode\">";
+		$current_mode = $p->mode === "public";
+		$content .= "<option value=\"public\"".($current_mode ? " selected=\"selected\"" : "").">".__("Public")."</option>";
+		$content .= "<option value=\"private\"".($current_mode ? "" : " selected=\"selected\"").">".__("Private")."</option>";
+		$content .= "</select><br />".__("Description: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
+	}
+
+	return theme('page', __("Update List Profile"), $content);
+}
 
 /* Theme functions */
 
