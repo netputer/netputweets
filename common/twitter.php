@@ -370,9 +370,9 @@ function twitter_fetch($url) {
 	return $response;
 }
 
-function twitter_parse_tags($input, $entities = false, $id = false) {
+function twitter_parse_tags($input, $entities = false, $id = false, $source = NULL) {
 	// Filter.
-	if ($id && substr($_GET["q"], 0, 6) !== "status" && (setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($input)) {
+	if ($id && substr($_GET["q"], 0, 6) !== "status" && (setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($input.' '.$source)) {
 		return "<a href='".BASE_URL."status/{$id}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 	}
 
@@ -1219,26 +1219,20 @@ function theme_timeline($feed) {
 	$page = menu_current_page();
 	$date_heading = false;
 
-	$need_max_id = in_array(substr($_GET["q"], 0, 4), array("", "repl", "retw", "sear", "dire", "user", "favo", "list"));
-	$max_id = $since_id = 0;
+	$max_id = 0;
+	$since_id = 0;
 
-	if ($need_max_id) {
-		$first = TRUE;
+	$first = TRUE;
 
-		foreach ($feed as &$status) {
-			if ($first) {
-				$since_id = $status->id_str;
-				$first = FALSE;
-			} else {
-				$max_id = isset($status->retweeted_by) ? $status->retweeted_by->id_str : $status->id_str;
-			}
-
-			$status->text = twitter_parse_tags($status->text, $status->entities, $status->id_str);
+	foreach ($feed as &$status) {
+		if ($first) {
+			$since_id = $status->id_str;
+			$first = FALSE;
+		} else {
+			$max_id = isset($status->retweeted_by) ? $status->retweeted_by->id_str : $status->id_str;
 		}
-	} else {
-		foreach ($feed as &$status) {
-			$status->text = twitter_parse_tags($status->text, $status->entities, $status->id_str);
-		}
+
+		$status->text = twitter_parse_tags($status->text, $status->entities, $status->id_str, strip_tags($status->source));
 	}
 
 	unset($status);
@@ -1490,4 +1484,3 @@ function theme_action_icon($url, $image_url, $text) {
 		return "<a href='$url'><img src='$image_url' /></a>";
 	}
 }
-?>
