@@ -38,7 +38,7 @@ _TODO_
 3. 修改文件时请使用不会添加 BOM 的编辑器（Windows 上如 `wordpad` 等）。
 4. 可视化邀请页面：`invite.php`。
 5. 更多帮助请访问《[奶瓶腿简明架设教程 + Q&A](http://orzdream.com/2009/10/netputweets-guide/)》。
-6. 使用Nginx的用户请将dabr.conf包含到站点配置文件中。
+6. 使用 Nginx 的用户请将 `dabr.conf` 包含到站点配置文件中。
 
 联系
 ----
