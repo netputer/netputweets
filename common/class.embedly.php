@@ -1,6 +1,6 @@
 <?php
 function img_proxy_url($url) {
-	if (IMGPROXY == 1) return BASE_URL."img.php?u=".base64_encode(base64_encode($url));
+	if (IMGPROXY) return BASE_URL."img.php?u=".base64_encode(strrev($url));
 	return $url;
 }
 
