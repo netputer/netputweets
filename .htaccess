@@ -8,6 +8,10 @@ Options +FollowSymlinks
 
 RewriteEngine on
 
+# 屏蔽蜘蛛
+RewriteCond %{HTTP_USER_AGENT} (bot|spider|search|soso|bing|sogou|yahoo|yodao|robozilla) [NC]
+RewriteRule ^(.*)$ - [L,R=404]
+
 # 若你的空间支持 SSL 请将下面各行最前面的注释符号（并号）删除
 # 并将 t.orzdream.com 改为你的奶瓶腿地址
 # RewriteCond %{HTTP_HOST} !=t.orzdream.com [NC,OR]
