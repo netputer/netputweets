@@ -1,4 +1,4 @@
-# 若无法进行正常操作 部分主机可能需要将下面一行最前面的注释符号删除
+# 若无法进行正常操作 部分主机可能需要将下面一行最前面的注释符号（并号）删除
 # RewriteBase /
 
 # IndexIgnore *
@@ -7,12 +7,14 @@ Options -Indexes
 Options +FollowSymlinks
 
 RewriteEngine on
+
+# 若你的空间支持 SSL 请将下面各行最前面的注释符号（并号）删除
+# 并将 t.orzdream.com 改为你的奶瓶腿地址
+# RewriteCond %{HTTP_HOST} !=t.orzdream.com [NC,OR]
+# RewriteCond %{HTTPS} !=on [NC]
+# RewriteRule ^(.*)$ https://t.orzdream.com%{REQUEST_URI} [L,R=301]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^$ index.php
+# RewriteRule ^$ index.php
 RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
-
-# 若你的空间支持 SSL 请将下面各行最前面的注释符号删除 并将 t.orzdream.com 改为你的奶瓶腿地址
-#RewriteCond %{HTTP_HOST} !=t.orzdream.com [NC,OR]
-#RewriteCond %{HTTPS} !=on [NC]
-#RewriteRule ^(.*)$ https://t.orzdream.com%{REQUEST_URI} [L,R=301]

@@ -1,7 +1,11 @@
 <?php
 error_reporting(error_reporting() & ~E_NOTICE); // Thanks @Jimmy_xu_wrk
 
-if (!file_exists('config.php')) header('location: setup.php');
+if (!file_exists('config.php')) {
+	header('location: setup.php');
+	exit;
+}
+
 require 'config.php';
 
 header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
