@@ -27,12 +27,6 @@ menu_register(array(
 		'accesskey' => '1',
 		'title' => __("Replies"),
 	),
-	'retweets' => array(
-		'security' => true,
-		'callback' => 'twitter_retweets_page',
-		'accesskey' => '2',
-		'title' => __("Retweets"),
-	),
 	'twitter-retweet' => array(
 		'hidden' => true,
 		'security' => true,
@@ -697,20 +691,6 @@ function twitter_replies_page() {
 	theme('page', __("Replies"), $content);
 }
 
-function twitter_retweets_page() {
-	$count = setting_fetch('tpp', 20);
-	$request = API_ROOT."statuses/retweets_of_me.json?include_entities=true&count={$count}";
-
-	if ($_GET['max_id']) $request .= "&max_id=".$_GET['max_id'];
-	if ($_GET['since_id']) $request .= "&since_id=".$_GET['since_id'];
-
-	$tl = twitter_process($request);
-	$tl = twitter_standard_timeline($tl, 'retweets');
-	$content = theme('status_form');
-	$content .= theme('timeline', $tl);
-	theme('page', __("Retweets"), $content);
-}
-
 function twitter_directs_page($query) {
 	$action = strtolower(trim($query[1]));
 	switch ($action) {
@@ -1124,7 +1104,6 @@ function twitter_standard_timeline($feed, $source) {
 		case 'favourites':
 		case 'friends':
 		case 'replies':
-		case 'retweets':
 		case 'user':
 			foreach ($feed as $status) {
 				$new = $status;

@@ -59,9 +59,6 @@ function theme_menu_top() {
 		if (setting_fetch('topreplies', 'yes') == 'yes') {
 			$links[] = "<a href='".BASE_URL."replies'>".__("Replies")."</a>";
 		}
-		if (setting_fetch('topretweets', 'yes') == 'yes') {
-			$links[] = "<a href='".BASE_URL."retweets'>".__("Retweets")."</a>";
-		}
 		if (setting_fetch('topdirects', 'yes') == 'yes') {
 			$links[] = "<a href='".BASE_URL."directs'>".__("Directs")."</a>";
 		}
@@ -81,9 +78,6 @@ function theme_menu_bottom() {
 	if (user_is_authenticated()) {
 		if (setting_fetch('replies') == 'yes') {
 			$links[] = "<a href='".BASE_URL."replies'>".__("Replies")."</a>";
-		}
-		if (setting_fetch('retweets') == 'yes') {
-			$links[] = "<a href='".BASE_URL."retweets'>".__("Retweets")."</a>";
 		}
 		if (setting_fetch('directs') == 'yes') {
 			$links[] = "<a href='".BASE_URL."directs'>".__("Directs")."</a>";

@@ -55,12 +55,10 @@ function settings_page($args) {
 		$settings['topuser'] = $_POST['topuser'];
 		$settings['tophome'] = $_POST['tophome'];
 		$settings['topreplies'] = $_POST['topreplies'];
-		$settings['topretweets'] = $_POST['topretweets'];
 		$settings['topdirects'] = $_POST['topdirects'];
 		$settings['topsearch'] = $_POST['topsearch'];
 
 		$settings['replies'] = $_POST['replies'];
-		$settings['retweets'] = $_POST['retweets'];
 		$settings['directs'] = $_POST['directs'];
 		$settings['search'] = $_POST['search'];
 		$settings['public'] = $_POST['public'];
@@ -131,12 +129,10 @@ function settings_page($args) {
 	$content .= '<label>　<input type="checkbox" name="topuser" value="yes" '. (setting_fetch('topuser') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("User").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="tophome" value="yes" '. (setting_fetch('tophome', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Home").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="topreplies" value="yes" '. (setting_fetch('topreplies', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Replies").'</label><br />';
-	$content .= '<label>　<input type="checkbox" name="topretweets" value="yes" '. (setting_fetch('topretweets', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Retweets").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="topdirects" value="yes" '. (setting_fetch('topdirects', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Directs").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="topsearch" value="yes" '. (setting_fetch('topsearch') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Search").'</label><br />';
 	$content .= '<small>[2] '.__("And Choose what you want to display on the Bottom Bar.").'</small><br />';
 	$content .= '<label>　<input type="checkbox" name="replies" value="yes" '. (setting_fetch('replies') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Replies").'</label><br />';
-	$content .= '<label>　<input type="checkbox" name="retweets" value="yes" '. (setting_fetch('retweets') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Retweets").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="directs" value="yes" '. (setting_fetch('directs') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Directs").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="search" value="yes" '. (setting_fetch('search') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Search").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="favourites" value="yes" '. (setting_fetch('favourites') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Favourites").'</label><br />';

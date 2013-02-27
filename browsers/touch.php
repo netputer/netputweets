@@ -22,7 +22,6 @@ function touch_theme_menu_top() {
 	$links = $main_menu_titles = array();
 	if (setting_fetch('tophome', 'yes') == 'yes') $main_menu_titles[] = __("Home");
 	if (setting_fetch('topreplies', 'yes') == 'yes') $main_menu_titles[] = __("Replies");
-	if (setting_fetch('topretweets', 'yes') == 'yes') $main_menu_titles[] = __("Retweets");
 	if (setting_fetch('topdirects', 'yes') == 'yes') $main_menu_titles[] = __("Directs");
 	if (setting_fetch('topsearch') == 'yes') $main_menu_titles[] = __("Search");
 
