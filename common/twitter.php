@@ -817,8 +817,12 @@ function twitter_user_page($query) {
 
 	$status_content = '';
 
-	foreach ($to_users as $username) {
-		if (!user_is_current_user($username)) $status_content .= "@{$username} ";
+	if (count($to_users) == 1) {
+		$status_content .= '@'.$to_users[0].' ';
+	} else {
+		foreach ($to_users as $username) {
+			if (!user_is_current_user($username)) $status_content .= '@'.$username.' ';
+		}
 	}
 
 	$content .= theme('status_form', $status_content, $in_reply_to_id, true);
