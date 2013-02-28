@@ -167,6 +167,13 @@ msgstr "成员"
 msgid "Subscribers"
 msgstr "订户"
 
+msgid "Description: "
+msgstr "简介："
+msgid "Public"
+msgstr "公开"
+msgid "Private"
+msgstr "私有"
+
 #: E:\PHPnow\vhosts\tui.netputer.com/common/menu.php:72
 msgid "Enjoy Twitter with NetPutweets!"
 msgstr "抱着奶瓶腿 享受推的乐趣"
@@ -440,6 +447,8 @@ msgstr "介绍："
 #: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:973
 msgid "Update Profile"
 msgstr "修改资料"
+msgid "Update List Profile"
+msgstr "修改列表资料"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:328
 msgid "Error: Login credentials incorrect."
@@ -875,9 +884,6 @@ msgstr "重新登录"
 
 #~ msgid "Bio"
 #~ msgstr "介绍"
-
-#~ msgid "Private"
-#~ msgstr "隐私保护"
 
 #~ msgid "Content"
 #~ msgstr "内容"
