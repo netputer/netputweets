@@ -791,7 +791,6 @@ function twitter_user_page($query) {
 		theme('error', __('No username given'));
 	}
 
-	$subaction = $query[2];
 	$in_reply_to_id = (string) $query[3];
 	$content = '';
 
@@ -805,7 +804,7 @@ function twitter_user_page($query) {
 
 		$content .= "<p>".__("In reply to")." <strong>$screen_name</strong>: {$status->text}</p>";
 
-		if ($subaction == 'replyall' && $status->entities->user_mentions) {
+		if ($status->entities->user_mentions) {
 			foreach ($status->entities->user_mentions as $mentions) {
 				$to_users[] = $mentions->screen_name;
 			}
@@ -1418,36 +1417,34 @@ function theme_action_icons($status) {
 
 	if (!$status->is_direct) {
 		$actions[] = theme('action_icon', BASE_URL."user/{$from}/reply/{$status->id_str}", 'images/reply.png', __('@'));
-	}
 
-	if($status->entities->user_mentions) {
-		$actions[] = theme('action_icon', BASE_URL."user/{$from}/replyall/{$status->id_str}", 'images/replyall.png', __('@@'));
-	}
-
-	if (!$status->is_direct) {
 		if ($status->favorited == '1') {
 			$actions[] = theme('action_icon', BASE_URL."unfavourite/{$status->id_str}", 'images/star.png', __('UNFAV'));
 		} else {
 			$actions[] = theme('action_icon', BASE_URL."favourite/{$status->id_str}", 'images/star_grey.png', __('FAV'));
 		}
+		
 		if (user_is_current_user($retweeted_by)) {
 			$actions[] = theme('action_icon', BASE_URL."confirm/delete/{$retweeted_id}", 'images/trash.gif', __('UNDO'));
 		} else {
 			$actions[] = theme('action_icon', BASE_URL."retweet/{$status->id_str}", 'images/retweet.png', __('RT'));
 		}
+		
 		if (user_is_current_user($from)) {
 			$actions[] = theme('action_icon', BASE_URL."confirm/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
+		}
+		
+		if ($geo !== null) {
+			$latlong = $geo->coordinates;
+			$lat = $latlong[0];
+			$long = $latlong[1];
+			$actions[] = theme('action_icon', "http://maps.google.com/maps?q={$lat},{$long}", 'images/map.png', __('GEO'));
 		}
 	} else {
 		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
 		$actions[] = theme('action_icon', BASE_URL."directs/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 	}
-	if ($geo !== null) {
-		$latlong = $geo->coordinates;
-		$lat = $latlong[0];
-		$long = $latlong[1];
-		$actions[] = theme('action_icon', "http://maps.google.com/maps?q={$lat},{$long}", 'images/map.png', __('GEO'));
-	}
+	
 	return implode(' ', $actions);
 }
 
