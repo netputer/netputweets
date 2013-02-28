@@ -447,7 +447,7 @@ msgstr "介紹："
 #: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:973
 msgid "Update Profile"
 msgstr "修改資料"
-msgid "Update List Profile"
+msgid "Edit List Details"
 msgstr "修改列表資料"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/twitter.php:328
