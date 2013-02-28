@@ -134,7 +134,7 @@ function lists_list_tweets_page($user, $list) {
 	$list_url = "lists/{$user}/{$list}";
 	$content .= "<p><a href='".BASE_URL."user/{$user}'>{$user}</a>/<strong>{$list}</strong> ".__("'s Tweets")." | <a href='".BASE_URL."{$list_url}/members'>".__("View Members")."</a> | <a href='".BASE_URL."{$list_url}/subscribers'>".__("View Subscribers");
 	if(user_is_current_user($user))
-		$content .= "</a> | <a href='".BASE_URL."{$list_url}/edit'>".__("Update Profile");
+		$content .= "</a> | <a href='".BASE_URL."{$list_url}/edit'>".__("Edit list details");
 	$content .= "</a></p>";
 	$content .= theme('timeline', $tl);
 	theme('page', __("Lists")." {$user}/{$list}", $content);
@@ -160,8 +160,6 @@ function lists_list_subscribers_page($user, $list) {
 }
 
 function lists_list_edit_page($user, $list) {
-	$url = API_ROOT."lists/update.json";
-
 	if ($_POST['name']) {
 		$post_data = array(
 			'owner_screen_name' => $user,
@@ -170,18 +168,18 @@ function lists_list_edit_page($user, $list) {
 			'mode' => $_POST['mode'],
 			'description' => $_POST['description'],
 		);
-		$p = twitter_process($url, $post_data);
+		twitter_process(API_ROOT."lists/update.json", $post_data);
 		twitter_refresh("lists/{$user}/{$p->slug}");
-	} else {
-		$p = twitter_process(API_ROOT."lists/show.json?owner_screen_name={$user}&slug={$list}");
-		$content = "<form method=\"post\" action=\"".BASE_URL."lists/{$user}/{$list}/edit\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Mode: ")."<select name=\"mode\">";
-		$current_mode = $p->mode === "public";
-		$content .= "<option value=\"public\"".($current_mode ? " selected=\"selected\"" : "").">".__("Public")."</option>";
-		$content .= "<option value=\"private\"".($current_mode ? "" : " selected=\"selected\"").">".__("Private")."</option>";
-		$content .= "</select><br />".__("Description: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
 	}
+	
+	$p = twitter_process(API_ROOT."lists/show.json?owner_screen_name={$user}&slug={$list}");
+	$content = "<form method=\"post\" action=\"".BASE_URL."lists/{$user}/{$list}/edit\" enctype=\"multipart/form-data\">".__("List Name").": <input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Privacy").": <select name=\"mode\">";
+	$current_mode = $p->mode === "public";
+	$content .= "<option value=\"public\"".($current_mode ? " selected=\"selected\"" : "").">".__("Public")."</option>";
+	$content .= "<option value=\"private\"".($current_mode ? "" : " selected=\"selected\"").">".__("Private")."</option>";
+	$content .= "</select><br />".__("Description").": (Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
 
-	return theme('page', __("Update List Profile"), $content);
+	return theme('page', __("Edit List Details"), $content);
 }
 
 /* Theme functions */
