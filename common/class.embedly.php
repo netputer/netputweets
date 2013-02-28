@@ -30,7 +30,7 @@ function embedly_embed_thumbnails(&$feed) {
 					if (preg_match($embedly_re, $urls->expanded_url) > 0) { // If it matches an Embedly supported URL
 						$matched_urls[urlencode($urls->expanded_url)][] = $status->id;
 					} elseif (preg_match("/.*\.(jpg|png|gif)/i", $urls->expanded_url)) {
-						$feed[$status->id]->text .= "<br /><a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url($urls->expanded_url, TRUE)."\" /></a>";
+						$feed[$status->id]->text .= "<br /><a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url($urls->expanded_url, TRUE)."\" style=\"max-width:150px;\" /></a>";
 					} else {
 						foreach ($services as $pattern => $thumbnail_url) {
 							if (preg_match_all($pattern, $urls->expanded_url, $matches, PREG_PATTERN_ORDER) > 0) {
@@ -46,7 +46,7 @@ function embedly_embed_thumbnails(&$feed) {
 			if ($status->entities->media) {
 				$image = substr(BASE_URL, 4, 5) == 's' ? $status->entities->media[0]->media_url_https : $status->entities->media[0]->media_url;
 
-				$feed[$status->id]->text .= "<br /><a href=\"".$image."\"><img src=\"".img_proxy_url($image, TRUE)."\" /></a>";
+				$feed[$status->id]->text .= "<br /><a href=\"".$image."\"><img src=\"".img_proxy_url($image, TRUE)."\" style=\"max-width:150px;\" /></a>";
 			}
 		}
 	}
