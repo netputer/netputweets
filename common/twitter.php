@@ -1283,11 +1283,15 @@ function theme_timeline($feed) {
 
 	$content = theme('table', array(), $rows, array('class' => 'timeline'));
 
+	if (PHP_INT_SIZE > 4) {
+		$max_id = intval($max_id) - 1;
+	}
+	
 	if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
-		$content .= theme('pagination', $max_id-1);
+		$content .= theme('pagination', $max_id);
 	} else {
 		global $blackberry_pagination;
-		$blackberry_pagination = theme('pagination', $max_id-1);
+		$blackberry_pagination = theme('pagination', $max_id);
 	}
 
 	return $content;
