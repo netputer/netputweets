@@ -256,8 +256,6 @@ function twitter_upload_page($query) {
 }
 
 function twitter_profile_page($query) {
-	$url = API_ROOT."account/update_profile.json";
-
 	if ($_POST['name']) {
 		$post_data = array(
 			'name' => stripslashes($_POST['name']),
@@ -265,13 +263,12 @@ function twitter_profile_page($query) {
 			'url' => $_POST['url'],
 			'description' => $_POST['description'],
 		);
-		$p = twitter_process($url, $post_data);
-		$user = user_current_username();
-		twitter_refresh("user/{$user}");
-	} else {
-		$p = twitter_process(API_ROOT."account/verify_credentials.json");
-		$content = "<form method=\"post\" action=\"".BASE_URL."profile\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location: ")."<input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link: ")."<input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
-	}
+		twitter_process(API_ROOT.'account/update_profile.json', $post_data);
+		twitter_refresh('user/'.user_current_username());
+	} 
+	
+	$p = twitter_process(API_ROOT.'account/verify_credentials.json');
+	$content = "<form method=\"post\" action=\"".BASE_URL."profile\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location: ")."<input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link: ")."<input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
 
 	return theme('page', __("Update Profile"), $content);
 }

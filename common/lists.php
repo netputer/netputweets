@@ -187,15 +187,15 @@ function lists_list_edit_page($user, $list) {
 /* Theme functions */
 
 function theme_lists($json) {
-	if ($json->lists)
-		$feed = $json->lists;
-	else
-		$feed = $json;	
-	if (count($feed) == 0) {
+	$feed = $json->lists ? $json->lists : $json;
+	
+	if (!is_array($feed) || count($feed) == 0) {
 		return "<p>".__("No lists to display")."</p>";
 	}
+	
 	$rows = array();
 	$headers = array(__("Lists")." ", __("Members")." ", __("Subscribers")." ");
+	
 	foreach ($feed as $list) {
 		$url = "lists/{$list->user->screen_name}/{$list->slug}";
 		$rows[] = array(
@@ -204,8 +204,10 @@ function theme_lists($json) {
 			"<a href='".BASE_URL."{$url}/subscribers'>{$list->subscriber_count}</a>",
 		);
 	}
+	
 	$content = theme('table', $headers, $rows);
 	$content .= theme('list_pagination', $json);
+	
 	return $content;
 }
 
