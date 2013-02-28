@@ -117,6 +117,8 @@ msgstr "传图"
 #: E:\PHPnow\vhosts\tui.netputer.com/browsers/touch.php:43
 msgid "More"
 msgstr "更多"
+msgid "Less"
+msgstr "更少"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:102
 msgid "List page not found"

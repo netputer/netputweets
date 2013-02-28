@@ -1284,13 +1284,14 @@ function theme_timeline($feed) {
 
 	if (PHP_INT_SIZE > 4) {
 		$max_id = intval($max_id) - 1;
+		$since_id = intval($since_id) + 1;
 	}
 	
 	if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
-		$content .= theme('pagination', $max_id);
+		$content .= theme('pagination', $max_id, 1000, $since_id);
 	} else {
 		global $blackberry_pagination;
-		$blackberry_pagination = theme('pagination', $max_id);
+		$blackberry_pagination = theme('pagination', $max_id, 1000, $since_id);
 	}
 
 	return $content;
@@ -1387,7 +1388,7 @@ function theme_external_link($url) {
 	return "<a href='$url'>$text</a>";
 }
 
-function theme_pagination($max_id = false, $max_page = 1000) {
+function theme_pagination($max_id = false, $max_page = 1000, $since_id = false) {
 	$page = intval($_GET['page']);
 	$links = array();
 
@@ -1403,6 +1404,7 @@ function theme_pagination($max_id = false, $max_page = 1000) {
 		}
 	} else {
 		$links[] = "<a href='".BASE_URL."{$_GET['q']}?max_id=$max_id"."$query'>".__("More")." &raquo;</a>";
+		$links[] = "<a href='".BASE_URL."{$_GET['q']}?since_id=$since_id"."$query'>".__("Less")." &raquo;</a>";
 	}
 
 	return '<p class="pagination">'.implode(' | ', $links).'</p>';
