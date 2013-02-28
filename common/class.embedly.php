@@ -35,7 +35,7 @@ function embedly_embed_thumbnails(&$feed) {
 						foreach ($services as $pattern => $thumbnail_url) {
 							if (preg_match_all($pattern, $urls->expanded_url, $matches, PREG_PATTERN_ORDER) > 0) {
 								foreach ($matches[1] as $key => $match) {
-									$feed[$status->id]->text .= "<br /><a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url(sprintf($thumbnail_url, $match))."\" /></a>";
+									$feed[$status->id]->text .= "<br /><a href=\"{$urls->expanded_url}\"><img src=\"".img_proxy_url(sprintf($thumbnail_url, $match))."\" style=\"max-width:150px;\" /></a>";
 								}
 							}
 						}
@@ -71,7 +71,7 @@ function embedly_embed_thumbnails(&$feed) {
 	foreach ($justUrls as $index => $url) {
 		if ($thumb = $oembeds[$index]->thumbnail_url) {
 			foreach ($matched_urls[$url] as $statusId) {
-				$feed[$statusId]->text .= "<br /><a href=\"$url\"><img src=\"".img_proxy_url($thumb)."\" /></a>";
+				$feed[$statusId]->text .= "<br /><a href=\"$url\"><img src=\"".img_proxy_url($thumb)."\" style=\"max-width:150px;\" /></a>";
 			}
 		}
 	}
