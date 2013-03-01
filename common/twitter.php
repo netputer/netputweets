@@ -1308,7 +1308,7 @@ function twitter_is_reply($status) {
 	return stripos($status->text, "user/".user_current_username());
 }
 
-function theme_followers($feed, $hide_pagination = false) {
+function theme_followers($feed, $hide_pagination = false, $list = false) {
 	$rows = array();
 
 	$lists = $feed->users;
@@ -1316,6 +1316,8 @@ function theme_followers($feed, $hide_pagination = false) {
 
 	foreach ($lists as $user) {
 		$name = theme('full_name', $user);
+		if($list)
+			$name .= " <a href='".BASE_URL."lists/".user_current_username()."/{$list}/delete/{$user->screen_name}'>".__("Delete From List")."</a>";
 		$tweets_per_day = twitter_tweets_per_day($user);
 		$last_tweet = strtotime($user->status->created_at);
 		$content = "{$name}<br /><span class='about'>";

@@ -63,6 +63,7 @@ function lists_controller($query) {
 	// Fiddle with the $query to find which part identifies the page they want
 	if ($query[3]) {
 		// URL in form: lists/$user/$list/$method
+		$member = $query[4];
 		$method = $query[3];
 		$list = $query[2];
 	} else {
@@ -88,7 +89,8 @@ function lists_controller($query) {
 		case 'edit':
 			// List editting page (name and availability)
 			return lists_list_edit_page($user, $list);
-			break;
+		case 'delete':
+			return lists_list_delete_member($user, $list, $member);
 		default:
 			// Show tweets in a particular list
 			$list = $method;
@@ -102,6 +104,16 @@ function lists_controller($query) {
 
 
 /* Pages */
+
+function lists_list_delete_member($user, $list, $member) {
+	$post_data = array(
+		"owner_screen_name" => $user,
+		"slug" => $list,
+		"screen_name" => $member);
+	$request = API_ROOT."lists/members/destroy.json";
+	twitter_process($request, $post_data);
+	header('Location: '. BASE_URL."lists/{$user}/{$list}/members");
+}
 
 function lists_lists_page($user) {
 	// Show a user's lists
@@ -139,7 +151,8 @@ function lists_list_members_page($user, $list) {
 	$p = twitter_lists_list_members($user, $list);
 
 	// TODO: use a different theme() function? Add a "delete member" link for each member
-	$content = theme('followers', $p, 1);
+	$listname = user_is_current_user($user) ? $list : false;
+	$content = theme('followers', $p, 1, $listname);
 	$content .= theme('list_pagination', $p);
 	theme('page', __("Members of")." {$user}/{$list}", $content);
 }

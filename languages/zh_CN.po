@@ -122,6 +122,9 @@ msgstr "更多"
 msgid "List page not found"
 msgstr "找不到列表页"
 
+msgid "Delete From List"
+msgstr "从列表删除"
+
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:120
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:122
