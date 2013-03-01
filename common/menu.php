@@ -68,7 +68,7 @@ function theme_menu_top() {
 	} else {
 		$links[] = "<span style=font-weight:bold;color:#FFF;>".__("Enjoy Twitter with NetPutweets!")."</span>";
 	}
-	return "<div class='menu menu-$menu'>".implode(' | ', $links).'</div>';
+	return "<div class='menu menu-top'>".implode(' | ', $links).'</div>';
 }
 
 
@@ -116,5 +116,5 @@ function theme_menu_bottom() {
 		}
 	}
 
-	return '<div class="menu menu-$menu">'.implode(' | ', $links).'</div>';
+	return '<div class="menu menu-bottom">'.implode(' | ', $links).'</div>';
 }
