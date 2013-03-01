@@ -1,10 +1,10 @@
 <?php
 function img_proxy_url($url, $thumb = FALSE) {
 	if (!IMGPROXY) return $url;
-	
+
 	$img_url = BASE_URL.'img.php?u='.base64_encode(strrev($url));
-	if ($thumb && IMGPROXY_THUMB) $img_url .= '&t';
-	
+	if ($thumb) $img_url .= '&t=150';
+
 	return $img_url;
 }
 

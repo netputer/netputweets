@@ -265,8 +265,8 @@ function twitter_profile_page($query) {
 		);
 		twitter_process(API_ROOT.'account/update_profile.json', $post_data);
 		twitter_refresh('user/'.user_current_username());
-	} 
-	
+	}
+
 	$p = twitter_process(API_ROOT.'account/verify_credentials.json');
 	$content = "<form method=\"post\" action=\"".BASE_URL."profile\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location: ")."<input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link: ")."<input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
 
@@ -1289,7 +1289,7 @@ function theme_timeline($feed) {
 	if (PHP_INT_SIZE > 4) {
 		$max_id = intval($max_id) - 1;
 	}
-	
+
 	if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
 		$content .= theme('pagination', $max_id);
 	} else {
@@ -1427,17 +1427,17 @@ function theme_action_icons($status) {
 		} else {
 			$actions[] = theme('action_icon', BASE_URL."favourite/{$status->id_str}", 'images/star_grey.png', __('FAV'));
 		}
-		
+
 		if (user_is_current_user($retweeted_by)) {
 			$actions[] = theme('action_icon', BASE_URL."confirm/delete/{$retweeted_id}", 'images/trash.gif', __('UNDO'));
 		} else {
 			$actions[] = theme('action_icon', BASE_URL."retweet/{$status->id_str}", 'images/retweet.png', __('RT'));
 		}
-		
+
 		if (user_is_current_user($from)) {
 			$actions[] = theme('action_icon', BASE_URL."confirm/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 		}
-		
+
 		if ($geo !== null) {
 			$latlong = $geo->coordinates;
 			$lat = $latlong[0];
@@ -1448,7 +1448,7 @@ function theme_action_icons($status) {
 		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
 		$actions[] = theme('action_icon', BASE_URL."directs/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 	}
-	
+
 	return implode(' ', $actions);
 }
 

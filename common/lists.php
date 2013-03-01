@@ -1,18 +1,11 @@
 <?php
-/*
- API Calls
-
- Note that some calls are XML and not JSON like the rest of Dabr. This is because 32-bit
- PHP installs cannot handle the 64-bit Lists API cursors used for paging.
-
- */
 
 function twitter_lists_tweets($user, $list) {
 	// Tweets belonging to a list
 	$count = setting_fetch('tpp', 20);
 	$url = API_ROOT."lists/statuses.json?slug={$list}&owner_screen_name={$user}&include_entities=true&include_rts=true&count={$count}";
-        if ($_GET['max_id']) $url .= "&max_id=".$_GET['max_id'];
-        if ($_GET['since_id']) $url .= "&since_id=".$_GET['since_id'];
+		if ($_GET['max_id']) $url .= "&max_id=".$_GET['max_id'];
+		if ($_GET['since_id']) $url .= "&since_id=".$_GET['since_id'];
 
 	return twitter_process($url);
 }
@@ -25,27 +18,27 @@ function twitter_lists_user_lists($user) {
 function twitter_lists_user_memberships($user) {
 	// Lists a user belongs to
 	$cursor = $_GET['cursor'];
-        if (!is_numeric($cursor)) {
-                $cursor = -1;
-        }
+		if (!is_numeric($cursor)) {
+			$cursor = -1;
+		}
 	return twitter_process(API_ROOT."lists/memberships.json?screen_name={$user}&cursor={$cursor}");
 }
 
 function twitter_lists_list_members($user, $list) {
 	// Members of a list
 	$cursor = $_GET['cursor'];
-        if (!is_numeric($cursor)) {
-                $cursor = -1;
-        }
+		if (!is_numeric($cursor)) {
+			$cursor = -1;
+		}
 	return twitter_process(API_ROOT."lists/members.json?slug={$list}&owner_screen_name={$user}&cursor={$cursor}");
 }
 
 function twitter_lists_list_subscribers($user, $list) {
 	// Subscribers of a list
 	$cursor = $_GET['cursor'];
-        if (!is_numeric($cursor)) {
-                $cursor = -1;
-        }
+		if (!is_numeric($cursor)) {
+			$cursor = -1;
+		}
 	return twitter_process(API_ROOT."lists/subscribers.json?slug={$list}&owner_screen_name={$user}&cursor={$cursor}");
 }
 
@@ -171,7 +164,7 @@ function lists_list_edit_page($user, $list) {
 		twitter_process(API_ROOT."lists/update.json", $post_data);
 		twitter_refresh("lists/{$user}/{$p->slug}");
 	}
-	
+
 	$p = twitter_process(API_ROOT."lists/show.json?owner_screen_name={$user}&slug={$list}");
 	$content = "<form method=\"post\" action=\"".BASE_URL."lists/{$user}/{$list}/edit\" enctype=\"multipart/form-data\">".__("List Name").": <input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Privacy").": <select name=\"mode\">";
 	$current_mode = $p->mode === "public";
@@ -186,14 +179,14 @@ function lists_list_edit_page($user, $list) {
 
 function theme_lists($json) {
 	$feed = $json->lists ? $json->lists : $json;
-	
+
 	if (!is_array($feed) || count($feed) == 0) {
 		return "<p>".__("No lists to display")."</p>";
 	}
-	
+
 	$rows = array();
 	$headers = array(__("Lists")." ", __("Members")." ", __("Subscribers")." ");
-	
+
 	foreach ($feed as $list) {
 		$url = "lists/{$list->user->screen_name}/{$list->slug}";
 		$rows[] = array(
@@ -202,10 +195,10 @@ function theme_lists($json) {
 			"<a href='".BASE_URL."{$url}/subscribers'>{$list->subscriber_count}</a>",
 		);
 	}
-	
+
 	$content = theme('table', $headers, $rows);
 	$content .= theme('list_pagination', $json);
-	
+
 	return $content;
 }
 
@@ -213,8 +206,10 @@ function theme_list_pagination($json) {
 	if ($cursor = (string) $json->next_cursor) {
 		$links[] = "<a href='".BASE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Older")."</a>";
 	}
+	
 	if ($cursor = (string) $json->previous_cursor) {
 		$links[] = "<a href='".BASE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Newer")."</a>";
 	}
+	
 	if (count($links) > 0) return '<p>'.implode(' | ', $links).'</p>';
 }
