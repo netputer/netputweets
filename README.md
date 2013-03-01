@@ -23,7 +23,7 @@
 
 在服务器中运行 `git clone git://github.com/netputer/netputweets.git` 将得到的 `netputweets` 文件夹中的所有内容复制到目标目录中，直接在浏览器中访问、安装、使用。
 
-在升级时，请运行 `git fetch` ，然后删除 `config.php` 并重新访问、安装。
+在升级时，请运行 `git pull` ，然后删除 `config.php` 并重新访问、安装。
 
 ### 下载发布版本 ###
 
