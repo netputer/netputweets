@@ -138,6 +138,8 @@ function user_type() {
 }
 
 function _is_user_invited($username) {
+	if (!file_exists(dirname(dirname(__FILE__)).'/invited'))
+		return FALSE;
 	$allowed_users = file(dirname(dirname(__FILE__)).'/invited');
 
 	if (in_array(strtolower($username)."\n", $allowed_users)) {

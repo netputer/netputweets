@@ -12,9 +12,9 @@ if (isset($_POST['p']) && isset($_POST['u'])) {
 	if ($_POST['p'] == INVITE_CODE) {
 		$user = strtolower($_POST['u'])."\n";
 
-		if (is_writable('invited')) {
+		if (is_writable('invited') || !file_exists('invited')) {
 
-			if (!$handle = fopen('invited', 'a')) {
+			if (!$handle = fopen('invited', 'a+')) {
 				exit('不能打开受邀用户列表');
 			}
 
