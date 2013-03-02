@@ -554,6 +554,7 @@ function twitter_confirmation_page($query) {
 			$content = "<p>".__("Are you really sure you want to")." <strong>$action $target</strong>?</p>";
 			$content .= "<ul><li>".__("You won't show up in their list of friends")."</li><li>".__("They won't see your updates on their home page")."</li><li>".__("They won't be able to follow you")."</li><li>".__("You <em>can</em> unblock them but you will need to follow them again afterwards")."</li></ul>";
 		}
+		$realurl = "$action/$target";
 		break;
 		case 'delete':
 			$request = API_ROOT."statuses/show.json?id=$target";
@@ -561,13 +562,21 @@ function twitter_confirmation_page($query) {
 			$parsed = $status->text;
 			$content = "<p>".__("Are you really sure you want to")." ".__("delete your tweet?")."</p>";
 			$content .= "<ul><li>".__("Tweet: ")."$parsed</li><li>".__("Note: ").__("There is no way to undo this action.")."</li></ul>";
+		$realurl = "$action/$target";
+		break;
+		case 'listdelete':
+			$listname = $target;
+			$membername = $target_id;
+			$content = "<p>".__("Are you really sure you want to")." ".__("delete user ").$membername.__(" from list ").$listname."?</p>";
+		$realurl = "lists/".user_current_username()."/$listname/delete/$membername";
 		break;
 		case 'spam':
 			$content  = "<p>".__("Are you really sure you want to")." ".__("report")." <strong>$target</strong> ".__("as a spammer?")."</p>";
 			$content .= "<p>".__("They won't be able to follow you.")."</p>";
+		$realurl = "$action/$target";
 		break;
 		}
-	$content .= "<form action='".BASE_URL."$action/$target' method='post'><input type='submit' value='".__("Yes")."' /></form>";
+	$content .= "<form action='".BASE_URL.$realurl."' method='post'><input type='submit' value='".__("Yes")."' /></form>";
 	theme('Page', __("Confirm"), $content);
 }
 
@@ -1317,7 +1326,7 @@ function theme_followers($feed, $hide_pagination = false, $list = false) {
 	foreach ($lists as $user) {
 		$name = theme('full_name', $user);
 		if($list)
-			$name .= " <a href='".BASE_URL."lists/".user_current_username()."/{$list}/delete/{$user->screen_name}'>".__("Delete From List")."</a>";
+			$name .= " <a href='".BASE_URL."confirm/listdelete/{$list}/{$user->screen_name}'>".__("Delete From List")."</a>";
 		$tweets_per_day = twitter_tweets_per_day($user);
 		$last_tweet = strtotime($user->status->created_at);
 		$content = "{$name}<br /><span class='about'>";
