@@ -125,6 +125,13 @@ msgstr "找不到列表頁"
 msgid "Delete From List"
 msgstr "從列表移除"
 
+msgid "make user "
+msgstr "将用戶 "
+msgid " removed from your "
+msgstr " 從列表 "
+msgid " list?"
+msgstr " 中移除？"
+
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:120
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:122
