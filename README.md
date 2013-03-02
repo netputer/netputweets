@@ -27,7 +27,7 @@
 
 ### 下载发布版本 ###
 
-请[点击这里](https://github.com/netputer/netputweets/archives/master)下载并解压缩所有文件到服务器 Web 目录中，并从浏览器中访问、安装、使用。
+请[点击这里](https://github.com/netputer/netputweets/archive/master.zip)下载并解压缩所有文件到服务器 Web 目录中，并从浏览器中访问、安装、使用。
 
 在升级时，请重复上面的步骤，然后删除 `config.php` 并重新访问、安装。
 
