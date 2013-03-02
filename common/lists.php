@@ -101,18 +101,17 @@ function lists_controller($query) {
 	return theme("error", __("List page not found"));
 }
 
-
-
 /* Pages */
 
 function lists_list_delete_member($user, $list, $member) {
+	twitter_ensure_post_action();
 	$post_data = array(
 		"owner_screen_name" => $user,
 		"slug" => $list,
 		"screen_name" => $member);
 	$request = API_ROOT."lists/members/destroy.json";
 	twitter_process($request, $post_data);
-	header('Location: '. BASE_URL."lists/{$user}/{$list}/members");
+	header('Location: '.BASE_URL."lists/{$user}/{$list}/members");
 }
 
 function lists_lists_page($user) {
@@ -219,10 +218,10 @@ function theme_list_pagination($json) {
 	if ($cursor = (string) $json->next_cursor) {
 		$links[] = "<a href='".BASE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Older")."</a>";
 	}
-	
+
 	if ($cursor = (string) $json->previous_cursor) {
 		$links[] = "<a href='".BASE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Newer")."</a>";
 	}
-	
+
 	if (count($links) > 0) return '<p>'.implode(' | ', $links).'</p>';
 }

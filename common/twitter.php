@@ -544,39 +544,47 @@ function twitter_confirmation_page($query) {
  	$action = $query[1];
  	$target = $query[2];
  	$target_id = $query[3];
+
+	$realurl = "$action/$target";
+
 	switch ($action) {
 		case 'block':
-		if (twitter_block_exists($target_id)) {
-			$action = 'unblock';
-			$content  = "<p>".__("Are you really sure you want to")." <strong>".__("Unblock")." $target</strong>?</p>";
-			$content .= "<ul><li>".__("They will see your updates on their home page if they follow you again.")."</li><li>".__("You <em>can</em> block them again if you want.")."</li></ul>";
-		} else {
-			$content = "<p>".__("Are you really sure you want to")." <strong>$action $target</strong>?</p>";
-			$content .= "<ul><li>".__("You won't show up in their list of friends")."</li><li>".__("They won't see your updates on their home page")."</li><li>".__("They won't be able to follow you")."</li><li>".__("You <em>can</em> unblock them but you will need to follow them again afterwards")."</li></ul>";
-		}
-		$realurl = "$action/$target";
-		break;
+			if (twitter_block_exists($target_id)) {
+				$action = 'unblock';
+				$content  = "<p>".__("Are you really sure you want to")." <strong>".__("Unblock")." $target</strong>?</p>";
+				$content .= "<ul><li>".__("They will see your updates on their home page if they follow you again.")."</li><li>".__("You <em>can</em> block them again if you want.")."</li></ul>";
+			} else {
+				$content = "<p>".__("Are you really sure you want to")." <strong>$action $target</strong>?</p>";
+				$content .= "<ul><li>".__("You won't show up in their list of friends")."</li><li>".__("They won't see your updates on their home page")."</li><li>".__("They won't be able to follow you")."</li><li>".__("You <em>can</em> unblock them but you will need to follow them again afterwards")."</li></ul>";
+			}
+
+			break;
+
 		case 'delete':
 			$request = API_ROOT."statuses/show.json?id=$target";
 			$status = twitter_process($request);
 			$parsed = $status->text;
 			$content = "<p>".__("Are you really sure you want to")." ".__("delete your tweet?")."</p>";
 			$content .= "<ul><li>".__("Tweet: ")."$parsed</li><li>".__("Note: ").__("There is no way to undo this action.")."</li></ul>";
-		$realurl = "$action/$target";
-		break;
+
+			break;
+
 		case 'listdelete':
 			$listname = $target;
 			$membername = $target_id;
-			$content = "<p>".__("Are you really sure you want to")." ".__("make user ").$membername.__(" removed from your ").$listname.__(" list?")."</p>";
-		$realurl = "lists/".user_current_username()."/$listname/delete/$membername";
-		break;
+			$content = "<p>".__("Are you really sure you want to").$membername.__(" removed from your ").$listname.__(" list?")."</p>";
+
+			$realurl = "lists/".user_current_username()."/$listname/delete/$membername";
+			break;
+
 		case 'spam':
 			$content  = "<p>".__("Are you really sure you want to")." ".__("report")." <strong>$target</strong> ".__("as a spammer?")."</p>";
 			$content .= "<p>".__("They won't be able to follow you.")."</p>";
-		$realurl = "$action/$target";
-		break;
-		}
+			break;
+	}
+
 	$content .= "<form action='".BASE_URL.$realurl."' method='post'><input type='submit' value='".__("Yes")."' /></form>";
+
 	theme('Page', __("Confirm"), $content);
 }
 
