@@ -138,7 +138,7 @@ function user_type() {
 }
 
 function _is_user_invited($username) {
-	$allowed_users = file(dirname(dirname(__FILE__)).'/invite.php');
+	$allowed_users = file(dirname(dirname(__FILE__)).'/invited');
 
 	if (in_array(strtolower($username)."\n", $allowed_users)) {
 		return TRUE;
