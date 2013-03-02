@@ -21,7 +21,7 @@ if (!function_exists("curl_init")) {
 } elseif (!file_exists(ABSPATH.'config-sample.php')) {
 	$notice = '<strong>提示：</strong>未能检测到 config-sample.php 文件。请确认该目录存在此文件或重新上传。';
 } elseif (!is_writable(ABSPATH)) {
-	$notice = '<strong>提示：</strong>目录不可写。请更改目录属性或者手动创建 config.php 。';
+	$notice = '<strong>提示：</strong>目录不可写。请更改目录属性或者手动创建 config.php （参考 config-sample.php）和 invite 文件（内容为空）。';
 }
 
 if (isset($_GET['step'])) {
@@ -38,6 +38,7 @@ function display_header($n) {
 		echo '<div id="error">'.$n.'</div>';
 	}
 }
+
 switch($step) {
 	case 0:
 		display_header($notice);
@@ -102,9 +103,13 @@ switch($step) {
 							fwrite($handle, $line);
 					}
 				}
+
+				$handle = fopen(ABSPATH.'invited', 'a');
 				fclose($handle);
+
 				chmod(ABSPATH.'config.php', 0666);
-				chmod(ABSPATH.'invite.php', 0666);
+				chmod(ABSPATH.'invited', 0666);
+
 				display_header($notice);
 ?><p>恭喜！奶瓶腿已经安装成功。准备好了？开始 &hellip; &hellip;</p><p class="step"><a href="<?php echo BASE_URL.'" class="button">抱抱奶瓶腿！</a></p>';
 			}

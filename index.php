@@ -1,5 +1,5 @@
 <?php
-error_reporting(error_reporting() & ~E_NOTICE); // Thanks @Jimmy_xu_wrk
+error_reporting(error_reporting() & ~E_NOTICE);
 
 if (!file_exists('config.php')) {
 	$base_url = isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] != "off" ? "https" : "http";
@@ -22,7 +22,6 @@ header('Content-type: text/html; charset=utf-8');
 require 'languages/languages.php';
 require 'common/theme.php';
 require 'common/browser.php';
-if (INVITE == 1) require 'invitec.php';
 require 'common/menu.php';
 if (!function_exists('mcrypt_module_open')) require 'common/class.xxtea.php';
 require 'common/user.php';

@@ -14,26 +14,39 @@ menu_register(array(
 function user_oauth() {
 	require_once 'OAuth.php';
 	session_start();
+	
 	$GLOBALS['user']['type'] = 'oauth';
+	
 	if ($oauth_token = $_GET['oauth_token']) {
 		$params = array('oauth_verifier' => $_GET['oauth_verifier']);
 		$response = twitter_process('https://api.twitter.com/oauth/access_token', $params);
-		parse_str($response, $token);
-		$GLOBALS['user']['password'] = $token['oauth_token'] .'|'.$token['oauth_token_secret'];
+		
 		unset($_SESSION['oauth_request_token_secret']);
-		$user = twitter_process(API_ROOT . 'account/verify_credentials.json');
-		$GLOBALS['user']['username'] = $user->screen_name;
-		_user_save_cookie(1);
-		header('Location: '. BASE_URL);
-		exit();
-	} else {
-		$params = array('oauth_callback' => BASE_URL.'oauth');
-		$response = twitter_process('https://api.twitter.com/oauth/request_token', $params);
+		
 		parse_str($response, $token);
-		$_SESSION['oauth_request_token_secret'] = $token['oauth_token_secret'];
-		$authorise_url = 'https://api.twitter.com/oauth/authorize?oauth_token='.$token['oauth_token'];
-		header("Location: $authorise_url");
+		
+		// 判断 user 是否在列表中
+		if (INVITE && !_is_user_invited($token['screen_name'])) {
+			unset($GLOBALS['user']);
+			exit('对不起，您不是受邀用户，无法登录（如果你有邀请码，<a href="'.BASE_URL.'invite.php">请自行添加</a>）');
+		}
+		
+		$GLOBALS['user']['username'] = $token['screen_name'];
+		$GLOBALS['user']['password'] = $token['oauth_token'] .'|'.$token['oauth_token_secret'];
+		
+		_user_save_cookie();
+		header('Location: '. BASE_URL);
+		return;
 	}
+	
+	$params = array('oauth_callback' => BASE_URL.'oauth');
+	$response = twitter_process('https://api.twitter.com/oauth/request_token', $params);
+	
+	parse_str($response, $token);
+	$_SESSION['oauth_request_token_secret'] = $token['oauth_token_secret'];
+	$authorise_url = 'https://api.twitter.com/oauth/authorize?oauth_token='.$token['oauth_token'];
+	
+	header('Location: '.$authorise_url);
 }
 
 function user_itap() {
@@ -124,12 +137,19 @@ function user_type() {
 	return $GLOBALS['user']['type'];
 }
 
-function _user_save_cookie($stay_logged_in = 0) {
-	$cookie = _user_encrypt_cookie();
-	$duration = 0;
-	if ($stay_logged_in) {
-		$duration = time() + (3600 * 24 * 365);
+function _is_user_invited($username) {
+	$allowed_users = file(dirname(dirname(__FILE__)).'/invite.php');
+
+	if (in_array(strtolower($username)."\n", $allowed_users)) {
+		return TRUE;
 	}
+	
+	return FALSE;
+}
+
+function _user_save_cookie() {
+	$cookie = _user_encrypt_cookie();
+	$duration = time() + (3600 * 24 * 365);
 	setcookie('USER_AUTH', $cookie, $duration, '/');
 }
 

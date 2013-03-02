@@ -34,15 +34,8 @@
 提示
 ----
 
-1. 可视化邀请页面：`invite.php`
-2. 修改文件时请使用不会添加 BOM 的编辑器（Windows 上如 `wordpad` 等）。
-3. 由于图片预览代理非常消耗服务器的资源，请谨慎使用。如需使用图片预览代理，请务必在安装时填写 `Embedly API Key` 字段。如不需图片压缩（节省流量），请将 `config.php` 中 `IMGPROXY_THUMB` 后面的 `1` 修改为 `0` 。
+1. 修改文件时请使用不会添加 BOM 的编辑器（Windows 上如 `wordpad` 等）。
+2. 由于图片预览代理非常消耗服务器的资源，请谨慎使用。如需使用图片预览代理，请务必在安装时填写 `Embedly API Key` 字段（以开启图片预览功能）。如不需图片压缩（节省流量），请将 `config.php` 中 `IMGPROXY_THUMB` 后面的 `1` 修改为 `0` 。
+3. 可视化邀请页面：`invite.php`。如果升级后发现邀请列表丢失，请手动将 `invitec.php` 的内容（除去第一行代码）复制到 `invited` 中，并保持最后一行为空行。
 4. 使用 Nginx 的用户请将 `dabr.conf` 包含到站点配置文件中。
 5. 如有任何问题，请通过 [GitHub Issues](https://github.com/netputer/netputweets/issues) 反馈。
-
-联系
-----
-
-* Groups: [奶瓶腿讨论组](https://groups.google.com/group/netputweets?hl=zh-CN)
-* Mail: <netputer@gmail.com>
-* Twitter: [@NetPuter](https://twitter.com/NetPuter)
