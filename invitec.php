@@ -1,8 +1,9 @@
 <?php
 /* MAKING DABR INVITE ONLY - BY davidcarrington & NetPuter */
 
+require('config.php');
+
 header('Content-type: text/html; charset=utf-8');
-require_once 'config.php';
 
 function config_log_request() {
 	if (!user_is_authenticated()) return;
@@ -11,11 +12,15 @@ function config_log_request() {
 
 	if (!in_array(strtolower(user_current_username())."\n", $allowed_users)) {
 		user_logout();
-		die("对不起，您不是受邀用户，无法登录。如果你有邀请码，<a href=\"".BASE_URL."invite.php\">请自行添加</a>。");
+		exit('对不起，您不是受邀用户，无法登录。如果你有邀请码，<a href="'.BASE_URL.'invite.php">请自行添加</a>');
 	}
 }
 
 if (isset($_GET['p']) && isset($_GET['u'])) {
+
+	if (INVITE == 0) {
+		exit('目前为开放模式，无需邀请');
+	}
 
 	if ($_GET['p'] == INVITE_CODE) {
 		$user = strtolower($_GET['u'])."\n";
@@ -24,23 +29,21 @@ if (isset($_GET['p']) && isset($_GET['u'])) {
 		if (is_writable('invite.php')) {
 
 			if (!$handle = fopen('invite.php', 'a')) {
-				echo "不能打开受邀用户列表。";
-				exit;
+				echo '不能打开受邀用户列表';
 			}
 
 			if (fwrite($handle, $user) == FALSE) {
-				echo "不能写入到受邀用户列表。";
-				exit;
+				echo '不能写入到受邀用户列表';
 			}
 
-			echo "成功地将 $user 加入到受邀用户列表！";
+			echo '已将 '.trim($user).' 加入到受邀用户列表';
 			fclose($handle);
 
 		} else {
-			echo "受邀用户列表不可写。";
+			exit('受邀用户列表不可写');
 		}
 
 	} else {
-        echo "邀请密码错误！";
+        exit('邀请密码错误');
     }
 }
