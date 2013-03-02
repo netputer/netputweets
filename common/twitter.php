@@ -567,7 +567,7 @@ function twitter_confirmation_page($query) {
 		case 'listdelete':
 			$listname = $target;
 			$membername = $target_id;
-			$content = "<p>".__("Are you really sure you want to")." ".__("delete user ").$membername.__(" from list ").$listname."?</p>";
+			$content = "<p>".__("Are you really sure you want to")." ".__("make user ").$membername.__(" removed from your ").$listname.__(" list?")."</p>";
 		$realurl = "lists/".user_current_username()."/$listname/delete/$membername";
 		break;
 		case 'spam':
