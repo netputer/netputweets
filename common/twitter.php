@@ -222,7 +222,7 @@ function twitter_upload_page($query) {
 		}
 
 		if ($geo == Y)
-			$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message'], 'lat' => '$lat', 'long' => '$long'), true, true);
+			$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message'], 'lat' => $lat, 'long' => $long), true, true);
 		else
 			$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message']), true, true);
 
@@ -258,6 +258,43 @@ function twitter_upload_page($query) {
 						".__("Image: ")."<input type='file' name='image' /><br />
 						".__("Content: ")."<br />
 						<textarea name='message' style='width:90%; max-width: 400px;' rows='3' id='message'>" . $_POST['message'] . "</textarea><br>
+			";
+	if (setting_fetch('buttongeo') == 'yes') {
+		$content .= '
+<span id="geo" style="display: inline;"><input onclick="goGeo()" type="checkbox" id="geoloc" name="location" /> <label for="geoloc" id="lblGeo"></label></span><br />
+<script type="text/javascript">
+<!--
+started = false;
+chkbox = document.getElementById("geoloc");
+if (navigator.geolocation) {
+	geoStatus("Tweet my location");
+	if ("'.$_COOKIE['geo'].'"=="Y") {
+		chkbox.checked = true;
+		goGeo();
+	}
+}
+function goGeo(node) {
+	if (started) return;
+	started = true;
+	geoStatus("Locating...");
+	navigator.geolocation.getCurrentPosition(geoSuccess, geoStatus, {enableHighAccuracy: true});
+}
+function geoStatus(msg) {
+	document.getElementById("geo").style.display = "inline";
+	document.getElementById("lblGeo").innerHTML = msg;
+}
+function geoSuccess(position) {
+	if(typeof position.address !== "undefined")
+		geoStatus("Tweet my <a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (" + position.address.country + position.address.region + "省" + position.address.city + "市，accuracy: " + position.coords.accuracy + "m)");
+	else
+		geoStatus("Tweet my <a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (accuracy: " + position.coords.accuracy + "m)");
+	chkbox.value = position.coords.latitude + "," + position.coords.longitude;
+}
+//-->
+</script>
+';
+        }
+	$content .=     "
 						<input type='submit' value='".__("Send")."'><span id='remaining'>120</span>
 					</form>";
 	$content .= js_counter("message", "120");
@@ -949,7 +986,43 @@ function twitter_hashtag_page($query) {
 function theme_status_form($text = '', $in_reply_to_id = NULL) {
 	if (user_is_authenticated()) {
 		$fixedtags = ((setting_fetch('fixedtago', 'no') == "yes") && ($text == '')) ? " #".setting_fetch('fixedtagc') : null;
-		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea><div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" />';
+		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea>';
+		if (setting_fetch('buttongeo') == 'yes') {
+			$output .= '
+<br /><span id="geo" style="display: inline;"><input onclick="goGeo()" type="checkbox" id="geoloc" name="location" /> <label for="geoloc" id="lblGeo"></label></span>
+<script type="text/javascript">
+<!--
+started = false;
+chkbox = document.getElementById("geoloc");
+if (navigator.geolocation) {
+	geoStatus("Tweet my location");
+	if ("'.$_COOKIE['geo'].'"=="Y") {
+		chkbox.checked = true;
+		goGeo();
+	}
+}
+function goGeo(node) {
+	if (started) return;
+	started = true;
+	geoStatus("Locating...");
+	navigator.geolocation.getCurrentPosition(geoSuccess, geoStatus, {enableHighAccuracy: true});
+}
+function geoStatus(msg) {
+	document.getElementById("geo").style.display = "inline";
+	document.getElementById("lblGeo").innerHTML = msg;
+}
+function geoSuccess(position) {
+	if(typeof position.address !== "undefined")
+		geoStatus("Tweet my <a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (" + position.address.country + position.address.region + "省" + position.address.city + "市，accuracy: " + position.coords.accuracy + "m)");
+	else
+		geoStatus("Tweet my <a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (accuracy: " + position.coords.accuracy + "m)");
+	chkbox.value = position.coords.latitude + "," + position.coords.longitude;
+}
+//-->
+</script>
+';
+        	}
+		$output .= '<div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" />';
 
 		if (substr($_GET["q"], 0, 4) !== "user") {
 			$output .= ' <a href="'.BASE_URL.'upload">'.__('Upload Picture').'</a>';
