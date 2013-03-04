@@ -164,8 +164,8 @@ function theme_google_analytics() {
 		$url .= "&utmp=" . urlencode($path);
 	}
 	$url .= "&guid=ON";
-	return str_replace("&", "&amp;", $url);
-	return "<img src='{$url}' />";
+	$googleanalyticsimg = str_replace("&", "&amp;", $url);
+	return "<img src='{$googleanalyticsimg}' />";
 }
 
 function theme_page($title, $content) {
