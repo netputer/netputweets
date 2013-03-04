@@ -23,6 +23,6 @@ function desktop_theme_avatar($url, $force_large = false) {
 }
 function desktop_theme_css() {
        $out = theme_css();
-       $out .= '<link rel="stylesheet" href="browsers/desktop.css" />';
+       $out .= '<link rel="stylesheet" href="/browsers/desktop.css" />';
        return $out;
 }
