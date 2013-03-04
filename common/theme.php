@@ -147,8 +147,8 @@ function theme_error($message) {
 }
 
 function theme_google_analytics() {
-	global $GA_ACCOUNT, $GA_PIXEL;
 	if (!$GA_ACCOUNT) return '';
+	$GA_PIXEL = "ga.php";
 	$url = "";
 	$url .= $GA_PIXEL . "?";
 	$url .= "utmac=" . $GA_ACCOUNT;

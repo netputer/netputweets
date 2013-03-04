@@ -23,5 +23,4 @@ define("INVITE_CODE", "putyourinfohere");
 // Google Analytics Mobile tracking code
 // You need to download ga.php from the Google Analytics website for this to work
 // Copyright 2009 Google Inc. All Rights Reserved.
-$GA_ACCOUNT = "";
-$GA_PIXEL = "ga.php";
+define("GA_ACCOUNT", "");
