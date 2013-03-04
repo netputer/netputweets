@@ -79,6 +79,8 @@ function settings_page($args) {
 		$settings['buttonfrom'] = $_POST['buttonfrom'];
 		$settings['buttonend'] = $_POST['buttonend'];
 
+		$settings['buttongeo'] = $_POST['buttongeo'];
+
 		$settings['longtext'] = $_POST['longtext'];
 		$settings['showthumbs'] = $_POST['showthumbs'];
 		$settings['fixedtago'] = $_POST['fixedtago'];
@@ -150,6 +152,7 @@ function settings_page($args) {
 	$content .= '<label>　<input type="checkbox" name="buttontime" value="yes" '. (setting_fetch('buttontime', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Show Status Time").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="buttonfrom" value="yes" '. (setting_fetch('buttonfrom', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Show Status Source").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="avataro" value="yes" '. (setting_fetch('avataro', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Show Avatar").'</label><br />';
+	$content .= '<label>  <input type="checkbox" name="buttongeo" value="yes" '. (setting_fetch('buttongeo') == 'yes' ? ' checked="checked" ' : '') .' /> GEO [Geolocation]</label><br />';
 	$content .= '<label>　<input type="checkbox" name="fixedtago" value="yes" '. (setting_fetch('fixedtago', 'no') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Enable Fixed Tag: ").'</label>#<input type="text" id="fixedtagc" name="fixedtagc" value="'.setting_fetch('fixedtagc').'" maxlength="70" style="width:40px;" /><br />';
 	if (function_exists('mb_strlen')) $content .= '<label>　'.__("When posting a 140+ chars tweet: ").'<select name="longtext">'.theme('options', $longtext, setting_fetch('longtext', 'r')).'</select></label><hr />';
 

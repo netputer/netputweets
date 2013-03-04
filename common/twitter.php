@@ -213,8 +213,18 @@ function twitter_upload_page($query) {
 
 		$image = "{$_FILES['image']['tmp_name']};type={$_FILES['image']['type']};filename={$_FILES['image']['name']}";
 		$status = $_POST['message'];
+		
+		$geo = 'N';
+		if (setting_fetch('buttongeo') == 'yes') {
+			list($lat, $long) = explode(',', $_POST['location']);
+			if (is_numeric($lat) && is_numeric($long)) 
+				$geo = 'Y';
+		}
 
-		$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message']), true, true);
+		if ($geo == Y)
+			$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message'], 'lat' => '$lat', 'long' => '$long'), true, true);
+		else
+			$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message']), true, true);
 
 		if ($code == 200) {
 			$content = "<p>".__("Upload success. Image posted to Twitter.")."</p>";
@@ -661,6 +671,17 @@ function twitter_update() {
 		$post_data = array('status' => $status);
 		$in_reply_to_id = (string) $_POST['in_reply_to_id'];
 		if (is_numeric($in_reply_to_id)) $post_data['in_reply_to_status_id'] = $in_reply_to_id;
+		if (setting_fetch('buttongeo') == 'yes') {
+			// Geolocation parameters
+			list($lat, $long) = explode(',', $_POST['location']);
+			$geo = 'N';
+			if (is_numeric($lat) && is_numeric($long)) {
+				$geo = 'Y';
+				$post_data['lat'] = $lat;
+				$post_data['long'] = $long;
+			}
+			setcookie_year('geo', $geo);
+		}
 		$b = twitter_process($request, $post_data);
 	}
 
