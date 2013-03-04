@@ -967,3 +967,6 @@ msgstr "重新登录"
 
 #~ msgid "Inbox"
 #~ msgstr "收信箱"
+
+msgid "Enable Geotag"
+msgstr "启用Geotag（地理坐标）"
