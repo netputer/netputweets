@@ -147,7 +147,7 @@ function theme_error($message) {
 }
 
 function theme_google_analytics() {
-	if (!$GA_ACCOUNT) return '';
+	if (!GA_ACCOUNT) return '';
 	$GA_PIXEL = "ga.php";
 	$url = "";
 	$url .= $GA_PIXEL . "?";
