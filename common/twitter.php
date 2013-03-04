@@ -267,7 +267,7 @@ function twitter_upload_page($query) {
 started = false;
 chkbox = document.getElementById("geoloc");
 if (navigator.geolocation) {
-	geoStatus("Tweet my location");
+	geoStatus("'.__("Tweet my location").'");
 	if ("'.$_COOKIE['geo'].'"=="Y") {
 		chkbox.checked = true;
 		goGeo();
@@ -276,7 +276,7 @@ if (navigator.geolocation) {
 function goGeo(node) {
 	if (started) return;
 	started = true;
-	geoStatus("Locating...");
+	geoStatus("'.__("Locating...").'");
 	navigator.geolocation.getCurrentPosition(geoSuccess, geoStatus, {enableHighAccuracy: true});
 }
 function geoStatus(msg) {
@@ -285,9 +285,9 @@ function geoStatus(msg) {
 }
 function geoSuccess(position) {
 	if(typeof position.address !== "undefined")
-		geoStatus("Tweet my <a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (" + position.address.country + position.address.region + "省" + position.address.city + "市，accuracy: " + position.coords.accuracy + "m)");
+		geoStatus("'.__("Tweet my ").'<a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (" + position.address.country + position.address.region + "省" + position.address.city + "市，'.__("accuracy: ").'" + position.coords.accuracy + "m)");
 	else
-		geoStatus("Tweet my <a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (accuracy: " + position.coords.accuracy + "m)");
+		geoStatus("'.__("Tweet my ").'<a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>'.__("location").'</a>" + " ('.__("accuracy: ").'" + position.coords.accuracy + "m)");
 	chkbox.value = position.coords.latitude + "," + position.coords.longitude;
 }
 //-->
@@ -995,7 +995,7 @@ function theme_status_form($text = '', $in_reply_to_id = NULL) {
 started = false;
 chkbox = document.getElementById("geoloc");
 if (navigator.geolocation) {
-	geoStatus("Tweet my location");
+	geoStatus("'.__("Tweet my location").'");
 	if ("'.$_COOKIE['geo'].'"=="Y") {
 		chkbox.checked = true;
 		goGeo();
@@ -1004,7 +1004,7 @@ if (navigator.geolocation) {
 function goGeo(node) {
 	if (started) return;
 	started = true;
-	geoStatus("Locating...");
+	geoStatus("'.__("Locating...").'");
 	navigator.geolocation.getCurrentPosition(geoSuccess, geoStatus, {enableHighAccuracy: true});
 }
 function geoStatus(msg) {
@@ -1013,9 +1013,9 @@ function geoStatus(msg) {
 }
 function geoSuccess(position) {
 	if(typeof position.address !== "undefined")
-		geoStatus("Tweet my <a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (" + position.address.country + position.address.region + "省" + position.address.city + "市，accuracy: " + position.coords.accuracy + "m)");
+		geoStatus("'.__("Tweet my ").'<a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (" + position.address.country + position.address.region + "省" + position.address.city + "市，'.__("accuracy: ").'" + position.coords.accuracy + "m)");
 	else
-		geoStatus("Tweet my <a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (accuracy: " + position.coords.accuracy + "m)");
+		geoStatus("'.__("Tweet my ").'<a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>'.__("location").'</a>" + " ('.__("accuracy: ").'" + position.coords.accuracy + "m)");
 	chkbox.value = position.coords.latitude + "," + position.coords.longitude;
 }
 //-->

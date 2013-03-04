@@ -970,3 +970,18 @@ msgstr "重新登录"
 
 msgid "Enable Geotag"
 msgstr "启用Geotag（地理坐标）"
+
+msgid "Tweet my location"
+msgstr "推送我的位置"
+
+msgid "Tweet my "
+msgstr "推送我的 "
+
+msgid "location"
+msgstr "位置"
+
+msgid "Locating..."
+msgstr "定位中..."
+
+msgid "accuracy: "
+msgstr "精确度: "
