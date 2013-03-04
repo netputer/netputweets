@@ -680,7 +680,7 @@ function twitter_update() {
 				$post_data['lat'] = $lat;
 				$post_data['long'] = $long;
 			}
-			setcookie_year('geo', $geo);
+			#setcookie_year('geo', $geo);
 		}
 		$b = twitter_process($request, $post_data);
 	}
