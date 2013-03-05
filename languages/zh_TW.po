@@ -967,3 +967,21 @@ msgstr "重新登錄"
 
 #~ msgid "Inbox"
 #~ msgstr "收信箱"
+
+msgid "Enable Geotag"
+msgstr "啟用Geotag（地理坐標）"
+
+msgid "Tweet my location"
+msgstr "推送我的位置"
+
+msgid "Tweet my "
+msgstr "推送我的 "
+
+msgid "location"
+msgstr "位置"
+
+msgid "Locating..."
+msgstr "定位中..."
+
+msgid "accuracy: "
+msgstr "精確度: "
