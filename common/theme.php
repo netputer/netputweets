@@ -146,10 +146,32 @@ function theme_error($message) {
 	theme_page('Error', $message);
 }
 
+function theme_google_analytics() {
+	if (!GA_ACCOUNT) return '';
+	$GA_PIXEL = "ga.php";
+	$url = "";
+	$url .= $GA_PIXEL . "?";
+	$url .= "utmac=" . $GA_ACCOUNT;
+	$url .= "&utmn=" . rand(0, 0x7fffffff);
+	$referer = $_SERVER["HTTP_REFERER"];
+	$query = $_SERVER["QUERY_STRING"];
+	$path = $_SERVER["REQUEST_URI"];
+	if (empty($referer)) {
+		$referer = "-";
+	}
+	$url .= "&utmr=" . urlencode($referer);
+	if (!empty($path)) {
+		$url .= "&utmp=" . urlencode($path);
+	}
+	$url .= "&guid=ON";
+	$googleanalyticsimg = str_replace("&", "&amp;", $url);
+	return "<img src='{$googleanalyticsimg}' />";
+}
+
 function theme_page($title, $content) {
 	$page = ($_GET['page'] == 0 ? null : " - Page ".$_GET['page'])." - ";
 
-	echo '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="'.BASE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$page.NPT_TITLE.'</title>'.theme('css').'</head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom').'</body></html>';
+	echo '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="'.BASE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$page.NPT_TITLE.'</title>'.theme('css').'</head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom').theme('google_analytics').'</body></html>';
 
 	exit();
 }
