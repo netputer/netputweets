@@ -213,8 +213,18 @@ function twitter_upload_page($query) {
 
 		$image = "{$_FILES['image']['tmp_name']};type={$_FILES['image']['type']};filename={$_FILES['image']['name']}";
 		$status = $_POST['message'];
+		
+		$geo = 'N';
+		if (setting_fetch('buttongeo') == 'yes') {
+			list($lat, $long) = explode(',', $_POST['location']);
+			if (is_numeric($lat) && is_numeric($long)) 
+				$geo = 'Y';
+		}
 
-		$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message']), true, true);
+		if ($geo == Y)
+			$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message'], 'lat' => $lat, 'long' => $long), true, true);
+		else
+			$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message']), true, true);
 
 		if ($code == 200) {
 			$content = "<p>".__("Upload success. Image posted to Twitter.")."</p>";
@@ -248,6 +258,43 @@ function twitter_upload_page($query) {
 						".__("Image: ")."<input type='file' name='image' /><br />
 						".__("Content: ")."<br />
 						<textarea name='message' style='width:90%; max-width: 400px;' rows='3' id='message'>" . $_POST['message'] . "</textarea><br>
+			";
+	if (setting_fetch('buttongeo') == 'yes') {
+		$content .= '
+<span id="geo" style="display: inline;"><input onclick="goGeo()" type="checkbox" id="geoloc" name="location" /> <label for="geoloc" id="lblGeo"></label></span><br />
+<script type="text/javascript">
+<!--
+started = false;
+chkbox = document.getElementById("geoloc");
+if (navigator.geolocation) {
+	geoStatus("'.__("Tweet my location").'");
+	if ("'.$_COOKIE['geo'].'"=="Y") {
+		chkbox.checked = true;
+		goGeo();
+	}
+}
+function goGeo(node) {
+	if (started) return;
+	started = true;
+	geoStatus("'.__("Locating...").'");
+	navigator.geolocation.getCurrentPosition(geoSuccess, geoStatus, {enableHighAccuracy: true});
+}
+function geoStatus(msg) {
+	document.getElementById("geo").style.display = "inline";
+	document.getElementById("lblGeo").innerHTML = msg;
+}
+function geoSuccess(position) {
+	if(typeof position.address !== "undefined")
+		geoStatus("'.__("Tweet my ").'<a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (" + position.address.country + position.address.region + "省" + position.address.city + "市，'.__("accuracy: ").'" + position.coords.accuracy + "m)");
+	else
+		geoStatus("'.__("Tweet my ").'<a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>'.__("location").'</a>" + " ('.__("accuracy: ").'" + position.coords.accuracy + "m)");
+	chkbox.value = position.coords.latitude + "," + position.coords.longitude;
+}
+//-->
+</script>
+';
+        }
+	$content .=     "
 						<input type='submit' value='".__("Send")."'><span id='remaining'>120</span>
 					</form>";
 	$content .= js_counter("message", "120");
@@ -661,6 +708,17 @@ function twitter_update() {
 		$post_data = array('status' => $status);
 		$in_reply_to_id = (string) $_POST['in_reply_to_id'];
 		if (is_numeric($in_reply_to_id)) $post_data['in_reply_to_status_id'] = $in_reply_to_id;
+		if (setting_fetch('buttongeo') == 'yes') {
+			// Geolocation parameters
+			list($lat, $long) = explode(',', $_POST['location']);
+			$geo = 'N';
+			if (is_numeric($lat) && is_numeric($long)) {
+				$geo = 'Y';
+				$post_data['lat'] = $lat;
+				$post_data['long'] = $long;
+			}
+			#setcookie_year('geo', $geo);
+		}
 		$b = twitter_process($request, $post_data);
 	}
 
@@ -928,7 +986,43 @@ function twitter_hashtag_page($query) {
 function theme_status_form($text = '', $in_reply_to_id = NULL) {
 	if (user_is_authenticated()) {
 		$fixedtags = ((setting_fetch('fixedtago', 'no') == "yes") && ($text == '')) ? " #".setting_fetch('fixedtagc') : null;
-		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea><div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" />';
+		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea>';
+		if (setting_fetch('buttongeo') == 'yes') {
+			$output .= '
+<br /><span id="geo" style="display: inline;"><input onclick="goGeo()" type="checkbox" id="geoloc" name="location" /> <label for="geoloc" id="lblGeo"></label></span>
+<script type="text/javascript">
+<!--
+started = false;
+chkbox = document.getElementById("geoloc");
+if (navigator.geolocation) {
+	geoStatus("'.__("Tweet my location").'");
+	if ("'.$_COOKIE['geo'].'"=="Y") {
+		chkbox.checked = true;
+		goGeo();
+	}
+}
+function goGeo(node) {
+	if (started) return;
+	started = true;
+	geoStatus("'.__("Locating...").'");
+	navigator.geolocation.getCurrentPosition(geoSuccess, geoStatus, {enableHighAccuracy: true});
+}
+function geoStatus(msg) {
+	document.getElementById("geo").style.display = "inline";
+	document.getElementById("lblGeo").innerHTML = msg;
+}
+function geoSuccess(position) {
+	if(typeof position.address !== "undefined")
+		geoStatus("'.__("Tweet my ").'<a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>location</a>" + " (" + position.address.country + position.address.region + "省" + position.address.city + "市，'.__("accuracy: ").'" + position.coords.accuracy + "m)");
+	else
+		geoStatus("'.__("Tweet my ").'<a href=\'https://maps.google.com/maps?q=loc:" + position.coords.latitude + "," + position.coords.longitude + "\' target=\'blank\'>'.__("location").'</a>" + " ('.__("accuracy: ").'" + position.coords.accuracy + "m)");
+	chkbox.value = position.coords.latitude + "," + position.coords.longitude;
+}
+//-->
+</script>
+';
+        	}
+		$output .= '<div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" />';
 
 		if (substr($_GET["q"], 0, 4) !== "user") {
 			$output .= ' <a href="'.BASE_URL.'upload">'.__('Upload Picture').'</a>';
