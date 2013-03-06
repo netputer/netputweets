@@ -54,11 +54,13 @@ function desktop_theme_menu_bottom() {
 	return theme_menu_bottom().js_counter('status');
 }
 
-function desktop_theme_avatar($url, $force_large = false) {
-       return "<img src='$url' width='48' height='48' />";
+function desktop_theme_avatar($url, $force_large = true) {
+	return theme_avatar($url, $force_large) ;
 }
 function desktop_theme_css() {
-       $out = theme_css();
-       $out .= '<link rel="stylesheet" href="/browsers/desktop.css" />';
-       return $out;
+	$out = theme_css();
+	if (setting_fetch('avataro', 'yes') == 'yes') {
+		$out .= '<link rel="stylesheet" href="/browsers/desktop.avatar.css" />';
+	}
+	return $out;
 }
