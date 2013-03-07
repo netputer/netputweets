@@ -21,7 +21,7 @@ if (!function_exists("curl_init")) {
 } elseif (!file_exists(ABSPATH.'config-sample.php')) {
 	$notice = '<strong>提示：</strong>未能检测到 config-sample.php 文件。请确认该目录存在此文件或重新上传。';
 } elseif (!is_writable(ABSPATH)) {
-	$notice = '<strong>提示：</strong>目录不可写。请更改目录属性或者手动创建 config.php （参考 config-sample.php）和 invite 文件（内容为空）。';
+	$notice = '<strong>提示：</strong>目录不可写。请更改目录属性或者手动创建 config.php （参考 config-sample.php）和 invited 文件（内容为空）。';
 }
 
 if (isset($_GET['step'])) {

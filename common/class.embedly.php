@@ -71,7 +71,7 @@ function embedly_embed_thumbnails(&$feed) {
 	foreach ($justUrls as $index => $url) {
 		if ($thumb = $oembeds[$index]->thumbnail_url) {
 			foreach ($matched_urls[$url] as $statusId) {
-				$feed[$statusId]->text .= '<br /><a href="'.$url.'"><img src="'.img_proxy_url($thumb).'" style="max-width:150px;" /></a>';
+				$feed[$statusId]->text .= '<br /><a href="'.urldecode($url).'"><img src="'.img_proxy_url($thumb).'" style="max-width:150px;" /></a>';
 			}
 		}
 	}
