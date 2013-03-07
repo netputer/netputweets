@@ -219,6 +219,7 @@ function twitter_upload_page($query) {
 			list($lat, $long) = explode(',', $_POST['location']);
 			if (is_numeric($lat) && is_numeric($long)) 
 				$geo = 'Y';
+			setcookie('geo', $geo);
 		}
 
 		if ($geo == Y)
@@ -717,7 +718,7 @@ function twitter_update() {
 				$post_data['lat'] = $lat;
 				$post_data['long'] = $long;
 			}
-			#setcookie_year('geo', $geo);
+			setcookie('geo', $geo);
 		}
 		$b = twitter_process($request, $post_data);
 	}
