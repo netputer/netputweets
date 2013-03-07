@@ -15,7 +15,7 @@ ul, ol{padding:5px 5px 5px 22px;}
 .button:active{background:#eee;}
 .form-table{border-collapse:collapse;margin-top:1em;width:100%;}
 .form-table td{margin-bottom:9px;padding:10px;border-bottom:8px solid #fff;font-size:12px;}
-.form-table th{font-size:13px;text-align:left;padding:16px 10px 10px 10px;border-bottom:8px solid #fff;width:120px;vertical-align:top;}
+.form-table th{font-size:13px;text-align:right;padding:16px 10px 10px 10px;border-bottom:8px solid #fff;width:120px;vertical-align:top;}
 .form-table tr{background:#f3f3f3;}
 .form-table p, #error{margin:4px 0 0 0;font-size:11px;}
 .form-table input, .form-table select{line-height:20px;font-size:15px;padding:2px;color:#555;margin-top:2px;margin-right:6px;margin-bottom:16px;border:1px solid #e5e5e5;background:#fbfbfb;}

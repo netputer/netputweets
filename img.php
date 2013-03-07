@@ -55,7 +55,7 @@
 		$ret = substr($ret, $hsize);
 
 		// 若存在缩略标识且图片宽度超过150则输出缩略图
-		if (isset($_GET['t']) && IMGPROXY_THUMB && function_exists('gd_info')) {
+		if (isset($_GET['t']) && IMGTHUMB && function_exists('gd_info')) {
 			$new_w = is_numeric($_GET['t']) ? intval($_GET['t']) : 150; // 缩略图宽度
 
 			$photo = imagecreatefromstring($ret);
