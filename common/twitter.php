@@ -219,10 +219,10 @@ function twitter_upload_page($query) {
 			list($lat, $long) = explode(',', $_POST['location']);
 			if (is_numeric($lat) && is_numeric($long)) 
 				$geo = 'Y';
-			setcookie('geo', $geo);
+			setcookie('geo', $geo, time()+3600);
 		}
 
-		if ($geo == Y)
+		if ($geo == 'Y')
 			$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message'], 'lat' => $lat, 'long' => $long), true, true);
 		else
 			$code = $tmhOAuth->request('POST', API_ROOT.'statuses/update_with_media.json', array('media[]' => "@{$image}", 'status' => " ". $_POST['message']), true, true);
@@ -718,7 +718,7 @@ function twitter_update() {
 				$post_data['lat'] = $lat;
 				$post_data['long'] = $long;
 			}
-			setcookie('geo', $geo);
+			setcookie('geo', $geo, time()+3600);
 		}
 		$b = twitter_process($request, $post_data);
 	}
