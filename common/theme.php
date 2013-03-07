@@ -148,30 +148,22 @@ function theme_error($message) {
 
 function theme_google_analytics() {
 	if (!GA_ACCOUNT) return '';
+        return '
+<script type="text/javascript">
 
-	$url = BASE_URL . 'ga.php?';
-	$url .= 'utmac=' . GA_ACCOUNT;
-	$url .= '&utmn=' . rand(0, 0x7fffffff);
+  var _gaq = _gaq || [];
+  _gaq.push([\'_setAccount\', \''.GA_ACCOUNT.'\']);
+  _gaq.push([\'_setAllowLinker\', true]);
+  _gaq.push([\'_trackPageview\']);
 
-	$referer = $_SERVER['HTTP_REFERER'];
-	$query = $_SERVER['QUERY_STRING'];
-	$path = $_SERVER['REQUEST_URI'];
+  (function() {
+    var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;
+    ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';
+    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);
+  })();
 
-	if (empty($referer)) {
-		$referer = '-';
-	}
-
-	$url .= "&utmr=" . urlencode($referer);
-
-	if (!empty($path)) {
-		$url .= "&utmp=" . urlencode($path);
-	}
-
-	$url .= "&guid=ON";
-
-	$googleanalyticsimg = str_replace("&", "&amp;", $url);
-
-	return '<img src="' . $googleanalyticsimg . '" class="ga" />';
+</script>
+';
 }
 
 function theme_page($title, $content) {
