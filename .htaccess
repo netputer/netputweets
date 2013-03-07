@@ -7,22 +7,29 @@ Options -Indexes
 Options +FollowSymlinks
 
 <Files invited>
+	# 拒绝从外部访问 invited 受邀列表
 	order allow,deny
 	deny from all
 </Files>
 
-RewriteEngine on
+<IfModule mod_rewrite.c>
+	RewriteEngine on
 
-# 屏蔽蜘蛛
-RewriteCond %{HTTP_USER_AGENT} (bot|spider) [NC]
-RewriteRule . - [F,L]
+	# 屏蔽蜘蛛
+	RewriteCond %{HTTP_USER_AGENT} (bot|spider) [NC]
+	RewriteRule . - [F,L]
 
-# 若你的空间支持 SSL 请将下面各行最前面的注释符号（井号）删除
-# 并将 t.orzdream.com 改为你的奶瓶腿地址
-# RewriteCond %{HTTP_HOST} !=t.orzdream.com [NC,OR]
-# RewriteCond %{HTTPS} !=on [NC]
-# RewriteRule ^(.*)$ https://t.orzdream.com%{REQUEST_URI} [L,R=301]
+	# 若你的空间支持 SSL 请将下面各行最前面的注释符号（井号）删除
+	# 并将 t.orzdream.com 改为你的奶瓶腿地址
+	# RewriteCond %{HTTP_HOST} !=t.orzdream.com [NC,OR]
+	# RewriteCond %{HTTPS} !=on [NC]
+	# RewriteRule ^(.*)$ https://t.orzdream.com%{REQUEST_URI} [L,R=301]
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^oauthproxy/ oauthproxy/index.php [L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+</IfModule>
