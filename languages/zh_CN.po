@@ -985,3 +985,6 @@ msgstr "定位中..."
 
 msgid "accuracy: "
 msgstr "精确度: "
+
+msgid "Show Nickname"
+msgstr "显示昵称"
