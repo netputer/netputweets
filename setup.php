@@ -57,7 +57,19 @@ function display_header($n) {
 switch($step) {
 	case 0:
 		display_header($notice);
-?><p><strong>欢迎使用「奶瓶腿」！</strong><p /><a href="https://t.orzdream.com/">奶瓶腿</a>是一个安全的、个性的中文 Twitter 手机客户端，在 <a href="http://dabr.co.uk">Dabr</a> (By <a href="https://twitter.com/davidcarrington">@davidcarrington</a>) 的基础上进行修改，同时也感谢 <a href="https://twitter.com/iChada">@iChada</a> <a href="https://twitter.com/17th">@17th</a> <a href="https://twitter.com/yegle">@yegle</a> <a href="https://twitter.com/luosheng">@luosheng</a> <a href="https://twitter.com/lonelyswan">@LonelySwan</a> 的贡献和协助。如果您有任何建议、意见或疑问，请到「<a href="https://groups.google.com/group/netputweets?hl=zh-CN">奶瓶腿讨论组</a>」发帖。</p><p>如果你关注奶瓶 <a href="https://twitter.com/NetPuter">@NetPuter</a> 和他折腾的一些项目，并且希望帮助他，<a href="http://orzdream.com/donate/">欢迎以捐助的形式使他更好地折腾</a>。</p><p>在正式使用之前，你可能需要填写一些信息，包括：</p><ol><li>Twitter OAuth Consumer Key & Secret <a href="https://dev.twitter.com/apps/new" title="申请地址">#</a></li><li>Embedly API Key （用于预览图片，建议申请） <a href="https://app.embed.ly/pricing/free" title="申请地址">#</a></li></ol><p><strong>如果无法进入下一步，别着急。此向导的目的在于创建「奶瓶腿」的配置文件，所以您还可以直接用文本编辑器打开 <code>config-sample.php</code> ，根据提示填写相应信息，然后保存并将它重命名为 <code>config.php</code> 。</strong></p><p>建议在安装前仔细阅读《<a href="http://orzdream.com/2009/10/netputweets-guide/" title="奶瓶腿简明架设教程">奶瓶腿简明架设教程</a>》，如果还有不明白的地方，可到「<a href="https://groups.google.com/group/netputweets?hl=zh-CN">奶瓶腿讨论组</a>」参与讨论。<p>如果已经准备好了 &hellip; &hellip;</p><?php
+?>
+<p><strong>欢迎使用「奶瓶腿」！</strong></p>
+<p><a href="https://t.orzdream.com/">奶瓶腿</a>是第三方 Twitter 网页客户端（更适合在移动设备上使用），在 <a href="http://dabr.co.uk">Dabr</a> (By <a href="https://twitter.com/davidcarrington">@davidcarrington</a>) 的基础上进行修改，同时也感谢 <a href="https://twitter.com/iChada">@iChada</a> <a href="https://twitter.com/17th">@17th</a> <a href="https://twitter.com/yegle">@yegle</a> <a href="https://twitter.com/luosheng">@luosheng</a> <a href="https://twitter.com/lonelyswan">@LonelySwan</a> 的贡献和协助。</p>
+<p>如果你关注奶瓶 <a href="https://twitter.com/NetPuter">@NetPuter</a> 和他折腾的一些项目，并且希望帮助他，<a href="http://netputer.me/donate/">欢迎以捐助的形式使他更好地折腾</a>。</p>
+<p>在正式使用之前，你可能需要填写一些信息，包括：</p>
+<ol>
+	<li>Twitter OAuth Consumer Key & Secret <a href="https://dev.twitter.com/apps/new" title="申请地址">#</a></li>
+	<li>Embedly API Key （用于预览图片，建议申请） <a href="https://app.embed.ly/pricing/free" title="申请地址">#</a></li>
+</ol>
+<p><strong>如果无法进入下一步，别着急。此向导的目的在于创建「奶瓶腿」的配置文件，所以您还可以直接用文本编辑器打开 <code>config-sample.php</code> ，根据提示填写相应信息，然后保存并将它重命名为 <code>config.php</code> 。同时创建 invited 文件（内容为空）。</strong></p>
+<p>建议在安装前仔细阅读<a href="https://github.com/netputer/netputweets/blob/master/README.md">说明文档</a>，如果还有不明白的地方，可到 <a href="https://github.com/netputer/netputweets/issues/new">GitHub Issues</a> 提出。
+<p>如果已经准备好了 &hellip; &hellip;</p>
+	<?php
 		if ($notice !== ''){
 			echo '<p class="step"><a href="setup.php" class="button">还不能开始！</a></p>';
 		}else{
