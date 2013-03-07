@@ -51,7 +51,7 @@ switch($step) {
 	break;
 	case 1:
 		display_header($notice);
-?><form method="post" action="setup.php?step=2"><p>请在下面的表单中填入对应的信息。</p><table class="form-table"><tr><th scope="row"><label for="t_title">标题</label></th><td><input name="t_title" id="t_title" type="text" value="奶瓶腿!" size="35" /></td><td>如「用户 NetPuter - 奶瓶腿!」</td></tr><tr><th scope="row"><label for="t_tck">Twitter OAuth Consumer Key <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tck" id="t_tck" type="text" size="35" value="awGBKfiSSqf1B2iKGsmJQ" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_tcs">Twitter OAuth Consumer Secret <a href="https://dev.twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tcs" id="t_tcs" type="text" size="35" value="hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_eak">Embedly API Key <a href="https://app.embed.ly/pricing/free" title="申请地址">#</a></label></th><td><input name="t_eak" id="t_eak" type="text" value="" size="35" /></td><td>用于预览图片 建议填写</td></tr><tr><th scope="row"><label for="t_ipp">图片预览代理</label></th><td><select name="t_ipp"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>开启此功能会导致服务器流量增加 请谨慎使用</td></tr><tr><th scope="row"><label for="t_ivt">仅受邀用户可登录</label></th><td><select name="t_ivt"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>请根据您的需要选择</td></tr><tr><th scope="row"><label for="t_psw">设置邀请码</label></th><td><input name="t_psw" id="t_psw" type="text" value="twitter" size="20" /></td><td>用于「 <a href="invite.php">invite.php</a> 」</td></tr></table><?php
+?><form method="post" action="setup.php?step=2"><p>请在下面的表单中填入对应的信息。</p><table class="form-table"><tr><th scope="row"><label for="t_ssl">SSL加密连接</label></th><td><select name="t_ssl"><option selected="selected" value="1">开启</option><option value="0">停用</option></select></td><td>启用 SSL 连接可增强安全性，但需要主机支持</td><tr><th scope="row"><label for="t_title">标题</label></th><td><input name="t_title" id="t_title" type="text" value="奶瓶腿!" size="35" /></td><td>如「用户 NetPuter - 奶瓶腿!」</td></tr><tr><th scope="row"><label for="t_tck">Twitter OAuth Consumer Key <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tck" id="t_tck" type="text" size="35" value="awGBKfiSSqf1B2iKGsmJQ" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_tcs">Twitter OAuth Consumer Secret <a href="https://dev.twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tcs" id="t_tcs" type="text" size="35" value="hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8" /></td><td>一般需要修改</td></tr><tr><th scope="row"><label for="t_eak">Embedly API Key <a href="https://app.embed.ly/pricing/free" title="申请地址">#</a></label></th><td><input name="t_eak" id="t_eak" type="text" value="" size="35" /></td><td>用于预览图片 建议填写</td></tr><tr><th scope="row"><label for="t_ipp">图片预览代理</label></th><td><select name="t_ipp"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>开启此功能会导致服务器流量增加 请谨慎使用</td></tr><tr><th scope="row"><label for="t_ivt">仅受邀用户可登录</label></th><td><select name="t_ivt"><option value="1">开启</option><option selected="selected" value="0">停用</option></select></td><td>请根据您的需要选择</td></tr><tr><th scope="row"><label for="t_psw">设置邀请码</label></th><td><input name="t_psw" id="t_psw" type="text" value="twitter" size="20" /></td><td>用于「 <a href="invite.php">invite.php</a> 」</td></tr></table><?php
 		if ($notice !== ''){
 			echo '<p class="step"><a href="setup.php" class="button">出错了！</a></p>';
 		}else{
@@ -63,6 +63,7 @@ switch($step) {
 		if (!isset($_POST['submit'])) {
 			header('location: index.php');
 		} else {
+			$t_ssl  = trim($_POST['t_ssl']) == '1' ? 'https' : 'http';
 			$t_title= !empty($_POST['t_title']) ? trim($_POST['t_title']) : '奶瓶腿!';
 			$t_tck	= !empty($_POST['t_tck']) ? trim($_POST['t_tck']) : 'awGBKfiSSqf1B2iKGsmJQ';
 			$t_tcs	= !empty($_POST['t_tcs']) ? trim($_POST['t_tcs']) : 'hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8';
@@ -75,6 +76,9 @@ switch($step) {
 				$handle = fopen(ABSPATH . 'config.php', 'w');
 				foreach ($configFile as $line_num => $line) {
 					switch (substr($line, 11, 5)) {
+						case "NECTI":
+							fwrite($handle, str_replace('https', $t_ssl, $line));
+							break;
 						case "RYPTI":
 							fwrite($handle, str_replace('putyourinfohere', md5(time()), $line));
 							break;

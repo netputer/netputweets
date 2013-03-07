@@ -1,6 +1,6 @@
 <?php
-$base_url = isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] != "off" ? "https" : "http";
-$base_url .= "://".$_SERVER["HTTP_HOST"];
+define("CONNECTION_TYPE", "https"); // 设置使用的链接类型： http / https
+$base_url = CONNECTION_TYPE."://".$_SERVER["HTTP_HOST"];
 $base_url .= ($directory = trim(dirname($_SERVER["SCRIPT_NAME"]), "/\,")) ? "/$directory/" : "/";
 
 define("ENCRYPTION_KEY", "putyourinfohere");
