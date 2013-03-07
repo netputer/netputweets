@@ -239,7 +239,7 @@ class OAuthRequest {
    * attempt to build up a request from what was passed to the server
    */
   public static function from_request($http_method=NULL, $http_url=NULL, $parameters=NULL) {
-    $scheme = (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != "on")
+    $scheme = (!isset($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == '80')
               ? 'http'
               : 'https';
     @$http_url or $http_url = $scheme .

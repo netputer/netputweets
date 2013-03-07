@@ -2,7 +2,7 @@
 error_reporting(error_reporting() & ~E_NOTICE);
 
 if (!file_exists('config.php')) {
-	$base_url = isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] != "off" ? "https" : "http";
+	$base_url = isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] != '80' ? 'https' : 'http';
 	$base_url .= "://".$_SERVER["HTTP_HOST"];
 	$base_url .= ($directory = trim(dirname($_SERVER["SCRIPT_NAME"]), "/\,")) ? "/$directory/" : "/";
 
