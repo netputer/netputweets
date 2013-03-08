@@ -8,7 +8,7 @@ if ($directory = trim(dirname($_SERVER['SCRIPT_NAME']), '/\,')){
 	$base_url .= '/'.$directory;
 }
 
-define('RELATIVE_URL', $base_url.'/');
+define('BASE_URL', $base_url.'/');
 define('ABSPATH', dirname(__FILE__).'/');
 
 function available($url) {
@@ -29,7 +29,7 @@ $notice = '';
 
 if (!function_exists("curl_init")) {
 	$notice = '<strong>提示：</strong>服务器不支持 cURL 函数，奶瓶腿将无法使用。';
-} elseif (!available(RELATIVE_URL.'settings')) {
+} elseif (!available(BASE_URL.'settings')) {
 	$notice = '<strong>提示：</strong>服务器不支持 URL Rewrite ，奶瓶腿将无法使用。';
 } elseif (file_exists(ABSPATH.'config.php')) {
 	$notice = '<strong>提示：</strong> config.php 文件已存在。如果您想更改 config.php 内已有的设定，请先删除它，本向导会重新创建 config.php 。<a href="setup.php">重试</a>。';
@@ -83,7 +83,7 @@ switch($step) {
 	<p>请在下面的表单中填入对应的信息。</p>
 	<table class="form-table">
 		<tr><th scope="row"><label for="t_title">名称</label></th><td><input name="t_title" id="t_title" type="text" value="奶瓶腿!" size="35" /></td><td>如「用户 NetPuter - 奶瓶腿!」</td></tr>
-		<tr><th scope="row"><label for="t_url">网址</label></th><td><input name="t_url" id="t_url" type="text" value="<?php echo RELATIVE_URL; ?>" size="35" /></td><td>一般不需要修改</td></tr>
+		<tr><th scope="row"><label for="t_url">网址</label></th><td><input name="t_url" id="t_url" type="text" value="<?php echo BASE_URL; ?>" size="35" /></td><td>一般不需要修改</td></tr>
 		<tr><th scope="row"><label for="t_tck">Twitter OAuth Consumer Key <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tck" id="t_tck" type="text" size="35" value="awGBKfiSSqf1B2iKGsmJQ" /></td><td>一般需要修改</td></tr>
 		<tr><th scope="row"><label for="t_tcs">Twitter OAuth Consumer Secret <a href="https://dev.twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tcs" id="t_tcs" type="text" size="35" value="hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8" /></td><td>一般需要修改</td></tr>
 		<tr><th scope="row"><label for="t_eak">Embedly API Key <a href="https://app.embed.ly/pricing/free" title="申请地址">#</a></label></th><td><input name="t_eak" id="t_eak" type="text" value="" size="35" /></td><td>用于预览图片，建议填写</td></tr>
@@ -107,7 +107,7 @@ switch($step) {
 			header('location: index.php');
 		} else {
 			$t_title = !empty($_POST['t_title']) ? trim($_POST['t_title']) : '奶瓶腿!';
-			$t_url = !empty($_POST['t_url']) ? trim($_POST['t_url']) : RELATIVE_URL;
+			$t_url = !empty($_POST['t_url']) ? trim($_POST['t_url']) : BASE_URL;
 			$t_tck = !empty($_POST['t_tck']) ? trim($_POST['t_tck']) : 'awGBKfiSSqf1B2iKGsmJQ';
 			$t_tcs = !empty($_POST['t_tcs']) ? trim($_POST['t_tcs']) : 'hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8';
 			$t_eak = trim($_POST['t_eak']);
@@ -166,7 +166,7 @@ switch($step) {
 				chmod(ABSPATH.'invited', 0666);
 
 				display_header($notice);
-?><p>恭喜！奶瓶腿已经安装成功。准备好了？开始 &hellip; &hellip;</p><p class="step"><a href="<?php echo RELATIVE_URL.'" class="button">抱抱奶瓶腿！</a></p>';
+?><p>恭喜！奶瓶腿已经安装成功。准备好了？开始 &hellip; &hellip;</p><p class="step"><a href="<?php echo BASE_URL.'" class="button">抱抱奶瓶腿！</a></p>';
 			}
 		}
 	break;
