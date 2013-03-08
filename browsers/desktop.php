@@ -62,5 +62,6 @@ function desktop_theme_css() {
 	if (setting_fetch('avataro', 'yes') == 'yes') {
 		$out .= '<link rel="stylesheet" href="/browsers/desktop.avatar.css" />';
 	}
+	$out .= '<style type="text/css">'.setting_fetch('css').'</style>';
 	return $out;
 }
