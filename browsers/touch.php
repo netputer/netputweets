@@ -5,11 +5,7 @@ function touch_theme_status_form($text = '', $in_reply_to_id = NULL) {
 }
 
 function touch_theme_avatar($url, $force_large = true) {
-	if (setting_fetch('avataro', 'yes') == 'yes') {
-		return "<img class='shead' src='$url' height='48' width='48' />";
-	} else {
-		return '';
-	}
+    return theme_avatar($url, $force_large) ;
 }
 
 function touch_theme_page($title, $content) {
