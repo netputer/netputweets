@@ -53,7 +53,7 @@ function user_itap() {
 	require_once 'OAuth.php';
 	session_start();
 	$GLOBALS['user']['type'] = 'oauth';
-	$params = array('oauth_callback' => BASE_URL.'oauth');
+	$params = array('oauth_callback' => RELATIVE_URL.'oauth');
 	$response = twitter_process('https://api.twitter.com/oauth/request_token', $params);
 	parse_str($response, $token);
 	$_SESSION['oauth_request_token_secret'] = $token['oauth_token_secret'];
