@@ -83,7 +83,7 @@ switch($step) {
 	<p>请在下面的表单中填入对应的信息。</p>
 	<table class="form-table">
 		<tr><th scope="row"><label for="t_title">名称</label></th><td><input name="t_title" id="t_title" type="text" value="奶瓶腿!" size="35" /></td><td>如「用户 NetPuter - 奶瓶腿!」</td></tr>
-		<tr><th scope="row"><label for="t_url">网址</label></th><td><input name="t_url" id="t_url" type="text" value="<?php echo BASE_URL; ?>" size="35" /></td><td>一般不需要修改</td></tr>
+		<tr><th scope="row"><label for="t_url">网址</label></th><td><input name="t_url" id="t_url" type="text" value="<?php echo BASE_URL; ?>" size="35" /></td><td>一般不需要修改，如需自动适应（如多网址同一网站）请清空</td></tr>
 		<tr><th scope="row"><label for="t_tck">Twitter OAuth Consumer Key <a href="https://twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tck" id="t_tck" type="text" size="35" value="awGBKfiSSqf1B2iKGsmJQ" /></td><td>一般需要修改</td></tr>
 		<tr><th scope="row"><label for="t_tcs">Twitter OAuth Consumer Secret <a href="https://dev.twitter.com/apps/new" title="申请地址">#</a></label></th><td><input name="t_tcs" id="t_tcs" type="text" size="35" value="hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8" /></td><td>一般需要修改</td></tr>
 		<tr><th scope="row"><label for="t_eak">Embedly API Key <a href="https://app.embed.ly/pricing/free" title="申请地址">#</a></label></th><td><input name="t_eak" id="t_eak" type="text" value="" size="35" /></td><td>用于预览图片，建议填写</td></tr>
@@ -107,7 +107,7 @@ switch($step) {
 			header('location: index.php');
 		} else {
 			$t_title = !empty($_POST['t_title']) ? trim($_POST['t_title']) : '奶瓶腿!';
-			$t_url = !empty($_POST['t_url']) ? trim($_POST['t_url']) : BASE_URL;
+			$t_url = trim($_POST['t_url']);
 			$t_tck = !empty($_POST['t_tck']) ? trim($_POST['t_tck']) : 'awGBKfiSSqf1B2iKGsmJQ';
 			$t_tcs = !empty($_POST['t_tcs']) ? trim($_POST['t_tcs']) : 'hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8';
 			$t_eak = trim($_POST['t_eak']);

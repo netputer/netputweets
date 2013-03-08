@@ -169,7 +169,7 @@ function theme_google_analytics() {
 function theme_page($title, $content) {
 	$separation = ($_GET['page'] == 0 ? null : " - Page ".$_GET['page'])." - ";
 
-	$page = '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="'.BASE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$separation.NPT_TITLE.'</title>'.theme('css').'</head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom');
+	$page = '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="'.RELATIVE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$separation.NPT_TITLE.'</title>'.theme('css').'</head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom');
 
 	if (GA_ACCOUNT) $page .= theme('google_analytics');
 

@@ -2,7 +2,7 @@
 function desktop_theme_status_form($text = '', $in_reply_to_id = NULL, $is_desktop = true) {
 	if (user_is_authenticated()) {
 		$fixedtags = ((setting_fetch('fixedtago', 'no') == "yes") && ($text == '')) ? " #".setting_fetch('fixedtagc') : null;
-		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea>';
+		$output = '<form method="post" action="'.RELATIVE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea>';
 		if (setting_fetch('buttongeo') == 'yes') {
 			$output .= '
 <br /><span id="geo" style="display: inline;"><input onclick="goGeo()" type="checkbox" id="geoloc" name="location" /> <label for="geoloc" id="lblGeo"></label></span>
@@ -41,7 +41,7 @@ function geoSuccess(position) {
 		$output .= '<div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" /> <span id="remaining">140</span> ';
 
 		if (substr($_GET["q"], 0, 4) !== "user") {
-			$output .= ' <a href="'.BASE_URL.'upload">'.__('Upload Picture').'</a>';
+			$output .= ' <a href="'.RELATIVE_URL.'upload">'.__('Upload Picture').'</a>';
 		}
 
 		$output .= '</div></form>';
@@ -60,7 +60,8 @@ function desktop_theme_avatar($url, $force_large = true) {
 function desktop_theme_css() {
 	$out = theme_css();
 	if (setting_fetch('avataro', 'yes') == 'yes') {
-		$out .= '<link rel="stylesheet" href="/browsers/desktop.avatar.css" />';
+		$out .= '<link rel="stylesheet" href="'.RELATIVE_URL.'browsers/desktop.avatar.css" />';
 	}
+	$out .= '<style type="text/css">'.setting_fetch('css').'</style>';
 	return $out;
 }

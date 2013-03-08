@@ -33,7 +33,7 @@ function cookie_monster() {
 		setcookie($cookie, NULL, $duration, '/');
 		setcookie($cookie, NULL, $duration);
 	}
-	return theme("page", "Cookie Monster", "<p>The cookie monster has logged you out and cleared all settings. Try <a href='".BASE_URL."'>logging in again</a> now.</p>");
+	return theme("page", "Cookie Monster", "<p>The cookie monster has logged you out and cleared all settings. Try <a href='".RELATIVE_URL."'>logging in again</a> now.</p>");
 }
 
 function setting_fetch($setting, $default = NULL) {
@@ -126,7 +126,7 @@ function settings_page($args) {
 		$colour_schemes[$id] = $name;
 	}
 
-	$content .= '<form action="'.BASE_URL.'settings/save" method="post">';
+	$content .= '<form action="'.RELATIVE_URL.'settings/save" method="post">';
 	$content .= '<p><b>'.__("Menu Settings").'</b></p>';
 	$content .= '<small>[1] '.__("Choose what you want to display on the Top Bar.").'</small><br />';
 	$content .= '<label>　<input type="checkbox" name="topuser" value="yes" '. (setting_fetch('topuser') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("User").'</label><br />';
@@ -167,14 +167,14 @@ function settings_page($args) {
 	if (EMBEDLY_KEY != '') $content .= '<label>　<input type="checkbox" name="showthumbs" value="yes" '. (setting_fetch('showthumbs', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Preview Photos In Timelines").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="filtero" value="yes" '. (setting_fetch('filtero', 'no') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Enable Keyword Filter: ").'</label><input type="text" id="filterc" name="filterc" value="'.setting_fetch('filterc').'" /><br /><small>　　'.__("Note: ").__("Separate keywords with space").'</small><p />';
 	$content .= '<p><label>'.__("Custom CSS: ").'<br /><textarea name="css" cols="50" rows="3" id="css" style="width:95%">'.setting_fetch('css').'</textarea></label></p>';
-	$content .= '<hr /><p><input type="submit" name="Submit" value="'.__("Save").'" /> <small>'.__('Visit ').'<a href="'.BASE_URL.'reset">'.__("Reset").'</a>'.__(' if things go horribly wrong - it will log you out and clear all settings.').'</small></p></form>';
+	$content .= '<hr /><p><input type="submit" name="Submit" value="'.__("Save").'" /> <small>'.__('Visit ').'<a href="'.RELATIVE_URL.'reset">'.__("Reset").'</a>'.__(' if things go horribly wrong - it will log you out and clear all settings.').'</small></p></form>';
 
 	return theme('page', __("Settings"), $content);
 }
 
 function settings_refresh($page = NULL) {
 	if (isset($page)) {
-		$page = BASE_URL . $page;
+		$page = RELATIVE_URL . $page;
 	} else {
 		$page = $_SERVER['HTTP_REFERER'];
 	}
