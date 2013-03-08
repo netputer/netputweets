@@ -44,7 +44,7 @@ function embedly_embed_thumbnails(&$feed) {
 			}
 
 			if ($status->entities->media) {
-				$image = substr(BASE_URL, 4, 5) == 's' ? $status->entities->media[0]->media_url_https : $status->entities->media[0]->media_url;
+				$image = is_https() ? $status->entities->media[0]->media_url_https : $status->entities->media[0]->media_url;
 
 				$feed[$status->id]->text .= '<br /><a href="'.$image.'"><img src="'.img_proxy_url($image, TRUE).'" style="max-width:150px;" /></a>';
 			}
