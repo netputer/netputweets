@@ -1124,7 +1124,7 @@ function theme_user_header($user) {
 }
 
 function theme_get_avatar($object) {
-	if ($_SERVER['HTTPS'] == "on" && $object->profile_image_url_https) {
+	if (is_https() && $object->profile_image_url_https) {
 		return $object->profile_image_url_https;
 	} else {
 		return $object->profile_image_url;
