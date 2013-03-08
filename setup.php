@@ -107,7 +107,7 @@ switch($step) {
 			header('location: index.php');
 		} else {
 			$t_title = !empty($_POST['t_title']) ? trim($_POST['t_title']) : '奶瓶腿!';
-			$t_url = !empty($_POST['t_url']) ? trim($_POST['t_url']) : BASE_URL_CONFIG;
+			$t_url = trim($_POST['t_url']);
 			$t_tck = !empty($_POST['t_tck']) ? trim($_POST['t_tck']) : 'awGBKfiSSqf1B2iKGsmJQ';
 			$t_tcs = !empty($_POST['t_tcs']) ? trim($_POST['t_tcs']) : 'hym4qJF1F6nyjISzRUCFBU4OQSIr5mrk7074vId3K8';
 			$t_eak = trim($_POST['t_eak']);
