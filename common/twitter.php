@@ -255,7 +255,7 @@ function twitter_upload_page($query) {
 		}
 	}
 
-	$content .=	"<form method='post' action='".BASE_URL."upload' enctype='multipart/form-data'>
+	$content .=	"<form method='post' action='".RELATIVE_URL."upload' enctype='multipart/form-data'>
 						".__("Image: ")."<input type='file' name='image' /><br />
 						".__("Content: ")."<br />
 						<textarea name='message' style='width:90%; max-width: 400px;' rows='3' id='message'>" . $_POST['message'] . "</textarea><br>
@@ -316,7 +316,7 @@ function twitter_profile_page($query) {
 	}
 
 	$p = twitter_process(API_ROOT.'account/verify_credentials.json');
-	$content = "<form method=\"post\" action=\"".BASE_URL."profile\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location: ")."<input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link: ")."<input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
+	$content = "<form method=\"post\" action=\"".RELATIVE_URL."profile\" enctype=\"multipart/form-data\">".__("Name: ")."<input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Location: ")."<input type=\"text\" name=\"location\" value=\"{$p->location}\" /> (Max 30) <br />".__("Link: ")."<input type=\"text\" name=\"url\" value=\"{$p->url}\" /> (Max 100) <br />".__("Bio: ")."(Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" >{$p->description}</textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
 
 	return theme('page', __("Update Profile"), $content);
 }
@@ -403,7 +403,7 @@ function twitter_fetch($url) {
 function twitter_parse_tags($input, $entities = false, $id = false, $source = NULL) {
 	// Filter.
 	if ($id && substr($_GET["q"], 0, 6) !== "status" && (setting_fetch('filtero', 'no') == 'yes') && twitter_timeline_filter($input.' '.$source)) {
-		return "<a href='".BASE_URL."status/{$id}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
+		return "<a href='".RELATIVE_URL."status/{$id}' style='text-decoration:none;'><small>[".__("Tweet Filtered")."]</small></a>";
 	}
 
 	// Linebreaks.  Some clients insert \n for formatting.
@@ -504,7 +504,7 @@ function twitter_status_page($query) {
 			$content .= theme('timeline', $tl);
 
 			if ($reply_id) {
-				$content .= "<p><a href=\"".BASE_URL."status/$reply_id\">".__("Show previous conversations")." &raquo;</a></p>";
+				$content .= "<p><a href=\"".RELATIVE_URL."status/$reply_id\">".__("Show previous conversations")." &raquo;</a></p>";
 			}
 		}
 
@@ -524,7 +524,7 @@ function twitter_retweet_page($query) {
 
 function twitter_refresh($page = NULL) {
 	if (isset($page)) {
-		$page = BASE_URL . $page;
+		$page = RELATIVE_URL . $page;
 	} else {
 		$page = $_SERVER['HTTP_REFERER'];
 	}
@@ -631,7 +631,7 @@ function twitter_confirmation_page($query) {
 			break;
 	}
 
-	$content .= "<form action='".BASE_URL.$realurl."' method='post'><input type='submit' value='".__("Yes")."' /></form>";
+	$content .= "<form action='".RELATIVE_URL.$realurl."' method='post'><input type='submit' value='".__("Yes")."' /></form>";
 
 	theme('Page', __("Confirm"), $content);
 }
@@ -806,7 +806,7 @@ function twitter_directs_page($query) {
 }
 
 function theme_directs_menu() {
-	return '<p><a href="'.BASE_URL.'directs/create">'.__("Create DM").'</a> | <a href="'.BASE_URL.'directs/inbox">'.__("DM Inbox").'</a> | <a href="'.BASE_URL.'directs/sent">'.__("DM Sent").'</a></p>';
+	return '<p><a href="'.RELATIVE_URL.'directs/create">'.__("Create DM").'</a> | <a href="'.RELATIVE_URL.'directs/inbox">'.__("DM Inbox").'</a> | <a href="'.RELATIVE_URL.'directs/sent">'.__("DM Sent").'</a></p>';
 }
 
 function theme_directs_form($to) {
@@ -819,7 +819,7 @@ function theme_directs_form($to) {
 	} else {
 		$html_to = __("To: ")."<input name='to'><br />".__("Content: ");
 	}
-	$content = "<form action='".BASE_URL."directs/send' method='post'>$html_to<br /><textarea name='message' style='width:100%;max-width:400px;' rows='3' id='message'></textarea><br /><input type='submit' value='".__("Send")."'><span id='remaining'>140</span></form>";
+	$content = "<form action='".RELATIVE_URL."directs/send' method='post'>$html_to<br /><textarea name='message' style='width:100%;max-width:400px;' rows='3' id='message'></textarea><br /><input type='submit' value='".__("Send")."'><span id='remaining'>140</span></form>";
 	$content .= js_counter("message");
 	return $content;
 }
@@ -840,7 +840,7 @@ function twitter_search_page() {
 		$tl = twitter_search($search_query);
 
 		if ($search_query !== $_COOKIE['search_favourite']) {
-			$content .= '<form action="'.BASE_URL.'search/bookmark" method="post"><input type="hidden" name="query" value="'.htmlspecialchars($search_query).'" /><input type="submit" value="'.__("Save as default search").'" /></form>';
+			$content .= '<form action="'.RELATIVE_URL.'search/bookmark" method="post"><input type="hidden" name="query" value="'.htmlspecialchars($search_query).'" /><input type="submit" value="'.__("Save as default search").'" /></form>';
 		}
 
 		$content .= theme('timeline', $tl);
@@ -987,7 +987,7 @@ function twitter_hashtag_page($query) {
 function theme_status_form($text = '', $in_reply_to_id = NULL) {
 	if (user_is_authenticated()) {
 		$fixedtags = ((setting_fetch('fixedtago', 'no') == "yes") && ($text == '')) ? " #".setting_fetch('fixedtagc') : null;
-		$output = '<form method="post" action="'.BASE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea>';
+		$output = '<form method="post" action="'.RELATIVE_URL.'update"><textarea id="status" name="status" rows="3" style="width:100%; max-width: 400px;">'.$text.$fixedtags.'</textarea>';
 		if (setting_fetch('buttongeo') == 'yes') {
 			$output .= '
 <br /><span id="geo" style="display: inline;"><input onclick="goGeo()" type="checkbox" id="geoloc" name="location" /> <label for="geoloc" id="lblGeo"></label></span>
@@ -1026,7 +1026,7 @@ function geoSuccess(position) {
 		$output .= '<div><input name="in_reply_to_id" value="'.$in_reply_to_id.'" type="hidden" /><input type="submit" value="'.__('Update').'" />';
 
 		if (substr($_GET["q"], 0, 4) !== "user") {
-			$output .= ' <a href="'.BASE_URL.'upload">'.__('Upload Picture').'</a>';
+			$output .= ' <a href="'.RELATIVE_URL.'upload">'.__('Upload Picture').'</a>';
 		}
 
 		$output .= '</div></form>';
@@ -1045,15 +1045,15 @@ function theme_status($status) {
 function theme_retweet($status) {
 	$text = "RT @{$status->user->screen_name}: {$status->text}";
 	$length = function_exists('mb_strlen') ? mb_strlen($text,'UTF-8') : strlen($text);
-	$from = substr($_SERVER['HTTP_REFERER'], strlen(BASE_URL));
+	$from = substr($_SERVER['HTTP_REFERER'], strlen(RELATIVE_URL));
 	$content = "<p>";
 	if($status->user->protected == 0) {
-		$content .= "<form action='".BASE_URL."twitter-retweet/{$status->id_str}' method='post'><input type='hidden' name='from' value='$from' /><input type='submit' value='Twitter ".__("Official Retweet")."'> ".__("or Traditional Retweet").":</form>";
+		$content .= "<form action='".RELATIVE_URL."twitter-retweet/{$status->id_str}' method='post'><input type='hidden' name='from' value='$from' /><input type='submit' value='Twitter ".__("Official Retweet")."'> ".__("or Traditional Retweet").":</form>";
 	} else {
 		$content .= __("Note: ").__("It is not well suited to retweet a protected user 's tweet.");
 	}
 
-	$content .= "</p><p><form action='".BASE_URL."update' method='post'><input type='hidden' name='from' value='$from' /><textarea name='status' style='width:100%;max-width:400px;' rows='3' id='status'>$text</textarea><br /><input type='submit' value='".__(Retweet)."'><span id='remaining'>" . (140 - $length) ."</span></form>".js_counter("status")."</p>";
+	$content .= "</p><p><form action='".RELATIVE_URL."update' method='post'><input type='hidden' name='from' value='$from' /><textarea name='status' style='width:100%;max-width:400px;' rows='3' id='status'>$text</textarea><br /><input type='submit' value='".__(Retweet)."'><span id='remaining'>" . (140 - $length) ."</span></form>".js_counter("status")."</p>";
 
 	return $content;
 }
@@ -1096,21 +1096,21 @@ function theme_user_header($user) {
 
 	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
 		if ($user->following !== true) {
-			$out .= "<a href='".BASE_URL."follow/{$user->screen_name}'>".__("Follow")."</a>";
+			$out .= "<a href='".RELATIVE_URL."follow/{$user->screen_name}'>".__("Follow")."</a>";
 		} else {
-			$out .= "<a href='".BASE_URL."unfollow/{$user->screen_name}'>".__("Unfollow")."</a>";
+			$out .= "<a href='".RELATIVE_URL."unfollow/{$user->screen_name}'>".__("Unfollow")."</a>";
 		}
 
-		$out .= " | <a href='".BASE_URL."directs/create/{$user->screen_name}'>".__("Direct Message")."</a>";
+		$out .= " | <a href='".RELATIVE_URL."directs/create/{$user->screen_name}'>".__("Direct Message")."</a>";
 	} else {
-		$out .= "<a href='".BASE_URL."profile'>".__("Update Profile")."</a>";
+		$out .= "<a href='".RELATIVE_URL."profile'>".__("Update Profile")."</a>";
 	}
 
-	$out .= " ] [ {$user->statuses_count} ".__("Tweets")." | <a href='".BASE_URL."followers/{$user->screen_name}'>{$user->followers_count} ".__("Followers")."</a> | <a href='".BASE_URL."friends/{$user->screen_name}'>{$user->friends_count} ".__("Friends")."</a> | <a href='".BASE_URL."favourites/{$user->screen_name}'>{$user->favourites_count} ".__("Favourites")."</a> | <a href='".BASE_URL."lists/{$user->screen_name}'>{$user->listed_count} ".__("Lists")."</a> ]";
+	$out .= " ] [ {$user->statuses_count} ".__("Tweets")." | <a href='".RELATIVE_URL."followers/{$user->screen_name}'>{$user->followers_count} ".__("Followers")."</a> | <a href='".RELATIVE_URL."friends/{$user->screen_name}'>{$user->friends_count} ".__("Friends")."</a> | <a href='".RELATIVE_URL."favourites/{$user->screen_name}'>{$user->favourites_count} ".__("Favourites")."</a> | <a href='".RELATIVE_URL."lists/{$user->screen_name}'>{$user->listed_count} ".__("Lists")."</a> ]";
 
 	if (strtolower($user->screen_name) !== strtolower(user_current_username())) {
 		$block_str = $friendship_obj->relationship->source->blocking == 1 ? "Unblock" : "Block";
-		$out .= " [ <a href='".BASE_URL."confirm/block/{$user->screen_name}/{$user->id_str}'>".__($block_str)."</a> - <a href='".BASE_URL."confirm/spam/{$user->screen_name}/{$user->id_str}'>".__('Report Spam')."</a> ]";
+		$out .= " [ <a href='".RELATIVE_URL."confirm/block/{$user->screen_name}/{$user->id_str}'>".__($block_str)."</a> - <a href='".RELATIVE_URL."confirm/spam/{$user->screen_name}/{$user->id_str}'>".__('Report Spam')."</a> ]";
 	}
 
 	$out .= "</span><br /><small class='about'>";
@@ -1152,7 +1152,7 @@ function theme_status_time_link($status, $is_link = true) {
 		$out = $status->created_at;
 	}
 
-	if ($is_link) $out = "<a href='".BASE_URL."status/{$status->id_str}'>$out</a>";
+	if ($is_link) $out = "<a href='".RELATIVE_URL."status/{$status->id_str}'>$out</a>";
 
 	if ((substr($_GET['q'],0,4) == 'user') || (setting_fetch('browser') == 'touch') || (setting_fetch('browser', 'desktop') == 'desktop') || (setting_fetch('browser') == 'naiping')) {
 		return $out;
@@ -1353,7 +1353,7 @@ function theme_timeline($feed) {
 		}
 
 		if ($status->in_reply_to_status_id) {
-			$replyto = "<a href='".BASE_URL."status/{$status->in_reply_to_status_id}'>>></a>";
+			$replyto = "<a href='".RELATIVE_URL."status/{$status->in_reply_to_status_id}'>>></a>";
 		} else {
 			$replyto = null;
 		}
@@ -1363,7 +1363,7 @@ function theme_timeline($feed) {
 		} else {
 			$showname = $status->from->screen_name;
 		}
-		$html = "<b class='suser'><a href='".BASE_URL."user/{$status->from->screen_name}'>{$showname}</a></b> ";
+		$html = "<b class='suser'><a href='".RELATIVE_URL."user/{$status->from->screen_name}'>{$showname}</a></b> ";
 
 		if (setting_fetch('buttonend') == 'yes') {
 			$html .= "<span class='stext'>{$status->text}</span><br /><small class='sbutton'>$actions $link ";
@@ -1385,7 +1385,7 @@ function theme_timeline($feed) {
 			$retweeted_times_minus = is_numeric($retweeted_times) ? $retweeted_times - 1 : $retweeted_times;
 			$retweeted_times_str = ($retweeted_times && $retweeted_times_minus) ? "+{$retweeted_times_minus}" : "";
 
-			$html .= " <small class='sretweet'>".__("retweeted by")." <a href='".BASE_URL."user/{$retweeted_by}'>{$showrtname}</a>{$retweeted_times_str} ".__("<span style='display:none;'>zhuanfa</span>")."</small>";
+			$html .= " <small class='sretweet'>".__("retweeted by")." <a href='".RELATIVE_URL."user/{$retweeted_by}'>{$showrtname}</a>{$retweeted_times_str} ".__("<span style='display:none;'>zhuanfa</span>")."</small>";
 		}
 
 		unset($row);
@@ -1439,7 +1439,7 @@ function theme_followers($feed, $hide_pagination = false, $list = false) {
 	foreach ($lists as $user) {
 		$name = theme('full_name', $user);
 		if($list)
-			$name .= " <a href='".BASE_URL."confirm/listdelete/{$list}/{$user->screen_name}'>".__("Delete From List")."</a>";
+			$name .= " <a href='".RELATIVE_URL."confirm/listdelete/{$list}/{$user->screen_name}'>".__("Delete From List")."</a>";
 		$tweets_per_day = twitter_tweets_per_day($user);
 		$last_tweet = strtotime($user->status->created_at);
 		$content = "{$name}<br /><span class='about'>";
@@ -1482,7 +1482,7 @@ function theme_followers($feed, $hide_pagination = false, $list = false) {
 
 
 function theme_full_name($user) {
-	$name = "<a href='".BASE_URL."user/{$user->screen_name}'>{$user->screen_name}</a>";
+	$name = "<a href='".RELATIVE_URL."user/{$user->screen_name}'>{$user->screen_name}</a>";
 	if ($user->name && $user->name != $user->screen_name) {
 	$name .= " ({$user->name})";
 	}
@@ -1495,7 +1495,7 @@ function theme_no_tweets() {
 
 function theme_search_form($query) {
 	$query = stripslashes(htmlspecialchars($query));
-	return "<form action='".BASE_URL."search' method='GET'><input name='query' value=\"$query\" /><input type='submit' value='".__("Search")."' /></form>";
+	return "<form action='".RELATIVE_URL."search' method='GET'><input name='query' value=\"$query\" /><input type='submit' value='".__("Search")."' /></form>";
 }
 
 function theme_external_link($url) {
@@ -1525,12 +1525,12 @@ function theme_pagination($max_id = false, $max_page = 1000) {
 
 	if ($max_id == false) {
 		if ($page < $max_page) {
-			$links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page+1)."$query'>".__("Older")."</a>";
+			$links[] = "<a href='".RELATIVE_URL."{$_GET['q']}?page=".($page+1)."$query'>".__("Older")."</a>";
 
-			if ($page > 1) $links[] = "<a href='".BASE_URL."{$_GET['q']}?page=".($page - 1)."$query'>".__("Newer")."</a>";
+			if ($page > 1) $links[] = "<a href='".RELATIVE_URL."{$_GET['q']}?page=".($page - 1)."$query'>".__("Newer")."</a>";
 		}
 	} else {
-		$links[] = "<a href='".BASE_URL."{$_GET['q']}?max_id=$max_id"."$query'>".__("More")." &raquo;</a>";
+		$links[] = "<a href='".RELATIVE_URL."{$_GET['q']}?max_id=$max_id"."$query'>".__("More")." &raquo;</a>";
 	}
 
 	return '<p class="pagination">'.implode(' | ', $links).'</p>';
@@ -1544,22 +1544,22 @@ function theme_action_icons($status) {
 	$actions = array();
 
 	if (!$status->is_direct) {
-		$actions[] = theme('action_icon', BASE_URL."user/{$from}/reply/{$status->id_str}", 'images/reply.png', __('@'));
+		$actions[] = theme('action_icon', RELATIVE_URL."user/{$from}/reply/{$status->id_str}", 'images/reply.png', __('@'));
 
 		if ($status->favorited == '1') {
-			$actions[] = theme('action_icon', BASE_URL."unfavourite/{$status->id_str}", 'images/star.png', __('UNFAV'));
+			$actions[] = theme('action_icon', RELATIVE_URL."unfavourite/{$status->id_str}", 'images/star.png', __('UNFAV'));
 		} else {
-			$actions[] = theme('action_icon', BASE_URL."favourite/{$status->id_str}", 'images/star_grey.png', __('FAV'));
+			$actions[] = theme('action_icon', RELATIVE_URL."favourite/{$status->id_str}", 'images/star_grey.png', __('FAV'));
 		}
 
 		if (user_is_current_user($retweeted_by)) {
-			$actions[] = theme('action_icon', BASE_URL."confirm/delete/{$retweeted_id}", 'images/trash.gif', __('UNDO'));
+			$actions[] = theme('action_icon', RELATIVE_URL."confirm/delete/{$retweeted_id}", 'images/trash.gif', __('UNDO'));
 		} else {
-			$actions[] = theme('action_icon', BASE_URL."retweet/{$status->id_str}", 'images/retweet.png', __('RT'));
+			$actions[] = theme('action_icon', RELATIVE_URL."retweet/{$status->id_str}", 'images/retweet.png', __('RT'));
 		}
 
 		if (user_is_current_user($from)) {
-			$actions[] = theme('action_icon', BASE_URL."confirm/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
+			$actions[] = theme('action_icon', RELATIVE_URL."confirm/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 		}
 
 		if ($geo !== null) {
@@ -1569,8 +1569,8 @@ function theme_action_icons($status) {
 			$actions[] = theme('action_icon', "http://maps.google.com/maps?q={$lat},{$long}", 'images/map.png', __('GEO'));
 		}
 	} else {
-		$actions[] = theme('action_icon', BASE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
-		$actions[] = theme('action_icon', BASE_URL."directs/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
+		$actions[] = theme('action_icon', RELATIVE_URL."directs/create/{$from}", 'images/dm.png', __('DM'));
+		$actions[] = theme('action_icon', RELATIVE_URL."directs/delete/{$status->id_str}", 'images/trash.gif', __('DEL'));
 	}
 
 	return implode(' ', $actions);

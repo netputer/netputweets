@@ -111,13 +111,13 @@ function lists_list_delete_member($user, $list, $member) {
 		"screen_name" => $member);
 	$request = API_ROOT."lists/members/destroy.json";
 	twitter_process($request, $post_data);
-	header('Location: '.BASE_URL."lists/{$user}/{$list}/members");
+	header('Location: '.RELATIVE_URL."lists/{$user}/{$list}/members");
 }
 
 function lists_lists_page($user) {
 	// Show a user's lists
 	$lists = twitter_lists_user_lists($user);
-	$content = "<p><a href='".BASE_URL."lists/{$user}/memberships'>{$user} ".__("'s Memberships")."</a> | <strong>{$user} ".__("'s Subscriptions")."</strong></p>";
+	$content = "<p><a href='".RELATIVE_URL."lists/{$user}/memberships'>{$user} ".__("'s Memberships")."</a> | <strong>{$user} ".__("'s Subscriptions")."</strong></p>";
 	$content .= theme('lists', $lists);
 	theme('page', "{$user} ".__("'s Lists"), $content);
 }
@@ -125,7 +125,7 @@ function lists_lists_page($user) {
 function lists_membership_page($user) {
 	// Show lists a user belongs to
 	$lists = twitter_lists_user_memberships($user);
-	$content = "<p><strong>{$user} ".__("'s Memberships")."</strong> | <a href='".BASE_URL."lists/{$user}'>{$user} ".__("'s Subscriptions")."</a></p>";
+	$content = "<p><strong>{$user} ".__("'s Memberships")."</strong> | <a href='".RELATIVE_URL."lists/{$user}'>{$user} ".__("'s Subscriptions")."</a></p>";
 	$content .= theme('lists', $lists);
 	theme('page', __("Following")." {$user} ".__("'s Lists"), $content);
 }
@@ -136,9 +136,9 @@ function lists_list_tweets_page($user, $list) {
 	$tl = twitter_standard_timeline($tweets, 'user');
 	$content = theme('status_form');
 	$list_url = "lists/{$user}/{$list}";
-	$content .= "<p><a href='".BASE_URL."user/{$user}'>{$user}</a>/<strong>{$list}</strong> ".__("'s Tweets")." | <a href='".BASE_URL."{$list_url}/members'>".__("View Members")."</a> | <a href='".BASE_URL."{$list_url}/subscribers'>".__("View Subscribers");
+	$content .= "<p><a href='".RELATIVE_URL."user/{$user}'>{$user}</a>/<strong>{$list}</strong> ".__("'s Tweets")." | <a href='".RELATIVE_URL."{$list_url}/members'>".__("View Members")."</a> | <a href='".RELATIVE_URL."{$list_url}/subscribers'>".__("View Subscribers");
 	if(user_is_current_user($user))
-		$content .= "</a> | <a href='".BASE_URL."{$list_url}/edit'>".__("Edit List Details");
+		$content .= "</a> | <a href='".RELATIVE_URL."{$list_url}/edit'>".__("Edit List Details");
 	$content .= "</a></p>";
 	$content .= theme('timeline', $tl);
 	theme('page', __("Lists")." {$user}/{$list}", $content);
@@ -178,7 +178,7 @@ function lists_list_edit_page($user, $list) {
 	}
 
 	$p = twitter_process(API_ROOT."lists/show.json?owner_screen_name={$user}&slug={$list}");
-	$content = "<form method=\"post\" action=\"".BASE_URL."lists/{$user}/{$list}/edit\" enctype=\"multipart/form-data\">".__("List Name").": <input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Privacy").": <select name=\"mode\">";
+	$content = "<form method=\"post\" action=\"".RELATIVE_URL."lists/{$user}/{$list}/edit\" enctype=\"multipart/form-data\">".__("List Name").": <input type=\"text\" name=\"name\" value=\"{$p->name}\" /> (Max 20) <br />".__("Privacy").": <select name=\"mode\">";
 	$current_mode = $p->mode === "public";
 	$content .= "<option value=\"public\"".($current_mode ? " selected=\"selected\"" : "").">".__("Public")."</option>";
 	$content .= "<option value=\"private\"".($current_mode ? "" : " selected=\"selected\"").">".__("Private")."</option>";
@@ -202,9 +202,9 @@ function theme_lists($json) {
 	foreach ($feed as $list) {
 		$url = "lists/{$list->user->screen_name}/{$list->slug}";
 		$rows[] = array(
-			"<a href='".BASE_URL."user/{$list->user->screen_name}'>@{$list->user->screen_name}</a>/<a href='".BASE_URL."{$url}'><strong>{$list->slug}</strong></a> ",
-			"<a href='".BASE_URL."{$url}/members'>{$list->member_count}</a> ",
-			"<a href='".BASE_URL."{$url}/subscribers'>{$list->subscriber_count}</a>",
+			"<a href='".RELATIVE_URL."user/{$list->user->screen_name}'>@{$list->user->screen_name}</a>/<a href='".RELATIVE_URL."{$url}'><strong>{$list->slug}</strong></a> ",
+			"<a href='".RELATIVE_URL."{$url}/members'>{$list->member_count}</a> ",
+			"<a href='".RELATIVE_URL."{$url}/subscribers'>{$list->subscriber_count}</a>",
 		);
 	}
 
@@ -216,11 +216,11 @@ function theme_lists($json) {
 
 function theme_list_pagination($json) {
 	if ($cursor = (string) $json->next_cursor) {
-		$links[] = "<a href='".BASE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Older")."</a>";
+		$links[] = "<a href='".RELATIVE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Older")."</a>";
 	}
 
 	if ($cursor = (string) $json->previous_cursor) {
-		$links[] = "<a href='".BASE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Newer")."</a>";
+		$links[] = "<a href='".RELATIVE_URL."{$_GET['q']}?cursor={$cursor}'>".__("Newer")."</a>";
 	}
 
 	if (count($links) > 0) return '<p>'.implode(' | ', $links).'</p>';

@@ -14,7 +14,7 @@ function touch_theme_avatar($url, $force_large = true) {
 
 function touch_theme_page($title, $content) {
 	$page = ($_GET['page'] == 0 ? null : " - Page ".$_GET['page'])." - ";
-	echo '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0;" /><link href="'.BASE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$page.NPT_TITLE.'</title><base href="'.BASE_URL.'" />'.theme('css').'</head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom').'</body></html>';
+	echo '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0;" /><link href="'.RELATIVE_URL.'favicon.ico" rel="shortcut icon" type="image/x-icon" /><title>'.$title.$page.NPT_TITLE.'</title><base href="'.RELATIVE_URL.'" />'.theme('css').'</head><body id="thepage">'.theme('menu_top').$content.theme('menu_bottom').'</body></html>';
 	exit();
 }
 
@@ -28,12 +28,12 @@ function touch_theme_menu_top() {
 	foreach (menu_visible_items() as $url => $page) {
 		$title = $url ? $page['title'] : __("Home");
 		$type = in_array($title, $main_menu_titles) ? 'main' : 'extras';
-		$links[$type][] = "<a href='".BASE_URL."$url'>$title</a>";
+		$links[$type][] = "<a href='".RELATIVE_URL."$url'>$title</a>";
 	}
 	if (user_is_authenticated()) {
 		$user = user_current_username();
-		if (setting_fetch('topuser') == 'yes') array_unshift($links['main'], "<b><a href='".BASE_URL."user/$user'>$user</a></b>");
-		array_unshift($links['extras'], "<b><a href='".BASE_URL."user/$user'>$user</a></b>");
+		if (setting_fetch('topuser') == 'yes') array_unshift($links['main'], "<b><a href='".RELATIVE_URL."user/$user'>$user</a></b>");
+		array_unshift($links['extras'], "<b><a href='".RELATIVE_URL."user/$user'>$user</a></b>");
 	}
 	array_push($links['main'], '<a href="#" onclick="return toggleMenu()">'.__('More').'</a>');
 	$html = '<div id="menu" class="menu">';
@@ -48,7 +48,7 @@ function touch_theme_menu_bottom() {
 }
 
 function touch_theme_css() {
-	$out = theme_css().'<link rel="stylesheet" href="'.BASE_URL.'browsers/touch.css" /><script type="text/javascript">'.file_get_contents('browsers/touch.js').'</script>';
+	$out = theme_css().'<link rel="stylesheet" href="'.RELATIVE_URL.'browsers/touch.css" /><script type="text/javascript">'.file_get_contents('browsers/touch.js').'</script>';
 	$out .= '<style type="text/css">'.setting_fetch('css').'</style>';
 	return $out;
 }

@@ -6,6 +6,8 @@ define('OAUTH_SECRET', 'putyourinfohere');
 define('EMBEDLY_KEY', 'putyourinfohere');
 
 define('BASE_URL', 'putyourinfohere');
+$relative_url = ($directory = trim(dirname($_SERVER["SCRIPT_NAME"]), "/\,")) ? "/$directory/" : "/";
+define('RELATIVE_URL', $relativee_url);
 
 define('NPT_TITLE', 'putyourinfohere');
 define('API_ROOT', 'https://api.twitter.com/1.1/');

@@ -42,7 +42,7 @@ menu_register(array(
 
 function logout_page() {
 	user_logout();
-	header("Location: ".BASE_URL);
+	header("Location: ".RELATIVE_URL);
 	exit;
 }
 

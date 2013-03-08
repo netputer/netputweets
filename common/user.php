@@ -28,14 +28,14 @@ function user_oauth() {
 		// 判断 user 是否在列表中
 		if (INVITE && !_is_user_invited($token['screen_name'])) {
 			unset($GLOBALS['user']);
-			exit('对不起，您不是受邀用户，无法登录（如果你有邀请码，<a href="'.BASE_URL.'invite.php">请自行添加</a>）');
+			exit('对不起，您不是受邀用户，无法登录（如果你有邀请码，<a href="'.RELATIVE_URL.'invite.php">请自行添加</a>）');
 		}
 		
 		$GLOBALS['user']['username'] = $token['screen_name'];
 		$GLOBALS['user']['password'] = $token['oauth_token'] .'|'.$token['oauth_token_secret'];
 		
 		_user_save_cookie();
-		header('Location: '. BASE_URL);
+		header('Location: '. RELATIVE_URL);
 		return;
 	}
 	
@@ -57,7 +57,7 @@ function user_itap() {
 	$response = twitter_process('https://api.twitter.com/oauth/request_token', $params);
 	parse_str($response, $token);
 	$_SESSION['oauth_request_token_secret'] = $token['oauth_token_secret'];
-	$authorise_url = BASE_URL.'oauthproxy/authorize?oauth_token='.$token['oauth_token'];
+	$authorise_url = RELATIVE_URL.'oauthproxy/authorize?oauth_token='.$token['oauth_token'];
 	header("Location: $authorise_url");
 }
 
@@ -190,10 +190,10 @@ function _user_decrypt_cookie($crypt_text) {
 }
 
 function theme_login() {
-	$content = '<p>　→ <strong><a href="'.BASE_URL.'oauth">'.__("Sign In with Twitter OAuth").'</a></strong> / <a href="'.BASE_URL.'itap">'.__("Proxy").'</a></p>';
+	$content = '<p>　→ <strong><a href="'.RELATIVE_URL.'oauth">'.__("Sign In with Twitter OAuth").'</a></strong> / <a href="'.RELATIVE_URL.'itap">'.__("Proxy").'</a></p>';
 	return $content;
 }
 
 function theme_logged_out() {
-	return '<p>'.__("Logged out").'. <a href="'.BASE_URL.'">'.__("Login again").'?</a></p>';
+	return '<p>'.__("Logged out").'. <a href="'.RELATIVE_URL.'">'.__("Login again").'?</a></p>';
 }

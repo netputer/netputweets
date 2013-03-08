@@ -2,7 +2,7 @@
 function img_proxy_url($url, $thumb = FALSE) {
 	if (!IMGPROXY) return $url;
 
-	$img_url = BASE_URL.'img.php?u='.base64_encode(strrev($url));
+	$img_url = RELATIVE_URL.'img.php?u='.base64_encode(strrev($url));
 	if ($thumb) $img_url .= '&t=150';
 
 	return $img_url;
@@ -44,7 +44,7 @@ function embedly_embed_thumbnails(&$feed) {
 			}
 
 			if ($status->entities->media) {
-				$image = substr(BASE_URL, 4, 5) == 's' ? $status->entities->media[0]->media_url_https : $status->entities->media[0]->media_url;
+				$image = substr(RELATIVE_URL, 4, 5) == 's' ? $status->entities->media[0]->media_url_https : $status->entities->media[0]->media_url;
 
 				$feed[$status->id]->text .= '<br /><a href="'.$image.'"><img src="'.img_proxy_url($image, TRUE).'" style="max-width:150px;" /></a>';
 			}
