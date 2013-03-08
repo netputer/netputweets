@@ -60,7 +60,7 @@ function desktop_theme_avatar($url, $force_large = true) {
 function desktop_theme_css() {
 	$out = theme_css();
 	if (setting_fetch('avataro', 'yes') == 'yes') {
-		$out .= '<link rel="stylesheet" href="/browsers/desktop.avatar.css" />';
+		$out .= '<link rel="stylesheet" href="'.RELATIVE_URL.'browsers/desktop.avatar.css" />';
 	}
 	return $out;
 }
