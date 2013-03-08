@@ -1358,7 +1358,7 @@ function theme_timeline($feed) {
 			$replyto = null;
 		}
 
-		if (setting_fetch('dispnick', 'yes') == 'yes') {
+		if (setting_fetch('dispnick') == 'yes') {
 			$showname = $status->from->name;
 		} else {
 			$showname = $status->from->screen_name;
