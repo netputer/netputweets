@@ -1358,7 +1358,12 @@ function theme_timeline($feed) {
 			$replyto = null;
 		}
 
-		$html = "<b class='suser'><a href='".BASE_URL."user/{$status->from->screen_name}'>{$status->from->screen_name}</a></b> ";
+		if (setting_fetch('dispnick', 'yes') == 'yes') {
+			$showname = $status->from->name;
+		} else {
+			$showname = $status->from->screen_name;
+		}
+		$html = "<b class='suser'><a href='".BASE_URL."user/{$status->from->screen_name}'>{$showname}</a></b> ";
 
 		if (setting_fetch('buttonend') == 'yes') {
 			$html .= "<span class='stext'>{$status->text}</span><br /><small class='sbutton'>$actions $link ";
@@ -1369,13 +1374,18 @@ function theme_timeline($feed) {
 		$html .= " $source $replyto</small>";
 
 		if ($status->retweeted_by) {
+			if (setting_fetch('dispnick', 'yes') == 'yes') {
+				$showrtname = $status->retweeted_by->user->name;
+			} else {
+				$showrtname = $status->retweeted_by->user->screen_name;
+			}
 			$retweeted_by = $status->retweeted_by->user->screen_name;
 			$retweeted_times = $status->retweet_count;
 
 			$retweeted_times_minus = is_numeric($retweeted_times) ? $retweeted_times - 1 : $retweeted_times;
 			$retweeted_times_str = ($retweeted_times && $retweeted_times_minus) ? "+{$retweeted_times_minus}" : "";
 
-			$html .= " <small class='sretweet'>".__("retweeted by")." <a href='".BASE_URL."user/{$retweeted_by}'>{$retweeted_by}</a>{$retweeted_times_str} ".__("<span style='display:none;'>zhuanfa</span>")."</small>";
+			$html .= " <small class='sretweet'>".__("retweeted by")." <a href='".BASE_URL."user/{$retweeted_by}'>{$showrtname}</a>{$retweeted_times_str} ".__("<span style='display:none;'>zhuanfa</span>")."</small>";
 		}
 
 		unset($row);
