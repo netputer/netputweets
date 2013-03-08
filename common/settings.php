@@ -67,7 +67,6 @@ function settings_page($args) {
 		$settings['followers'] = $_POST['followers'];
 		$settings['friends'] = $_POST['friends'];
 		$settings['blockings'] = $_POST['blockings'];
-		$settings['about'] = $_POST['about'];
 		$settings['ssettings'] = $_POST['ssettings'];
 		$settings['slogout'] = $_POST['slogout'];
 
@@ -143,7 +142,6 @@ function settings_page($args) {
 	$content .= '<label>　<input type="checkbox" name="followers" value="yes" '. (setting_fetch('followers') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Followers").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="friends" value="yes" '. (setting_fetch('friends') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Friends").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="blockings" value="yes" '. (setting_fetch('blockings') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Blockings").'</label><br />';
-	$content .= '<label>　<input type="checkbox" name="about" value="yes" '. (setting_fetch('about') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("About").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="ssettings" value="yes" '. (setting_fetch('ssettings', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Settings").'</label><br />';
 	$content .= '<label>　<input type="checkbox" name="slogout" value="yes" '. (setting_fetch('slogout', 'yes') == 'yes' ? ' checked="checked" ' : '') .' /> '.__("Logout").'</label><br />';
 
