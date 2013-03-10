@@ -5,7 +5,7 @@
 介绍
 ----
 
-「奶瓶腿」是第三方 Twitter 网页客户端（更适合在移动设备上使用），基于 [Dabr](http://code.google.com/p/dabr) 项目，由 [@NetPuter](https://twitter.com/NetPuter) 维护。同时也感谢 [@iChada](https://twitter.com/iChada) [@17th](https://twitter.com/17th) [@yegle](https://twitter.com/yegle) [@luosheng](https://twitter.com/luosheng) [@LonelySwan](https://twitter.com/LonelySwan) [@shadowglenelf](https://twitter.com/shadowglenelf) [@Orz_C](https://twitter.com/orz_c) 的协助。
+「奶瓶腿」是第三方 Twitter 网页客户端（更适合在移动设备上使用），基于 [Dabr](http://code.google.com/p/dabr) 项目，由 [@NetPuter](https://twitter.com/NetPuter) 维护。同时也感谢 [@iChada](https://twitter.com/iChada) [@17th](https://twitter.com/17th) [@yegle](https://twitter.com/yegle) [@luosheng](https://twitter.com/luosheng) [@AvelineSwan](https://twitter.com/AvelineSwan) [@shadowglenelf](https://twitter.com/shadowglenelf) [@Orz_C](https://twitter.com/orz_c) 的协助。
 
 如果你关注奶瓶 [@NetPuter](https://twitter.com/NetPuter) 和他折腾的一些项目，并且希望帮助他，欢迎以[捐助的形式](http://netputer.me/donate/)使他更好地折腾。
 
@@ -37,5 +37,5 @@
 1. 修改文件时请使用不会添加 BOM 的编辑器（Windows 上如 `wordpad` 等）。
 2. 由于图片预览代理和图片压缩功能非常消耗服务器的资源，请谨慎使用。如需使用图片预览代理，请务必在安装时填写 `Embedly API Key` 字段。
 3. 可视化邀请页面：`invite.php`。如果升级后发现邀请列表丢失，请手动将 `invitec.php` 的内容（除去第一行代码）复制到 `invited` 中，并保持最后一行为空行。
-4. 使用 Nginx 的用户请将 `dabr.conf` 包含到站点配置文件中。
+4. 使用 Nginx 的用户请将 `dabr.conf` 包含到站点配置文件中。如果站点使用 FastCGI 并通过 https 访问时遇到问题，请确认配置文件中存在 `fastcgi_param HTTPS on;` 的选项。
 5. 如有任何问题，请通过 [GitHub Issues](https://github.com/netputer/netputweets/issues) 反馈。
