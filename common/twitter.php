@@ -1580,6 +1580,6 @@ function theme_action_icon($url, $image_url, $text) {
 	if (setting_fetch('buttonintext', 'yes') == 'yes') {
 		return "<a href='$url'>$text</a>";
 	} else {
-		return "<a href='$url'><img src='$image_url' /></a>";
+		return "<a href='$url'><img src='".BASE_URL.$image_url."' /></a>";
 	}
 }
