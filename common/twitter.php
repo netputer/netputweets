@@ -1374,7 +1374,7 @@ function theme_timeline($feed) {
 		$html .= " $source $replyto</small>";
 
 		if ($status->retweeted_by) {
-			if (setting_fetch('dispnick', 'yes') == 'yes') {
+			if (setting_fetch('dispnick') == 'yes') {
 				$showrtname = $status->retweeted_by->user->name;
 			} else {
 				$showrtname = $status->retweeted_by->user->screen_name;
