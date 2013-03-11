@@ -1302,11 +1302,7 @@ function theme_timeline($feed) {
 	$date_heading = false;
 
 	$max_id = false;
-	$since_id = false;
-
 	foreach ($feed as &$status) {
-		if (!$since_id)
-			$since_id = $status->id_str;
 		$max_id = isset($status->retweeted_by) ? $status->retweeted_by->id_str : $status->id_str;
 
 		$status->text = twitter_parse_tags($status->text, $status->entities, $status->id_str, strip_tags($status->source));
