@@ -1,5 +1,18 @@
 <?php
 
+function is_https() {
+	if (isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) == 'on' || $_SERVER['HTTPS'] == 1)) {
+		return TRUE;
+	}
+
+	// Nginx 专用方法检测
+	if (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443') {
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
 $base_url = is_https() ? "https" : "http";
 $base_url .= "://".$_SERVER["HTTP_HOST"];
 $base_url .= ($directory = trim(dirname($_SERVER["SCRIPT_NAME"]), "/\,")) ? "/$directory/" : "/";
