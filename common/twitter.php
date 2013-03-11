@@ -1301,18 +1301,9 @@ function theme_timeline($feed) {
 	$page = menu_current_page();
 	$date_heading = false;
 
-	$max_id = 0;
-	$since_id = 0;
-
-	$first = TRUE;
-
+	$max_id = false;
 	foreach ($feed as &$status) {
-		if ($first) {
-			$since_id = $status->id_str;
-			$first = FALSE;
-		} else {
-			$max_id = isset($status->retweeted_by) ? $status->retweeted_by->id_str : $status->id_str;
-		}
+		$max_id = isset($status->retweeted_by) ? $status->retweeted_by->id_str : $status->id_str;
 
 		$status->text = twitter_parse_tags($status->text, $status->entities, $status->id_str, strip_tags($status->source));
 	}
@@ -1408,15 +1399,14 @@ function theme_timeline($feed) {
 
 	$content = theme('table', array(), $rows, array('class' => 'timeline'));
 
-	if (PHP_INT_SIZE > 4) {
-		$max_id = intval($max_id) - 1;
-	}
-
-	if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
-		$content .= theme('pagination', $max_id);
-	} else {
-		global $blackberry_pagination;
-		$blackberry_pagination = theme('pagination', $max_id);
+	if ($max_id) {
+		$max_id = bcsub($max_id, "1");
+		if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
+			$content .= theme('pagination', $max_id);
+		} else {
+			global $blackberry_pagination;
+			$blackberry_pagination = theme('pagination', $max_id);
+		}
 	}
 
 	return $content;
