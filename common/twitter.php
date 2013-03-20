@@ -1400,7 +1400,7 @@ function theme_timeline($feed) {
 	$content = theme('table', array(), $rows, array('class' => 'timeline'));
 
 	if ($max_id) {
-		$max_id = bcsub($max_id, "1");
+		if (function_exists('bcsub')) $max_id = bcsub($max_id, '1');
 		if (setting_fetch('browser') <> 'blackberry' && !$hide_pagination) {
 			$content .= theme('pagination', $max_id);
 		} else {
