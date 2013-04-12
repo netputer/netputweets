@@ -697,6 +697,10 @@ function twitter_blockings_page($query) {
 function twitter_update() {
 	twitter_ensure_post_action();
 	$status = trim($_POST['status']);
+	
+	if (get_magic_quotes_gpc()) {
+		$status = stripslashes($status);
+	}
 
 	if ($status) {
 		if (function_exists(mb_strlen) && (mb_strlen($status, 'utf-8') > 140)) {

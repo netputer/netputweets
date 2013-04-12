@@ -144,7 +144,7 @@ switch($step) {
 			foreach ($config as $line_num => $line) {
 				switch (substr($line, 11, 5)) {
 					case 'RYPTI':
-						fwrite($handle, str_replace('putyourinfohere', md5(time()), $line));
+						fwrite($handle, str_replace('putyourinfohere', md5($t_tck), $line));
 						break;
 					case 'TH_KE':
 						fwrite($handle, str_replace('putyourinfohere', $t_tck, $line));
