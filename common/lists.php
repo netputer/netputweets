@@ -10,6 +10,15 @@ function twitter_lists_tweets($user, $list) {
 	return twitter_process($url);
 }
 
+function twitter_lists_user_ownerships($user) {
+	// Lists a user owns
+	$cursor = $_GET['cursor'];
+		if (!is_numeric($cursor)) {
+			$cursor = -1;
+		}
+	return twitter_process(API_ROOT."lists/ownerships.json?screen_name={$user}&cursor={$cursor}");
+}
+
 function twitter_lists_user_lists($user) {
 	// Lists a user subscribed to
 	return twitter_process(API_ROOT."lists/list.json?screen_name={$user}");
@@ -80,6 +89,9 @@ function lists_controller($query) {
 		case 'memberships':
 			// Show which lists a user belongs to
 			return lists_membership_page($user);
+		case 'ownerships':
+			// Show which lists a user owns
+			return lists_ownership_page($user);
 		case 'members':
 			// Show members of a list
 			return lists_list_members_page($user, $list);
@@ -117,7 +129,7 @@ function lists_list_delete_member($user, $list, $member) {
 function lists_lists_page($user) {
 	// Show a user's lists
 	$lists = twitter_lists_user_lists($user);
-	$content = "<p><a href='".BASE_URL."lists/{$user}/memberships'>{$user} ".__("'s Memberships")."</a> | <strong>{$user} ".__("'s Subscriptions")."</strong></p>";
+	$content = "<p><a href='".BASE_URL."lists/{$user}/memberships'>{$user} ".__("'s Memberships")."</a> | <strong>{$user} ".__("'s Subscriptions")."</strong> | <a href='".BASE_URL."lists/{$user}/ownerships'>{$user} ".__("'s Ownerships")."</a></p>";
 	$content .= theme('lists', $lists);
 	theme('page', "{$user} ".__("'s Lists"), $content);
 }
@@ -125,7 +137,15 @@ function lists_lists_page($user) {
 function lists_membership_page($user) {
 	// Show lists a user belongs to
 	$lists = twitter_lists_user_memberships($user);
-	$content = "<p><strong>{$user} ".__("'s Memberships")."</strong> | <a href='".BASE_URL."lists/{$user}'>{$user} ".__("'s Subscriptions")."</a></p>";
+	$content = "<p><strong>{$user} ".__("'s Memberships")."</strong> | <a href='".BASE_URL."lists/{$user}'>{$user} ".__("'s Subscriptions")."</a> | <a href='".BASE_URL."lists/{$user}/ownerships'>{$user} ".__("'s Ownerships")."</a></p>";
+	$content .= theme('lists', $lists);
+	theme('page', __("Following")." {$user} ".__("'s Lists"), $content);
+}
+
+function lists_ownership_page($user) {
+	// Show lists a user owns
+	$lists = twitter_lists_user_ownerships($user);
+	$content = "<p><a href='".BASE_URL."lists/{$user}/memberships'>{$user} ".__("'s Memberships")."</a> | <a href='".BASE_URL."lists/{$user}'>{$user} ".__("'s Subscriptions")."</a> | <strong>{$user} ".__("'s Ownerships")."</strong></p>";
 	$content .= theme('lists', $lists);
 	theme('page', __("Following")." {$user} ".__("'s Lists"), $content);
 }

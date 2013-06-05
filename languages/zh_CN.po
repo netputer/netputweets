@@ -137,6 +137,8 @@ msgstr " 中删除？"
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:122
 msgid "'s Memberships"
 msgstr "所属列表"
+msgid "'s Ownerships"
+msgstr "所建列表"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:114
