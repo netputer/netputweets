@@ -139,6 +139,12 @@ msgid "'s Memberships"
 msgstr "所属列表"
 msgid "'s Ownerships"
 msgstr "所建列表"
+msgid "Following"
+msgstr "关注"
+msgid "Created by"
+msgstr "创建者是"
+msgid "Create a new list"
+msgstr "创建新列表"
 
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:112
 #: E:\PHPnow\vhosts\tui.netputer.com/common/lists.php:114

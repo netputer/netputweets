@@ -58,6 +58,7 @@ lists -- current user's lists
 lists/$user -- xhosen user's lists
 lists/$user/lists -- alias of the above
 lists/$user/memberships -- lists user is in
+lists/$user/create -- create a new list
 lists/$user/$list -- tweets
 lists/$user/$list/members
 lists/$user/$list/subscribers
@@ -89,6 +90,9 @@ function lists_controller($query) {
 		case 'memberships':
 			// Show which lists a user belongs to
 			return lists_membership_page($user);
+		case 'create':
+			//Create a new list
+			return lists_list_create_page($user);
 		case 'ownerships':
 			// Show which lists a user owns
 			return lists_ownership_page($user);
@@ -146,8 +150,9 @@ function lists_ownership_page($user) {
 	// Show lists a user owns
 	$lists = twitter_lists_user_ownerships($user);
 	$content = "<p><a href='".BASE_URL."lists/{$user}/memberships'>{$user} ".__("'s Memberships")."</a> | <a href='".BASE_URL."lists/{$user}'>{$user} ".__("'s Subscriptions")."</a> | <strong>{$user} ".__("'s Ownerships")."</strong></p>";
+	$content .= "<p><a href='".BASE_URL."lists/{$user}/create'>".__("Create a new list")."</a></p>";
 	$content .= theme('lists', $lists);
-	theme('page', __("Following")." {$user} ".__("'s Lists"), $content);
+	theme('page', __("Created by")." {$user} ".__("'s Lists"), $content);
 }
 
 function lists_list_tweets_page($user, $list) {
@@ -184,6 +189,25 @@ function lists_list_subscribers_page($user, $list) {
 	theme('page', __("Subscribers of")." {$user}/{$list}", $content);
 }
 
+function lists_list_create_page($user) {
+	if ($_POST['name']) {
+		$post_data = array(
+			'name' => stripslashes($_POST['name']),
+			'mode' => $_POST['mode'],
+			'description' => $_POST['description'],
+		);
+		$p = twitter_process(API_ROOT."lists/create.json", $post_data);
+		twitter_refresh("lists/{$user}/{$p->slug}");
+	}
+
+	$content = "<form method=\"post\" action=\"".BASE_URL."lists/{$user}/create\" enctype=\"multipart/form-data\">".__("List Name").": <input type=\"text\" name=\"name\" value=\"\" /> (Max 20) <br />".__("Privacy").": <select name=\"mode\">";
+	$content .= "<option value=\"public\" >".__("Public")."</option>";
+	$content .= "<option value=\"private\" selected=\"selected\" >".__("Private")."</option>";
+	$content .= "</select><br />".__("Description").": (Max 160) <br /><textarea name=\"description\" style=\"width:95%\" rows=\"3\" id=\"description\" ></textarea><br /><input type=\"submit\" value=\"".__("Update")."\" /></form>";
+
+	return theme('page', __("Create New List"), $content);
+}
+
 function lists_list_edit_page($user, $list) {
 	if ($_POST['name']) {
 		$post_data = array(
@@ -193,7 +217,7 @@ function lists_list_edit_page($user, $list) {
 			'mode' => $_POST['mode'],
 			'description' => $_POST['description'],
 		);
-		twitter_process(API_ROOT."lists/update.json", $post_data);
+		$p = twitter_process(API_ROOT."lists/update.json", $post_data);
 		twitter_refresh("lists/{$user}/{$p->slug}");
 	}
 
