@@ -213,11 +213,11 @@ function twitter_upload_page($query) {
 
 		$image = "{$_FILES['image']['tmp_name']};type={$_FILES['image']['type']};filename={$_FILES['image']['name']}";
 		$status = $_POST['message'];
-		
+
 		$geo = 'N';
 		if (setting_fetch('buttongeo') == 'yes') {
 			list($lat, $long) = explode(',', $_POST['location']);
-			if (is_numeric($lat) && is_numeric($long)) 
+			if (is_numeric($lat) && is_numeric($long))
 				$geo = 'Y';
 			setcookie('geo', $geo, time()+3600);
 		}
@@ -697,7 +697,7 @@ function twitter_blockings_page($query) {
 function twitter_update() {
 	twitter_ensure_post_action();
 	$status = trim($_POST['status']);
-	
+
 	if (get_magic_quotes_gpc()) {
 		$status = stripslashes($status);
 	}
