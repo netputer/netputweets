@@ -1347,8 +1347,8 @@ function theme_timeline($feed) {
 			$source = $status->source ? (" ".__("via")." ".strip_tags($status->source) ."") : '';
 		}
 
-		if ($status->in_reply_to_status_id) {
-			$replyto = "<a href='".BASE_URL."status/{$status->in_reply_to_status_id}'>>></a>";
+		if ($status->in_reply_to_status_id_str) {
+			$replyto = "<a href='".BASE_URL."status/{$status->in_reply_to_status_id_str}'>>></a>";
 		} else {
 			$replyto = null;
 		}
